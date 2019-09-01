@@ -1,0 +1,69 @@
+version: '2'
+
+services:
+  eureka-server:
+    build: eureka-server/
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    image: eureka-server
+    ports:
+      - 8761:8761
+
+  config-service:
+    build: config-server/
+    restart: always
+    network_mode: "host"
+    image: config-service
+    hostname: localhost
+    ports:
+      - 8888:8888
+
+  mongo:
+    image: mongo:latest
+    restart: always
+    ports:
+      - 27017:27017
+
+  zuul-api:
+    build: zuul-api/
+    depends_on:
+      - config-service
+      - eureka-server
+    restart: always
+    network_mode: "host"
+    image: zuul-api
+    hostname: localhost
+    ports:
+      - 8080:8080
+
+  donor-profile-service:
+    build: donor-profile-service/
+    depends_on:
+      - mongo
+    restart: always
+    network_mode: "host"
+    image: donor-profile-service
+    hostname: localhost
+    ports:
+      - 8081:8081
+
+  recepient-profile-service:
+    build: recepient-profile-service/
+    depends_on:
+      - mongo
+    restart: always
+    network_mode: "host"
+    image: recepient-profile-service
+    hostname: localhost
+    ports:
+      - 8083:8083
+
+  login-service:
+    build: login-service/
+    restart: always
+    network_mode: "host"
+    image: login-service
+    hostname: localhost
+    ports:
+      - 8082:8082

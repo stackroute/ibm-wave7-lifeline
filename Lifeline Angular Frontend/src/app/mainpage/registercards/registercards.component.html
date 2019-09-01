@@ -1,0 +1,45 @@
+  <div class="containerstyle" fxLayout="row" fxLayoutAlign="space-between">
+    <div class="example-card">
+        <div class="card1">
+      <mat-card >
+         <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+        </mat-card-header>
+        <img
+          mat-card-image
+          src="assets/images/Donor (2).jpg"
+          alt="Donor"
+        />
+
+        <mat-card-actions>
+          <div class="registerbutton">
+            <button mat-button [routerLink]="['/donor-registration']">Register</button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    </div>
+
+    <div class="example-card">
+        <div class="card2" >
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+        </mat-card-header>
+        <img
+          mat-card-image
+          src="assets/images/Receiver.jpg"
+          alt="Register"
+        />
+
+        <mat-card-actions>
+          <div class="registerbutton">
+            <button mat-button [routerLink]="['/recepient-registration']">Register</button>
+          </div>
+        </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+   
+  </div>
+

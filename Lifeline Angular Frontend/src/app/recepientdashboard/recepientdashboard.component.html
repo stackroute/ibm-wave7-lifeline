@@ -1,0 +1,154 @@
+<mat-tab-group dynamicHeight>
+    <mat-tab label="Edit">
+        <div>
+            <form [formGroup]="profileForm">
+                <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
+                    <h2>Edit Profile</h2>
+                    <mat-form-field>
+                      <input matInput placeholder="Id" value="{{recepients.id}}"> 
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input matInput placeholder="firstName" disabled value="{{recepients.firstName}} "> 
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field>
+                        <input matInput placeholder="lastName" disabled value=" {{recepients.lastName}}">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field>
+                        <input matInput placeholder="email" disabled value=" {{recepients.email}}">
+                        <!-- {{recepients.email}} -->
+                      </mat-form-field>
+                      <br>
+                    <mat-form-field>
+                        <input matInput placeholder="phoneNo" formControlName="phoneNumber" value=" {{recepients.phoneNumber}}">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="example-full-width">
+                        <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Date Of Birth" disabled>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                       {{recepients.dob}}
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field>
+                        <input matInput placeholder="AadharNumber" value="{{recepients.aadhar}}" disabled>
+                     </mat-form-field>
+                    <br>
+                    <mat-label>Address</mat-label>
+                    <mat-form-field>
+                        <input matInput placeholder="AddresLine1" formControlName="addressLine1" value="{{recepients.address.addressLine1}}">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="AddresLine2"  formControlName="addressLine2"value="{{recepients.address.addressLine2}}">
+                      </mat-form-field>
+                      <mat-form-field>
+                        <input matInput placeholder="city" formControlName="city" value="{{recepients.address.city}}">
+                      </mat-form-field>
+                      <mat-form-field>
+                        <input matInput placeholder="state" formControlName="state" value="{{recepients.address.state}}">
+                      </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="pincode" formControlName="pinCode" value="{{recepients.address.pinCode}}">
+                     </mat-form-field>
+                    <!-- <mat-form-field>
+                      <textarea matInput placeholder="Address" value="   {{recepients.address.addressLine1}}     
+                      {{recepients.address.addressLine2}}
+                      {{recepients.address.city}},{{recepients.address.pinCode}}{{recepients.address.state}}
+                "></textarea>
+                   
+                
+                    </mat-form-field>
+                    <br> -->
+                    <mat-form-field>
+                        <input matInput placeholder="Gender" value="{{recepients.gender}}" disabled>
+                     </mat-form-field>
+                    <br>
+                    <br>
+                    <mat-form-field>
+                        <mat-label>BloodGroup</mat-label>
+                        <select matNativeControl required disabled>
+                            {{recepients.bloodGroup}}
+                          <option value="A+">A+</option>
+                          <option value="A-">A-</option>
+                          <option value="B+">B+</option>
+                          <option value="B-">B-</option>
+                          <option value="AB+">AB+</option>
+                          <option value="AB-">AB-</option>
+                          <option value="O+">O+</option>
+                          <option value="O-">O-</option>
+                        </select>
+                        
+                    </mat-form-field>
+                      <br>
+                
+                <button mat-stroked-button type="submit" color="primary" (click)="updateRecepient(recepients)">Save</button>
+                
+                
+                </div>
+                </form>        </div>
+    </mat-tab>
+<!--Profile Tab-->
+    <mat-tab label="Profile" class="tab">
+
+        <mat-card>
+            <mat-list>
+                <h3 mat-subheader>Personal Details:</h3>
+
+                <mat-list-item>
+
+                    <h4 class="h4-tag">Name: {{recepients.firstName}} {{recepients.lastName}} </h4>
+
+                </mat-list-item>
+                <mat-list-item>
+                    <h4 class="h4-tag">Gender: {{recepients.gender}}</h4>
+
+                </mat-list-item>
+                <mat-list-item>
+                    <h4 class="h4-tag">Date of Birth: {{recepients.dob}}</h4>
+
+                </mat-list-item>
+                <mat-list-item>
+                    <h4 class="h4-tag">Email: {{recepients.email}}</h4>
+
+                </mat-list-item>
+                <mat-list-item>
+                    <h4 class="h4-tag">Phone Number: {{recepients.phoneNumber}}</h4>
+
+                </mat-list-item>
+                <mat-list-item>
+                    <h4 class="h4-tag">Aadhar Number: {{recepients.aadhar}}</h4>
+
+                </mat-list-item>
+                <mat-list-item>
+                    <h4 class="h4-tag">Address: {{recepients.address.addressLine1}} {{recepients.address.addressLine2}},
+                        {{recepients.address.city}},{{recepients.address.state}},pincode-{{recepients.address.pinCode}}</h4>
+                </mat-list-item>
+             
+                <mat-list-item>
+                    <h4 class="h4-tag">Blood group: {{recepients.bloodGroup}} </h4>
+
+                </mat-list-item>
+            </mat-list>
+            <mat-divider></mat-divider>
+        </mat-card>
+
+    </mat-tab>
+
+    <mat-tab label="PastHistory">
+        <div>
+            PastHistory
+        </div>
+    </mat-tab>
+    <mat-tab label="Recommendation">
+        <div>
+            Recommendation
+        </div>
+    </mat-tab>
+    <mat-tab label="Reports">
+        <div>
+Reports       
+ </div>
+    </mat-tab>
+
+</mat-tab-group>

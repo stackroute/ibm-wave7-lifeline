@@ -1,0 +1,39 @@
+.nav-item{
+    font-size: 4vh;
+    padding: 0;
+  }
+
+.title{
+    font-family: 'Zhi Mang Xing', cursive;
+    color:black;
+    font-size: 6vh;
+    padding-left: 23vw;
+}
+  .nav-link{
+    color:black;
+    font-family: 'Zhi Mang Xing', cursive;
+    font-size:4vh;
+    padding-right: 28vw;
+  }
+.navbar
+{
+  background: #c0392b;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #8e44ad, #c0392b);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #8e44ad, #c0392b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  height: 2cm;
+}
+
+  header{
+    /* background-image: url('../../assets/images/heart.jpg'); */
+    background-color: aliceblue;
+    overflow: hidden;
+    height: 100px;
+    border: 1cm;
+  }
+  
+  /* .d-inline-block{
+    width: 70px;
+    height: 70px;
+  }
+   */
