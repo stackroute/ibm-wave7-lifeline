@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -12,13 +13,12 @@ import java.util.TreeMap;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Organs {
-	TreeMap<String, Boolean> organs;
-//	private boolean cornea;
-//	private boolean blood;
-//	private boolean liver;
-//	private boolean heart;
-//	private boolean kidney;
-//	private boolean platelet;
-//	private boolean lungs;
-//	private boolean boneMarrow;
+	private boolean cornea;
+	private boolean blood;
+	private boolean liver;
+	private boolean heart;
+	private boolean kidney;
+	private boolean platelet;
+	private boolean lungs;
+	private boolean boneMarrow;
 }

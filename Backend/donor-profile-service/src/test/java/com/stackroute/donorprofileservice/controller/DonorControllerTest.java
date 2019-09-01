@@ -1,8 +1,11 @@
 package com.stackroute.donorprofileservice.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.netflix.discovery.converters.Auto;
 import com.stackroute.donorprofileservice.model.*;
 import com.stackroute.donorprofileservice.service.DonorService;
+import org.apache.kafka.clients.producer.RecordMetadata;
+import org.apache.kafka.common.TopicPartition;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,6 +18,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.core.ProducerFactory;
+import org.springframework.kafka.support.SendResult;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -22,15 +27,15 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.util.concurrent.ListenableFuture;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.TreeMap;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -67,16 +72,7 @@ public class DonorControllerTest {
 		guardian = new Guardian("Peter","peter@gmail.com","7890987654","son",address);
 		guardianList.add(guardian);
 		disease = new Disease(false,false,false,false,false,false,false,false,false,true,false);
-		TreeMap<String, Boolean> organsMap = new TreeMap<>();
-		organsMap.put("cornea", true);
-		organsMap.put("blood", true);
-		organsMap.put("liver", true);
-		organsMap.put("heart", true);
-		organsMap.put("kidney", true);
-		organsMap.put("platelet", true);
-		organsMap.put("lungs", true);
-		organsMap.put("boneMarrow", true);
-		organs = new Organs(organsMap);
+		organs = new Organs(true,true,true,true,false,true,true,true);
 		medicalDetails = new MedicalDetails("O+",160,80,disease,organs, "HLA-A", 100000000, 1.5, 27, 100, 6 );
 		donor = new Donor(101,"donor","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985,5,23),
 				"356478900928","male",address,guardianList,medicalDetails);

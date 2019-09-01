@@ -14,10 +14,7 @@ import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.TreeMap;
+import java.util.*;
 
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.when;
@@ -49,16 +46,7 @@ public class DonorServiceTest {
 		guardian = new Guardian("Peter","peter@gmail.com","7890987654","son",address);
 		guardianList.add(guardian);
 		disease = new Disease(false,false,false,false,false,false,false,false,false,true,false);
-		TreeMap<String, Boolean> organsMap = new TreeMap<>();
-		organsMap.put("cornea", true);
-		organsMap.put("blood", true);
-		organsMap.put("liver", true);
-		organsMap.put("heart", true);
-		organsMap.put("kidney", true);
-		organsMap.put("platelet", true);
-		organsMap.put("lungs", true);
-		organsMap.put("boneMarrow", true);
-		organs = new Organs(organsMap);
+		organs = new Organs(true,true,true,true,false,true,true,true);
 		medicalDetails = new MedicalDetails("O+",160,80,disease,organs, "HLA-A", 100000000, 1.5, 27, 100, 6 );
 		donor = new Donor(3,"donor","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985,5,23),
 				"356478900928","male",address,guardianList,medicalDetails);
