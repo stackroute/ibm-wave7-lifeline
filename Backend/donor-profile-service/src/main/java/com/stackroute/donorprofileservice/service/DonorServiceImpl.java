@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class DonorServiceImpl implements DonorService {
 	
@@ -49,6 +48,7 @@ public class DonorServiceImpl implements DonorService {
 	public Donor saveDonorProfile(Donor donor) throws DonorProfileAlreadyExistsException {
 		if(donorRepository.existsById(donor.getId()) == false) {
 			donor.setId(getNextSequenceId("donors_sequence"));
+			donor.getDob().toLocaleString();
 			return donorRepository.save(donor);
 		} else {
 			throw new DonorProfileAlreadyExistsException();

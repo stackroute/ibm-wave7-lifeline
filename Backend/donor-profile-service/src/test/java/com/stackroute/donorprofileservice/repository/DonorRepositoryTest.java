@@ -10,11 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.validation.constraints.AssertTrue;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 
 @RunWith(SpringRunner.class)
@@ -39,9 +35,18 @@ public class DonorRepositoryTest {
 		guardian = new Guardian("Peter","peter@gmail.com","7890987654","son",address);
 		guardianList.add(guardian);
 		disease = new Disease(false,false,false,false,false,false,false,false,false,true,false);
-		organs = new Organs(true,true,true,true,false,true,true,true);
+		TreeMap<String, Boolean> organsMap = new TreeMap<>();
+		organsMap.put("cornea", true);
+		organsMap.put("blood", true);
+		organsMap.put("liver", true);
+		organsMap.put("heart", true);
+		organsMap.put("kidney", true);
+		organsMap.put("platelet", true);
+		organsMap.put("lungs", true);
+		organsMap.put("boneMarrow", true);
+		organs = new Organs(organsMap);
 		medicalDetails = new MedicalDetails("O+",160,80,disease,organs, "HLA-A", 100000000, 1.5, 27, 100, 6 );
-		donor = new Donor(101,"donor","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985,5,23),
+		donor = new Donor(101,"donor","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985, Calendar.JUNE,23),
 				"356478900928","male",address,guardianList,medicalDetails);
 		donorList = new ArrayList<>();
 	}
@@ -56,7 +61,7 @@ public class DonorRepositoryTest {
 //	method to check findAll() method of repository
 	@Test
 	public void testFindAll(){
-		Donor donor1 = new Donor(102,"donor","Harry","Potter","harry@gmail.com","978645312","password123",new Date(1970,7,14),
+		Donor donor1 = new Donor(102,"donor","Harry","Potter","harry@gmail.com","978645312","password123",new Date(1970, Calendar.AUGUST,14),
 				"356478900928","male",address,guardianList,medicalDetails);
 		donorRepository.save(donor);
 		donorRepository.save(donor1);
