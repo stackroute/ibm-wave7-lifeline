@@ -13,12 +13,8 @@ import java.util.TreeMap;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Organs {
-	private boolean cornea;
-	private boolean blood;
-	private boolean liver;
-	private boolean heart;
-	private boolean kidney;
-	private boolean platelet;
-	private boolean lungs;
-	private boolean boneMarrow;
+
+	private String organ;
+
+	private boolean donateOrNot;
 }

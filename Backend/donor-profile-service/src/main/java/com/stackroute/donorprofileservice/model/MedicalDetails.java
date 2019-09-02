@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,7 +14,7 @@ public class MedicalDetails {
 	private double height;
 	private double weight;
 	private Disease disease;
-	private Organs organs;
+	private List<Organs> organs;
 	private String hlaType;
 	private long plateletCount;
 	private double rhFactor;

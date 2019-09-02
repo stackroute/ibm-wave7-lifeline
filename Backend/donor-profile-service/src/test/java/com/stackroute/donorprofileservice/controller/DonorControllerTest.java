@@ -59,6 +59,7 @@ public class DonorControllerTest {
 	private Address address;
 	private Guardian guardian;
 	private Disease disease;
+	private ArrayList<Organs> organsArrayList;
 	private Organs organs;
 	private MedicalDetails medicalDetails;
 	private List<Donor> donorList;
@@ -67,13 +68,29 @@ public class DonorControllerTest {
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
+		organsArrayList = new ArrayList<>();
 		mockMvc = MockMvcBuilders.standaloneSetup(donorController).build();
 		address = new Address("11b","main road","bengaluru","karnataka","678490");
 		guardian = new Guardian("Peter","peter@gmail.com","7890987654","son",address);
 		guardianList.add(guardian);
 		disease = new Disease(false,false,false,false,false,false,false,false,false,true,false);
-		organs = new Organs(true,true,true,true,false,true,true,true);
-		medicalDetails = new MedicalDetails("O+",160,80,disease,organs, "HLA-A", 100000000, 1.5, 27, 100, 6 );
+		organs = new Organs("cornea", true);
+		organsArrayList.add(organs);
+		organs = new Organs("kidney", true);
+		organsArrayList.add(organs);
+		organs = new Organs("platelet", true);
+		organsArrayList.add(organs);
+		organs = new Organs("boneMarrow", true);
+		organsArrayList.add(organs);
+		organs = new Organs("blood", true);
+		organsArrayList.add(organs);
+		organs = new Organs("heart", true);
+		organsArrayList.add(organs);
+		organs = new Organs("lungs", true);
+		organsArrayList.add(organs);
+		organs = new Organs("liver", true);
+		organsArrayList.add(organs);
+		medicalDetails = new MedicalDetails("O+",160,80,disease,organsArrayList, "HLA-A", 100000000, 1.5, 27, 100, 6 );
 		donor = new Donor(101,"donor","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985,5,23),
 				"356478900928","male",address,guardianList,medicalDetails);
 		donorList = new ArrayList<>();
