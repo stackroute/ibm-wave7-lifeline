@@ -1,18 +1,123 @@
 <mat-tab-group dynamicHeight>
     <mat-tab label="Edit">
         <div>
-            Edit
+            <form [formGroup]="profileForm">
+                <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
+                    <h2>Edit Profile</h2>
+                    <mat-form-field>
+                      <input matInput placeholder="Id" value="{{donor.id}}"> 
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input matInput placeholder="firstName" disabled value="{{donor.firstName}} "> 
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field>
+                        <input matInput placeholder="lastName" disabled value=" {{donor.lastName}}">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field>
+                        <input matInput placeholder="email" disabled value=" {{donor.email}}">
+                        <!-- {{recepients.email}} -->
+                      </mat-form-field>
+                      <br>
+                    <mat-form-field>
+                        <input matInput placeholder="phoneNo" formControlName="phoneNumber" value=" {{donor.phoneNumber}}">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="example-full-width">
+                        <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Date Of Birth" disabled>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                       {{donor.dob}}
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field>
+                        <input matInput placeholder="AadharNumber" value="{{donor.aadhar}}" disabled>
+                     </mat-form-field>
+                    <br>
+                    <mat-label>Address</mat-label>
+                    <mat-form-field>
+                        <input matInput placeholder="AddresLine1" formControlName="addressLine1" value="{{donor.address.addressLine1}}">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="AddresLine2"  formControlName="addressLine2"value="{{donor.address.addressLine2}}">
+                      </mat-form-field>
+                      <mat-form-field>
+                        <input matInput placeholder="city" formControlName="city" value="{{donor.address.city}}">
+                      </mat-form-field>
+                      <mat-form-field>
+                        <input matInput placeholder="state" formControlName="state" value="{{donor.address.state}}">
+                      </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="pincode" formControlName="pinCode" value="{{donor.address.pinCode}}">
+                     </mat-form-field>
+                     <mat-form-field>
+                      <input matInput placeholder="height" formControlName="height" value="{{donor.medicalInfo.height}}">
+                   </mat-form-field>
+                    <!-- <mat-form-field>
+                      <textarea matInput placeholder="Address" value="   {{recepients.address.addressLine1}}     
+                      {{recepients.address.addressLine2}}
+                      {{recepients.address.city}},{{recepients.address.pinCode}}{{recepients.address.state}}
+                "></textarea>
+                   
+                
+                    </mat-form-field>
+                    <br> -->
+                    <mat-form-field>
+                      <input matInput placeholder="weight" formControlName="weight" value="{{donor.medicalInfo.weight}}">
+                   </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Gender" value="{{donor.gender}}" disabled>
+                     </mat-form-field>
+                    <br>
+                    <br>
+                    <mat-form-field>
+                        <mat-label>bloodGroup</mat-label>
+                        <select matNativeControl required disabled>
+                            {{donor.bloodGroup}}
+                          <option value="A+">A+</option>
+                          <option value="A-">A-</option>
+                          <option value="B+">B+</option>
+                          <option value="B-">B-</option>
+                          <option value="AB+">AB+</option>
+                          <option value="AB-">AB-</option>
+                          <option value="O+">O+</option>
+                          <option value="O-">O-</option>
+                        </select>
+                        
+                    </mat-form-field>
+                          <br>
+                      <mat-list-item>
+                        <h4 class="h4-tag">Diseases you have:
+                        </h4>
+                    </mat-list-item>
+                    <mat-checkbox  value="donor.medicalInfo.disease.hiv">HIV
+                    </mat-checkbox>
+                    <mat-checkbox value="donor.medicalInfo.disease.fits">
+                        Fits</mat-checkbox>
+                    <mat-checkbox value="donor.medicalInfo.disease.hepatitis">Hepatitis</mat-checkbox>
+                    <mat-checkbox value="donor.medicalInfo.disease.heartAttack">Heartattack</mat-checkbox>
+                    <mat-checkbox value="donor.medicalInfo.disease.rabies">Rabies</mat-checkbox>
+                    <mat-checkbox value="donor.medicalInfo.disease.tuberculosis">Tuberculosis</mat-checkbox>
+                    <mat-checkbox value="donor.medicalInfo.disease.hyperTension">Hypertension</mat-checkbox>
+                    <mat-checkbox value="donor.medicalInfo.disease.diabetes">Diabetes</mat-checkbox>
+                    <mat-checkbox value="donor.medicalInfo.disease.cancer">Cancer</mat-checkbox>
+                    <mat-checkbox value="donor.medicalInfo.disease.kidneyDisease">KidneyDisease</mat-checkbox>
+                    <mat-checkbox value="donor.medicalInfo.disease.liverDisease">LiverDisease</mat-checkbox>
+                <button mat-stroked-button type="submit" color="primary" (click)="updateDonor(donor)">Save</button>
+                    </div>
+                </form>
         </div>
     </mat-tab>
 
-    <mat-tab label="Profile" class="tab">
+     <!-- <mat-tab label="Profile" class="tab">
 
         <mat-card>
             <mat-list>
                 <h3 mat-subheader>Personal Details:</h3>
 
                 <mat-list-item>
-
+                    
                     <h4 class="h4-tag">Name: {{donors.firstName}} {{donors.lastName}} </h4>
 
                 </mat-list-item>
@@ -114,7 +219,7 @@
             </mat-list>
         </mat-card>
 
-    </mat-tab>
+    </mat-tab> -->
 
     <mat-tab label="Withdraw">
         <div>
@@ -135,6 +240,6 @@
         <div>
             Recommendation
         </div>
-    </mat-tab>
+    </mat-tab> -->
 
 </mat-tab-group>

@@ -1,0 +1,12 @@
+/* .example-card{
+    text-align: center;
+} */
+.mat-card {
+    min-width: 30%;
+}
+
+.loginContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

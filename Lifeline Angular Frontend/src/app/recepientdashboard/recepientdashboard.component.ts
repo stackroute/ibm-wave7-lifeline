@@ -11,14 +11,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class RecepientdashboardComponent implements OnInit {
 
   public profileForm: FormGroup;
-  private id=18;
+  private id=42;
   public recepients:Recepient;
   constructor(private route:ActivatedRoute,private router:Router,private recepientProfileService:RecepientserviceService) { }
 
   ngOnInit() {
-    this.recepientProfileService.getrecepientdetails()
-    .subscribe(data => {this.recepients=data; console.log(this.recepients); });
-    console.log(this.recepients);
     this.recepientProfileService.getRecepientById(this.id).subscribe((data) => {
       this.recepients = data;
       console.log(this.recepients)
