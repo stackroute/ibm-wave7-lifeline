@@ -1,44 +1,30 @@
-
-.example-card {
-     /* max-width: 400px;  */
-   /* margin-left: 1cm;
-   max-width:50%; */
-   max-width:50%;
-  /* height: 100px; */
-padding-right: 3.5cm;
-padding-left: 3cm; 
-
-  }
-  .card1
-  {
-    margin-left: 2cm;
-  }
-  .card2
-  {
-    margin-right: 4cm;
-  }
-
-  .containerstyle
+.card1
 {
-    padding-top: 1cm;
-    margin-right: 10px;
-    margin-left:10px; 
-    text-align:center;
-        /* background-color: gray; */
-    
-    margin-top: 1cm;
-    height:14cm;
-    max-width: 100%;
-    margin-bottom: 1cm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-  .mat-card {
-      /* height: 6cm; */
-      width: 10cm;
-      
 
-  }
- .registerbutton{
-     text-align: center;
- } 
+.card2
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.containerstyle
+{
+  padding-top: 1cm; 
+  margin-top: 1cm;
+  max-width: 100%;
+}
+
+.mat-card {
+    width: 10cm;
+}
+
+.registerbutton{
+  text-align: center;
+} 
 
 
