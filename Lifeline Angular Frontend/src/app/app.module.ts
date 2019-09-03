@@ -11,6 +11,7 @@ import { AccountComponent } from './header/account/account.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { RegistercardsComponent } from './mainpage/registercards/registercards.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatMenuModule } from '@angular/material/menu';
 import { FooterComponent } from './footer/footer.component';
@@ -26,13 +27,17 @@ import { MythsComponent } from './myths/myths.component';
 import { DonorRegistrationFormComponent } from './donor-registration-form/donor-registration-form.component';
 import { MatFormFieldModule, MatInputModule, MatRadioModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatDatepickerModule,MatNativeDateModule,MatCheckboxModule } from '@angular/material';
+import { MatDatepickerModule,MatNativeDateModule,MatCheckboxModule } from '@angular/material';
 import { RecepientregistrationformcomponentComponent } from './recepientregistrationformcomponent/recepientregistrationformcomponent.component';
 import { ProfileComponent } from './donordashboard/profile.component';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 import { RecepientdashboardComponent } from './recepientdashboard/recepientdashboard.component';
 import { ReportgenerationComponent } from './reportgeneration/reportgeneration.component';
 import { DashboardreportsComponent } from './dashboardreports/dashboardreports.component';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 //  import { EmbedVideoService } from 'ngx-embed-video';
 @NgModule({
@@ -55,7 +60,11 @@ import { DashboardreportsComponent } from './dashboardreports/dashboardreports.c
     ProfileComponent,
     RecepientdashboardComponent,
     ReportgenerationComponent,
-    DashboardreportsComponent
+    DashboardreportsComponent,
+    LoginComponent,
+    LogoutComponent,
+    ResetpasswordComponent,
+    ForgotpasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +85,8 @@ import { DashboardreportsComponent } from './dashboardreports/dashboardreports.c
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    MatListModule
+    MatListModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { DonorProfileService } from '../service/donor-profile.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-donor-registration-form',
@@ -12,7 +13,7 @@ export class DonorRegistrationFormComponent implements OnInit {
   donor: Donor;
   registrationForm: FormGroup;
   errorMsg: string;
-  constructor(private fb: FormBuilder, private donorProfileService: DonorProfileService) { }
+  constructor(private fb: FormBuilder, private donorProfileService: DonorProfileService, private router: Router) { }
 
   ngOnInit() {
     this.registrationForm = this.fb.group({
@@ -31,7 +32,7 @@ export class DonorRegistrationFormComponent implements OnInit {
         city: ['', Validators.required],
         state: ['', Validators.required],
         pin: ['', Validators.required],
-        userType:['',Validators.required],
+        userType:['donor'],
       }),
       guardianList: this.fb.array([
         this.fb.group({
@@ -88,8 +89,14 @@ export class DonorRegistrationFormComponent implements OnInit {
 
   register() {
     console.log(this.registrationForm);
-    this.donorProfileService.saveDonor(this.registrationForm.value).subscribe(data => this.donor = data, error => this.errorMsg = error);
-    console.log('api call success');
+    this.donorProfileService.saveDonor(this.registrationForm.value).subscribe(
+      data => {
+        this.donor = data,
+        this.router.navigate(['/login']); 
+      },
+      error => {
+        this.errorMsg = error
+      });
 
   }
 }

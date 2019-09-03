@@ -28,13 +28,14 @@ export class RecepientregistrationformcomponentComponent implements OnInit {
       dob: ['', Validators.required],
       gender: ['', Validators.required],
       bloodGroup: ['', Validators.required],
-      userType: ['',Validators.required],
+      userType: ['recepient'],
       address: this.fb.group({
         addressLine1: ['', Validators.required],
         addressLine2: ['', Validators.required],
         city: ['', Validators.required],
         state: ['', Validators.required],
         pin: ['', Validators.required],
+    
       }),
     })
   }

@@ -44,3 +44,19 @@ margin-bottom: 10px;
   text-align: center;
   margin-top: 5px;
 }
+.example-container{
+  text-align:center;
+  border:solid 2px black;
+  width: 50%;
+  margin-left: 350px;
+}
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 0 10px;
+}

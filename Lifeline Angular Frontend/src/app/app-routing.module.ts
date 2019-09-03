@@ -9,8 +9,7 @@ import { DonorRegistrationFormComponent } from './donor-registration-form/donor-
 import { RecepientregistrationformcomponentComponent } from './recepientregistrationformcomponent/recepientregistrationformcomponent.component';
 import { ProfileComponent } from './donordashboard/profile.component';
 import { RecepientdashboardComponent } from './recepientdashboard/recepientdashboard.component';
-
-
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', component: MainpageComponent },
@@ -20,10 +19,9 @@ const routes: Routes = [
   { path: 'myths', component: MythsComponent },
   { path: 'donor-registration', component: DonorRegistrationFormComponent },
   { path:'recepient-registration',component:RecepientregistrationformcomponentComponent},
-  { path:'donor-dashboard',component:ProfileComponent},
-  { path:'recepient-dashboard',component:RecepientdashboardComponent},
-
-
+  { path:'donor',component:ProfileComponent},
+  { path:'recepient',component:RecepientdashboardComponent},
+  { path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
