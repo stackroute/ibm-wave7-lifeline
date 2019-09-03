@@ -32,6 +32,10 @@ export class RecepientdashboardComponent implements OnInit {
       this.recepients = data;
       console.log(this.recepients)
     });
+    this.recepientProfileService.getRecepientPastHistoryById(this.id).subscribe((data) => {
+      this.recepients = data;
+      console.log(this.recepients);
+    });
   };
   createForm() {
     this.profileForm = new FormGroup({

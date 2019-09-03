@@ -9,7 +9,7 @@ import { catchError } from 'rxjs/operators';
 export class RecepientserviceService {
 
   public id;
-  private RecepientUrl =  'http://localhost:8083/api/v1/recepient';
+  private RecepientUrl = 'http://localhost:8083/api/v1/recepient';
   constructor(private httpClient: HttpClient) { }
 
   saveRecepient(recepient: Recepient): Observable<Recepient> {
@@ -19,6 +19,7 @@ export class RecepientserviceService {
   getrecepientdetails(): Observable<Recepient> {
     return this.httpClient.get<Recepient>(this.RecepientUrl+"/50");
   }
+
   public updateRecepient(recepients):any{
     let updateUrl='http://localhost:8083/api/v1/recepient';
  
@@ -30,6 +31,11 @@ export class RecepientserviceService {
    public getRecepientById(id: number):Observable<Recepient>{
      return this.httpClient.get<Recepient>(this.RecepientUrl + "/" + id);
    }
+
+   public getRecepientPastHistoryById(id: number):Observable<Recepient>{
+    console.log()
+    return this.httpClient.get<Recepient>(this.RecepientUrl+ "/" + id);
+  }
 
 
   errorHandler(error: HttpErrorResponse) {
