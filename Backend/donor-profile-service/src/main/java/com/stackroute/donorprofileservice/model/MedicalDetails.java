@@ -4,14 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class MedicalDetails {
+	@NotNull
 	private String bloodGroup;
+	@NotNull
 	private double height;
+	@NotNull
 	private double weight;
 	private Disease disease;
 	private List<Organs> organs;

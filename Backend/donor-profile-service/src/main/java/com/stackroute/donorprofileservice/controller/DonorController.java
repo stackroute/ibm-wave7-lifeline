@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -73,7 +74,7 @@ public class DonorController {
 //	maps the http post method url with corresponding service method
 	@PostMapping(value = "/donor")
 	@ApiOperation(value = "save a donor info")
-	public ResponseEntity<?> saveDonorProfile(@RequestBody Donor donor) {
+	public ResponseEntity<?> saveDonorProfile(@Valid @RequestBody Donor donor) {
 		ResponseEntity responseEntity;
 		try {
 			responseEntity = new ResponseEntity<Donor>(donorService.saveDonorProfile(donor), HttpStatus.CREATED);
@@ -90,7 +91,7 @@ public class DonorController {
 //	maps the http put method url with corresponding service method
 	@PutMapping(value = "/donor/{id}")
 	@ApiOperation(value = "update a donor info")
-	public ResponseEntity<?> updateDonorProfile(@PathVariable long id, @RequestBody Donor donor) {
+	public ResponseEntity<?> updateDonorProfile(@PathVariable long id, @Valid @RequestBody Donor donor) {
 		ResponseEntity responseEntity;
 		try {
 			responseEntity = new ResponseEntity<Donor>(donorService.updateDonorProfile(id,donor), HttpStatus.OK);

@@ -21,12 +21,10 @@ export class ProfileComponent implements OnInit {
     .subscribe(data => {this.donors=data; console.log(this.donors); });
   };
   deletedonor(){
-    var succes='false'
-  // console.log(track.id)
+    var succes='false';
   this.donorProfileService.deleteDonor(1).subscribe((data)=>{
      succes = 'true';
       console.log("success");
-    
   });
   }
 

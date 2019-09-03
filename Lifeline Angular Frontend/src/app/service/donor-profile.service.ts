@@ -10,7 +10,7 @@ import { catchError, } from 'rxjs/operators';
 export class DonorProfileService {
   public data:any=[]
 
-  private DonorUrl =  'http://172.23.238.219:8088/api/v1/donor';
+  private DonorUrl =  'http://localhost:8082/api/v1/donor';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -18,7 +18,7 @@ export class DonorProfileService {
     return this.httpClient.post<Donor>(this.DonorUrl, donor).pipe(catchError(this.errorHandler));
   }
   getdonerdetails(): Observable<Donor> {
-    return this.httpClient.get<Donor>(this.DonorUrl+"/53");
+    return this.httpClient.get<Donor>(this.DonorUrl+"/2");
   }
   deleteDonor(id): Observable<any> {
 

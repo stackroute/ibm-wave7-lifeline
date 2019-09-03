@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -77,7 +78,7 @@ public class RecepientController {
     //	maps the http post method url with corresponding service method
     @PostMapping(value = "/recepient")
     @ApiOperation(value = "save a recepient info")
-    public ResponseEntity<?> saveRecepientProfile(@RequestBody Recepient recepient) {
+    public ResponseEntity<?> saveRecepientProfile(@Valid @RequestBody Recepient recepient) {
         ResponseEntity responseEntity;
         try {
             responseEntity = new ResponseEntity<Recepient>(recepientService.saveRecepientProfile(recepient), HttpStatus.CREATED);
@@ -95,7 +96,7 @@ public class RecepientController {
     //	maps the http put method url with corresponding service method
     @PutMapping(value = "/recepient/{id}")
     @ApiOperation(value = "update a recepient info")
-    public ResponseEntity<?> updateRecepientProfile(@PathVariable long id, @RequestBody Recepient recepient) {
+    public ResponseEntity<?> updateRecepientProfile(@PathVariable long id,@Valid @RequestBody Recepient recepient) {
         ResponseEntity responseEntity;
         try {
             responseEntity = new ResponseEntity<Recepient>(recepientService.updateRecepientProfile(id,recepient), HttpStatus.OK);

@@ -11,19 +11,27 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class RecepientdashboardComponent implements OnInit {
 
   public profileForm: FormGroup;
-  private id=18;
+  private id=50;
   public recepients:Recepient;
   constructor(private route:ActivatedRoute,private router:Router,private recepientProfileService:RecepientserviceService) { }
 
   ngOnInit() {
+    this.createForm();
     this.recepientProfileService.getrecepientdetails()
-    .subscribe(data => {this.recepients=data; console.log(this.recepients); });
+    .subscribe(data => {
+      this.recepients=data; 
+      this.profileForm.controls['phoneNumber'].setValue(this.recepients.phoneNumber);
+      this.profileForm.controls['addressLine1'].setValue(this.recepients.address.addressLine1);
+      this.profileForm.controls['addressLine2'].setValue(this.recepients.address.addressLine2);
+      this.profileForm.controls['city'].setValue(this.recepients.address.city);
+      this.profileForm.controls['state'].setValue(this.recepients.address.state);
+      this.profileForm.controls['pinCode'].setValue(this.recepients.address.pinCode);
+    });
     console.log(this.recepients);
     this.recepientProfileService.getRecepientById(this.id).subscribe((data) => {
       this.recepients = data;
       console.log(this.recepients)
     });
-    this.createForm();
   };
   createForm() {
     this.profileForm = new FormGroup({
@@ -41,6 +49,7 @@ export class RecepientdashboardComponent implements OnInit {
     // Prevent Saturday and Sunday from being selected.
     return day !== 0 && day !== 6;;
   }
+
   updateRecepient(recepients)
  {
    console.log(this.profileForm.get('phoneNumber').value);

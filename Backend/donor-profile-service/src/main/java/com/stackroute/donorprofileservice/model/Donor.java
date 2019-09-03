@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.Date;
 import java.util.List;
 
@@ -28,17 +31,41 @@ public class Donor {
 //	SEQUENCE_NAME field is not persistent in mongo db
 	@Transient
 	public static final String SEQUENCE_NAME = "donors_sequence";
-	
+
 	private String userType;
+
+	@NotNull(message = "firstname is mandatory")
+	@Pattern(regexp = "[a-zA-Z]{3,30}" )
 	private String firstName;
+
+	@NotNull(message = "lastname is mandatory")
+	@Pattern(regexp = "[a-zA-Z]{3,30}" )
 	private String lastName;
+
+	@NotNull(message = "email is mandatory")
+	@Email
 	private String email;
+
+	@Pattern(regexp="(^$|[0-9]{10})")
+	@NotNull(message = "phone number is mandatory")
 	private String phoneNumber;
+
+	@NotNull(message = "password number is mandatory")
 	private String password;
+
+	@NotNull(message = "dob number is mandatory")
 	private Date dob;
+
+	@Pattern(regexp="(^$|[0-9]{12})")
+	@NotNull(message = "aadhar number is mandatory")
 	private String aadhar;
+
+	@NotNull(message = "gender  is mandatory")
 	private String gender;
+
+	@NotNull(message = "address  is mandatory")
 	private Address address;
+	@NotNull(message = "guardian list is mandatory")
 	private List<Guardian> guardianList;
 	private MedicalDetails medicalInfo;
 }

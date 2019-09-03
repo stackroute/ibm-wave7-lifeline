@@ -30,7 +30,8 @@ export class DonorRegistrationFormComponent implements OnInit {
         addressLine2: ['', Validators.required],
         city: ['', Validators.required],
         state: ['', Validators.required],
-        pin: ['', Validators.required]
+        pin: ['', Validators.required],
+        userType:['',Validators.required],
       }),
       guardianList: this.fb.array([
         this.fb.group({
