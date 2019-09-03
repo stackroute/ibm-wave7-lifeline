@@ -18,19 +18,13 @@ interface MedicalInfo {
     bloodGroup: string;
     disease: Disease;
     height: number;
-    organs: Organs;
+    organs: Array<Organs>;
     weight: number;
 }
 
 interface Organs {
-    blood: boolean;
-    boneMarrow: boolean;
-    cornea: boolean;
-    heart: boolean;
-    kidney: boolean;
-    liver: boolean;
-    lungs: boolean;
-    platelet: boolean;
+    organ: string;
+    donateOrNot: boolean;
 }
 
 interface Disease {

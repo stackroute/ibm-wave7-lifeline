@@ -28,8 +28,8 @@ export class ProfileComponent implements OnInit {
 
   createForm() {
     this.profileForm = new FormGroup({
-      phoneNumber: new FormControl(),
-      addressLine1: new FormControl(),
+      phoneNumber: new FormControl(this.donor.phoneNumber),
+      addressLine1: new FormControl(this.donor.address.addressLine1),
       addressLine2: new FormControl(),
       city:new FormControl(),
       state:new FormControl(),
@@ -49,6 +49,7 @@ export class ProfileComponent implements OnInit {
   updateDonor(donor)
   {
     console.log(this.profileForm.get('phoneNumber').value);
+    console.log(this.profileForm.get('addressLine1').value);
     this.donor.phoneNumber = this.profileForm.get('phoneNumber').value;
     this.donor.address.addressLine1 = this.profileForm.get('addressLine1').value;
     this.donor.address.addressLine2 = this.profileForm.get('addressLine2').value;
@@ -58,7 +59,7 @@ export class ProfileComponent implements OnInit {
     this.donor.medicalInfo.height=this.profileForm.get('height').value;
     this.donor.medicalInfo.weight=this.profileForm.get('weight').value;
     console.log(donor);
-    this.donorservice.updateDonor(donor).subscribe();
+    // this.donorservice.updateDonor(donor).subscribe();
   }
 
 
