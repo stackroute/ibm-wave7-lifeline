@@ -35,12 +35,12 @@ export class LoginComponent implements OnInit {
     this.user.role = this.loginForm.get('userType').value;
     this.authenticateService.login(this.user)
       .subscribe(data => {
-        console.log(data);
-        if(this.user.role == 'donor') {
-          this.router.navigate(['/donor']);
+        let id = data.id;
+        if(data.role == 'donor') {
+          this.router.navigate(['/donor'], {queryParams : {id: id}});
         }
         else {
-          this.router.navigate(['/recepient'])
+          this.router.navigate(['/recepient'], {queryParams : {id: id}});
         }
       },
       error => {

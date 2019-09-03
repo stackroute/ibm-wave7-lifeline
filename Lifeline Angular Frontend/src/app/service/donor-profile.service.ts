@@ -10,7 +10,7 @@ import { catchError, } from 'rxjs/operators';
 export class DonorProfileService {
   public data:any=[]
 
-  private donorUrl =  'http://localhost:8082/api/v1/donor';
+  private donorUrl =  'http://localhost:8081/api/v1/donor';
 
   constructor(private httpClient:HttpClient) { }
 
@@ -23,24 +23,21 @@ export class DonorProfileService {
   saveDonor(donor: Donor): Observable<Donor> {
     return this.httpClient.post<Donor>(this.donorUrl, donor).pipe(catchError(this.errorHandler));
   }
-  getdonerdetails(): Observable<Donor> {
-    return this.httpClient.get<Donor>(this.donorUrl+"/2");
+  getDonorDetails(id): Observable<Donor> {
+    return this.httpClient.get<Donor>(this.donorUrl+"/" + id);
   }
   deleteDonor(id): Observable<any> {
 
-    return this.httpClient.delete<any>(this.donorUrl+"/1");
+    return this.httpClient.delete<any>(this.donorUrl+"/" + id);
   }
 
   errorHandler(error: HttpErrorResponse) {
     return throwError(error.message || 'server error');
   }
 
-  public updateDonor(donor: Donor) {
+  public updateDonor(donor: Donor, id) {
     let updateUrl = 'http://localhost:8081/api/v1/donor';
-
-    console.log(donor);
-    let id=donor.id
     updateUrl = updateUrl+ '/'+id;
-    return this.httpClient.put<Donor>(updateUrl,donor);
+    return this.httpClient.put<Donor>(updateUrl, donor);
   }
 }

@@ -59,16 +59,23 @@ public class DAOUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long userId;
+
+    @Column
+    @JsonProperty("id")
+    private Long id;
+
     @Column
     @JsonProperty("email")
     private String username;
+
     @Column
     @JsonIgnore
     @JsonProperty("password")
     private String password;
+
     @Column
-  @JsonProperty("userType")
+    @JsonProperty("userType")
     private String role;
 
 

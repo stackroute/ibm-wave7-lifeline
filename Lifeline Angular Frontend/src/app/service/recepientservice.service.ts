@@ -17,7 +17,7 @@ export class RecepientserviceService {
   }
   
   getrecepientdetails(): Observable<Recepient> {
-    return this.httpClient.get<Recepient>(this.RecepientUrl+"/50");
+    return this.httpClient.get<Recepient>(this.RecepientUrl+"/1");
   }
   public updateRecepient(recepients):any{
     let updateUrl='http://localhost:8083/api/v1/recepient';

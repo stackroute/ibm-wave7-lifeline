@@ -38,6 +38,8 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 //  import { EmbedVideoService } from 'ngx-embed-video';
 @NgModule({
@@ -64,7 +66,8 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
     LoginComponent,
     LogoutComponent,
     ResetpasswordComponent,
-    ForgotpasswordComponent
+    ForgotpasswordComponent,
+    SnackBarComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +89,11 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
     MatNativeDateModule,
     MatCheckboxModule,
     MatListModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule
+  ],
+  entryComponents: [
+    SnackBarComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

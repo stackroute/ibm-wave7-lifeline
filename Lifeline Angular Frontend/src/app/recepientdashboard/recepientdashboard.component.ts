@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RecepientserviceService } from '../service/recepientservice.service';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-recepientdashboard',
@@ -11,9 +11,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class RecepientdashboardComponent implements OnInit {
 
   public profileForm: FormGroup;
-  private id=50;
+  private recepientId;
   public recepients:Recepient;
-  constructor(private route:ActivatedRoute,private router:Router,private recepientProfileService:RecepientserviceService) { }
+  constructor(private route:ActivatedRoute,private router:Router,private recepientProfileService:RecepientserviceService) {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      let id = parseInt(params.get("id"));
+      this.recepientId = id;
+    });
+  }
 
   ngOnInit() {
     this.createForm();
@@ -28,7 +33,7 @@ export class RecepientdashboardComponent implements OnInit {
       this.profileForm.controls['pinCode'].setValue(this.recepients.address.pinCode);
     });
     console.log(this.recepients);
-    this.recepientProfileService.getRecepientById(this.id).subscribe((data) => {
+    this.recepientProfileService.getRecepientById(this.recepientId).subscribe((data) => {
       this.recepients = data;
       console.log(this.recepients)
     });
