@@ -6,11 +6,15 @@
                 fxLayoutAlign="space-around center">
                 <mat-form-field appearance="legacy">
                     <mat-label>First Name</mat-label>
-                    <input matInput formControlName="firstName" required>
+                    <input matInput formControlName="firstName" maxlength="40">
+                    <mat-error *ngIf="this.registrationForm.controls['firstName'].invalid">First name is required
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="legacy">
                     <mat-label>Last Name</mat-label>
-                    <input matInput formControlName="lastName" required>
+                    <input matInput formControlName="lastName" maxlength="40">
+                    <mat-error *ngIf="this.registrationForm.controls['lastName'].invalid">Last name is required
+                    </mat-error>
                 </mat-form-field>
             </div>
 
@@ -18,11 +22,20 @@
                 fxLayoutAlign="space-around center">
                 <mat-form-field appearance="legacy">
                     <mat-label>Email</mat-label>
-                    <input matInput formControlName="email" required>
+                    <input matInput formControlName="email" maxlength="40">
+                    <mat-error *ngIf="this.registrationForm.controls['email'].hasError('required')">Email is required
+                    </mat-error>
+                    <mat-error *ngIf="this.registrationForm.controls['email'].hasError('pattern')">Please enter valid
+                        email</mat-error>
+
                 </mat-form-field>
                 <mat-form-field appearance="legacy">
                     <mat-label>Phone Number</mat-label>
-                    <input matInput formControlName="phoneNumber" required>
+                    <input matInput formControlName="phoneNumber" maxlength="10">
+                    <mat-error *ngIf="this.registrationForm.controls['phoneNumber'].hasError('required')">Phone number
+                        is required</mat-error>
+                    <mat-error *ngIf="this.registrationForm.controls['phoneNumber'].hasError('pattern')">Please enter
+                        valid phone number</mat-error>
                 </mat-form-field>
             </div>
 
@@ -30,16 +43,18 @@
                 fxLayoutAlign="space-around center">
                 <mat-form-field appearance="legacy">
                     <mat-label>Password</mat-label>
-                    <input matInput formControlName="password" required>
+                    <input type="password" matInput formControlName="password" maxlength="40">
+                    <mat-error *ngIf="this.registrationForm.controls['password'].hasError('required')">Password is
+                        required</mat-error>
+                    <mat-error *ngIf="this.registrationForm.controls['password'].hasError('pattern')">Password should
+                        contain atleast a uppercase, a lowercase, a digit and a symbol. It should between 8-16
+                        characters</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="legacy">
                     <mat-label>Confirm Password</mat-label>
-                    <input matInput formControlName="confirmPassword" required>
-                    <input matInput type="password" formControlName="password">
-                </mat-form-field>
-                <mat-form-field appearance="legacy">
-                    <mat-label>Confirm Password</mat-label>
-                    <input type="password" matInput formControlName="confirmPassword">
+                    <input type="password" matInput formControlName="confirmPassword" maxlength="40">
+                    <mat-error *ngIf="this.registrationForm.hasError('notSame')">Confirm password should match with
+                        password</mat-error>
                 </mat-form-field>
             </div>
 
@@ -47,10 +62,17 @@
                 fxLayoutAlign="space-around center">
                 <mat-form-field appearance="legacy">
                     <mat-label>Aadhar</mat-label>
-                    <input matInput formControlName="aadhar" required>
+                    <input matInput formControlName="aadhar" maxlength="12">
+                    <mat-error *ngIf="this.registrationForm.controls['aadhar'].hasError('required')">Aadhar is required
+                    </mat-error>
+                    <mat-error *ngIf="this.registrationForm.controls['aadhar'].hasError('pattern')">Please enter valid
+                        Aadhar number</mat-error>
                 </mat-form-field>
                 <mat-form-field>
-                    <input matInput [matDatepicker]="picker" placeholder="Date of Birth" formControlName="dob"required>
+                    <input matInput [matDatepicker]="picker" [max]="maxDate" placeholder="Date of Birth"
+                        formControlName="dob" readonly>
+                    <mat-error *ngIf="this.registrationForm.controls['dob'].hasError('required')">DOB is required
+                    </mat-error>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
@@ -59,21 +81,32 @@
             <div class="gender-div"></div>
             <mat-label>Gender</mat-label>
             <mat-radio-group formControlName="gender">
-                <mat-radio-button value="male">Male</mat-radio-button>
+                <mat-radio-button value="male" checked>Male</mat-radio-button>
                 <mat-radio-button value="female">Female</mat-radio-button>
                 <mat-radio-button value="other">Other</mat-radio-button>
             </mat-radio-group>
+
 
             <div formGroupName="address">
                 <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px" fxLayoutGap.gt-md="50px"
                     fxLayoutAlign="space-around center">
                     <mat-form-field appearance="legacy">
                         <mat-label>Address Line 1</mat-label>
-                        <input matInput formControlName="addressLine1" required>
+                        <input matInput formControlName="addressLine1" maxlength="40">
+                        <mat-error
+                            *ngIf="this.registrationForm.controls.address['controls'].addressLine1.hasError('required')">
+                            Address
+                            Line1 is
+                            required</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="legacy">
                         <mat-label>Address Line 2</mat-label>
-                        <input matInput formControlName="addressLine2" required>
+                        <input matInput formControlName="addressLine2" maxlength="40">
+                        <mat-error
+                            *ngIf="this.registrationForm.controls.address['controls'].addressLine2.hasError('required')">
+                            Address
+                            Line2 is
+                            required</mat-error>
                     </mat-form-field>
                 </div>
 
@@ -81,15 +114,27 @@
                     fxLayoutAlign="space-around center">
                     <mat-form-field class="three-col-div" appearance="legacy">
                         <mat-label>City</mat-label>
-                        <input matInput formControlName="city" required> 
+                        <input matInput formControlName="city" maxlength="40">
+                        <mat-error *ngIf="this.registrationForm.controls.address['controls'].city.hasError('required')">
+                            City is
+                            required</mat-error>
                     </mat-form-field>
                     <mat-form-field class="three-col-div" appearance="legacy">
                         <mat-label>State</mat-label>
-                        <input matInput formControlName="state" required>
+                        <input matInput formControlName="state" maxlength="40">
+                        <mat-error
+                            *ngIf="this.registrationForm.controls.address['controls'].state.hasError('required')">
+                            State is
+                            required</mat-error>
                     </mat-form-field>
                     <mat-form-field class="three-col-div" appearance="legacy">
                         <mat-label>Pin</mat-label>
-                        <input matInput formControlName="pinCode" required>
+                        <input matInput formControlName="pin" maxlength="6">
+                        <mat-error *ngIf="this.registrationForm.controls.address['controls'].pin.hasError('required')">
+                            Pin is
+                            required</mat-error>
+                        <mat-error *ngIf="this.registrationForm.controls.address['controls'].pin.hasError('pattern')">
+                            Please enter valid pin</mat-error>
                     </mat-form-field>
                 </div>
             </div>
@@ -98,16 +143,23 @@
             <div formArrayName="guardianList">
                 <div *ngFor="let guardian of guardianList.controls; let i = index" [formGroupName]="i">
                     <h6>Guardian {{i+1}}</h6>
-                    
+
                     <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px"
                         fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
                         <mat-form-field appearance="legacy">
                             <mat-label>Name</mat-label>
-                            <input matInput formControlName="name" required>
+                            <input matInput formControlName="name" maxlength="40">
+                            <mat-error
+                                *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.name.hasError('required')">
+                                Guardian name is required
+                            </mat-error>
                         </mat-form-field>
                         <mat-form-field appearance="legacy">
                             <mat-label>Relation</mat-label>
-                            <input matInput formControlName="relation" required>
+                            <input matInput formControlName="relation" maxlength="40">
+                            <mat-error
+                                *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.relation.hasError('required')">
+                                Relation is required </mat-error>
                         </mat-form-field>
                     </div>
 
@@ -115,11 +167,28 @@
                         fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
                         <mat-form-field appearance="legacy">
                             <mat-label>Email</mat-label>
-                            <input matInput formControlName="phoneNumber" required>
+                            <input matInput formControlName="email" maxlength="40">
+                            <mat-error
+                                *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.email.hasError('required')">
+                                Email is required
+                            </mat-error>
+                            <mat-error
+                                *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.email.hasError('pattern')">
+                                Please enter valid email </mat-error>
                         </mat-form-field>
                         <mat-form-field appearance="legacy">
                             <mat-label>Phone Number</mat-label>
-                            <input matInput formControlName="email" required>
+                            <input matInput formControlName="phoneNumber" maxlength="10">
+                            <mat-error
+                                *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.phoneNumber.hasError('required')">
+                                Phone number
+                                is required
+                            </mat-error>
+                            <mat-error
+                                *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.phoneNumber.hasError('pattern')">
+                                Please enter
+                                valid phone number
+                            </mat-error>
                         </mat-form-field>
                     </div>
 
@@ -128,27 +197,47 @@
                             fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
                             <mat-form-field appearance="legacy">
                                 <mat-label>Address Line 1</mat-label>
-                                <input matInput formControlName="addressLine1" required>
+                                <input matInput formControlName="addressLine1" maxlength="40">
+                                <mat-error
+                                *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['addressLine1'].hasError('required')">
+                                Address Line1 is required
+                            </mat-error>
                             </mat-form-field>
                             <mat-form-field appearance="legacy">
                                 <mat-label>Address Line 2</mat-label>
-                                <input matInput formControlName="addressLine2" required>
-                            </mat-form-field>
+                                <input matInput formControlName="addressLine2" maxlength="40">
+                                <mat-error
+                                *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['addressLine2'].hasError('required')">
+                                Address Line2 is required
+                            </mat-error> </mat-form-field>
                         </div>
 
                         <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px"
                             fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
                             <mat-form-field class="three-col-div" appearance="legacy">
                                 <mat-label>City</mat-label>
-                                <input matInput formControlName="city" required>
-                            </mat-form-field>
+                                <input matInput formControlName="city" maxlength="40">
+                                <mat-error
+                                *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['city'].hasError('required')">
+                                City is required
+                            </mat-error></mat-form-field>
                             <mat-form-field class="three-col-div" appearance="legacy">
                                 <mat-label>State</mat-label>
-                                <input matInput formControlName="state" required>
-                            </mat-form-field>
+                                <input matInput formControlName="state" maxlength="40">
+                                <mat-error
+                                *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['state'].hasError('required')">
+                                State is required
+                            </mat-error></mat-form-field>
                             <mat-form-field class="three-col-div" appearance="legacy">
                                 <mat-label>Pin</mat-label>
-                                <input matInput formControlName="pinCode" required>
+                                <input matInput formControlName="pin" maxlength="6">
+                                <mat-error
+                                    *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['pin'].hasError('required')">
+                                    Pin is
+                                    required</mat-error>
+                                <mat-error
+                                    *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['pin'].hasError('pattern')">
+                                    Please enter valid pin</mat-error>
                             </mat-form-field>
                         </div>
                     </div>
@@ -173,12 +262,12 @@
                         </select>
                     </mat-form-field>
                     <mat-form-field class="three-col-div" appearance="legacy">
-                        <mat-label>Height</mat-label>
-                        <input matInput formControlName="height" required>
+                        <mat-label>Height <i>(in cm)</i></mat-label>
+                        <input matInput formControlName="height">
                     </mat-form-field>
                     <mat-form-field class="three-col-div" appearance="legacy">
-                        <mat-label>Weight</mat-label>
-                        <input matInput formControlName="weight" required>
+                        <mat-label>Weight <i>(in kg)</i></mat-label>
+                        <input matInput formControlName="weight">
                     </mat-form-field>
                 </div>
 
