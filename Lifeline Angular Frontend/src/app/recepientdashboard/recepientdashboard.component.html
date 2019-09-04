@@ -17,7 +17,6 @@
                     <br>
                     <mat-form-field>
                         <input matInput placeholder="email" disabled value=" {{recepients.email}}">
-                        <!-- {{recepients.email}} -->
                       </mat-form-field>
                       <br>
                     <mat-form-field>
@@ -51,15 +50,6 @@
                     <mat-form-field>
                         <input matInput placeholder="pincode" formControlName="pinCode">
                      </mat-form-field>
-                    <!-- <mat-form-field>
-                      <textarea matInput placeholder="Address" value="   {{recepients.address.addressLine1}}     
-                      {{recepients.address.addressLine2}}
-                      {{recepients.address.city}},{{recepients.address.pinCode}}{{recepients.address.state}}
-                "></textarea>
-                   
-                
-                    </mat-form-field>
-                    <br> -->
                     <mat-form-field>
                         <input matInput placeholder="Gender" value="{{recepients.gender}}" disabled>
                      </mat-form-field>
@@ -83,10 +73,10 @@
                       <br>
                 
                 <button mat-stroked-button type="submit" color="primary" (click)="updateRecepient(recepients)">Save</button>
-                
-                
-                </div>
-                </form>        </div>
+                   </div>
+                </form>     
+            
+            </div>
     </mat-tab>
 <!--Profile Tab-->
     <mat-tab label="Profile" class="tab">

@@ -67,6 +67,7 @@ public class Donor {
 	private Address address;
 	@NotNull(message = "guardian list is mandatory")
 	private List<Guardian> guardianList;
+
 	private MedicalDetails medicalInfo;
 }
 
