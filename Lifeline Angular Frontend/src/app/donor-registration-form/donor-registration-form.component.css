@@ -22,3 +22,7 @@ mat-form-field{
     height: 40px;
     border-radius: 20px;
 }
+
+table{
+    align-self: center;
+}

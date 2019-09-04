@@ -8,27 +8,26 @@ import { catchError, } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DonorProfileService {
-  public data:any=[]
+  public data: any = [];
 
-  private donorUrl =  'http://localhost:8081/api/v1/donor';
+  private donorUrl = 'http://localhost:8081/api/v1/donor';
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
 
-  public getDonorById(id: number):Observable<Donor>
-  {
-    return this.httpClient.get<Donor>(this.donorUrl + "/" + id);
+  public getDonorById(id: number): Observable<Donor> {
+    return this.httpClient.get<Donor>(this.donorUrl + '/' + id);
   }
 
   saveDonor(donor: Donor): Observable<Donor> {
     return this.httpClient.post<Donor>(this.donorUrl, donor).pipe(catchError(this.errorHandler));
   }
   getDonorDetails(id): Observable<Donor> {
-    return this.httpClient.get<Donor>(this.donorUrl+"/" + id);
+    return this.httpClient.get<Donor>(this.donorUrl + '/' + id);
   }
   deleteDonor(id): Observable<any> {
 
-    return this.httpClient.delete<any>(this.donorUrl+"/" + id);
+    return this.httpClient.delete<any>(this.donorUrl + '/' + id);
   }
 
   errorHandler(error: HttpErrorResponse) {
@@ -37,7 +36,7 @@ export class DonorProfileService {
 
   public updateDonor(donor: Donor, id) {
     let updateUrl = 'http://localhost:8081/api/v1/donor';
-    updateUrl = updateUrl+ '/'+id;
+    updateUrl = updateUrl + '/' + id;
     return this.httpClient.put<Donor>(updateUrl, donor);
   }
 }

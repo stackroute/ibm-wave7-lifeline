@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { DonorProfileService } from '../service/donor-profile.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-donor-registration-form',
@@ -13,46 +12,47 @@ export class DonorRegistrationFormComponent implements OnInit {
   donor: Donor;
   registrationForm: FormGroup;
   errorMsg: string;
-  constructor(private fb: FormBuilder, private donorProfileService: DonorProfileService, private router: Router) { }
+  maxDate = new Date();
+  constructor(private fb: FormBuilder, private donorProfileService: DonorProfileService) { }
 
   ngOnInit() {
     this.registrationForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
-      aadhar: ['', Validators.required],
+      firstName: ['', [Validators.required, Validators.maxLength(40)]],
+      lastName: ['', [Validators.required, Validators.maxLength(40)]],
+      phoneNumber: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10), Validators.pattern('^[0-9]{10}$')]],
+      email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
+      password: ['', [Validators.required, Validators.maxLength(16),
+      Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,16}$')]],
+      confirmPassword: ['', [Validators.required, Validators.maxLength(16)]],
+      aadhar: ['', [Validators.required, Validators.maxLength(12), Validators.pattern('^[0-9]{12}$')]],
       dob: ['', Validators.required],
       gender: ['', Validators.required],
       address: this.fb.group({
-        addressLine1: ['', Validators.required],
-        addressLine2: ['', Validators.required],
-        city: ['', Validators.required],
-        state: ['', Validators.required],
-        pin: ['', Validators.required],
-        userType:['donor'],
+        addressLine1: ['', [Validators.required, Validators.maxLength(40)]],
+        addressLine2: ['', [Validators.required, Validators.maxLength(40)]],
+        city: ['', [Validators.required, Validators.maxLength(40)]],
+        state: ['', [Validators.required, Validators.maxLength(40)]],
+        pin: ['', [Validators.required, Validators.maxLength(6), Validators.pattern('^[0-9]{6}$')]]
       }),
       guardianList: this.fb.array([
         this.fb.group({
-          name: [''],
-          relation: [''],
-          phoneNumber: [''],
-          email: [''],
+          name: ['', [Validators.required, Validators.maxLength(40)]],
+          relation: ['', [Validators.required, Validators.maxLength(40)]],
+          phoneNumber: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10), Validators.pattern('^[0-9]{10}$')]],
+          email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
           address: this.fb.group({
-            addressLine1: ['', Validators.required],
-            addressLine2: ['', Validators.required],
-            city: ['', Validators.required],
-            state: ['', Validators.required],
-            pin: ['', Validators.required]
+            addressLine1: ['', [Validators.required, Validators.maxLength(40)]],
+            addressLine2: ['', [Validators.required, Validators.maxLength(40)]],
+            city: ['', [Validators.required, Validators.maxLength(40)]],
+            state: ['', [Validators.required, Validators.maxLength(40)]],
+            pin: ['', [Validators.required, Validators.maxLength(6), Validators.pattern('^[0-9]{6}$')]]
           }),
         })
       ]),
       medicalDetails: this.fb.group({
-        bloodGroup: [''],
-        height: [''],
-        weight: [''],
+        bloodGroup: ['', Validators.required],
+        height: ['', Validators.required],
+        weight: ['', Validators.required],
         disease: this.fb.group({
           cancer: [''],
           diabetes: [''],
@@ -77,7 +77,7 @@ export class DonorRegistrationFormComponent implements OnInit {
           platelet: [''],
         }),
       })
-    });
+    }, { validator: this.checkPasswords });
 
   }
 
@@ -85,18 +85,16 @@ export class DonorRegistrationFormComponent implements OnInit {
     return this.registrationForm.get('guardianList') as FormArray;
   }
 
-  
+  checkPasswords(form: FormGroup) {
+
+    return form.controls.password.value === form.controls.confirmPassword.value ? null : { notSame: true };
+  }
 
   register() {
-    console.log(this.registrationForm);
-    this.donorProfileService.saveDonor(this.registrationForm.value).subscribe(
-      data => {
-        this.donor = data,
-        this.router.navigate(['/login']); 
-      },
-      error => {
-        this.errorMsg = error
-      });
+    if (this.registrationForm.valid) {
+      this.donorProfileService.saveDonor(this.registrationForm.value).subscribe(data => this.donor = data, error => this.errorMsg = error);
+      console.log('api call success');
+    }
 
   }
 }
