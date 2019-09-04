@@ -5,11 +5,6 @@
     <form [formGroup]="loginForm">    
       <div>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="UserType" formControlName="userType" name="usertype" required>
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field class="example-full-width">
           <input matInput placeholder="Username" formControlName="username" name="username" required>
         </mat-form-field>
       </div>
@@ -18,10 +13,10 @@
           <input matInput placeholder="Password" formControlName="password" type="password" name="password" required>
         </mat-form-field>
       </div>
-      <div>
-        <button mat-raised-button (click)="loginUser()" color="primary">Login</button>
-      </div>
     </form>
+    <div>
+      <button mat-raised-button (click)="loginUser()" color="primary">Login</button>
+    </div>
     <br/>
     <div>
       <p>Forgot password?</p>

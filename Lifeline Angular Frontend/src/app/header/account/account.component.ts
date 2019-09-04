@@ -11,13 +11,14 @@ import { AuthenticateService } from 'src/app/service/authenticate.service';
 export class AccountComponent implements OnInit {
 
   isLoggedIn$: Observable<boolean>;
+  loggedIn: boolean;
 
   constructor(private router:Router, private route:ActivatedRoute, private authenticateService: AuthenticateService) { }
 
   ngOnInit() {
-    this.isLoggedIn$ = this.authenticateService.isLoggedIn;
+    this.isLoggedIn$ = this.authenticateService.logged;
     this.isLoggedIn$.subscribe(data => {
-      console.log(data);
+      this.loggedIn = data;
     });
   }
 

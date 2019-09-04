@@ -5,18 +5,15 @@
                 <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
                     <h2>Edit Profile</h2>
                     <mat-form-field>
-                      <input matInput placeholder="Id" value="{{recepients.id}}"> 
-                    </mat-form-field>
-                    <mat-form-field>
-                      <input matInput placeholder="firstName" disabled value="{{recepients.firstName}} "> 
+                      <input matInput placeholder="firstName" disabled formControlName="firstName"> 
                     </mat-form-field>
                     <br>
                     <mat-form-field>
-                        <input matInput placeholder="lastName" disabled value=" {{recepients.lastName}}">
+                        <input matInput placeholder="lastName" disabled formControlName="lastName">
                     </mat-form-field>
                     <br>
                     <mat-form-field>
-                        <input matInput placeholder="email" disabled value=" {{recepients.email}}">
+                        <input matInput placeholder="email" disabled formControlName="email">
                       </mat-form-field>
                       <br>
                     <mat-form-field>
@@ -24,14 +21,14 @@
                     </mat-form-field>
                     <br>
                     <mat-form-field class="example-full-width">
-                        <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Date Of Birth" disabled>
+                        <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Date Of Birth" formControlName="dateOfBirth" disabled>
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
-                       {{recepients.dob}}
+                     
                     </mat-form-field>
                     <br>
                     <mat-form-field>
-                        <input matInput placeholder="AadharNumber" value="{{recepients.aadhar}}" disabled>
+                        <input matInput placeholder="AadharNumber" formControlName="aadhar" disabled>
                      </mat-form-field>
                     <br>
                     <mat-label>Address</mat-label>
@@ -51,14 +48,13 @@
                         <input matInput placeholder="pincode" formControlName="pinCode">
                      </mat-form-field>
                     <mat-form-field>
-                        <input matInput placeholder="Gender" value="{{recepients.gender}}" disabled>
+                        <input matInput placeholder="Gender" formControlName="gender" disabled>
                      </mat-form-field>
                     <br>
                     <br>
                     <mat-form-field>
                         <mat-label>BloodGroup</mat-label>
-                        <select matNativeControl required disabled>
-                            {{recepients.bloodGroup}}
+                        <select matNativeControl required disabled formControlName="bloodGroup">
                           <option value="A+">A+</option>
                           <option value="A-">A-</option>
                           <option value="B+">B+</option>
@@ -72,7 +68,7 @@
                     </mat-form-field>
                       <br>
                 
-                <button mat-stroked-button type="submit" color="primary" (click)="updateRecepient(recepients)">Save</button>
+                <button mat-stroked-button type="submit" color="primary" (click)="updateRecepient()">Save</button>
                    </div>
                 </form>     
             
