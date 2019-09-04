@@ -1,35 +1,26 @@
 <header class="landingPageHeader">
-  <nav class="navbar fixed-top navbar-expand ">
-    <img src="assets/images/logo1.png" width="40" height="40" class="d-inline-block align-top" alt="App Logo">
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"color="black"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-           <a class="nav-link">Home</a>
-                   </li>
-        <li class="nav-item active">
-           <a class="nav-link" [matMenuTriggerFor]="menu">AboutUs</a>  
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item ><a href="#aims"> Aims and Objectives</a> </button>
-          <button mat-menu-item ><a href="#terms">Terms and Conditions</a></button>
-          </mat-menu>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" [matMenuTriggerFor]="menu1">Learn</a> 
-          <mat-menu #menu1="matMenu">
-              <button mat-menu-item><a href="#donate">What can you donate</a></button>
-              <button mat-menu-item><a href="#myths">Myths</a></button>
-             </mat-menu>
-       </li>
-       <li class="nav-item">
-        <div class="title">Lifeline</div>
-        </li>
-      </ul>
-     <app-search></app-search>
-    <app-account></app-account>
-  </div>  
-</nav>
+  <mat-toolbar color="primary">
+      <mat-toolbar-row>
+          <div class="logo">
+            <img src="assets/images/logo1.png" width="40" height="40"  alt="App Logo">
+          </div>
+          <div *ngIf="!loggedIn">
+              <a style="color: white" routerLink=''>Home</a>
+              <a [matMenuTriggerFor]="menu">About Us</a>  
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item ><a href="#aims"> Aims and Objectives</a> </button>
+                <button mat-menu-item ><a href="#terms">Terms and Conditions</a></button>
+              </mat-menu>
+              <a [matMenuTriggerFor]="menu1">Learn</a> 
+              <mat-menu #menu1="matMenu">
+                  <button mat-menu-item><a href="#donate">What can you donate</a></button>
+                  <button mat-menu-item><a href="#myths">Myths</a></button>
+              </mat-menu>
+          </div>
+          <div class="spacer"></div>
+          <div class="title">Lifeline</div>
+          <app-search *ngIf="!loggedIn"></app-search>
+          <app-account></app-account>
+      </mat-toolbar-row>
+  </mat-toolbar>
 </header>

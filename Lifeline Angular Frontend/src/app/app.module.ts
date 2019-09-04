@@ -39,7 +39,13 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { ChatcomponentComponent } from './donordashboard/chatcomponent/chatcomponent.component'
+import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { MatBottomSheetContainer } from '@angular/material/bottom-sheet';
+import { ChatbuttonComponent } from './donordashboard/chatbutton/chatbutton.component';
+import {MatBottomSheet} from '@angular/material/bottom-sheet';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 
 //  import { EmbedVideoService } from 'ngx-embed-video';
 @NgModule({
@@ -66,7 +72,10 @@ import { MatToolbarModule } from '@angular/material/toolbar'
     LoginComponent,
     ResetpasswordComponent,
     ForgotpasswordComponent,
-    SnackBarComponent
+    SnackBarComponent,
+    ChatcomponentComponent,
+    ChatbuttonComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -90,12 +99,15 @@ import { MatToolbarModule } from '@angular/material/toolbar'
     MatListModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatBottomSheetModule,
     MatToolbarModule
   ],
   entryComponents: [
-    SnackBarComponent
+    SnackBarComponent,
+    ChatbuttonComponent,
+    ChatcomponentComponent
   ],
-  providers: [],
+  providers: [MatBottomSheet],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

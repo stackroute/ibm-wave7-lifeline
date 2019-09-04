@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DonorProfileService } from '../service/donor-profile.service';
 import { RecepientserviceService } from '../service/recepientservice.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recepientregistrationformcomponent',
@@ -13,7 +14,7 @@ export class RecepientregistrationformcomponentComponent implements OnInit {
   recepient: Recepient;
   registrationForm: FormGroup;
   errorMsg: string;
-  constructor(private fb: FormBuilder, private recepientprofileservice:RecepientserviceService) { }
+  constructor(private fb: FormBuilder, private recepientprofileservice:RecepientserviceService, private router: Router) { }
 
 
   ngOnInit() {
@@ -42,8 +43,13 @@ export class RecepientregistrationformcomponentComponent implements OnInit {
 
   register() {
     console.log(this.registrationForm);
-    this.recepientprofileservice.saveRecepient(this.registrationForm.value).subscribe(data => this.recepient = data, error => this.errorMsg = error);
-    console.log('api call success');
+    this.recepientprofileservice.saveRecepient(this.registrationForm.value).subscribe(data => {
+        this.recepient = data,
+        this.router.navigate(['/login']); 
+      },
+      error => {
+        this.errorMsg = error
+      });
 
   }
 

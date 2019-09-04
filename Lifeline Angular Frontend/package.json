@@ -26,8 +26,11 @@
     "chart": "^0.1.2",
     "chart.js": "^2.8.0",
     "chartjs": "^0.3.24",
+    "jquery": "^3.4.1",
+    "net": "^1.0.2",
     "ngx-embed-video": "^1.0.4",
     "rxjs": "~6.4.0",
+    "stompjs": "^2.3.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },

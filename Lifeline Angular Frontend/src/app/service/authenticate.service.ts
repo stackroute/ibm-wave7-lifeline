@@ -18,12 +18,11 @@ export class AuthenticateService {
   private apiUrl2 = "http://localhost:8082/authenticate";
 
   private loggedIn = new BehaviorSubject<boolean>(false);
-  private user: User;
-  constructor(private httpClient: HttpClient) { }
+  logged = this.loggedIn.asObservable();
 
-  get isLoggedIn() {
-    return this.loggedIn.asObservable();
-  }
+  private user: User;
+
+  constructor(private httpClient: HttpClient) { }
 
   // public user:User;
   saveUser(user: User): Observable<User> {
