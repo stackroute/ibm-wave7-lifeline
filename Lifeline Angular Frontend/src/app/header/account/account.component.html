@@ -1,13 +1,5 @@
-<!-- <div class="account">
-        <mat-icon [ngStyle]="{'color':'black'}" [matMenuTriggerFor]="menu1">account_circle</mat-icon>
-</div>
-<mat-menu #menu1="matMenu">
-        <a routerLink='login' mat-menu-item>Login</a>
-</mat-menu> -->
-
-<a class="nav-link" [matMenuTriggerFor]="menu">
-        <mat-icon [ngStyle]="{'color':'black'}">account_circle</mat-icon> 
-</a>  
+<a class="nav-link" [matMenuTriggerFor]="menu"><mat-icon [ngStyle]="{'color':'black'}">account_circle</mat-icon></a>  
 <mat-menu #menu="matMenu">
-        <a routerLink='login' mat-menu-item>Login</a>
+<a routerLink='login' mat-menu-item *ngIf="isLoggedIn$">Login</a>
+<a routerLink='logout' mat-menu-item *ngIf="!isLoggedIn$">Logout</a>
 </mat-menu>

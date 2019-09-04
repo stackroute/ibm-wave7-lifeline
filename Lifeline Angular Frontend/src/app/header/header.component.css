@@ -22,14 +22,22 @@
   height: 2cm;
 }
 
-header{
+.landingPageHeader {
   background-image: url('../../assets/images/heart.jpg');
   border: 1cm;
   max-width: 100%;
   height: 700px;
   background-size: 100% 100%;
 }
-  
+ 
+.dashboardHeader {
+  background-image: url('../../assets/images/heart.jpg');
+  border: 1cm;
+  max-width: 100%;
+  height: 700px;
+  background-size: 100% 100%;
+}
+
   /* .d-inline-block{
     width: 70px;
     height: 70px;

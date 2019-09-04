@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthenticateService } from 'src/app/service/authenticate.service';
 
 @Component({
   selector: 'app-account',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountComponent implements OnInit {
 
-  constructor() { }
+  isLoggedIn$: Observable<boolean>;
+
+  constructor(private router:Router, private route:ActivatedRoute, private authenticateService: AuthenticateService) { }
 
   ngOnInit() {
+    this.isLoggedIn$ = this.authenticateService.isLoggedIn;
+    this.isLoggedIn$.subscribe(data => {
+      console.log(data);
+    });
   }
+
 
 }

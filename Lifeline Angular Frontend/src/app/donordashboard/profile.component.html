@@ -20,7 +20,8 @@
                     </mat-form-field>
                     <br>
                     <mat-form-field class="example-full-width">
-                        <input matInput [matDatepickerFilter]="myFilter" formControlName="dateOfBirth" [matDatepicker]="picker" placeholder="Date Of Birth">
+                        <input matInput [matDatepickerFilter]="myFilter" formControlName="dateOfBirth"
+                            [matDatepicker]="picker" placeholder="Date Of Birth">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
@@ -49,11 +50,11 @@
                         <input matInput placeholder="Height" formControlName="height">
                     </mat-form-field>
                     <mat-form-field>
-                      <input matInput placeholder="Weight" formControlName="weight">
-                   </mat-form-field>
+                        <input matInput placeholder="Weight" formControlName="weight">
+                    </mat-form-field>
                     <mat-form-field>
                         <input matInput placeholder="Gender" formControlName="gender">
-                     </mat-form-field>
+                    </mat-form-field>
                     <br>
                     <br>
                     <mat-form-field>
@@ -84,7 +85,7 @@
                     <mat-checkbox formControlName="cancer">Cancer</mat-checkbox>
                     <mat-checkbox formControlName="kidneyDisease">KidneyDisease</mat-checkbox>
                     <mat-checkbox formControlName="liverDisease">LiverDisease</mat-checkbox>
-                    <button mat-stroked-button type="submit" color="primary" (click)="updateDonor()">Save</button> 
+                    <button mat-stroked-button type="submit" color="primary" (click)="updateDonor()">Save</button>
                 </div>
             </form>
         </div>
@@ -97,7 +98,7 @@
                 <h3 mat-subheader>Personal Details:</h3>
 
                 <mat-list-item>
-                    
+
                     <h4 class="h4-tag">Name: {{donor.firstName}} {{donor.lastName}} </h4>
 
                 </mat-list-item>
@@ -126,12 +127,12 @@
                         {{donor.address.city}},{{donor.address.state}},pincode-{{donor.address.pinCode}}</h4>
                 </mat-list-item>
                 <mat-list-item>
-                    <h4 class="h4-tag">Guardian details: {{donor.guardianList.name}} 
-                                                         Email- {{donor.guardianList.email}}
-                                                         Phone no- {{donor.guardianList.phoneNumber}}
-                                                         Relation- {{donor.guardianList.relation}}
-                                                         Address- {{donor.guardianList.address}}   </h4>
-                                                          
+                    <h4 class="h4-tag">Guardian details: {{donor.guardianList.name}}
+                        Email- {{donor.guardianList.email}}
+                        Phone no- {{donor.guardianList.phoneNumber}}
+                        Relation- {{donor.guardianList.relation}}
+                        Address- {{donor.guardianList.address}} </h4>
+
                 </mat-list-item>
             </mat-list>
             <mat-divider></mat-divider>
@@ -175,23 +176,27 @@
                 <mat-checkbox [disabled]="donor.medicalInfo.disease.kidneyDisease"
                     [checked]="donor.medicalInfo.disease.kidneyDisease">KidneyDisease</mat-checkbox>
                 <mat-checkbox [disabled]="donor.medicalInfo.disease.liverDisease"
-                    [checked]="donor.medicalInfo.disease.liverDisease">LiverDisease</mat-checkbox> 
+                    [checked]="donor.medicalInfo.disease.liverDisease">LiverDisease</mat-checkbox>
                 <mat-list-item>
                     <h4 class="h4-tag">Organs you want to donate:</h4>
                 </mat-list-item>
                 <mat-checkbox [disabled]="donor.medicalInfo.organs[0].organ"
                     [checked]="donor.medicalInfo.organs[0].donateOrNot">Cornea</mat-checkbox>
-                <mat-checkbox [disabled]="donor.medicalInfo.organs[1].organ" [checked]="donor.medicalInfo.organs[1].donateOrNot">
+                <mat-checkbox [disabled]="donor.medicalInfo.organs[1].organ"
+                    [checked]="donor.medicalInfo.organs[1].donateOrNot">
                     Blood</mat-checkbox>
-                <mat-checkbox [disabled]="donor.medicalInfo.organs[2].organ" [checked]="donor.medicalInfo.organs[2].donateOrNot">
+                <mat-checkbox [disabled]="donor.medicalInfo.organs[2].organ"
+                    [checked]="donor.medicalInfo.organs[2].donateOrNot">
                     Liver</mat-checkbox>
-                <mat-checkbox [disabled]="donor.medicalInfo.organs[3].organ" [checked]="donor.medicalInfo.organs[3].donateOrNot">
+                <mat-checkbox [disabled]="donor.medicalInfo.organs[3].organ"
+                    [checked]="donor.medicalInfo.organs[3].donateOrNot">
                     Heart</mat-checkbox>
                 <mat-checkbox [disabled]="donor.medicalInfo.organs[4].organ"
                     [checked]="donor.medicalInfo.organs[4].donateOrNot">Kidney</mat-checkbox>
                 <mat-checkbox [disabled]="donor.medicalInfo.organs[5].organ"
                     [checked]="donor.medicalInfo.organs[5].donateOrNot">Platelet</mat-checkbox>
-                <mat-checkbox [disabled]="donor.medicalInfo.organs[6].organ" [checked]="donor.medicalInfo.organs[6].donateOrNot">
+                <mat-checkbox [disabled]="donor.medicalInfo.organs[6].organ"
+                    [checked]="donor.medicalInfo.organs[6].donateOrNot">
                     Lung</mat-checkbox>
                 <mat-checkbox [disabled]="donor.medicalInfo.organs[7].organ"
                     [checked]="donor.medicalInfo.organs[7].donateOrNot">Bonemarrow</mat-checkbox>
@@ -202,17 +207,19 @@
 
     <mat-tab label="Withdraw">
         <div>
-
-            <div class="heading"><h3>  Why do you want to withdraw ?</h3></div>
+            <div class="heading">
+                <h3> Why do you want to withdraw ?</h3>
+            </div>
             <textarea rows="6" cols="100"> </textarea>
-                <br>
-                <div class="checkbox">
-                  <input type="checkbox" name="confirmation" value="confirmation" checked> Are you sure you want to withdraw ?
-                </div>
-                <br><br>
-                <div class="withdraw">
+            <br>
+            <div class="checkbox">
+                <input type="checkbox" name="confirmation" value="confirmation" checked> Are you sure you want to
+                withdraw ?
+            </div>
+            <br><br>
+            <div class="withdraw">
                 <button (click)="deletedonor()">Withdraw</button>
-        </div>
+            </div>
         </div>
     </mat-tab>
     <mat-tab label="Recommendation">

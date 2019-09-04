@@ -34,12 +34,12 @@ import { MatListModule } from '@angular/material/list';
 import { RecepientdashboardComponent } from './recepientdashboard/recepientdashboard.component';
 import { ReportgenerationComponent } from './reportgeneration/reportgeneration.component';
 import { DashboardreportsComponent } from './dashboardreports/dashboardreports.component';
-import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
+import { LoginComponent } from './header/login/login.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatToolbarModule } from '@angular/material/toolbar'
 
 //  import { EmbedVideoService } from 'ngx-embed-video';
 @NgModule({
@@ -64,7 +64,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ReportgenerationComponent,
     DashboardreportsComponent,
     LoginComponent,
-    LogoutComponent,
     ResetpasswordComponent,
     ForgotpasswordComponent,
     SnackBarComponent
@@ -90,7 +89,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatCheckboxModule,
     MatListModule,
     MatButtonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatToolbarModule
   ],
   entryComponents: [
     SnackBarComponent

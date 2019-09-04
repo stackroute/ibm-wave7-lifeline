@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthenticateService } from '../service/authenticate.service';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +10,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router:Router,private route:ActivatedRoute) { }
+  isLoggedIn$: Observable<boolean>;
+
+  constructor(private router:Router,private route:ActivatedRoute, private authenticateService: AuthenticateService) { }
 
   ngOnInit() {
+    this.isLoggedIn$ = this.authenticateService.isLoggedIn;
   }
-  // aimsandobjectives()
-  // {
-  //   this.router.navigate(['/aimsandobjectives']);
-  // }
 
 }
