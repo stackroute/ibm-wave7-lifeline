@@ -14,7 +14,7 @@ import java.util.TreeMap;
 @NoArgsConstructor
 public class Organs {
 
-	private String organ;
+	private String name;
 
 	private boolean donateOrNot;
 }

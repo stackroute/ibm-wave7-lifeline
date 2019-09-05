@@ -67,3 +67,14 @@ services:
     hostname: localhost
     ports:
       - 8082:8082
+
+  lifeline-frontend:
+    container_name: lifeline-frontend
+    build:
+      context: .
+      dockerfile: ./lifeline-angular-frontend/Dockerfile
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - '4201:4200'
