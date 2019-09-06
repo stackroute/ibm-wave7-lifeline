@@ -37,6 +37,7 @@ public class Recepient {
     private Long id;
 
     @NotNull(message = "usertype is mandatory")
+    @Transient
     private String userType;
 
     @NotNull(message = "firstname is mandatory")
@@ -49,6 +50,7 @@ public class Recepient {
 
     @NotNull(message = "email is mandatory")
     @Email
+    @Indexed(unique = true)
     private String email;
 
     @Pattern(regexp="(^$|[0-9]{10})")
@@ -56,6 +58,8 @@ public class Recepient {
     private String phoneNumber;
 
     @NotNull(message = "password number is mandatory")
+    @Transient
+    @Pattern(regexp = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,16})" )
     private String password;
 
     @NotNull(message = "dob number is mandatory")
@@ -73,8 +77,9 @@ public class Recepient {
 
     @NotNull(message = "bloodGroup number is mandatory")
     private String bloodGroup;
-
-
+    
+    @NotNull(message = "createdDate is mandatory")
+    private Date createdDate;
 }
 
 

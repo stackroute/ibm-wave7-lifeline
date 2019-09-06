@@ -13,10 +13,6 @@ import java.util.List;
 public class MedicalDetails {
 	@NotNull
 	private String bloodGroup;
-	@NotNull
-	private double height;
-	@NotNull
-	private double weight;
 	private Disease disease;
 	private List<Organs> organs;
 	private String hlaType;

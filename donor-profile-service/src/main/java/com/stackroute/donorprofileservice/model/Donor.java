@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
@@ -28,12 +29,17 @@ public class Donor {
 	@ApiModelProperty("id")
 	private long id;
 	
+	private String donorId;
 //	SEQUENCE_NAME field is not persistent in mongo db
 	@Transient
 	public static final String SEQUENCE_NAME = "donors_sequence";
 
+	@Transient
 	private String userType;
-
+	
+	
+	
+	@Pattern(regexp = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,16})" )
 	@NotNull(message = "firstname is mandatory")
 	@Pattern(regexp = "[a-zA-Z]{3,30}" )
 	private String firstName;
@@ -44,6 +50,7 @@ public class Donor {
 
 	@NotNull(message = "email is mandatory")
 	@Email
+	@Indexed(unique = true)
 	private String email;
 
 	@Pattern(regexp="(^$|[0-9]{10})")
@@ -51,6 +58,7 @@ public class Donor {
 	private String phoneNumber;
 
 	@NotNull(message = "password number is mandatory")
+	@Transient
 	private String password;
 
 	@NotNull(message = "dob number is mandatory")
@@ -65,10 +73,18 @@ public class Donor {
 
 	@NotNull(message = "address  is mandatory")
 	private Address address;
+	
 	@NotNull(message = "guardian list is mandatory")
 	private List<Guardian> guardianList;
 
 	private MedicalDetails medicalInfo;
+	
+	private boolean isEmailVerified;
+	
+	private List<Form> formList;
+	
+	@NotNull(message = "createdDate is mandatory")
+	private Date createdDate;
 }
 
 

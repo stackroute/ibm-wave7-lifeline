@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Data
 @AllArgsConstructor
@@ -19,5 +20,6 @@ public class Address {
     @NotNull
     private String state;
     @NotNull
+    @Pattern(regexp="(^$|[0-9]{6})")
     private String pinCode;
 }
