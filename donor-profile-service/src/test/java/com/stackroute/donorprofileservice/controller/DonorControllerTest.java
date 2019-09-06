@@ -30,6 +30,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.util.concurrent.ListenableFuture;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -74,25 +75,25 @@ public class DonorControllerTest {
 		guardian = new Guardian("Peter","peter@gmail.com","7890987654","son",address);
 		guardianList.add(guardian);
 		disease = new Disease(false,false,false,false,false,false,false,false,false,true,false);
-		organs = new Organs("cornea", true);
+		organs = new Organs(1,"cornea", true);
 		organsArrayList.add(organs);
-		organs = new Organs("kidney", true);
+		organs = new Organs(2,"kidney", true);
 		organsArrayList.add(organs);
-		organs = new Organs("platelet", true);
+		organs = new Organs(3,"platelet", true);
 		organsArrayList.add(organs);
-		organs = new Organs("boneMarrow", true);
+		organs = new Organs(4,"boneMarrow", true);
 		organsArrayList.add(organs);
-		organs = new Organs("blood", true);
+		organs = new Organs(5,"blood", true);
 		organsArrayList.add(organs);
-		organs = new Organs("heart", true);
+		organs = new Organs(6,"heart", true);
 		organsArrayList.add(organs);
-		organs = new Organs("lungs", true);
+		organs = new Organs(7,"lungs", true);
 		organsArrayList.add(organs);
-		organs = new Organs("liver", true);
+		organs = new Organs(8,"liver", true);
 		organsArrayList.add(organs);
-		medicalDetails = new MedicalDetails("O+",160,80,disease,organsArrayList, "HLA-A", 100000000, 1.5, 27, 100, 6 );
-		donor = new Donor(101,"donor","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985,5,23),
-				"356478900928","male",address,guardianList,medicalDetails);
+		medicalDetails = new MedicalDetails("O+",disease,organsArrayList, "HLA-A", 100000000, 1.5, 27, 100, 6 );
+		donor = new Donor(101,"D01","donor","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985, Calendar.JUNE,23),
+				"356478900928","male",address,guardianList,medicalDetails,true,new ArrayList<>(),new Date());
 		donorList = new ArrayList<>();
 		donorList.add(donor);
 	}

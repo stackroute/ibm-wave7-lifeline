@@ -2,6 +2,7 @@ package com.stackroute.recepientprofileservice.repository;
 
 import com.stackroute.recepientprofileservice.model.Address;
 import com.stackroute.recepientprofileservice.model.Recepient;
+import com.stackroute.recepientprofileservice.model.Request;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -26,7 +27,7 @@ public class RecepientRepositoryTest {
     RecepientRepository recepientRepository;
     Recepient recepient;
     Address address;
-
+    Request request;
     List<Recepient> recepientList;
 
 
@@ -35,9 +36,9 @@ public class RecepientRepositoryTest {
     public void setUp() {
        address = new Address("11b","main road","bengaluru","karnataka","678490");
 
-
+    request = new Request();
     recepient = new Recepient(101L,"recepient","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985,5,23),
-                "356478900928","male",address,"A+");
+                "356478900928","male",address,"A+",new Date(),request);
         recepientList = new ArrayList<>();
    }
 
@@ -53,7 +54,8 @@ public class RecepientRepositoryTest {
     @Test
     public void testFindAll(){
         Recepient recepient1 = new Recepient(102L,"recepient","Harry","Potter","harry@gmail.com","978645312","password123",new Date(1970,7,14),
-                "356478900928","male",address,"A+");
+                "356478900928","male",address,"A+",new Date(),request
+        );
         recepientRepository.save(recepient);
        recepientRepository.save(recepient1);
      recepientList.add(recepient);

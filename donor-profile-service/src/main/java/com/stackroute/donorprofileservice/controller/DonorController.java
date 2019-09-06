@@ -81,7 +81,7 @@ public class DonorController {
 			logger.info("save track api call success");
 			this.kafkaTemplate.send(TOPIC,donor);
 		} catch (Exception e) {
-			responseEntity = new ResponseEntity<String>("Exception", HttpStatus.CONFLICT);
+			responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
 			logger.error("save track api call throws an exception");
 			
 		}

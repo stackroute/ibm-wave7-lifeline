@@ -80,6 +80,8 @@ public class Recepient {
     
     @NotNull(message = "createdDate is mandatory")
     private Date createdDate;
+    
+    private Request request;
 }
 
 

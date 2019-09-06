@@ -39,7 +39,6 @@ public class Donor {
 	
 	
 	
-	@Pattern(regexp = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,16})" )
 	@NotNull(message = "firstname is mandatory")
 	@Pattern(regexp = "[a-zA-Z]{3,30}" )
 	private String firstName;
@@ -59,6 +58,7 @@ public class Donor {
 
 	@NotNull(message = "password number is mandatory")
 	@Transient
+	@Pattern(regexp = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,16})" )
 	private String password;
 
 	@NotNull(message = "dob number is mandatory")

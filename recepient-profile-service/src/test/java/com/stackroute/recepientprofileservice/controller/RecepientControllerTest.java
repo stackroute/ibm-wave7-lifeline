@@ -5,6 +5,7 @@ import com.stackroute.recepientprofileservice.exception.RecepientProfileAlreadyE
 import com.stackroute.recepientprofileservice.exception.RecepientProfileNotFoundException;
 import com.stackroute.recepientprofileservice.model.Address;
 import com.stackroute.recepientprofileservice.model.Recepient;
+import com.stackroute.recepientprofileservice.model.Request;
 import com.stackroute.recepientprofileservice.service.RecepientService;
 import org.junit.After;
 import org.junit.Before;
@@ -54,7 +55,6 @@ public class RecepientControllerTest {
 
     private Recepient recepient;
     private Address address;
-
     private List<Recepient> recepientList;
 
 
@@ -66,7 +66,7 @@ public class RecepientControllerTest {
 
 
         recepient = new Recepient(103L,"recepient","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985,5,23),
-                "356478900928","male",address,"A+");
+                "356478900928","male",address,"A+", new Date(), new Request());
         recepientList = new ArrayList<>();
         recepientList.add(recepient);
     }
