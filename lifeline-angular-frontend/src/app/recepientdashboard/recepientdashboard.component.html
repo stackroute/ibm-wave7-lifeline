@@ -1,9 +1,59 @@
-<mat-tab-group dynamicHeight>
+<div class="recepientDashboard">
+    <mat-tab-group dynamicHeight>
+    
+    <!--Profile Tab-->
+    <mat-tab label="Profile" class="tab">
+
+        <mat-card>
+            <mat-list>
+                <h3 mat-subheader>Personal Details:</h3>
+
+                <mat-list-item>
+
+                    <h4 class="h4-tag">Name: {{recepients.firstName}} {{recepients.lastName}} </h4>
+
+                </mat-list-item>
+                <mat-list-item>
+                    <h4 class="h4-tag">Gender: {{recepients.gender}}</h4>
+
+                </mat-list-item>
+                <mat-list-item>
+                    <h4 class="h4-tag">Date of Birth: {{recepients.dob}}</h4>
+
+                </mat-list-item>
+                <mat-list-item>
+                    <h4 class="h4-tag">Email: {{recepients.email}}</h4>
+
+                </mat-list-item>
+                <mat-list-item>
+                    <h4 class="h4-tag">Phone Number: {{recepients.phoneNumber}}</h4>
+
+                </mat-list-item>
+                <mat-list-item>
+                    <h4 class="h4-tag">Aadhar Number: {{recepients.aadhar}}</h4>
+
+                </mat-list-item>
+                <mat-list-item>
+                    <h4 class="h4-tag">Address: {{recepients.address.addressLine1}} {{recepients.address.addressLine2}},
+                        {{recepients.address.city}},{{recepients.address.state}},pincode-{{recepients.address.pinCode}}</h4>
+                </mat-list-item>
+             
+                <mat-list-item>
+                    <h4 class="h4-tag">Blood group: {{recepients.bloodGroup}} </h4>
+
+                </mat-list-item>
+            </mat-list>
+            
+        </mat-card>
+
+    </mat-tab>
     <mat-tab label="Edit">
-        <div>
+        <div class="profile">
             <form [formGroup]="profileForm">
+                    <mat-card>
                 <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
-                    <h2>Edit Profile</h2>
+                   
+                    <h3 mat-subheader>Edit Profile</h3>
                     <mat-form-field>
                       <input matInput placeholder="firstName" disabled formControlName="firstName"> 
                     </mat-form-field>
@@ -70,55 +120,11 @@
                 
                 <button mat-stroked-button type="submit" color="primary" (click)="updateRecepient()">Save</button>
                    </div>
-                </form>     
-            
+                   
+            </mat-card>
+              </form>
             </div>
-    </mat-tab>
-<!--Profile Tab-->
-    <mat-tab label="Profile" class="tab">
-
-        <mat-card>
-            <mat-list>
-                <h3 mat-subheader>Personal Details:</h3>
-
-                <mat-list-item>
-
-                    <h4 class="h4-tag">Name: {{recepients.firstName}} {{recepients.lastName}} </h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag">Gender: {{recepients.gender}}</h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag">Date of Birth: {{recepients.dob}}</h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag">Email: {{recepients.email}}</h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag">Phone Number: {{recepients.phoneNumber}}</h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag">Aadhar Number: {{recepients.aadhar}}</h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag">Address: {{recepients.address.addressLine1}} {{recepients.address.addressLine2}},
-                        {{recepients.address.city}},{{recepients.address.state}},pincode-{{recepients.address.pinCode}}</h4>
-                </mat-list-item>
-             
-                <mat-list-item>
-                    <h4 class="h4-tag">Blood group: {{recepients.bloodGroup}} </h4>
-
-                </mat-list-item>
-            </mat-list>
-            <mat-divider></mat-divider>
-        </mat-card>
-
+   
     </mat-tab>
 
     <mat-tab label="PastHistory">
@@ -134,8 +140,9 @@
     </mat-tab>
     <mat-tab label="Reports">
         <div>
-Reports       
- </div>
+            Reports       
+        </div>
     </mat-tab>
 
 </mat-tab-group>
+</div>

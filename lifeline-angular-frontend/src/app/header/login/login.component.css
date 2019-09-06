@@ -2,10 +2,14 @@
     text-align: center;
 } */
 .mat-card {
-    min-width: 30%;
+    
+    text-align: center;
+    min-width: 350px;
+    height: 400px;
 }
 
 .loginContainer {
+    margin: 20px 100px 35px 100px;
     display: flex;
     justify-content: center;
     align-items: center;

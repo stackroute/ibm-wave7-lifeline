@@ -1,5 +1,5 @@
-<a class="nav-link" [matMenuTriggerFor]="menu"><mat-icon [ngStyle]="{'color':'white'}">account_circle</mat-icon></a>  
+<a class="nav-link" [matMenuTriggerFor]="menu" ><mat-icon [ngStyle]="{'color':'white'}">account_circle</mat-icon></a>  
 <mat-menu #menu="matMenu">
-<a routerLink='login' mat-menu-item *ngIf="!loggedIn">Login</a>
+<a mat-menu-item *ngIf="!loggedIn" (click)="openDialog()">Login</a>
 <a routerLink='logout' mat-menu-item *ngIf="loggedIn">Logout</a>
 </mat-menu>

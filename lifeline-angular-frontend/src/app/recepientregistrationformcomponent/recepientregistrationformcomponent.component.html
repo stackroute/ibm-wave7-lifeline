@@ -43,7 +43,7 @@
                 </mat-form-field>
                 <mat-form-field appearance="legacy">
                     <mat-label>Confirm Password</mat-label>
-                    <input matInput formControlName="confirmPassword" maxlength="16">
+                    <input matInput formControlName="confirmPassword">
                     <mat-error *ngIf="this.registrationForm.hasError('notSame')">Confirm password should match with
                         password</mat-error>
                 </mat-form-field>

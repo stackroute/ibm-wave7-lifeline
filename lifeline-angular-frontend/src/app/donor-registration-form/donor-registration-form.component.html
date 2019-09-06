@@ -42,7 +42,7 @@
                 fxLayoutAlign="space-around center">
                 <mat-form-field appearance="legacy">
                     <mat-label>Password</mat-label>
-                    <input type="password" matInput formControlName="password" maxlength="16">
+                    <input type="password" matInput formControlName="password" maxlength="40">
                     <mat-error *ngIf="this.registrationForm.controls['password'].hasError('required')">Password is
                         required</mat-error>
                     <mat-error *ngIf="this.registrationForm.controls['password'].hasError('pattern')">Password should
@@ -51,7 +51,7 @@
                 </mat-form-field>
                 <mat-form-field appearance="legacy">
                     <mat-label>Confirm Password</mat-label>
-                    <input type="password" matInput formControlName="confirmPassword" maxlength="16">
+                    <input type="password" matInput formControlName="confirmPassword" maxlength="40">
                     <mat-error *ngIf="this.registrationForm.hasError('notSame')">Confirm password should match with
                         password</mat-error>
                 </mat-form-field>

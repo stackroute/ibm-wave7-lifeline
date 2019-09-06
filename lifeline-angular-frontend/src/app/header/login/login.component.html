@@ -1,6 +1,7 @@
 <div class="loginLayout">
   <div class="loginContainer" fxLayout="column">
     <br>
+    <mat-card>
     <h3>Login</h3>
     <form [formGroup]="loginForm">    
       <div>
@@ -15,7 +16,7 @@
       </div>
     </form>
     <div>
-      <button mat-raised-button (click)="loginUser()" color="primary">Login</button>
+      <button mat-raised-button (click)="loginUser()" color="primary" data-dismiss="loginContainer">Login</button>
     </div>
     <br/>
     <div>
@@ -24,6 +25,7 @@
     <div>
       <button mat-raised-button [routerLink]="['/forgotPassword']" target="_self">Click Here</button>
     </div>
+  </mat-card>
     <br/>
   </div>
 </div>

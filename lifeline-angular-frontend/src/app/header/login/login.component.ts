@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthenticateService } from '../../service/authenticate.service';
 import { User } from '../../model/User';
 import { Router } from '@angular/router';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,15 +13,16 @@ export class LoginComponent implements OnInit {
   public result;
   private user = new User();
   loginForm: FormGroup;
-
-  constructor(private authenticateService: AuthenticateService, private formBuilder: FormBuilder,private router: Router) { }
+  
+  constructor(public dialogRef: MatDialogRef<LoginComponent>,
+    private authenticateService: AuthenticateService, private formBuilder: FormBuilder,private router: Router) { }
 
   ngOnInit() {
         // this.authenticateService.login(this.user)
     // .subscribe(data=>this.result=data);
     this.createForm();
   }
-
+  
   createForm() {
     this.loginForm = this.formBuilder.group({
       username: [''],
@@ -38,9 +40,12 @@ export class LoginComponent implements OnInit {
         let id = data.id;
         if(data.role == 'donor') {
           this.router.navigate(['/donor'], {queryParams : {id: id}});
+          this.dialogRef.close();
+
         }
         else {
           this.router.navigate(['/recepient'], {queryParams : {id: id}});
+          this.dialogRef.close();
         }
       },
       error => {
