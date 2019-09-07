@@ -1,55 +1,55 @@
-
+.mat-tab-group{
+  margin: 100px 100px 30px 0px;
+}
 .mat-card{
     /* box-shadow: 10px 10px 10px 10px grey; */
     /* -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5); */
     margin: 30px 100px 30px 100px;
     background-color: antiquewhite;
-  }
-  .mat-subheader{
-    font-size: 30px;
-    color:navy;
-  }
-  .h4-tag{
-    font-size: 16px;
-    font-weight: 400;
-    font-family: Arial, Helvetica, sans-serif;
-    
-  }
-  .mat-list{
-    padding: 20px 0 20px 20px;
-   
-  }
-  .mat-checkbox{
-    padding: 0 20px;
-    line-height: 30px;
-    margin: 0 10px 0 10px;;
-   
-  }
-  /* edit profile css */
-  .example-container{
-    text-align:center;
-    /* border:solid 2px black; */
-    width: 50%;
-    margin-left: 350px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    background-color: antiquewhite;
-   
-
-
 }
-.example-section {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    height: 60px;
-  }
+
+.mat-subheader{
+  font-size: 30px;
+  color:navy;
+}
+.h4-tag{
+  font-size: 16px;
+  font-weight: 400;
+  font-family: Arial, Helvetica, sans-serif;
   
-  .example-margin {
-    margin: 0 10px;
-  }
-  .mat-form-field{
-    padding-left: 20px;
-    padding-right: 20px;
-  }
+}
+.mat-list{
+  padding: 20px 0 20px 20px;
+  
+}
+.mat-checkbox{
+  padding: 0 20px;
+  line-height: 30px;
+  margin: 0 10px 0 10px;;
+  
+}
+/* edit profile css */
+/* .example-container{
+  text-align:center;
+  border:solid 2px black;
+  width: 50%;
+  margin-left: 350px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: antiquewhite;
+} */
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+.mat-form-field{
+  padding-left: 20px;
+  padding-right: 20px;
+}
   
