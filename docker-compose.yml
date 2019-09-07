@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   eureka-server:
@@ -30,7 +30,7 @@ services:
     depends_on:
       - config-service
       - eureka-server
-    restart: always
+    # restart: always
     network_mode: "host"
     image: zuul-api
     hostname: localhost
@@ -71,10 +71,10 @@ services:
   lifeline-frontend:
     container_name: lifeline-frontend
     build:
-      context: .
-      dockerfile: ./lifeline-angular-frontend/Dockerfile
-    volumes:
-      - '.:/app'
-      - '/app/node_modules'
+      context: ./lifeline-angular-frontend/
+      dockerfile: Dockerfile
+    # volumes:
+    #   - '.:/app'
+    #   - '/app/node_modules'
     ports:
-      - '4201:4200'
+      - '4200:4200'
