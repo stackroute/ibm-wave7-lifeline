@@ -36,6 +36,14 @@ export class DonordashboardreportsComponent implements OnInit {
             labels: ["Number of donors registered"],
             datasets:
               [{
+                backgroundColor: [
+               
+                  // "#9b59b6",
+                  // "#6a5acd",
+                  "#3cb371",
+                  // "hsl(147, 50%, 47%)"
+                 
+                ],
                 // label: 'number of donors registered in each month',
                 // data: [9, 7, 3, 5, 10, 15, 16, 62, , 3, 1, 9],
                 // data: this.donorreport,
@@ -86,7 +94,17 @@ export class DonordashboardreportsComponent implements OnInit {
           datasets:
             [{
               // label: 'number of recepients registered in each month',
-              
+              backgroundColor: [
+                "#72b3b1",
+                "#feb56d	",
+                "#c55a83",
+                "#795f91",
+                "hsl(0, 60%, 50%)",
+                "DodgerBlue",
+                "h#cd6d71",
+                "hsl(0, 0%, 71%)",
+                // "#34495e"
+              ],
               data: [this.organdonationreport[0],this.organdonationreport[1],this.organdonationreport[2],this.organdonationreport[3],this.organdonationreport[4],this.organdonationreport[5],this.organdonationreport[6],this.organdonationreport[7]],
               fill: false,
               lineTension: 0.2,
