@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -22,7 +23,7 @@ import java.util.List;
 public class DonorController {
 	
 	private DonorService donorService;
-	
+
 	private final Logger logger = LoggerFactory.getLogger(DonorController.class.getName());
 
 	@Autowired
@@ -81,7 +82,8 @@ public class DonorController {
 			logger.info("save track api call success");
 			this.kafkaTemplate.send(TOPIC,donor);
 		} catch (Exception e) {
-			responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
+			e.printStackTrace();
+			responseEntity = new ResponseEntity<String>("exception", HttpStatus.CONFLICT);
 			logger.error("save track api call throws an exception");
 			
 		}
@@ -117,5 +119,20 @@ public class DonorController {
 			logger.error("delete track api call throws an exception");
 		}
 		return responseEntity;
+	}
+
+	@PostMapping(value="/forms")
+	public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
+		String message = "";
+
+		try {
+			donorService.store(file);
+			message = "You successfully uploaded " + file.getOriginalFilename() + "!";
+			return ResponseEntity.status(HttpStatus.OK).body(message);
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = "Fail to upload Profile Picture" + file.getOriginalFilename() + "!";
+			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
+		}
 	}
 }

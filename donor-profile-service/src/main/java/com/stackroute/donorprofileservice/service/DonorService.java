@@ -4,6 +4,7 @@ import com.stackroute.donorprofileservice.exception.DonorProfileAlreadyExistsExc
 import com.stackroute.donorprofileservice.exception.DonorProfileNotFoundException;
 import com.stackroute.donorprofileservice.model.Donor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -20,5 +21,7 @@ public interface DonorService {
 	
 	Donor updateDonorProfile(long id, Donor donor) throws DonorProfileNotFoundException;
 	
-	public long getNextSequenceId(String key);
+	long getNextSequenceId(String key);
+
+	void store(MultipartFile file) throws Exception;
 }

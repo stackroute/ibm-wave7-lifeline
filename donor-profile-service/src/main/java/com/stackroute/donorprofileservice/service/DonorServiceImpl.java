@@ -1,10 +1,13 @@
 package com.stackroute.donorprofileservice.service;
 
+import com.stackroute.donorprofileservice.controller.DonorController;
 import com.stackroute.donorprofileservice.exception.DonorProfileAlreadyExistsException;
 import com.stackroute.donorprofileservice.exception.DonorProfileNotFoundException;
 import com.stackroute.donorprofileservice.model.DatabaseSequence;
 import com.stackroute.donorprofileservice.model.Donor;
 import com.stackroute.donorprofileservice.repository.DonorRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
@@ -13,7 +16,11 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +31,9 @@ public class DonorServiceImpl implements DonorService {
 	MongoOperations mongoOperations;
 	
 	DonorRepository donorRepository;
-	
+	private final Path rootLocation = Paths.get("form-store");
+	private final Logger logger = LoggerFactory.getLogger(DonorController.class.getName());
+
 	@Autowired
 	public DonorServiceImpl(DonorRepository donorRepository) {
 		this.donorRepository = donorRepository;
@@ -87,6 +96,12 @@ public class DonorServiceImpl implements DonorService {
 		DatabaseSequence seqId = mongoOperations.findAndModify(query, update, options, DatabaseSequence.class);
 		return seqId.getSeq();
 		
+	}
+
+	@Override
+	public void store(MultipartFile file) throws Exception {
+		logger.info("File name: "+file.getOriginalFilename());
+		Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
 	}
 	
 }

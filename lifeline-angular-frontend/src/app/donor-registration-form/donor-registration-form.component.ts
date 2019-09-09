@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { DonorProfileService } from '../service/donor-profile.service';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-donor-registration-form',
   templateUrl: './donor-registration-form.component.html',
-  styleUrls: ['./donor-registration-form.component.css']
+  styleUrls: ['./donor-registration-form.component.css'],
 })
 export class DonorRegistrationFormComponent implements OnInit {
 
@@ -76,6 +77,9 @@ export class DonorRegistrationFormComponent implements OnInit {
           lungs: [''],
           platelet: [''],
         }),
+      }),
+      forms: this.fb.group({
+        form: [''],
       })
     }, { validator: this.checkPasswords });
 
@@ -91,10 +95,26 @@ export class DonorRegistrationFormComponent implements OnInit {
   }
 
   register() {
+console.log("hello");
     if (this.registrationForm.valid) {
+      this.currentFileUpload = this.selectedFiles.item(0);
+      this.donorProfileService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+        if (event instanceof HttpResponse) {
+          console.log('File is completely uploaded!');
+        }
+      });
+      this.selectedFiles = undefined;
       this.donorProfileService.saveDonor(this.registrationForm.value).subscribe(data => this.donor = data, error => this.errorMsg = error);
       console.log('api call success');
     }
 
   }
+  selectedFiles: FileList;
+  currentFileUpload: File;
+
+  FileSelected(event) {
+    this.selectedFiles = event.target.files;
+  }
+
+
 }

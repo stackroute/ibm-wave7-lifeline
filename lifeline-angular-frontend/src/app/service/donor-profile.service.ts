@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { throwError } from 'rxjs';
 import { catchError, } from 'rxjs/operators';
@@ -38,5 +38,16 @@ export class DonorProfileService {
     let updateUrl = 'http://localhost:8081/api/v1/donor';
     updateUrl = updateUrl + '/' + id;
     return this.httpClient.put<Donor>(updateUrl, donor);
+  }
+
+  pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
+    const formdata: FormData = new FormData();
+    formdata.append('file', file);
+    const req = new HttpRequest('POST','http://localhost:8081/api/v1/forms', formdata, {
+    reportProgress: true,
+      responseType: 'text'
+    }
+    );
+    return this.httpClient.request(req);
   }
 }

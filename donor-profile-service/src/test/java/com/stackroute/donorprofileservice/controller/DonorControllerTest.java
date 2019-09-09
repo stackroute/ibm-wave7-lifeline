@@ -2,6 +2,8 @@ package com.stackroute.donorprofileservice.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.netflix.discovery.converters.Auto;
+import com.stackroute.donorprofileservice.exception.DonorProfileAlreadyExistsException;
+import com.stackroute.donorprofileservice.exception.DonorProfileNotFoundException;
 import com.stackroute.donorprofileservice.model.*;
 import com.stackroute.donorprofileservice.service.DonorService;
 import org.apache.kafka.clients.producer.RecordMetadata;
@@ -123,7 +125,15 @@ public class DonorControllerTest {
 				.andExpect(status().isOk())
 				.andDo(MockMvcResultHandlers.print());
 	}
-	
+	//Negative Testcase for getDonorByIdFailure()
+	@Test
+	public void getDonorByIdFailure() throws Exception{
+		when(donorService.getDonorById(donor.getId())).thenThrow(DonorProfileNotFoundException.class);
+		mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/donor/"+donor.getId())
+				.contentType(MediaType.APPLICATION_JSON).content(jsonToString(donor)))
+				.andExpect(status().isConflict())
+				.andDo(MockMvcResultHandlers.print());
+	}
 //	Testcase for saveDonorProfile()
 	@Test
 	public void saveDonorProfile() throws Exception {
@@ -132,6 +142,16 @@ public class DonorControllerTest {
 		mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/donor")
 				.contentType(MediaType.APPLICATION_JSON).content(jsonToString(donor)))
 				.andExpect(status().isCreated())
+				.andDo(MockMvcResultHandlers.print());
+	}
+	//Negative Testcase for saveDonorProfileFailure
+	@Test
+	public void saveDonorProfileFailure() throws Exception {
+		when(kafkaTemplate.send(any(), any())).thenReturn(any());
+		when(donorService.saveDonorProfile(donor)).thenThrow(DonorProfileAlreadyExistsException.class);
+		mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/donor")
+				.contentType(MediaType.APPLICATION_JSON).content(jsonToString(donor)))
+				.andExpect(status().isConflict())
 				.andDo(MockMvcResultHandlers.print());
 	}
 
@@ -144,7 +164,15 @@ public class DonorControllerTest {
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andDo(MockMvcResultHandlers.print());
 	}
-	
+	//Negative Testcase for updateDonorProfile()
+	@Test
+	public void updateDonorProfileFailure() throws Exception {
+		when(donorService.updateDonorProfile(anyLong(),any())).thenThrow(DonorProfileNotFoundException.class);
+		mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/donor/"+donor.getId())
+				.contentType(MediaType.APPLICATION_JSON).content(jsonToString(donor)))
+				.andExpect(MockMvcResultMatchers.status().isConflict())
+				.andDo(MockMvcResultHandlers.print());
+	}
 //	Testcase for deleteDonorProfile()
 	@Test
 	public void deleteDonorProfile() throws Exception {
@@ -154,7 +182,14 @@ public class DonorControllerTest {
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andDo(MockMvcResultHandlers.print());
 	}
-	
+	//Negative Testcase for deleteDonorProfileFailure()
+	@Test
+	public void deleteDonorProfileFailure() throws Exception {
+		when(donorService.deleteDonorProfile(anyLong())).thenThrow(DonorProfileNotFoundException.class);
+		mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/donor/"+donor.getId()))
+				.andExpect(MockMvcResultMatchers.status().isConflict())
+				.andDo(MockMvcResultHandlers.print());
+	}
 	//	method to covert json into string
 	private static String jsonToString(final Object obj)
 	{
