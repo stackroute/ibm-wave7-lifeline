@@ -12,12 +12,10 @@ import java.util.List;
 @NoArgsConstructor
 public class Request {
 	
-	@NotNull
+
 	private long id;
 	
-	@NotNull
 	private List<String> requestedOrganList;
 	
-	@NotNull
 	private String status;
 }

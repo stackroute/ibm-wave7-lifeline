@@ -2,7 +2,7 @@
   <mat-toolbar color="primary">
       <mat-toolbar-row>
           <div class="logo">
-            <img src="assets/images/logo1.png" width="100" height="109"  alt="App Logo">
+            <img src="assets/images/logo2.png" width="100" height="109"  alt="App Logo">
           </div>
           <div class="title">Lifeline</div>
           <div class="spacer"></div>
@@ -10,19 +10,20 @@
               <a style="color: white" routerLink=''>Home</a>
               <a [matMenuTriggerFor]="menu">About Us</a>  
               <mat-menu #menu="matMenu">
-                <button mat-menu-item ><a href="#aims"> Aims and Objectives</a> </button>
-                <button mat-menu-item ><a href="#terms">Terms and Conditions</a></button>
+                <button mat-menu-item [routerLink]="['/aimsandobjectives']" > Aims and Objectives</button>
+                <button mat-menu-item [routerLink]="['/termsandconditions']">Terms and Conditions</button>
               </mat-menu>
               <a [matMenuTriggerFor]="menu1">Learn</a> 
               <mat-menu #menu1="matMenu">
-                  <button mat-menu-item><a href="#donate">What can you donate</a></button>
-                  <button mat-menu-item><a href="#myths">Myths</a></button>
+                  <button mat-menu-item [routerLink]="['/whatcanyoudonate']">What can you donate</button>
+                  <button mat-menu-item [routerLink]="['/myths']">Myths</button>
               </mat-menu>
-          </div>
+            </div>
           
           
           <app-search *ngIf="!loggedIn"></app-search>
           <app-account></app-account>
+        
       </mat-toolbar-row>
   </mat-toolbar>
 </header>

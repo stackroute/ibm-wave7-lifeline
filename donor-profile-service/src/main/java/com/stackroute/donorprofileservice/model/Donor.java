@@ -83,7 +83,6 @@ public class Donor {
 	
 	private List<Form> formList;
 	
-	@NotNull(message = "createdDate is mandatory")
 	private Date createdDate;
 }
 

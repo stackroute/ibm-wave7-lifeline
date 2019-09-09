@@ -1,10 +1,28 @@
-.footer
+
+.spacer {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex:1 1 auto;
+    height: 1cm;
+   }
+
+
+
+/* .footer
 {
-    margin-top: auto;
-    bottom: 0;
+    margin-top:auto;
+    margin-bottom: 0cm;
     background-color:black;
     height: 2cm;
     align-self: flex-end;
+} */
+.footer
+{
+bottom: 0;
+background-color:black;
+height: 3cm;
+position:relative;
+width:100%;
 }
 .mat-icon
 {

@@ -78,7 +78,7 @@ public class Recepient {
     @NotNull(message = "bloodGroup number is mandatory")
     private String bloodGroup;
     
-    @NotNull(message = "createdDate is mandatory")
+//    @NotNull(message = "createdDate is mandatory")
     private Date createdDate;
     
     private Request request;

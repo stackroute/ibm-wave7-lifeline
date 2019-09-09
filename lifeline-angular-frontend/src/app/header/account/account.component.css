@@ -5,6 +5,16 @@
 
 mat-icon
 {
-    margin: 40px 20px 5px 50px;
+    margin: 30px 20px 5px 50px;
     font-size: 1.4cm;
+}
+.login{
+    font-size: 20px;
+    
+    margin: 60px 5px 0px 50px;
+    font-weight: bold;
+   
+}
+.log{
+    margin-top: 1.5em;
 }
