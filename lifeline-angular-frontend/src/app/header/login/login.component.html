@@ -2,30 +2,30 @@
   <div class="loginContainer" fxLayout="column">
     <br>
     <mat-card>
-    <h3>Login</h3>
-    <form [formGroup]="loginForm">    
+      <h3>Login</h3>
+      <form [formGroup]="loginForm">    
+        <div>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Username" formControlName="username" name="username" required>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Password" formControlName="password" type="password" name="password" required>
+          </mat-form-field>
+        </div>
+      </form>
       <div>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Username" formControlName="username" name="username" required>
-        </mat-form-field>
+        <button mat-raised-button (click)="loginUser()" color="primary" data-dismiss="loginContainer">Login</button>
+      </div>
+      <br/>
+      <div>
+        <p>Forgot password?</p>
       </div>
       <div>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Password" formControlName="password" type="password" name="password" required>
-        </mat-form-field>
+        <button mat-raised-button [routerLink]="['/forgotPassword']" target="_self">Click Here</button>
       </div>
-    </form>
-    <div>
-      <button mat-raised-button (click)="loginUser()" color="primary" data-dismiss="loginContainer">Login</button>
-    </div>
-    <br/>
-    <div>
-      <p>Forgot password?</p>
-    </div>
-    <div>
-      <button mat-raised-button [routerLink]="['/forgotPassword']" target="_self">Click Here</button>
-    </div>
-  </mat-card>
+    </mat-card>
     <br/>
   </div>
 </div>

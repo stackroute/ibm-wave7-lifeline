@@ -25,7 +25,7 @@ export class AccountComponent implements OnInit {
 
   openDialog(userType): void {
     const dialogRef = this.dialog.open(LoginComponent, {
-      width: '350px',
+      width: '500px',
       data: userType 
     });
 

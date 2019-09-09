@@ -5,6 +5,7 @@
 
    /* background-color:lightblue; */
     background: #EFE7F1;  /* fallback for old browsers */
+height: 12cm;
 }
 .carousel-inner img {
     border-radius: 50%;

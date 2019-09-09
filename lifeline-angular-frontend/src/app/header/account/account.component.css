@@ -9,10 +9,10 @@ mat-icon
     font-size: 1.4cm;
 }
 .login{
-    font-size: 20px;
-    
-    margin: 60px 5px 0px 50px;
+    font-size: 18px;
+    /* margin: 60px 5px 0px 50px; */
     font-weight: bold;
+    margin-top: 1cm ;
    
 }
 .log{
