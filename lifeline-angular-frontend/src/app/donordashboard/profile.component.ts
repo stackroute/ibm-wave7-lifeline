@@ -4,10 +4,13 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 import { MatSnackBar } from '@angular/material';
+import { Chart } from 'chart.js';
+import { ReportgenerationserviceService } from '../service/reportgenerationservice.service';
 
 export interface Section {
   name: string;
   updated: Date;
+ 
 }
 @Component({
   selector: 'app-profile',
@@ -19,7 +22,11 @@ export class ProfileComponent implements OnInit {
   public profileForm: FormGroup;
   private donorId;
   durationInSeconds = 5;
-  constructor(private route:ActivatedRoute,private router:Router,private donorProfileService:DonorProfileService, private _snackBar: MatSnackBar) { }
+  BarChart = [];
+  LineChart=[];
+  organdonationreport;
+  donorreport;
+  constructor(private _reports:ReportgenerationserviceService,private route:ActivatedRoute,private router:Router,private donorProfileService:DonorProfileService, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -142,5 +149,113 @@ export class ProfileComponent implements OnInit {
     this._snackBar.openFromComponent(SnackBarComponent, {
       duration: this.durationInSeconds * 1000,
     });
+
+    this._reports.donorreports()
+      .subscribe(res => {this.donorreport=res
+      // {
+      //   let donor_id=res['list'].map(res=>res.main.id)
+      //   console.log(res);
+  
+        // let noofdonors=[]
+        // donor_id.forEach((res)=>{
+        //   let donorid=new Date(res*10)
+        //   noofdonors.push(donorid.toLocaleTimeString('en',{year:'numeric',month:'short',day:'numeric'}))
+        // })
+        console.log(this.donorreport);
+      this.BarChart = new Chart('barChart',
+        {
+          type: 'bar',
+          animationEnabled: true,
+          data:
+          {
+            labels: ["Number of donors registered"],
+            datasets:
+              [{
+                // label: 'number of donors registered in each month',
+                // data: [9, 7, 3, 5, 10, 15, 16, 62, , 3, 1, 9],
+                // data: this.donorreport,
+                data:[this.donorreport],
+                // fill: false,
+                // lineTension: 0.7,
+                borderColor: "blue",
+                borderWidth: 2
+              }]
+          },
+          options:
+          {
+            title: {
+              text: "",
+              display: true,
+              responsive: true
+            },
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true,
+                  min: 0,
+                  max: 50,
+                  stepSize: 5,
+                }
+              }]
+  
+            }
+  
+  
+          }
+        }
+      );
+      });
+
+
+    this._reports.organdonationreports()
+    .subscribe(res => {
+      this.organdonationreport=res
+      console.log(this.organdonationreport);
+      this.BarChart = new Chart('barChart1',
+      {
+        type: 'line',
+        animationEnabled: true,
+        data:
+        {
+          labels: [ "Blood","BoneMarrow","Cornea","Heart","Kidney","Liver","Lungs","Platelet"],
+          datasets:
+            [{
+              // label: 'number of recepients registered in each month',
+              
+              data: [this.organdonationreport[0],this.organdonationreport[1],this.organdonationreport[2],this.organdonationreport[3],this.organdonationreport[4],this.organdonationreport[5],this.organdonationreport[6],this.organdonationreport[7]],
+              fill: false,
+              lineTension: 0.2,
+              borderColor: "blue",
+              borderWidth: 2
+            }]
+        },
+        options:
+        {
+          title: {
+            text: "",
+            display: true,
+            responsive: true
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+                min: 0,
+                max: 50,
+                stepSize: 5,
+                // suggestedMin: 0,
+                // suggestedMax: 100
+              }
+            }]
+  
+          }
+  
+  
+        }
+      }
+    );
+  });
+  
+    
   }
 }

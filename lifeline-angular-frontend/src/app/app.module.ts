@@ -45,6 +45,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ChatbuttonComponent } from './donordashboard/chatbutton/chatbutton.component';
 import {MatBottomSheet} from '@angular/material/bottom-sheet';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import { LandingpagereportsComponent } from './landingpagereports/landingpagereports.component';
+import { DonordashboardreportsComponent } from './donordashboardreports/donordashboardreports.component';
 
 //  import { EmbedVideoService } from 'ngx-embed-video';
 @NgModule({
@@ -74,6 +76,8 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
     SnackBarComponent,
     ChatcomponentComponent,
     ChatbuttonComponent,
+    LandingpagereportsComponent,
+    DonordashboardreportsComponent,
    
     
   ],
