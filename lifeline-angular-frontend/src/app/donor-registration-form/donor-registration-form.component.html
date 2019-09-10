@@ -330,7 +330,16 @@
              </div>
         </mat-checkbox> -->
 
-
+        <div formGroupName="forms">
+            <div>
+                <a href="https://www.notto.gov.in/download-forms.htm">Download Donor forms</a>
+            </div>
+            <div>
+                <label>
+                    <input type="file" formControlName="form" (change)="FileSelected($event)">
+                </label>
+            </div>
+        </div>
         <button class="submit-button" mat-button type="submit" (click)="register()">Register</button>
     </form>
 </mat-card>

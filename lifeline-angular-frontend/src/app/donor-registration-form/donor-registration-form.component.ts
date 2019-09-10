@@ -128,13 +128,13 @@ export class DonorRegistrationFormComponent implements OnInit {
   register() {
     console.log("hello");
     if (this.registrationForm.valid) {
-      // this.currentFileUpload = this.selectedFiles.item(0);
-      // this.donorProfileService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
-      //   if (event instanceof HttpResponse) {
-      //     console.log('File is completely uploaded!');
-      //   }
-      // });
-      // this.selectedFiles = undefined;
+      this.currentFileUpload = this.selectedFiles.item(0);
+      this.donorProfileService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+        if (event instanceof HttpResponse) {
+          console.log('File is completely uploaded!');
+        }
+      });
+      this.selectedFiles = undefined;
       this.donorProfileService.saveDonor(this.registrationForm.value).subscribe(data => {
         this.donor = data
         this.router.navigate(['']);
