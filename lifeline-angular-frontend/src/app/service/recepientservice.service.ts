@@ -20,11 +20,12 @@ export class RecepientserviceService {
   getRecepientDetails(id): Observable<Recepient>{
     return this.httpClient.get<Recepient>(this.RecepientUrl+"/" + id);
   }
+  
 
   public updateRecepient(recepient:Recepient , id) {
     let updateUrl = 'http://localhost:8083/api/v1/recepient';
     updateUrl = updateUrl+ '/'+id;
-    return this.httpClient.put<Donor>(updateUrl, recepient);
+    return this.httpClient.put<Recepient>(updateUrl, recepient);
   }
    public getRecepientById(id: number):Observable<Recepient>{
      return this.httpClient.get<Recepient>(this.RecepientUrl + "/" + id);
@@ -34,7 +35,10 @@ export class RecepientserviceService {
     console.log()
     return this.httpClient.get<Recepient>(this.RecepientUrl+ "/" + id);
   }
-
+  private emailUrl = "http://localhost:8083/api/v1/verify"
+  sendMail(id): Observable<any> {
+    return this.httpClient.post<any>(this.emailUrl, id);
+  }
 
   errorHandler(error: HttpErrorResponse) {
     return throwError(error.message || 'server error');

@@ -47,6 +47,9 @@ import {MatBottomSheet} from '@angular/material/bottom-sheet';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { LandingpagereportsComponent } from './landingpagereports/landingpagereports.component';
 import { DonordashboardreportsComponent } from './donordashboardreports/donordashboardreports.component';
+import { EmailverificationComponent } from './emailverification/emailverification.component';
+import { VerificationAlertComponent } from './recepientregistrationformcomponent/verification-alert/verification-alert.component';
+
 
 //  import { EmbedVideoService } from 'ngx-embed-video';
 @NgModule({
@@ -78,6 +81,8 @@ import { DonordashboardreportsComponent } from './donordashboardreports/donordas
     ChatbuttonComponent,
     LandingpagereportsComponent,
     DonordashboardreportsComponent,
+    EmailverificationComponent,
+    VerificationAlertComponent,
    
     
   ],
@@ -110,7 +115,8 @@ import { DonordashboardreportsComponent } from './donordashboardreports/donordas
   entryComponents: [
     SnackBarComponent,
     ChatbuttonComponent,
-    ChatcomponentComponent
+    ChatcomponentComponent,
+    VerificationAlertComponent
   ],
   providers: [MatBottomSheet],
   bootstrap: [AppComponent]

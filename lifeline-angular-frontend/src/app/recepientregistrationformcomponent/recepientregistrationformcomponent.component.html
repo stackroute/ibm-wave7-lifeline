@@ -34,21 +34,23 @@
             </div>
 
             <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px" fxLayoutGap.gt-md="50px"
-                fxLayoutAlign="space-around center">
-                <mat-form-field appearance="legacy">
-                    <mat-label>Password</mat-label>
-                    <input matInput formControlName="password" maxlength="16">
-                    <mat-error *ngIf="this.registrationForm.controls['password'].hasError('required')">Password is required</mat-error>
-                    <mat-error *ngIf="this.registrationForm.controls['password'].hasError('pattern')">Please Enter Valid Password</mat-error>
-                </mat-form-field>
-                <mat-form-field appearance="legacy">
-                    <mat-label>Confirm Password</mat-label>
-                    <input matInput formControlName="confirmPassword">
-                    <mat-error *ngIf="this.registrationForm.hasError('notSame')">Confirm password should match with
-                        password</mat-error>
-                </mat-form-field>
-            </div>
-
+            fxLayoutAlign="space-around center">
+            <mat-form-field appearance="legacy">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput formControlName="password" minlength="8" maxlength="16">
+                <mat-error *ngIf="this.registrationForm.controls['password'].hasError('required')">Password is
+                    required</mat-error>
+                <mat-error *ngIf="this.registrationForm.controls['password'].hasError('pattern')">Password should
+                    contain atleast a uppercase, a lowercase, a digit and a symbol. It should between 8-16
+                    characters</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="legacy">
+                <mat-label>Confirm Password</mat-label>
+                <input type="password" matInput formControlName="confirmPassword" minlength="8" maxlength="16">
+                <mat-error *ngIf="this.registrationForm.hasError('notSame')">Confirm password should match with
+                    password</mat-error>
+            </mat-form-field>
+        </div>
             <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px" fxLayoutGap.gt-md="50px"
                 fxLayoutAlign="space-around center">
                 <mat-form-field appearance="legacy">
@@ -131,7 +133,7 @@
                     </mat-form-field>
                 </div>
         
-        <button class="submit-button" mat-button type="submit" (click)="register()">Register</button>
+        <button class="submit-button" mat-button type="submit" name="register" (click)="register()">Register</button>
   
     </form>
 </mat-card>

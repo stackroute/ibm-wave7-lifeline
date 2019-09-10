@@ -66,6 +66,10 @@ public class DAOUser {
     private Long id;
 
     @Column
+    @JsonProperty("userType")
+     private  String role;
+
+    @Column
     @JsonProperty("email")
     private String username;
 
@@ -74,10 +78,17 @@ public class DAOUser {
     @JsonProperty("password")
     private String password;
 
-    @Column
-    @JsonProperty("userType")
-    private String role;
+    public String getEmailVerified() {
+        return emailVerified;
+    }
 
+    public void setEmailVerified(String emailVerified) {
+        this.emailVerified = emailVerified;
+    }
+
+    @Column
+    @JsonProperty("isEmailVerified")
+     private  String emailVerified;
 
     public long getId() {
         return id;
@@ -128,13 +139,14 @@ public class DAOUser {
 //    }
 
 
-    @Override
-    public String toString() {
-        return "Users{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                '}';
+//    @Override
+//    public String toString() {
+//        return "Users{" +
+//                "id=" + id +
+//                ", username='" + username + '\'' +
+//                ", password='" + password + '\'' +
+//                ", role='" + role + '\'' +
+////                ", emailVerified='" + emailVerified + '\'' +
+//                '}';
     }
-}
+

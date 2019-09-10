@@ -11,13 +11,19 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class RecepientServiceImpl implements RecepientService {
+    @Autowired
+    JavaMailSender javaMailSender;
 
     @Autowired
     MongoOperations mongoOperations;
@@ -48,19 +54,17 @@ public class RecepientServiceImpl implements RecepientService {
         try {
             recepient.setId(getNextSequenceId("recepient_sequence"));
             return recepientRepository.save(recepient);
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             throw new RecepientProfileAlreadyExistsException();
         }
     }
 
 
-
     @Override
     public Recepient deleteRecepientProfile(long id) throws RecepientProfileNotFoundException {
         Optional<Recepient> recepientOptional;
-        if(recepientRepository.existsById(id) == true) {
+        if (recepientRepository.existsById(id) == true) {
             recepientOptional = recepientRepository.findById(id);
             recepientRepository.deleteById(id);
             return recepientOptional.get();
@@ -72,7 +76,7 @@ public class RecepientServiceImpl implements RecepientService {
     @Override
     public Recepient updateRecepientProfile(long id, Recepient recepient) throws RecepientProfileNotFoundException {
 
-        if(recepientRepository.existsById(id) == true) {
+        if (recepientRepository.existsById(id) == true) {
             return recepientRepository.save(recepient);
 
         } else {
@@ -91,5 +95,19 @@ public class RecepientServiceImpl implements RecepientService {
         return seqId.getSeq();
     }
 
+    @Override
+    public String findById(long id) throws MessagingException {
+        Recepient recepient = recepientRepository.findById(id).get();
+        if (recepientRepository.findById(id).isPresent()) {
+            MimeMessage message = javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            helper.setTo(recepient.getEmail());
+            helper.setSubject("SpringBootApplication");
+            helper.setText("http://172.23.238.185:4200/id?id="+id);
+            javaMailSender.send(message);
+            return "successfully sent email";
 
+        }
+        return "hello";
+    }
 }

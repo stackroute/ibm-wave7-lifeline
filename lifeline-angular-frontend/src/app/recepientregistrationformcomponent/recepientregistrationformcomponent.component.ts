@@ -3,6 +3,9 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { DonorProfileService } from '../service/donor-profile.service';
 import { RecepientserviceService } from '../service/recepientservice.service';
 import { Router } from '@angular/router';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { VerificationAlertComponent } from './verification-alert/verification-alert.component';
+import { RegistercardsComponent } from '../mainpage/registercards/registercards.component';
 
 @Component({
   selector: 'app-recepientregistrationformcomponent',
@@ -16,7 +19,7 @@ export class RecepientregistrationformcomponentComponent implements OnInit {
   errorMsg: string;
   maxDate=new Date();
 
-  constructor(private fb: FormBuilder, private recepientprofileservice:RecepientserviceService,private router:Router) { }
+  constructor(private fb: FormBuilder, private recepientprofileservice:RecepientserviceService,private router:Router,public dialog: MatDialog) { }
 
 
   ngOnInit() {
@@ -25,8 +28,9 @@ export class RecepientregistrationformcomponentComponent implements OnInit {
       lastName: ['', [Validators.required,Validators.maxLength(40)]],
       phoneNumber: ['', [Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern('^$|[0-9]{10}')]],
       email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
-      password: ['', [Validators.required, Validators.maxLength(16),Validators.pattern('^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[#$^+=!*()@%&]).{8,16}$')]],
-      confirmPassword: ['', Validators.required],
+      password: ['', [Validators.required,Validators.minLength(8), Validators.maxLength(16),
+      Validators.pattern('(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$')]],
+      confirmPassword: ['', [Validators.required, Validators.maxLength(16)]],
       aadhar: ['', [Validators.required,Validators.maxLength(12),Validators.minLength(12),Validators.pattern('^$|[0-9]{12}')]],
       dob: ['', Validators.required],
       gender: ['', Validators.required],
@@ -49,13 +53,27 @@ export class RecepientregistrationformcomponentComponent implements OnInit {
   register() {
     console.log(this.registrationForm);
     this.recepientprofileservice.saveRecepient(this.registrationForm.value).subscribe(data => {
-        this.recepient = data,
-        this.router.navigate(['/login']); 
-      },
+        this.recepient = data
+        const dialogRef = this.dialog.open(VerificationAlertComponent, {
+          width: '250px',});
+          dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+          });
+          
+          this.recepientprofileservice.sendMail(this.recepient.id)
+          .subscribe(data => {
+            console.log(data);
+          });
+          },
+    
+      
       error => {
         this.errorMsg = error
       });
 
   }
-   
+  
+    
+
+
 }

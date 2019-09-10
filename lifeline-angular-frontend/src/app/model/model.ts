@@ -61,13 +61,22 @@ interface Recepient {
     aadhar: string;
     address: Address;
     bloodGroup: string;
+    createdDate: string;
     dob: string;
     email: string;
     firstName: string;
     gender: string;
     id: number;
+    isEmailVerified: string;
     lastName: string;
     password: string;
     phoneNumber: string;
+    request: Request;
     userType: string;
-}
+  }
+  
+  interface Request {
+    id: number;
+    requestedOrganList: string[];
+    status: string;
+  }

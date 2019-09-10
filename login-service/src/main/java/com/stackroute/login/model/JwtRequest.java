@@ -5,6 +5,7 @@ public class JwtRequest {
 
     private String username;
     private String password;
+
 //    private String role;
 
     //need default constructor for JSON Parsing

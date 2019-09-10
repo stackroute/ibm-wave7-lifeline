@@ -14,8 +14,8 @@ public class Consumer {
 
     @Autowired
     UserDao userDao;
-    @Autowired
 
+    @Autowired
     private PasswordEncoder passwordEncoder;
 //    @KafkaListener(topics="DonorRegistration",groupId = "group_id")
 //    public void check(String message) throws IOException {
@@ -23,12 +23,13 @@ public class Consumer {
 //    }
 
     @KafkaListener(topics="RecepientRegistration",groupId = "group_id")
-    public void consume(String daoUser) throws IOException {
+    public void consume(DAOUser daoUser) throws IOException {
         System.out.println("Inside Recipient");
-        DAOUser obj=new ObjectMapper().readValue(daoUser,DAOUser.class);
-        System.out.println(passwordEncoder.encode(obj.getPassword()));
-        obj.setPassword(passwordEncoder.encode(obj.getPassword()));
-        userDao.save(obj);
+        System.out.println(daoUser);
+        DAOUser obj=new DAOUser();
+        daoUser.setPassword(passwordEncoder.encode(daoUser.getPassword()));
+        System.out.println(daoUser.getEmailVerified());
+        userDao.save(daoUser);
     }
 
     @KafkaListener(topics="DonorRegistration",groupId = "group_id")

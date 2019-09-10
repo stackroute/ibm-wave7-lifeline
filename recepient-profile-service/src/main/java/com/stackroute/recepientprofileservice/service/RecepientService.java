@@ -5,6 +5,7 @@ import com.stackroute.recepientprofileservice.exception.RecepientProfileNotFound
 import com.stackroute.recepientprofileservice.model.Recepient;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
 import java.util.List;
 
 @Service
@@ -22,4 +23,5 @@ public interface RecepientService {
 
     public long getNextSequenceId(String key);
 
+    String findById(long id) throws MessagingException;
 }

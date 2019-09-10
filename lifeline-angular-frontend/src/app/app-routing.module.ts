@@ -10,6 +10,7 @@ import { RecepientregistrationformcomponentComponent } from './recepientregistra
 import { ProfileComponent } from './donordashboard/profile.component';
 import { RecepientdashboardComponent } from './recepientdashboard/recepientdashboard.component';
 import { LoginComponent } from './header/login/login.component';
+import { EmailverificationComponent } from './emailverification/emailverification.component';
 
 const routes: Routes = [
   { path: '', component: MainpageComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path:'recepient',component:RecepientdashboardComponent},
   { path: 'login', component: LoginComponent},
   { path: 'logout', component: LoginComponent},
+  {path:'id',component:EmailverificationComponent}
 ];
 
 @NgModule({

@@ -66,7 +66,7 @@ public class RecepientControllerTest {
 
 
         recepient = new Recepient(103L,"recepient","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985,5,23),
-                "356478900928","male",address,"A+", new Date(), new Request());
+                "356478900928","male",address,"A+", new Date(), new Request(),null);
         recepientList = new ArrayList<>();
         recepientList.add(recepient);
     }
