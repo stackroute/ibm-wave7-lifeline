@@ -35,12 +35,12 @@ export class AuthenticateService {
     return this.httpClient.post<any>(this.apiUrl2, data);
   }
 
-  private apiUrl3 = "http://localhost:8080/forgot-password"
+  private apiUrl3 = "http://localhost:8082/forgot-password"
   forgotpassword(data: User): Observable<any> {
     return this.httpClient.post<any>(this.apiUrl3, data);
   }
 
-  private apiUrl4 = "http://localhost:8080/reset-password";
+  private apiUrl4 = "http://localhost:8082/reset-password";
   resetpassword(data: User): Observable<any> {
     return this.httpClient.post<any>(this.apiUrl4, data);
   }
