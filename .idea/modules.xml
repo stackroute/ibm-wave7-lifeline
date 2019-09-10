@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ibm-wave7-lifeline.iml" filepath="$PROJECT_DIR$/.idea/ibm-wave7-lifeline.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-server/config-server.iml" filepath="$PROJECT_DIR$/config-server/config-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/donor-profile-service/donor-profile-service.iml" filepath="$PROJECT_DIR$/donor-profile-service/donor-profile-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/eureka-server/eureka-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/form-store/form-store.iml" filepath="$PROJECT_DIR$/form-store/form-store.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ibm-wave7-lifeline.iml" filepath="$PROJECT_DIR$/ibm-wave7-lifeline.iml" />
+      <module fileurl="file://$PROJECT_DIR$/login-service/login-service.iml" filepath="$PROJECT_DIR$/login-service/login-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/recepient-profile-service/recepient-profile-service.iml" filepath="$PROJECT_DIR$/recepient-profile-service/recepient-profile-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/recommendation-service/recommendation-service.iml" filepath="$PROJECT_DIR$/recommendation-service/recommendation-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reportservice/reportservice.iml" filepath="$PROJECT_DIR$/reportservice/reportservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zuul-api/zuul-api.iml" filepath="$PROJECT_DIR$/zuul-api/zuul-api.iml" />
     </modules>
   </component>
 </project>

@@ -16,6 +16,7 @@ export class RecepientdashboardComponent implements OnInit {
   public profileForm: FormGroup;
   private recepientId;
   public recepients:Recepient;
+  private donors: Object;
   durationInSeconds = 5;
   constructor(private route:ActivatedRoute,private router:Router,private recepientProfileService:RecepientserviceService,private _snackBar: MatSnackBar) {}
 
@@ -41,6 +42,9 @@ export class RecepientdashboardComponent implements OnInit {
         let currentDate = new Date(this.recepients.dob);
         this.profileForm.controls['dateOfBirth'].setValue(currentDate);
         this.profileForm.controls['bloodGroup'].setValue(this.recepients.bloodGroup);
+        this.recepientProfileService.getDonorRecommendationsForRecepient(this.recepients.bloodGroup).subscribe(data => {
+          this.donors = data
+        });
        });
     });
   }

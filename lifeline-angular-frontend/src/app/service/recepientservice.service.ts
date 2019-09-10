@@ -41,6 +41,11 @@ export class RecepientserviceService {
     return this.httpClient.post<any>(this.emailUrl, id);
   }
 
+  getDonorRecommendationsForRecepient(bloodGroup: string):Observable<Recepient>{
+    let resultUrl = 'http://localhost:8084/results'
+    return this.httpClient.get<Recepient>(resultUrl+ "/" + bloodGroup);
+  }
+
   errorHandler(error: HttpErrorResponse) {
     return throwError(error.message || 'server error');
   }

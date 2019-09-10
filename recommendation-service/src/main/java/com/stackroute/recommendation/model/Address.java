@@ -1,25 +1,24 @@
-package com.stackroute.recepientprofileservice.model;
+package com.stackroute.recommendation.model;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
 
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.NotNull;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Address {
-    @NotNull
+
+    @Id
+    @GeneratedValue
+    private Long id;
     private String addressLine1;
-    @NotNull
     private String addressLine2;
-    @NotNull
     private String city;
-    @NotNull
     private String state;
-    @NotNull
-    @Pattern(regexp="(^$|[0-9]{6})")
     private String pinCode;
 }
