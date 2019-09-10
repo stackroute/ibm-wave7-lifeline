@@ -12,10 +12,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
-import javax.validation.constraints.Null;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ReportServiceImplementation implements ReportService {
@@ -52,7 +50,9 @@ public class ReportServiceImplementation implements ReportService {
         int recepientCount = 0;
         List list = new ArrayList();
         List<Report> reports = reportRepository.findAll();
+        System.out.println(reports);
         for (Report report : reports) {
+            System.out.println(report);
             if (report.getUserType().equals("recepient")) {
                 recepientCount++;
             }

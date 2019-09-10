@@ -52,8 +52,9 @@ public class ReportController {
 
         try {
             responseEntity = new ResponseEntity<List>(reportService.countRecepientRegistrations(), HttpStatus.OK);
+            System.out.println("api call success");
         } catch (Exception exception) {
-
+            exception.printStackTrace();
             responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
         }
         return responseEntity;

@@ -47,12 +47,6 @@
                         <input matInput placeholder="Pincode" formControlName="pinCode">
                     </mat-form-field>
                     <mat-form-field>
-                        <input matInput placeholder="Height" formControlName="height">
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput placeholder="Weight" formControlName="weight">
-                    </mat-form-field>
-                    <mat-form-field>
                         <input matInput placeholder="Gender" formControlName="gender">
                     </mat-form-field>
                     <br>
@@ -90,7 +84,6 @@
             </form>
         </div>
     </mat-tab>
-
     <mat-tab label="Profile" class="tab">
 
         <mat-card>
@@ -120,36 +113,32 @@
                 </mat-list-item>
                 <mat-list-item>
                     <h4 class="h4-tag">Aadhar Number: {{donor.aadhar}}</h4>
-
                 </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag">Address: {{donor.address.addressLine1}} {{donor.address.addressLine2}},
-                        {{donor.address.city}},{{donor.address.state}},pincode-{{donor.address.pinCode}}</h4>
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag">Guardian details: {{donor.guardianList.name}}
-                        Email- {{donor.guardianList.email}}
-                        Phone no- {{donor.guardianList.phoneNumber}}
-                        Relation- {{donor.guardianList.relation}}
-                        Address- {{donor.guardianList.address}} </h4>
 
+                <mat-list-item>
+                    <h4 class="h4-tag">
+                        Address: {{donor.address.addressLine1}} {{donor.address.addressLine2}},
+                        {{donor.address.city}},{{donor.address.state}},pincode-{{donor.address.pinCode}}
+                    </h4>
+                </mat-list-item>
+                <br>
+                <mat-list-item>
+                    <h4 class="h4-tag">Guardian details:
+                        <div *ngFor="let guardian of donor.guardianList">
+                            Email- {{guardian.email}}<br>
+                            Phone no- {{guardian.phoneNumber}}<br>
+                            Relation- {{guardian.relation}}<br>
+                            Address- {{guardian.address.addressLine1}} {{guardian.address.addressLine2}},
+                            {{guardian.address.city}},{{guardian.address.state}},pincode-{{guardian.address.pinCode}}<br>
+                        </div>
+                    </h4>
                 </mat-list-item>
             </mat-list>
             <mat-divider></mat-divider>
-
             <mat-list>
                 <h3 mat-subheader>Medical Details:</h3>
                 <mat-list-item>
                     <h4 class="h4-tag">Blood group: {{donor.medicalInfo.bloodGroup}} </h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag">Height: {{donor.medicalInfo.height}}</h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag">Weight: {{donor.medicalInfo.weight}}</h4>
-
                 </mat-list-item>
                 <mat-list-item>
                     <h4 class="h4-tag">Diseases you have:
@@ -180,49 +169,44 @@
                 <mat-list-item>
                     <h4 class="h4-tag">Organs you want to donate:</h4>
                 </mat-list-item>
-                <mat-checkbox [disabled]="donor.medicalInfo.organs[0].organ"
+                <mat-checkbox [disabled]="donor.medicalInfo.organs[0].name"
                     [checked]="donor.medicalInfo.organs[0].donateOrNot">Cornea</mat-checkbox>
-                <mat-checkbox [disabled]="donor.medicalInfo.organs[1].organ"
+                <mat-checkbox [disabled]="donor.medicalInfo.organs[1].name"
                     [checked]="donor.medicalInfo.organs[1].donateOrNot">
                     Blood</mat-checkbox>
-                <mat-checkbox [disabled]="donor.medicalInfo.organs[2].organ"
+                <mat-checkbox [disabled]="donor.medicalInfo.organs[2].name"
                     [checked]="donor.medicalInfo.organs[2].donateOrNot">
                     Liver</mat-checkbox>
-                <mat-checkbox [disabled]="donor.medicalInfo.organs[3].organ"
+                <mat-checkbox [disabled]="donor.medicalInfo.organs[3].name"
                     [checked]="donor.medicalInfo.organs[3].donateOrNot">
                     Heart</mat-checkbox>
-                <mat-checkbox [disabled]="donor.medicalInfo.organs[4].organ"
+                <mat-checkbox [disabled]="donor.medicalInfo.organs[4].name"
                     [checked]="donor.medicalInfo.organs[4].donateOrNot">Kidney</mat-checkbox>
-                <mat-checkbox [disabled]="donor.medicalInfo.organs[5].organ"
+                <mat-checkbox [disabled]="donor.medicalInfo.organs[5].name"
                     [checked]="donor.medicalInfo.organs[5].donateOrNot">Platelet</mat-checkbox>
-                <mat-checkbox [disabled]="donor.medicalInfo.organs[6].organ"
+                <mat-checkbox [disabled]="donor.medicalInfo.organs[6].name"
                     [checked]="donor.medicalInfo.organs[6].donateOrNot">
                     Lung</mat-checkbox>
-                <mat-checkbox [disabled]="donor.medicalInfo.organs[7].organ"
+                <mat-checkbox [disabled]="donor.medicalInfo.organs[7].name"
                     [checked]="donor.medicalInfo.organs[7].donateOrNot">Bonemarrow</mat-checkbox>
             </mat-list>
         </mat-card>
 
     </mat-tab>
     <mat-tab label="Reports">
-        
-           
+
+
 
         <div class="graphs">
-        
+
             <table>
-   <tr>
-       <td> <canvas id="barChart" width="400" height="400" ></canvas></td>
-     <td> <canvas id="barChart1" width="400" height="400" ></canvas></td>
-    
-     
-     
-   </tr>
-   
- 
- </table>  
- </div> 
- 
+                <tr>
+                    <td> <canvas id="barChart" width="400" height="400"></canvas></td>
+                    <td> <canvas id="barChart1" width="400" height="400"></canvas></td>
+                </tr>
+            </table>
+        </div>
+
     </mat-tab>
 
     <mat-tab label="Withdraw">
@@ -242,15 +226,9 @@
             </div>
         </div>
     </mat-tab>
-    <mat-tab label="Recommendation">
-        <div>
-            Recommendation
-        </div>
-    </mat-tab>
     <mat-tab label="Chat">
         <div>
             <app-chatbutton></app-chatbutton>
         </div>
-          
-        </mat-tab>
+    </mat-tab>
 </mat-tab-group>

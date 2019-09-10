@@ -13,7 +13,7 @@ public class Consumer {
 @Autowired
 ReportRepository reportRepository;
 
-    @KafkaListener(topics="RecepientRegistration",groupId = "group_id")
+    @KafkaListener(topics="RecepientRegistration",groupId = "report_group_id")
     public void consume(Report report) throws IOException {
         System.out.println("Inside Recipient");
         System.out.println(report);
@@ -23,7 +23,7 @@ ReportRepository reportRepository;
         reportRepository.save(obj);
     }
 
-    @KafkaListener(topics="DonorRegistration",groupId = "group_id")
+    @KafkaListener(topics="DonorRegistration",groupId = "report_group_id")
     public void consumedonor(Report report) throws IOException {
         System.out.println("Inside Donor");
         System.out.println(report);
