@@ -1,11 +1,15 @@
-interface Donor {
+export interface Donor {
     aadhar: string;
     address: Address;
+    createdDate: string;
     dob: string;
+    donorId: string;
     email: string;
+    emailVerified: boolean;
     firstName: string;
+    formList?: (FormListEntity)[] | null;
     gender: string;
-    guardianList: GuardianList[];
+    guardianList?: (GuardianListEntity)[] | null;
     id: number;
     lastName: string;
     medicalInfo: MedicalInfo;
@@ -13,21 +17,37 @@ interface Donor {
     phoneNumber: string;
     userType: string;
 }
-
-interface MedicalInfo {
+export interface Address {
+    addressLine1: string;
+    addressLine2: string;
+    city: string;
+    pinCode: string;
+    state: string;
+}
+export interface FormListEntity {
+    data: string;
+    fileName: string;
+    id: number;
+}
+export interface GuardianListEntity {
+    address: Address;
+    email: string;
+    name: string;
+    phoneNumber: string;
+    relation: string;
+}
+export interface MedicalInfo {
     bloodGroup: string;
+    bodyMassIndex: number;
     disease: Disease;
-    height: number;
-    organs: Array<Organs>;
-    weight: number;
+    hlaType: string;
+    liverAttenuationIndex: number;
+    lungSize: number;
+    organs?: (OrgansEntity)[] | null;
+    plateletCount: number;
+    rhFactor: number;
 }
-
-interface Organs {
-    organ: string;
-    donateOrNot: boolean;
-}
-
-interface Disease {
+export interface Disease {
     cancer: boolean;
     diabetes: boolean;
     fits: boolean;
@@ -40,24 +60,14 @@ interface Disease {
     rabies: boolean;
     tuberculosis: boolean;
 }
-
-interface GuardianList {
-    address: Address;
-    email: string;
+export interface OrgansEntity {
+    donateOrNot: boolean;
+    id: number;
     name: string;
-    phoneNumber: string;
-    relation: string;
 }
 
-interface Address {
-    addressLine1: string;
-    addressLine2: string;
-    city: string;
-    pinCode: string;
-    state: string;
-}
 
-interface Recepient {
+export interface Recepient {
     aadhar: string;
     address: Address;
     bloodGroup: string;

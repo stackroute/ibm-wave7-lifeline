@@ -97,6 +97,7 @@ public class DonorController {
 		ResponseEntity responseEntity;
 		try {
 			responseEntity = new ResponseEntity<Donor>(donorService.updateDonorProfile(id,donor), HttpStatus.OK);
+			this.kafkaTemplate.send(TOPIC,donor);
 			logger.info("update track api call success");
 		} catch (Exception e) {
 			responseEntity = new ResponseEntity<String>("Exception", HttpStatus.CONFLICT);
@@ -112,6 +113,9 @@ public class DonorController {
 		ResponseEntity responseEntity;
 		try {
 			responseEntity = new ResponseEntity<Donor>(donorService.deleteDonorProfile(id), HttpStatus.OK);
+			Donor donor = new Donor();
+			donor.setId(id);
+			this.kafkaTemplate.send(TOPIC,donor);
 			logger.info("delete track api call success");
 		} catch (Exception e) {
 			e.printStackTrace();

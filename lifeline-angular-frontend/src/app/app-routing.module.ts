@@ -19,12 +19,12 @@ const routes: Routes = [
   { path: 'whatcanyoudonate', component: DonationComponent },
   { path: 'myths', component: MythsComponent },
   { path: 'donor-registration', component: DonorRegistrationFormComponent },
-  { path:'recepient-registration',component:RecepientregistrationformcomponentComponent},
-  { path:'donor',component:ProfileComponent},
-  { path:'recepient',component:RecepientdashboardComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'logout', component: LoginComponent},
-  {path:'id',component:EmailverificationComponent}
+  { path: 'recepient-registration', component: RecepientregistrationformcomponentComponent },
+  { path: 'donor', component: ProfileComponent },
+  { path: 'recepient', component: RecepientdashboardComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LoginComponent },
+  { path: 'id', component: EmailverificationComponent }
 ];
 
 @NgModule({

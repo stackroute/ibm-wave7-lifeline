@@ -48,12 +48,21 @@
                 <mat-error *ngIf="this.registrationForm.controls['password'].hasError('pattern')">Password should
                     contain atleast a uppercase, a lowercase, a digit and a symbol. It should between 8-16
                     characters</mat-error>
+<<<<<<< Updated upstream
+=======
+                <mat-error *ngIf="this.registrationForm.controls['password'].invalid">invalid</mat-error>
+>>>>>>> Stashed changes
             </mat-form-field>
             <mat-form-field appearance="legacy">
                 <mat-label>Confirm Password</mat-label>
                 <input type="password" matInput formControlName="confirmPassword" maxlength="40">
                 <mat-error *ngIf="this.registrationForm.hasError('notSame')">Confirm password should match with
                     password</mat-error>
+<<<<<<< Updated upstream
+=======
+                <mat-error *ngIf="this.registrationForm.controls['confirmPassword'].invalid">invalid</mat-error>
+
+>>>>>>> Stashed changes
             </mat-form-field>
         </div>
 
@@ -251,7 +260,7 @@
                 fxLayoutAlign="space-around center">
                 <mat-form-field>
                     <mat-label>Blood Group</mat-label>
-                    <select matNativeControl formControlName="bloodGroup" required>
+                    <select matNativeControl formControlName="bloodGroup" >
                         <option value="A+">A+</option>
                         <option value="A-">A-</option>
                         <option value="B+">B+</option>
@@ -263,62 +272,73 @@
                     </select>
                 </mat-form-field>
                 <mat-form-field class="three-col-div" appearance="legacy">
-                    <mat-label>Height <i>(in cm)</i></mat-label>
-                    <input matInput formControlName="height">
+                    <mat-label>BMI</mat-label>
+                    <input matInput formControlName="bodyMassIndex">
                 </mat-form-field>
                 <mat-form-field class="three-col-div" appearance="legacy">
-                    <mat-label>Weight <i>(in kg)</i></mat-label>
-                    <input matInput formControlName="weight">
+                    <mat-label>Platelet Count <i>(in kg)</i></mat-label>
+                    <input matInput formControlName="plateletCount">
                 </mat-form-field>
             </div>
-
             <h6>Disease:</h6>
             <div formGroupName="disease">
                 <div>
-                    <mat-checkbox formControlName="hiv">HIV</mat-checkbox>
-                    <mat-checkbox formControlName="fits">Fits</mat-checkbox>
-                    <mat-checkbox formControlName="hepatitis">Hepatitis</mat-checkbox>
-                    <mat-checkbox formControlName="heartAttack">Heart Attack</mat-checkbox>
+                    <mat-checkbox formControlName="hiv" (change)="checkBoneMarrow" (change)="check()"
+                        (change)="checkkidney()" (change)="checkheartliver()" (change)="checkcornea()"
+                        (change)="checkLungs()">HIV</mat-checkbox>
+                    <mat-checkbox formControlName="fits" (change)="check()">Fits</mat-checkbox>
+                    <mat-checkbox formControlName="hepatitis" (change)="check()" (change)="checkBoneMarrow"
+                        (change)="checkkidney()" (change)="checkheartliver()" (change)="checkcornea()"
+                        (change)="checkLungs()">Hepatitis</mat-checkbox>
+                    <mat-checkbox formControlName="heartAttack" (change)="checkcornea()" (change)="checkkidney()"
+                        (change)="checkheartliver()" (change)="checkLungs()" (change)="checkBoneMarrow">Heart Attack
+                    </mat-checkbox>
                 </div>
                 <div>
-                    <mat-checkbox formControlName="rabies">Rabies</mat-checkbox>
-                    <mat-checkbox formControlName="tuberculosis">Tuberculosis</mat-checkbox>
-                    <mat-checkbox formControlName="hyperTension">Hypertension</mat-checkbox>
-                    <mat-checkbox formControlName="diabetes">Diabetes</mat-checkbox>
+                    <mat-checkbox formControlName="rabies" (change)="check()" (change)="checkBoneMarrow"
+                        (change)="checkkidney()" (change)="checkcornea()" (change)="checkheartliver()"
+                        (change)="checkLungs()">Rabies</mat-checkbox>
+                    <mat-checkbox formControlName="tuberculosis" (change)="check()">Tuberculosis</mat-checkbox>
+                    <mat-checkbox formControlName="hyperTension" (change)="check()">Hypertension</mat-checkbox>
+                    <mat-checkbox formControlName="diabetes" (change)="check()" (change)="checkheartliver()"
+                        (change)="checkkidney()">Diabetes</mat-checkbox>
                 </div>
                 <div>
-                    <mat-checkbox formControlName="cancer">Cancer</mat-checkbox>
-                    <mat-checkbox formControlName="kidneyDisease">Kidney Disease</mat-checkbox>
-                    <mat-checkbox formControlName="liverDisease">Liver Disease</mat-checkbox>
+                    <mat-checkbox formControlName="cancer" (change)="checkcornea()" (change)="checkkidney()"
+                        (change)="checkLungs()" (change)="checkheartliver()">Cancer</mat-checkbox>
+                    <mat-checkbox formControlName="kidneyDisease" (change)="checkLungs()" (change)="checkkidney()">
+                        Kidney Disease</mat-checkbox>
+                    <mat-checkbox formControlName="liverDisease" (change)="checkLungs()" (change)="checkkidney()">Liver
+                        Disease</mat-checkbox>
                 </div>
             </div>
             <h6>Organs:</h6>
             <div formGroupName="organs">
+                <div>
+                    <mat-checkbox [disabled]="organ[0]" formControlName="cornea">Cornea</mat-checkbox>
+                    <mat-checkbox [disabled]="organ[1]" formControlName="blood">Blood</mat-checkbox>
+                    <mat-checkbox [disabled]="organ[2]" formControlName="liver">Liver</mat-checkbox>
+                    <mat-checkbox [disabled]="organ[3]" formControlName="heart">Heart</mat-checkbox>
+                </div>
+                <div>
+                    <mat-checkbox [disabled]="organ[4]" formControlName="kidney">Kidney</mat-checkbox>
+                    <mat-checkbox [disabled]="organ[5]" formControlName="platelet">Platelet</mat-checkbox>
+                    <mat-checkbox [disabled]="organ[6]" formControlName="lungs">Lungs</mat-checkbox>
+                    <mat-checkbox [disabled]="organ[7]" formControlName="boneMarrow">Bone Marrow</mat-checkbox>
+                </div> 
+            </div>
+        </div>
 
-                <div>
-                    <mat-checkbox formControlName="cornea">Cornea</mat-checkbox>
-                    <mat-checkbox formControlName="blood">Blood</mat-checkbox>
-                    <mat-checkbox formControlName="liver">Liver</mat-checkbox>
-                    <mat-checkbox formControlName="heart">Heart</mat-checkbox>
-                </div>
-                <div>
-                    <mat-checkbox formControlName="kidney">Kidney</mat-checkbox>
-                    <mat-checkbox formControlName="platelet">Platelet</mat-checkbox>
-                    <mat-checkbox formControlName="lungs">Lungs</mat-checkbox>
-                    <mat-checkbox formControlName="boneMarrow">Bone Marrow</mat-checkbox>
-                </div>
-            </div>
-        </div>
-        <div formGroupName="forms">
-            <div>
-                <a href="https://www.notto.gov.in/download-forms.htm">Download Donor forms</a>
-            </div>
-            <div>
-                <label>
-                    <input type="file" formControlName="form" (change)="FileSelected($event)">
-                </label>
-            </div>
-        </div>
+        <!-- <mat-checkbox>
+             <div fxLayout="row"> 
+               <p> I hereby declare that I am a citizen of India and above 18 years of age
+                I hereby unequivocally authorize the removal of my organ / organs, mentioned above from my body after my
+                death for therapeutic purposes.<br />
+                I hereby confirm that all the above information is right and I choose to pledge my organs being in the
+                sane state of mind.</p>
+             </div>
+        </mat-checkbox> -->
+
 
         <button class="submit-button" mat-button type="submit" (click)="register()">Register</button>
     </form>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecepientserviceService } from '../service/recepientservice.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Recepient } from '../model/model';
 
 @Component({
   selector: 'app-emailverification',

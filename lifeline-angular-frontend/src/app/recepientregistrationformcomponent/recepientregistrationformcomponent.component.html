@@ -8,15 +8,12 @@
                     <input matInput formControlName="firstName" maxlength="40">
                     <mat-error *ngIf="this.registrationForm.controls['firstName'].invalid">FirstName is required</mat-error>
                 </mat-form-field>
-
                 <mat-form-field appearance="legacy">
                     <mat-label>Last Name</mat-label>
                     <input matInput formControlName="lastName" maxlength="40">
                     <mat-error *ngIf="this.registrationForm.controls['lastName'].invalid">LastName is required</mat-error>
-
                 </mat-form-field>
             </div>
-
             <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px" fxLayoutGap.gt-md="50px"
                 fxLayoutAlign="space-around center">
                 <mat-form-field appearance="legacy">
@@ -32,7 +29,6 @@
                     <mat-error *ngIf="this.registrationForm.controls['phoneNumber'].hasError('pattern')">Please Enter Valid Phone Number</mat-error>
                 </mat-form-field>
             </div>
-
             <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px" fxLayoutGap.gt-md="50px"
             fxLayoutAlign="space-around center">
             <mat-form-field appearance="legacy">
@@ -64,7 +60,6 @@
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
             </div>
-
             <div class="gender-div">
             <mat-label>Gender</mat-label>
             <mat-radio-group  formControlName="gender">
@@ -73,7 +68,6 @@
                 <mat-radio-button value="other">Other</mat-radio-button>
             </mat-radio-group>
             </div>
-
         <div formGroupName="address">
                 <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px" fxLayoutGap.gt-md="50px"
                     fxLayoutAlign="space-around center">
@@ -86,10 +80,8 @@
                         <mat-label>Address Line 2</mat-label>
                         <input matInput formControlName="addressLine2" maxlength="40">
                         <mat-error *ngIf="this.registrationForm.controls.address['controls'].addressLine2.invalid">Address line2 is required</mat-error>
-
                     </mat-form-field>
                 </div>
-
                 <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px" fxLayoutGap.gt-md="50px"
                     fxLayoutAlign="space-around center">
                     <mat-form-field class="three-col-div" appearance="legacy" >
@@ -110,9 +102,7 @@
                     </mat-form-field>
                 </div>
             </div>
-
              
-
                     
             <h5>Medical Details</h5>
                 <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px" fxLayoutGap.gt-md="50px"
@@ -137,3 +127,7 @@
   
     </form>
 </mat-card>
+Collapse
+
+
+

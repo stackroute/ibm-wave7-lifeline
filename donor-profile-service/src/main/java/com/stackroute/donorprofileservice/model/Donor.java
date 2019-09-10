@@ -83,7 +83,7 @@ public class Donor {
 	
 	private List<Form> formList;
 	
-	private Date createdDate;
+	private Date createdDate = new Date();
 }
 
 
