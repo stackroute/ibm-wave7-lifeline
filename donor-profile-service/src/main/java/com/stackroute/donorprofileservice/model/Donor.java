@@ -79,7 +79,7 @@ public class Donor {
 
 	private MedicalDetails medicalInfo;
 	
-	private boolean isEmailVerified;
+	private String isEmailVerified="false";
 	
 	private List<Form> formList;
 	

@@ -98,7 +98,8 @@ public class RecepientServiceImpl implements RecepientService {
     @Override
     public String findById(long id) throws MessagingException {
         Recepient recepient = recepientRepository.findById(id).get();
-        if (recepientRepository.findById(id).isPresent()) {
+        String email =  recepient.getEmail();
+        if (email!=null && recepientRepository.findById(id).isPresent()) {
             MimeMessage message = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
             helper.setTo(recepient.getEmail());

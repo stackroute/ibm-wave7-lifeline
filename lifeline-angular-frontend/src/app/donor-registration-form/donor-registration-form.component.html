@@ -48,12 +48,15 @@
                 <mat-error *ngIf="this.registrationForm.controls['password'].hasError('pattern')">Password should
                     contain atleast a uppercase, a lowercase, a digit and a symbol. It should between 8-16
                     characters</mat-error>
+                <mat-error *ngIf="this.registrationForm.controls['password'].invalid">invalid</mat-error>
             </mat-form-field>
             <mat-form-field appearance="legacy">
                 <mat-label>Confirm Password</mat-label>
                 <input type="password" matInput formControlName="confirmPassword" maxlength="40">
                 <mat-error *ngIf="this.registrationForm.hasError('notSame')">Confirm password should match with
                     password</mat-error>
+                <mat-error *ngIf="this.registrationForm.controls['confirmPassword'].invalid">invalid</mat-error>
+
             </mat-form-field>
         </div>
 
@@ -126,13 +129,13 @@
                         required</mat-error>
                 </mat-form-field>
                 <mat-form-field class="three-col-div" appearance="legacy">
-                    <mat-label>Pin</mat-label>
+                    <mat-label>pinCode</mat-label>
                     <input matInput formControlName="pinCode" maxlength="6">
                     <mat-error *ngIf="this.registrationForm.controls.address['controls'].pinCode.hasError('required')">
-                        Pin is
+                        pinCode is
                         required</mat-error>
                     <mat-error *ngIf="this.registrationForm.controls.address['controls'].pinCode.hasError('pattern')">
-                        Please enter valid pin</mat-error>
+                        Please enter valid pinCode</mat-error>
                 </mat-form-field>
             </div>
         </div>
@@ -230,6 +233,7 @@
                             </mat-error>
                         </mat-form-field>
                         <mat-form-field class="three-col-div" appearance="legacy">
+<<<<<<< Updated upstream
                             <mat-label>Pin</mat-label>
                             <input matInput formControlName="pinCode" maxlength="6">
                             <mat-error
@@ -239,6 +243,17 @@
                             <mat-error
                                 *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['pinCode'].hasError('pattern')">
                                 Please enter valid pin</mat-error>
+=======
+                            <mat-label>pinCode</mat-label>
+                            <input matInput formControlName="pinCode" maxlength="6">
+                            <mat-error
+                                *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['pinCode'].hasError('required')">
+                                pinCode is
+                                required</mat-error>
+                            <mat-error
+                                *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['pinCode'].hasError('pattern')">
+                                Please enter valid pinCode</mat-error>
+>>>>>>> Stashed changes
                         </mat-form-field>
                     </div>
                 </div>

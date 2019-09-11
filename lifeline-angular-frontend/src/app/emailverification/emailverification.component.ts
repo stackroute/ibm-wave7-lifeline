@@ -12,15 +12,14 @@ import { Recepient } from '../model/model';
 export class EmailverificationComponent implements OnInit {
 
 
-  public profileForm: FormGroup;
   public recepient: Recepient;
   constructor(private route: ActivatedRoute, private router: Router, private recepientProfileService: RecepientserviceService) { }
 
   ngOnInit() {
-    this.verify();
+    this.verifyRecepient();
   }
 
-  verify() {
+  verifyRecepient() {
     this.route.queryParams.subscribe(params => {
       let id = params["id"];
       this.recepientProfileService.getRecepientById(id).subscribe(data => {

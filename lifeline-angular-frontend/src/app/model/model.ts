@@ -5,7 +5,7 @@ export interface Donor {
     dob: string;
     donorId: string;
     email: string;
-    emailVerified: boolean;
+    isEmailVerified: string;
     firstName: string;
     formList?: (FormListEntity)[] | null;
     gender: string;

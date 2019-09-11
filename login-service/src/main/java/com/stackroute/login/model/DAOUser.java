@@ -78,6 +78,11 @@ public class DAOUser {
     @JsonProperty("password")
     private String password;
 
+    @Column
+    @JsonProperty("isEmailVerified")
+    private  String emailVerified;
+
+
     public String getEmailVerified() {
         return emailVerified;
     }
@@ -86,9 +91,6 @@ public class DAOUser {
         this.emailVerified = emailVerified;
     }
 
-    @Column
-    @JsonProperty("isEmailVerified")
-     private  String emailVerified;
 
     public long getId() {
         return id;

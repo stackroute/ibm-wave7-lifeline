@@ -73,8 +73,7 @@ export class RecepientregistrationformcomponentComponent implements OnInit {
       error => {
         this.errorMsg = error;
       });
-    this.router.navigate(['']);
-
+  //  this.router.navigate(['']);
   }
 
 

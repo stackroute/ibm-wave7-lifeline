@@ -40,6 +40,10 @@ export class DonorProfileService {
     updateUrl = updateUrl + '/' + id;
     return this.httpClient.put<Donor>(updateUrl, donor);
   }
+  private emailUrl = "http://localhost:8081/api/v1/verify"
+  sendMail(id): Observable<any> {
+    return this.httpClient.post<any>(this.emailUrl, id);
+  }
 
   pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
     const formdata: FormData = new FormData();

@@ -3,6 +3,7 @@ package com.stackroute.donorprofileservice.service;
 import com.stackroute.donorprofileservice.exception.DonorProfileAlreadyExistsException;
 import com.stackroute.donorprofileservice.exception.DonorProfileNotFoundException;
 import com.stackroute.donorprofileservice.model.Donor;
+import org.springframework.messaging.MessagingException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,4 +25,6 @@ public interface DonorService {
 	long getNextSequenceId(String key);
 
 	void store(MultipartFile file) throws Exception;
+
+	String findById(long id) throws MessagingException, javax.mail.MessagingException;
 }

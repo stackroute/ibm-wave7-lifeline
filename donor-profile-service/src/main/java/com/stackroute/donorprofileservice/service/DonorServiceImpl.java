@@ -14,9 +14,13 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -25,7 +29,9 @@ import java.util.Optional;
 
 @Service
 public class DonorServiceImpl implements DonorService {
-	
+	@Autowired
+	JavaMailSender javaMailSender;
+
 	@Autowired
 	MongoOperations mongoOperations;
 	
@@ -102,5 +108,21 @@ public class DonorServiceImpl implements DonorService {
 		logger.info("File name: "+file.getOriginalFilename());
 		Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
 	}
-	
+
+	@Override
+	public String findById(long id) throws MessagingException {
+		Donor donor = donorRepository.findById(id).get();
+		String email = donor.getEmail();
+		if (email != null && donorRepository.findById(id).isPresent()) {
+			MimeMessage message = javaMailSender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(message, true);
+			helper.setTo(donor.getEmail());
+			helper.setSubject("SpringBootApplication");
+			helper.setText("http://172.23.238.185:4200/id?id=" + id);
+			javaMailSender.send(message);
+			return "successfully sent email";
+
+		}
+		return "hello";
+	}
 }

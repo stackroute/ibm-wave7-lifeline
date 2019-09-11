@@ -1,7 +1,6 @@
 package com.stackroute.recepientprofileservice.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.stackroute.recepientprofileservice.exception.RecepientProfileAlreadyExistsException;
 import com.stackroute.recepientprofileservice.exception.RecepientProfileNotFoundException;
 import com.stackroute.recepientprofileservice.model.Address;
 import com.stackroute.recepientprofileservice.model.Recepient;
@@ -17,6 +16,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -26,7 +26,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import javax.ws.rs.core.MediaType;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

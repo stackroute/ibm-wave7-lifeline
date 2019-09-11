@@ -156,6 +156,42 @@ services:
     healthcheck:
       test: "exit 0"
 
+  report-service:
+    build: reportservice/
+    depends_on:
+      - mongo
+      - eureka-server
+      - config-service
+      - zuul-api
+      - donor-profile-service
+      - recepient-profile-service
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    image: report-service
+    ports:
+      - 8016:8016
+    healthcheck:
+      test: "exit 0"
+  
+  recommendation-service:
+    build: recommendation-service/
+    depends_on:
+      - neo4j
+      - eureka-server
+      - config-service
+      - zuul-api
+      - donor-profile-service
+      - recepient-profile-service
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    image: recommendation-service
+    ports:
+      - 8084:8084
+    healthcheck:
+      test: "exit 0"
+
   lifeline-frontend:
     build: lifeline-angular-frontend/
     restart: always

@@ -11,6 +11,7 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 })
 export class LoginComponent implements OnInit {
   public result;
+  
   private user = new User();
   loginForm: FormGroup;
 
@@ -38,12 +39,21 @@ export class LoginComponent implements OnInit {
     this.authenticateService.login(this.user)
       .subscribe(data => {
         let id = data.id;
-        if (this.user.role === 'donor') {
-          this.router.navigate(['/donor'], { queryParams: { id: id } });
-          this.dialogRef.close();
-
-        }   else if (this.user.role === 'recepient') {
-          this.router.navigate(['/recepient'], { queryParams: { id: id } });
+        console.log(data);
+        if(data.token != "Please Verify Your Email") {
+          if (data.role === 'donor') {
+            this.authenticateService.loggedIn.next(true);
+            this.router.navigate(['/donor'], { queryParams: { id: id } });
+            this.dialogRef.close();
+          }   
+          else if (data.role === 'recepient') {
+            this.authenticateService.loggedIn.next(true);
+            this.router.navigate(['/recepient'], { queryParams: { id: id } });
+            this.dialogRef.close();
+          }
+        }
+        else {
+          this.router.navigate(['']);
           this.dialogRef.close();
         }
       },

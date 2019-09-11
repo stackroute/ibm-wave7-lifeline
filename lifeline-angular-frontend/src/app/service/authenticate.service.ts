@@ -17,7 +17,7 @@ export class AuthenticateService {
 
   private apiUrl2 = "http://localhost:8082/authenticate";
 
-  private loggedIn = new BehaviorSubject<boolean>(false);
+  loggedIn = new BehaviorSubject<boolean>(false);
   logged = this.loggedIn.asObservable();
 
   private user: User;
@@ -31,7 +31,6 @@ export class AuthenticateService {
   }
 
   login(data: User): Observable<any> {
-    this.loggedIn.next(true);
     return this.httpClient.post<any>(this.apiUrl2, data);
   }
 
