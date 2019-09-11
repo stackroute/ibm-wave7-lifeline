@@ -1,7 +1,6 @@
 package com.stackroute.recommendation.service;
 
 import com.stackroute.recommendation.model.Donor;
-import com.stackroute.recommendation.model.Recepient;
 import com.stackroute.recommendation.repository.DonorRepository;
 import org.springframework.stereotype.Service;
 
