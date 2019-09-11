@@ -41,12 +41,21 @@ public class JwtAuthenticationController {
         authenticate(userDTO.getUsername(), userDTO.getPassword());
         final UserDetails userDetails = userDetailsService.loadUserByUsername(userDTO.getUsername());
         DAOUser daoUser = userDetailsService.getUserData(userDTO.getUsername());
-        final String token = jwtTokenUtil.generateToken(userDetails);
-        Map<Object,Object> model=new HashMap<>();
-        model.put("role",daoUser.getRole());
-        model.put("id", daoUser.getId());
-        model.put("token",token);
-        return ok(model);
+        if(daoUser.getEmailVerified().equals("true")) {
+            final String token = jwtTokenUtil.generateToken(userDetails);
+            Map<Object,Object> model=new HashMap<>();
+            model.put("role",daoUser.getRole());
+            model.put("id", daoUser.getId());
+            model.put("token",token);
+            return ok(model);
+        }
+        else {
+            Map<Object,Object> model=new HashMap<>();
+            model.put("role",daoUser.getRole());
+            model.put("id", daoUser.getId());
+            model.put("token", "Please Verify Your Email");
+            return ok(model);
+        }
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)

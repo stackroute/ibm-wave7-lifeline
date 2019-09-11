@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import com.stackroute.login.model.DAOUser;
 import com.stackroute.login.model.UserDTO;
 
+import javax.xml.crypto.Data;
+
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
 
@@ -48,5 +50,14 @@ public class JwtUserDetailsService implements UserDetailsService {
         newUser.setRole(userDTO.getRole());
         return userDao.save(newUser);
     }
+    public DAOUser update(UserDTO userDTO) throws Exception {
+        DAOUser updateUser = userDao.findByUsername(userDTO.getUsername());
+        if (updateUser != null) {
+            updateUser.setPassword(bcryptEncoder.encode(userDTO.getPassword()));
+        }
+        System.out.println(updateUser);
+        return userDao.save(updateUser);
+    }
+
 }
 

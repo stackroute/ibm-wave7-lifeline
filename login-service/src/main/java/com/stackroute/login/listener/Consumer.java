@@ -25,17 +25,32 @@ public class Consumer {
     public void consume(DAOUser daoUser) throws IOException {
         System.out.println("Inside Recipient");
         System.out.println(daoUser);
-        daoUser.setPassword(passwordEncoder.encode(daoUser.getPassword()));
-        System.out.println(daoUser.getEmailVerified());
-        userDao.save(daoUser);
-    }
+            daoUser.setPassword(passwordEncoder.encode(daoUser.getPassword()));
+            System.out.println(daoUser.getEmailVerified());
+            DAOUser presentDaoUser = userDao.findByUsername(daoUser.getUsername());
+            if(presentDaoUser != null){
+                presentDaoUser.setEmailVerified((daoUser.getEmailVerified()));
+                userDao.save(presentDaoUser);
+            }
+            else {
+                userDao.save(daoUser);
+            }
+        }
+
 
     @KafkaListener(topics="DonorRegistration",groupId = "group_id")
     public void consumedonor(DAOUser daoUser) throws IOException {
         System.out.println("Inside Donor");
         System.out.println(daoUser);
-        System.out.println(passwordEncoder.encode(daoUser.getPassword()));
         daoUser.setPassword(passwordEncoder.encode(daoUser.getPassword()));
-        userDao.save(daoUser);
+        System.out.println(daoUser.getEmailVerified());
+        DAOUser presentDaoUser = userDao.findByUsername(daoUser.getUsername());
+        if (presentDaoUser != null) {
+            presentDaoUser.setEmailVerified((daoUser.getEmailVerified()));
+            userDao.save(presentDaoUser);
+        } else {
+            userDao.save(daoUser);
+
+        }
     }
 }

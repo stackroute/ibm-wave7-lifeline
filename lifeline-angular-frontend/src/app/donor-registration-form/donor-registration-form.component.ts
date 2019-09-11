@@ -4,6 +4,8 @@ import { DonorProfileService } from '../service/donor-profile.service';
 import { HttpResponse } from '@angular/common/http';
 import { Donor } from '../model/model';
 import { Route, ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { DonorsideVerificationalertComponent } from './donorside-verificationalert/donorside-verificationalert.component';
 
 @Component({
   selector: 'app-donor-registration-form',
@@ -17,7 +19,7 @@ export class DonorRegistrationFormComponent implements OnInit {
   registrationForm: FormGroup;
   errorMsg: string;
   maxDate = new Date();
-  constructor(private fb: FormBuilder, private donorProfileService: DonorProfileService, private router: Router) { }
+  constructor(private fb: FormBuilder, private donorProfileService: DonorProfileService, private router: Router,public dialog: MatDialog) { }
   selectedFiles: FileList;
   currentFileUpload: File;
   ngOnInit() {
@@ -135,18 +137,23 @@ export class DonorRegistrationFormComponent implements OnInit {
         }
       });
       this.selectedFiles = undefined;
-      this.donorProfileService.saveDonor(this.registrationForm.value).subscribe(data => {
-        this.donor = data
-        this.router.navigate(['']);
-      }
-        , error => {
-          this.errorMsg = error,
-          console.log(this.errorMsg)
-        });
+      console.log(this.registrationForm);
+      this.donorProfileService.saveDonor(this.registrationForm.value).subscribe(data => this.donor = data, error => this.errorMsg = error);
       console.log('api call success');
+      const dialogRef = this.dialog.open(DonorsideVerificationalertComponent, {
+        width: '250px',
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+      });
 
+      this.donorProfileService.sendMail(this.donor.id)
+        .subscribe(data => {
+          console.log(data);
+        });   
     }
   }
+
 
     getDisease() {
       return this.registrationForm.get('medicalDetails').get('disease') as FormGroup;

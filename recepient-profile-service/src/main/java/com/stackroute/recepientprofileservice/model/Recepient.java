@@ -81,7 +81,8 @@ public class Recepient {
     private Date createdDate;
     private Request request;
 
-    private String isEmailVerified;
+    private String isEmailVerified="false";
+
 
 }
 
