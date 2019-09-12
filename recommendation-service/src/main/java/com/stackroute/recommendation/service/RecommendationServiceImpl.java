@@ -1,7 +1,7 @@
 package com.stackroute.recommendation.service;
 
+import com.stackroute.recommendation.exception.DonorsNotFoundException;
 import com.stackroute.recommendation.model.Donor;
-import com.stackroute.recommendation.model.Recepient;
 import com.stackroute.recommendation.repository.DonorRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,12 @@ public class RecommendationServiceImpl implements RecommendationService {
     }
 
     @Override
-    public List<Donor> retrieveDonors(String name) {
-        return donorRepository.retrieveDonors(name);
+    public List<Donor> retrieveDonors(String name) throws DonorsNotFoundException {
+        try {
+            return donorRepository.retrieveDonors(name);
+        }
+        catch(Exception e) {
+            throw new DonorsNotFoundException();
+        }
     }
 }

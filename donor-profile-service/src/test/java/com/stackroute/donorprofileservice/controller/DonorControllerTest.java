@@ -1,13 +1,10 @@
 package com.stackroute.donorprofileservice.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.netflix.discovery.converters.Auto;
 import com.stackroute.donorprofileservice.exception.DonorProfileAlreadyExistsException;
 import com.stackroute.donorprofileservice.exception.DonorProfileNotFoundException;
 import com.stackroute.donorprofileservice.model.*;
 import com.stackroute.donorprofileservice.service.DonorService;
-import org.apache.kafka.clients.producer.RecordMetadata;
-import org.apache.kafka.common.TopicPartition;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,8 +17,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.core.ProducerFactory;
-import org.springframework.kafka.support.SendResult;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -29,7 +24,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.util.concurrent.ListenableFuture;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -38,7 +32,8 @@ import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.anyLong;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -95,7 +90,7 @@ public class DonorControllerTest {
 		organsArrayList.add(organs);
 		medicalDetails = new MedicalDetails("O+",disease,organsArrayList, "HLA-A", 100000000, 1.5, 27, 100, 6 );
 		donor = new Donor(101,"D01","donor","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985, Calendar.JUNE,23),
-				"356478900928","male",address,guardianList,medicalDetails,true,new ArrayList<>(),new Date());
+				"356478900928","male",address,guardianList,medicalDetails,"true",new ArrayList<>(),new Date());
 		donorList = new ArrayList<>();
 		donorList.add(donor);
 	}
