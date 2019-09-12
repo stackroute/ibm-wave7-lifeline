@@ -1,14 +1,27 @@
 .mat-tab-group{
   margin: 100px 100px 30px 0px;
+  /* -webkit-flex-direction: row;
+       -ms-flex-direction: row;
+           flex-direction: row;
+   padding-bottom: 35px;
+   height: inherit;
+   border-bottom: none;
+   float: left;
+   border: 1px solid #ccc;
+   background-color: #f1f1f1;
+   width: 30%;
+   height: 300px; */
+
 }
 .mat-card{
     /* box-shadow: 10px 10px 10px 10px grey; */
     /* -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5); */
     margin: 30px 100px 30px 100px;
-    background-color: antiquewhite;
+    background-color:bisque;
 }
 
 .mat-subheader{
+  align-items: center;
   font-size: 30px;
   color:navy;
 }
@@ -28,6 +41,8 @@
   margin: 0 10px 0 10px;;
   
 }
+
+/* dont uncomment it  */
 /* edit profile css */
 /* .example-container{
   text-align:center;
@@ -38,6 +53,7 @@
   margin-bottom: 30px;
   background-color: antiquewhite;
 } */
+/* uncomment it  */
 .example-section {
   display: flex;
   align-content: center;
@@ -52,4 +68,15 @@
   padding-left: 20px;
   padding-right: 20px;
 }
-  
+/* .mat-tab{
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+      flex-direction: row;
+padding-bottom: 35px;
+height: inherit;
+border-bottom: none;
+
+}
+
+  */
+

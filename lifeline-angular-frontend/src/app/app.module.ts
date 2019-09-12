@@ -64,6 +64,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     MainpageComponent,
     RegistercardsComponent,
     FooterComponent,
+    
     VideoComponent,
     CarouselComponent,
     AimsobjectivesComponent,

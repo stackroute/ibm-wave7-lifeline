@@ -67,7 +67,7 @@ public class DAOUser {
 
     @Column
     @JsonProperty("userType")
-     private  String role;
+    private String role;
 
     @Column
     @JsonProperty("email")
@@ -141,14 +141,16 @@ public class DAOUser {
 //    }
 
 
-//    @Override
-//    public String toString() {
-//        return "Users{" +
-//                "id=" + id +
-//                ", username='" + username + '\'' +
-//                ", password='" + password + '\'' +
-//                ", role='" + role + '\'' +
-////                ", emailVerified='" + emailVerified + '\'' +
-//                '}';
+    @Override
+    public String toString() {
+        return "DAOUser{" +
+                "userId=" + userId +
+                ", id=" + id +
+                ", role='" + role + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", emailVerified='" + emailVerified + '\'' +
+                '}';
     }
+}
 
