@@ -233,17 +233,6 @@
                             </mat-error>
                         </mat-form-field>
                         <mat-form-field class="three-col-div" appearance="legacy">
-<<<<<<< Updated upstream
-                            <mat-label>Pin</mat-label>
-                            <input matInput formControlName="pinCode" maxlength="6">
-                            <mat-error
-                                *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['pinCode'].hasError('required')">
-                                Pin is
-                                required</mat-error>
-                            <mat-error
-                                *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['pinCode'].hasError('pattern')">
-                                Please enter valid pin</mat-error>
-=======
                             <mat-label>pinCode</mat-label>
                             <input matInput formControlName="pinCode" maxlength="6">
                             <mat-error
@@ -253,7 +242,6 @@
                             <mat-error
                                 *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['pinCode'].hasError('pattern')">
                                 Please enter valid pinCode</mat-error>
->>>>>>> Stashed changes
                         </mat-form-field>
                     </div>
                 </div>

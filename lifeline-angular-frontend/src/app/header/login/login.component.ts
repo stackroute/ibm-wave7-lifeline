@@ -4,6 +4,7 @@ import { AuthenticateService } from '../../service/authenticate.service';
 import { User } from '../../model/User';
 import { Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
+import { VerificationAlertComponent } from 'src/app/recepientregistrationformcomponent/verification-alert/verification-alert.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(public dialogRef: MatDialogRef<LoginComponent>, @Inject(MAT_DIALOG_DATA) public data: string,
-    private authenticateService: AuthenticateService, private formBuilder: FormBuilder, private router: Router) { }
+    private authenticateService: AuthenticateService, private formBuilder: FormBuilder, private router: Router,private dialog:MatDialog) { }
 
   ngOnInit() {
     // this.authenticateService.login(this.user)
@@ -53,7 +54,13 @@ export class LoginComponent implements OnInit {
           }
         }
         else {
-          this.router.navigate(['']);
+          const dialogRef = this.dialog.open(VerificationAlertComponent, {
+            width: '250px',
+          });
+          dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+          });
+          //this.router.navigate(['']);
           this.dialogRef.close();
         }
       },
