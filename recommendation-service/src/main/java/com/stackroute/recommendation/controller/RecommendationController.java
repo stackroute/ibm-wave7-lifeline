@@ -17,7 +17,7 @@ import java.util.List;
 @CrossOrigin
 public class RecommendationController {
 
-    RecommendationService recommendationService;
+    private RecommendationService recommendationService;
 
     public RecommendationController(RecommendationService recommendationService) {
         this.recommendationService = recommendationService;
@@ -26,6 +26,12 @@ public class RecommendationController {
     @ApiOperation("Get Recommendations")
     @GetMapping("results/{name}")
     public ResponseEntity<List<Donor>> retrieveDonors(@PathVariable("name") String name) throws IOException {
-        return new ResponseEntity<List<Donor>>(recommendationService.retrieveDonors(name), HttpStatus.OK);
+        ResponseEntity responseEntity;
+        try {
+            responseEntity = new ResponseEntity<List<Donor>>(recommendationService.retrieveDonors(name), HttpStatus.OK);
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity<String>("Exception", HttpStatus.CONFLICT);
+        }
+        return responseEntity;
     }
 }

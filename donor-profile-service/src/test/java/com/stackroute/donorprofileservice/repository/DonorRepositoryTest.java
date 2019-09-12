@@ -55,7 +55,7 @@ public class DonorRepositoryTest {
 		organsArrayList.add(organs);
 		medicalDetails = new MedicalDetails("O+",disease,organsArrayList, "HLA-A", 100000000, 1.5, 27, 100, 6 );
 		donor = new Donor(101,"D01","donor","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985, Calendar.JUNE,23),
-				"356478900928","male",address,guardianList,medicalDetails,true,new ArrayList<>(),new Date());
+				"356478900928","male",address,guardianList,medicalDetails,"true",new ArrayList<>(),new Date());
 		donorList = new ArrayList<>();
 	}
 	
@@ -70,7 +70,7 @@ public class DonorRepositoryTest {
 	@Test
 	public void testFindAll(){
 		Donor donor1 = new Donor(102,"D02","donor","Tony","Stark","tony1@gmail.com","9876543210","password123",new Date(1985, Calendar.JUNE,23),
-				"356478900928","male",address,guardianList,medicalDetails,true,new ArrayList<>(),new Date());
+				"356478900928","male",address,guardianList,medicalDetails,"true",new ArrayList<>(),new Date());
 		donorRepository.save(donor);
 		donorRepository.save(donor1);
 		donorList.add(donor);
