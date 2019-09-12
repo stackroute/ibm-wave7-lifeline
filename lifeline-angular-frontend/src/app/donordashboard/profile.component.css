@@ -7,9 +7,10 @@
   /* box-shadow: 10px 10px 10px 10px grey; */
   /* -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5); */
   margin: 30px 100px 30px 100px;
-  background-color: antiquewhite;
+  background-color: #eaecc1;
 }
 .mat-subheader{
+  align-items: center;
   font-size: 30px;
   color:navy;
 }
@@ -32,7 +33,7 @@
 /* withdraw css */
 textarea{
   margin-top: 10px;
-  background-color: antiquewhite;
+  background-color: #eaecc1;
   margin-left: 300px;
     
 }
@@ -48,12 +49,7 @@ margin-bottom: 10px;
   text-align: center;
   margin-top: 5px;
 }
-.example-container{
-  text-align:center;
-  border:solid 2px black;
-  width: 50%;
-  margin-left: 350px;
-}
+
 .example-section {
   display: flex;
   align-content: center;
@@ -85,4 +81,8 @@ table{
 #linechart,#barchart,#linechart1
 {
   height: 5cm;
+}
+.mat-form-field{
+  padding-left: 20px;
+  padding-right: 20px;
 }
