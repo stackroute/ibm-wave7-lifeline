@@ -27,7 +27,7 @@ import { MythsComponent } from './myths/myths.component';
 import { DonorRegistrationFormComponent } from './donor-registration-form/donor-registration-form.component';
 import { MatFormFieldModule, MatInputModule, MatRadioModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatDatepickerModule,MatNativeDateModule,MatCheckboxModule } from '@angular/material';
+import { MatDatepickerModule, MatNativeDateModule, MatCheckboxModule } from '@angular/material';
 import { RecepientregistrationformcomponentComponent } from './recepientregistrationformcomponent/recepientregistrationformcomponent.component';
 import { ProfileComponent } from './donordashboard/profile.component';
 import { MatListModule } from '@angular/material/list';
@@ -41,16 +41,17 @@ import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ChatcomponentComponent } from './donordashboard/chatcomponent/chatcomponent.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { ChatbuttonComponent } from './donordashboard/chatbutton/chatbutton.component';
-import {MatBottomSheet} from '@angular/material/bottom-sheet';
-import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { LandingpagereportsComponent } from './landingpagereports/landingpagereports.component';
 import { DonordashboardreportsComponent } from './donordashboardreports/donordashboardreports.component';
 import { EmailverificationComponent } from './emailverification/emailverification.component';
 import { VerificationAlertComponent } from './recepientregistrationformcomponent/verification-alert/verification-alert.component';
 import { DonorsideVerificationalertComponent } from './donor-registration-form/donorside-verificationalert/donorside-verificationalert.component';
 import { DonorEmailverificationComponent } from './donor-emailverification/donor-emailverification.component';
+import { MatStepperModule } from '@angular/material/stepper';
 
 
 //  import { EmbedVideoService } from 'ngx-embed-video';
@@ -87,8 +88,8 @@ import { DonorEmailverificationComponent } from './donor-emailverification/donor
     VerificationAlertComponent,
     DonorsideVerificationalertComponent,
     DonorEmailverificationComponent,
-   
-    
+
+
   ],
   imports: [
     BrowserModule,
@@ -114,7 +115,8 @@ import { DonorEmailverificationComponent } from './donor-emailverification/donor
     MatSnackBarModule,
     MatBottomSheetModule,
     MatToolbarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatStepperModule
   ],
   entryComponents: [
     SnackBarComponent,

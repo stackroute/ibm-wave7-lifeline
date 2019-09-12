@@ -14,12 +14,51 @@ import { DonorsideVerificationalertComponent } from './donorside-verificationale
 })
 export class DonorRegistrationFormComponent implements OnInit {
 
-  organ = [false, false, false, false, false, false, false, false];
+  public organsValues = [{
+    id: 1,
+    name: 'blood',
+    donateOrNot: false,
+  },
+  {
+    id: 2,
+    name: 'boneMarrow',
+    donateOrNot: false,
+  },
+  {
+    id: 3,
+    name: 'cornea',
+    donateOrNot: false,
+  },
+  {
+    id: 4,
+    name: 'heart',
+    donateOrNot: false,
+  },
+  {
+    id: 5,
+    name: 'kidney',
+    donateOrNot: false,
+  },
+  {
+    id: 6,
+    name: 'liver',
+    donateOrNot: false,
+  },
+  {
+    id: 7,
+    name: 'lungs',
+    donateOrNot: false,
+  },
+  {
+    id: 8,
+    name: 'platelet',
+    donateOrNot: false,
+  }];
   donor: Donor;
   registrationForm: FormGroup;
   errorMsg: string;
   maxDate = new Date();
-  constructor(private fb: FormBuilder, private donorProfileService: DonorProfileService, private router: Router,public dialog: MatDialog) { }
+  constructor(private fb: FormBuilder, private donorProfileService: DonorProfileService, private router: Router, public dialog: MatDialog) { }
   selectedFiles: FileList;
   currentFileUpload: File;
   ngOnInit() {
@@ -69,35 +108,25 @@ export class DonorRegistrationFormComponent implements OnInit {
         plateletCount: [''],
         rhFactor: [''],
         disease: this.fb.group({
-          cancer: [''],
-          diabetes: [''],
-          fits: [''],
-          heartAttack: [''],
-          hepatitis: [''],
-          hiv: [''],
-          hyperTension: [''],
-          kidneyDisease: [''],
-          liverDisease: [''],
-          rabies: [''],
-          tuberculosis: [''],
+          cancer: [false],
+          diabetes: [false],
+          fits: [false],
+          heartAttack: [false],
+          hepatitis: [false],
+          hiv: [false],
+          hyperTension: [false],
+          kidneyDisease: [false],
+          liverDisease: [false],
+          rabies: [false],
+          tuberculosis: [false],
         }),
-        organs: this.fb.group({
-          blood: [false],
-          boneMarrow: [false],
-          cornea: [false],
-          heart: [false],
-          kidney: [false],
-          liver: [false],
-          lungs: [false],
-          platelet: [false],
-        }),
-        // organs: this.fb.array([
-        //   this.fb.group({
-        //     id: [''],
-        //     name: [''],
-        //     donateOrNot: [''],
-        //   }),
-        // ])
+        organList: this.fb.array([
+          this.fb.group({
+            id: [this.organsValues[0].id],
+            name: [this.organsValues[0].name],
+            donateOrNot: [this.organsValues[0].donateOrNot],
+          }),
+        ])
       }),
       formList: this.fb.array([
         this.fb.group({
@@ -109,6 +138,14 @@ export class DonorRegistrationFormComponent implements OnInit {
       ])
     }, { validator: this.checkPasswords });
 
+    for (let i = 1; i < 8; i++) {
+      this.organList.push(this.fb.group({
+        id: [this.organsValues[i].id],
+        name: [this.organsValues[i].name],
+        donateOrNot: [this.organsValues[i].donateOrNot],
+
+      }));
+    }
   }
 
   get guardianList() {
@@ -118,18 +155,23 @@ export class DonorRegistrationFormComponent implements OnInit {
   get formList() {
     return this.registrationForm.get('formList') as FormArray;
   }
-
+  get disease() {
+    return this.registrationForm.get('medicalDetails').get('disease') as FormGroup;
+  }
   get organList() {
-    return this.registrationForm.get('organs') as FormArray;
+    return this.registrationForm.get('medicalDetails').get('organList') as FormArray;
   }
   checkPasswords(form: FormGroup) {
 
     return form.controls.password.value === form.controls.confirmPassword.value ? null : { notSame: true };
   }
 
+  FileSelected(event) {
+    this.selectedFiles = event.target.files;
+  }
+
   register() {
-    console.log("hello");
-    if (this.registrationForm.valid) {
+    // if (this.registrationForm.valid) {
       this.currentFileUpload = this.selectedFiles.item(0);
       this.donorProfileService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
         if (event instanceof HttpResponse) {
@@ -137,9 +179,9 @@ export class DonorRegistrationFormComponent implements OnInit {
         }
       });
       this.selectedFiles = undefined;
-      console.log(this.registrationForm);
+      console.log(this.registrationForm.value);
       this.donorProfileService.saveDonor(this.registrationForm.value).subscribe(data => this.donor = data, error => this.errorMsg = error);
-      console.log('api call success');
+      console.log('api call');
       const dialogRef = this.dialog.open(DonorsideVerificationalertComponent, {
         width: '250px',
       });
@@ -150,145 +192,111 @@ export class DonorRegistrationFormComponent implements OnInit {
       this.donorProfileService.sendMail(this.donor.id)
         .subscribe(data => {
           console.log(data);
-        });   
+        });
+      // this.router.navigate(['']);
+    // }
+  }
+  check() {
+    let diseaseGroup = this.disease;
+
+    if (diseaseGroup.get('hiv').value || diseaseGroup.get('hepatitis').value ||
+      diseaseGroup.get('rabies').value || diseaseGroup.get('tuberculosis').value ||
+      diseaseGroup.get('fits').value || diseaseGroup.get('hyperTension').value ||
+      diseaseGroup.get('diabetes').value) {
+      console.log('Blood');
+      // this.organList.value.forEach(element => {
+      //   console.log(element.name);
+      //   console.log(element.donateOrNot);
+      // });
+      this.organList.value[0].donateOrNot = true;
+    } else {
+      console.log('No Blood');
+      this.organList.value[0].donateOrNot = false;
+    }
+  }
+  checkcornea() {
+    let diseaseGroup = this.disease;
+    if (diseaseGroup.get('hiv').value || diseaseGroup.get('hepatitis').value ||
+      diseaseGroup.get('rabies').value || diseaseGroup.get('heartAttack').value ||
+      diseaseGroup.get('cancer').value) {
+      console.log('cornea');
+      this.organList.value[2].donateOrNot = true;
+      this.organList.value[7].donateOrNot = true;
+    } else {
+      console.log('No cornea');
+      this.organList.value[2].donateOrNot = false;
+      this.organList.value[7].donateOrNot = false;
     }
   }
 
 
-    getDisease() {
-      return this.registrationForm.get('medicalDetails').get('disease') as FormGroup;
+  checkLungs() {
+    let diseaseGroup = this.disease;
+    if (diseaseGroup.get('hiv').value ||
+      diseaseGroup.get('hepatitis').value ||
+      diseaseGroup.get('rabies').value ||
+      diseaseGroup.get('heartAttack').value ||
+      diseaseGroup.get('cancer').value ||
+      diseaseGroup.get('kidneyDisease').value ||
+      diseaseGroup.get('liverDisease').value) {
+      console.log('lungs');
+      this.organList.value[6].donateOrNot = true;
+    } else {
+      console.log('No lungs');
+      this.organList.value[6].donateOrNot = false;
     }
-    getOrgans() {
-      return this.registrationForm.get('medicalDetails').get('organs') as FormGroup;
-    }
-    check() {
-      let diseaseGroup = this.getDisease();
-      let organsGroup = this.getOrgans();
-      //   for (let x in diseaseGroup.getRawValue()) {
-      //     console.log(x)
-      //     if (x === ('hiv' || 'rabies' || 'Hepatitis') && diseaseGroup.get(x).value) {
-      //       console.log('True ' + x)
-      //       organsGroup.disable();
-      //     }
-      //     else if (x === ('hiv' || 'rabies' || 'hepatitis') && diseaseGroup.get(x).value === false) {
-      //       console.log('False ' + x)
-      //       organsGroup.enable();
-      //     }
-      //   }
-      // }
-      if (diseaseGroup.get('hiv').value || diseaseGroup.get('hepatitis').value ||
-        diseaseGroup.get('rabies').value || diseaseGroup.get('tuberculosis').value ||
-        diseaseGroup.get('fits').value || diseaseGroup.get('hyperTension').value ||
-        diseaseGroup.get('diabetes').value) {
-        console.log('Blood')
-        organsGroup.get('blood').disable();
-      } else {
-        console.log('No Blood');
-        // organsGroup.get('heart').enable();
-        organsGroup.get('blood').enable();
-      }
-    }
-    checkcornea() {
-      let diseaseGroup = this.getDisease();
-      let organsGroup = this.getOrgans();
-      console.log(organsGroup)
-      if (diseaseGroup.get('hiv').value || diseaseGroup.get('hepatitis').value ||
-        diseaseGroup.get('rabies').value || diseaseGroup.get('heartAttack').value ||
-        diseaseGroup.get('cancer').value) {
-        console.log('cornea')
-        organsGroup.get('cornea').disable();
-        organsGroup.get('platelet').disable();
-      } else {
-        console.log('No cornea');
-        organsGroup.get('cornea').enable();
-        organsGroup.get('platelet').enable();
-      }
-    }
-    
-
-    FileSelected(event) {
-      this.selectedFiles = event.target.files;
-    }
-    checkLungs() {
-      let diseaseGroup = this.getDisease();
-      let organsGroup = this.getOrgans();
-      if (diseaseGroup.get('hiv').value ||
-        diseaseGroup.get('hepatitis').value ||
-        diseaseGroup.get('rabies').value ||
-        diseaseGroup.get('heartAttack').value ||
-        diseaseGroup.get('cancer').value ||
-        diseaseGroup.get('kidneyDisease').value ||
-        diseaseGroup.get('liverDisease').value) {
-        console.log('lungs')
-        organsGroup.get('lungs').disable();
-        console.log(organsGroup)
-      } else {
-        console.log('No lungs');
-        organsGroup.get('lungs').enable();
-        console.log(organsGroup);
-      }
-    }
-    checkheartliver() {
-      let diseaseGroup = this.getDisease();
-      let organsGroup = this.getOrgans();
-      if (diseaseGroup.get('hiv').value ||
-        diseaseGroup.get('hepatitis').value ||
-        diseaseGroup.get('rabies').value ||
-        diseaseGroup.get('heartAttack').value ||
-        diseaseGroup.get('diabetes').value ||
-        diseaseGroup.get('cancer').value) {
-        console.log('heartliver')
-        organsGroup.get('heart').disable();
-        organsGroup.get('liver').disable();
-        console.log(organsGroup)
-      } else {
-        console.log('No heart liver');
-        organsGroup.get('heart').enable();
-        organsGroup.get('liver').enable();
-        console.log(organsGroup);
-      }
-    }
-    checkkidney() {
-      let diseaseGroup = this.getDisease();
-      let organsGroup = this.getOrgans();
-      if (diseaseGroup.get('hiv').value ||
-        diseaseGroup.get('hepatitis').value ||
-        diseaseGroup.get('rabies').value ||
-        diseaseGroup.get('heartAttack').value ||
-        diseaseGroup.get('diabetes').value ||
-        diseaseGroup.get('cancer').value ||
-        diseaseGroup.get('kidneyDisease').value ||
-        diseaseGroup.get('liverDisease').value) {
-        console.log('kidney')
-        organsGroup.get('kidney').disable();
-        console.log(organsGroup);
-      }
-      else {
-        console.log('No kidney');
-        organsGroup.get('kidney').enable();
-        console.log(organsGroup);
-      }
-    }
-    checkBoneMarrow() {
-      const diseaseGroup = this.getDisease();
-      let organsGroup = this.getOrgans();
-      if (diseaseGroup.get('hiv').value ||
-        diseaseGroup.get('hepatitis').value ||
-        diseaseGroup.get('rabies').value ||
-        diseaseGroup.get('heartAttack').value ||
-        diseaseGroup.get('kidneyDisease').value ||
-        diseaseGroup.get('liverDisease').value) {
-        console.log('bonemarrow')
-        organsGroup.get('boneMarrow').disable();
-        console.log(organsGroup);
-      } else {
-        console.log('No  boneMarrow');
-        organsGroup.get('boneMarrow').enable();
-        console.log(organsGroup);
-      }
-    }
-
-
-
-
   }
+  checkheartliver() {
+    let diseaseGroup = this.disease;
+    if (diseaseGroup.get('hiv').value ||
+      diseaseGroup.get('hepatitis').value ||
+      diseaseGroup.get('rabies').value ||
+      diseaseGroup.get('heartAttack').value ||
+      diseaseGroup.get('diabetes').value ||
+      diseaseGroup.get('cancer').value) {
+      console.log('heartliver');
+      this.organList.value[3].donateOrNot = true;
+      this.organList.value[5].donateOrNot = true;
+    } else {
+      console.log('No heart liver');
+      this.organList.value[3].donateOrNot = false;
+      this.organList.value[5].donateOrNot = false;
+    }
+  }
+  checkkidney() {
+    let diseaseGroup = this.disease;
+    if (diseaseGroup.get('hiv').value ||
+      diseaseGroup.get('hepatitis').value ||
+      diseaseGroup.get('rabies').value ||
+      diseaseGroup.get('heartAttack').value ||
+      diseaseGroup.get('diabetes').value ||
+      diseaseGroup.get('cancer').value ||
+      diseaseGroup.get('kidneyDisease').value ||
+      diseaseGroup.get('liverDisease').value) {
+      console.log('kidney');
+      this.organList.value[4].donateOrNot = true;
+    }  else {
+      console.log('No kidney');
+      this.organList.value[4].donateOrNot = false;
+
+    }
+  }
+  checkBoneMarrow() {
+    const diseaseGroup = this.disease;
+    if (diseaseGroup.get('hiv').value ||
+      diseaseGroup.get('hepatitis').value ||
+      diseaseGroup.get('rabies').value ||
+      diseaseGroup.get('heartAttack').value ||
+      diseaseGroup.get('kidneyDisease').value ||
+      diseaseGroup.get('liverDisease').value) {
+      console.log('boneMarrow')
+      this.organList.value[1].donateOrNot = true;
+
+    } else {
+      console.log('No  boneMarrow');
+      this.organList.value[1].donateOrNot = false;
+
+    }
+  }
+
+}

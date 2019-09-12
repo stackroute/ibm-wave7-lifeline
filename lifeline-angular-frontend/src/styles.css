@@ -2,3 +2,21 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, 
+.mat-step-header .mat-step-icon-state-edit {
+    background-color: #5b305b !important;
+}
+.mat-step-header .mat-step-icon {
+    background-color: #5b305b;
+}
+.mat-radio-button.mat-primary .mat-radio-inner-circle, .mat-radio-button.mat-primary .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-primary.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-primary:active .mat-radio-persistent-ripple {
+    background-color: #5b305b !important;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: #5b305b !important;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+    background-color: #5b305b;
+}
