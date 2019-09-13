@@ -64,6 +64,7 @@ public class DonorController {
 			responseEntity = new ResponseEntity<Donor>(donor, HttpStatus.OK);
 			logger.info("get all tracks api call success");
 		} catch (Exception e) {
+			e.printStackTrace();
 			responseEntity = new ResponseEntity<String>("Exception", HttpStatus.CONFLICT);
 			logger.error("get all tracks api call throws an exception");
 		}

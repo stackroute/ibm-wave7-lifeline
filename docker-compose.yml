@@ -43,7 +43,7 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 8098:8098
+      - 8098:2181
     healthcheck:
       test: "exit 0"
 
@@ -55,13 +55,13 @@ services:
       - zookeeper
     environment:
       KAFKA_ZOOKEEPER_CONNECT: 'localhost:2181'
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:8099
-      KAFKA_LISTENERS: PLAINTEXT://localhost:8099
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_CREATE_TOPICS: "DonorRegistration, RecepientRegistration,"
       KAFKA_ZOOKEEPER_CONNECTION_TIMEOUT_MS: 50000
     restart: always
     ports:
-      - 8099:8099
+      - 8099:9092
     healthcheck:
       test: "exit 0"
 

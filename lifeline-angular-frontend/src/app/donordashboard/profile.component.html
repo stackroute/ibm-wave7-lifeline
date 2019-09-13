@@ -26,7 +26,7 @@
                         <h4 class="h4-tag"><b>Phone Number:</b> {{donor.phoneNumber}}</h4>
                     </mat-list-item>
                     <mat-list-item>
-                        <h4 class="h4-tag"><b>Blood group:</b> {{donor.medicalInfo.bloodGroup}} </h4>
+                        <h4 class="h4-tag"><b>Blood group:</b> {{donor.medicalDetails.bloodGroup}} </h4>
                     </mat-list-item>
                 </mat-list>
             </mat-card>
@@ -90,7 +90,7 @@
             <mat-checkbox [disabled]="donor.medicalDetails.disease.kidneyDisease"
                 [checked]="donor.medicalDetails.disease.kidneyDisease">KidneyDisease</mat-checkbox>
             <mat-checkbox [disabled]="donor.medicalDetails.disease.liverDisease"
-                [checked]="donor.medicalDetails.disease.liverDisease">LiverDisease</mat-checkbox> -->
+                [checked]="donor.medicalDetails.disease.liverDisease">LiverDisease</mat-checkbox> 
             <mat-list-item>
                 <h4 class="h4-tag">Organs you want to donate:</h4>
             </mat-list-item>
