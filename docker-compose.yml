@@ -58,6 +58,7 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:8099
       KAFKA_LISTENERS: PLAINTEXT://localhost:8099
       KAFKA_CREATE_TOPICS: "DonorRegistration, RecepientRegistration,"
+      KAFKA_ZOOKEEPER_CONNECTION_TIMEOUT_MS: 50000
     restart: always
     ports:
       - 8099:8099
@@ -188,6 +189,23 @@ services:
     image: recommendation-service
     ports:
       - 8084:8084
+    healthcheck:
+      test: "exit 0"
+
+  search-service:
+    build: search-service/
+    depends_on:
+      - neo4j
+      - eureka-server
+      - config-service
+      - zuul-api
+      - donor-profile-service
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    image: search-service
+    ports:
+      - 8085:8085
     healthcheck:
       test: "exit 0"
 
