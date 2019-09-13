@@ -71,13 +71,13 @@ public class Donor {
 	@NotNull(message = "gender  is mandatory")
 	private String gender;
 
-	@NotNull(message = "address  is mandatory")
+	@NotNull(message = "guardianListaddress  is mandatory")
 	private Address address;
 	
 	@NotNull(message = "guardian list is mandatory")
 	private List<Guardian> guardianList;
 
-	private MedicalDetails medicalInfo;
+	private MedicalDetails medicalDetails;
 	
 	private String isEmailVerified="false";
 	

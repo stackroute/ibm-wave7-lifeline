@@ -118,11 +118,26 @@ public class DonorServiceImpl implements DonorService {
 			MimeMessageHelper helper = new MimeMessageHelper(message, true);
 			helper.setTo(donor.getEmail());
 			helper.setSubject("SpringBootApplication");
-			helper.setText("http://172.23.238.185:4200/id?id=" + id);
+			helper.setText("http://52.66.129.41:4200/id?id=" + id+ "&type=donor");
 			javaMailSender.send(message);
 			return "successfully sent email";
 
 		}
 		return "hello";
 	}
+//	@Override
+//	public String findById(long id) throws MessagingException {
+//		Recepient recepient = recepientRepository.findById(id).get();
+//		String email =  recepient.getEmail();
+//		if (email!=null && recepientRepository.findById(id).isPresent()) {
+//			MimeMessage message = javaMailSender.createMimeMessage();
+//			MimeMessageHelper helper = new MimeMessageHelper(message, true);
+//			helper.setTo(recepient.getEmail());
+//			helper.setSubject("SpringBootApplication");
+//			helper.setText("http://172.23.238.185:4200/id?id="+id+ "&type=recepient");
+//			javaMailSender.send(message);
+//			return "successfully sent email";
+//
+//		}
+//		return "hello";
 }

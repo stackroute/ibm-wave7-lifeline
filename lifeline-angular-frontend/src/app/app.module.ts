@@ -49,8 +49,6 @@ import { LandingpagereportsComponent } from './landingpagereports/landingpagerep
 import { DonordashboardreportsComponent } from './donordashboardreports/donordashboardreports.component';
 import { EmailverificationComponent } from './emailverification/emailverification.component';
 import { VerificationAlertComponent } from './recepientregistrationformcomponent/verification-alert/verification-alert.component';
-import { DonorsideVerificationalertComponent } from './donor-registration-form/donorside-verificationalert/donorside-verificationalert.component';
-import { DonorEmailverificationComponent } from './donor-emailverification/donor-emailverification.component';
 import { MatStepperModule } from '@angular/material/stepper';
 
 
@@ -87,8 +85,6 @@ import { MatStepperModule } from '@angular/material/stepper';
     DonordashboardreportsComponent,
     EmailverificationComponent,
     VerificationAlertComponent,
-    DonorsideVerificationalertComponent,
-    DonorEmailverificationComponent,
 
 
   ],

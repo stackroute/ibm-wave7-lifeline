@@ -5,7 +5,7 @@ import { HttpResponse } from '@angular/common/http';
 import { Donor } from '../model/model';
 import { Route, ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { DonorsideVerificationalertComponent } from './donorside-verificationalert/donorside-verificationalert.component';
+import { VerificationAlertComponent } from '../recepientregistrationformcomponent/verification-alert/verification-alert.component';
 
 @Component({
   selector: 'app-donor-registration-form',
@@ -54,7 +54,7 @@ export class DonorRegistrationFormComponent implements OnInit {
     name: 'platelet',
     donateOrNot: false,
   }];
-  donor: Donor;
+  donor:Donor
   registrationForm: FormGroup;
   errorMsg: string;
   maxDate = new Date();
@@ -180,22 +180,27 @@ export class DonorRegistrationFormComponent implements OnInit {
       });
       this.selectedFiles = undefined;
       console.log(this.registrationForm.value);
-      this.donorProfileService.saveDonor(this.registrationForm.value).subscribe(data => this.donor = data, error => this.errorMsg = error);
-      console.log('api call');
-      const dialogRef = this.dialog.open(DonorsideVerificationalertComponent, {
-        width: '250px',
-      });
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-      });
-
-      this.donorProfileService.sendMail(this.donor.id)
-        .subscribe(data => {
-          console.log(data);
+      this.donorProfileService.saveDonor(this.registrationForm.value).subscribe(data => {
+        this.donor = data
+        const dialogRef = this.dialog.open(VerificationAlertComponent, {
+          width: '250px',
         });
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+        });
+  
+        this.donorProfileService.sendMail(this.donor.id)
+          .subscribe(data => {
+            console.log(data);
+          });
+        });
+        error => {
+          this.errorMsg = error;
+        }
       // this.router.navigate(['']);
     // }
   }
+ 
   check() {
     let diseaseGroup = this.disease;
 

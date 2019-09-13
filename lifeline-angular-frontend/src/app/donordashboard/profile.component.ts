@@ -20,6 +20,47 @@ export interface Section {
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+
+  public organsValues = [{
+    id: 1,
+    name: 'blood',
+    donateOrNot: false,
+  },
+  {
+    id: 2,
+    name: 'boneMarrow',
+    donateOrNot: false,
+  },
+  {
+    id: 3,
+    name: 'cornea',
+    donateOrNot: false,
+  },
+  {
+    id: 4,
+    name: 'heart',
+    donateOrNot: false,
+  },
+  {
+    id: 5,
+    name: 'kidney',
+    donateOrNot: false,
+  },
+  {
+    id: 6,
+    name: 'liver',
+    donateOrNot: false,
+  },
+  {
+    id: 7,
+    name: 'lungs',
+    donateOrNot: false,
+  },
+  {
+    id: 8,
+    name: 'platelet',
+    donateOrNot: false,
+  }];
   public donor: Donor;
   public profileForm: FormGroup;
   private donorId;
@@ -51,18 +92,18 @@ export class ProfileComponent implements OnInit {
         this.profileForm.controls['pinCode'].setValue(this.donor.address.pinCode);
         let currentDate = new Date(this.donor.dob);
         this.profileForm.controls['dateOfBirth'].setValue(currentDate);
-        this.profileForm.controls['bloodGroup'].setValue(this.donor.medicalInfo.bloodGroup);
-        this.profileForm.controls['hiv'].setValue(this.donor.medicalInfo.disease.hiv);
-        this.profileForm.controls['fits'].setValue(this.donor.medicalInfo.disease.fits);
-        this.profileForm.controls['hepatitis'].setValue(this.donor.medicalInfo.disease.hepatitis);
-        this.profileForm.controls['heartAttack'].setValue(this.donor.medicalInfo.disease.heartAttack);
-        this.profileForm.controls['rabies'].setValue(this.donor.medicalInfo.disease.rabies);
-        this.profileForm.controls['tuberculosis'].setValue(this.donor.medicalInfo.disease.tuberculosis);
-        this.profileForm.controls['hyperTension'].setValue(this.donor.medicalInfo.disease.hyperTension);
-        this.profileForm.controls['diabetes'].setValue(this.donor.medicalInfo.disease.diabetes);
-        this.profileForm.controls['cancer'].setValue(this.donor.medicalInfo.disease.cancer);
-        this.profileForm.controls['kidneyDisease'].setValue(this.donor.medicalInfo.disease.kidneyDisease);
-        this.profileForm.controls['liverDisease'].setValue(this.donor.medicalInfo.disease.liverDisease);
+        this.profileForm.controls['bloodGroup'].setValue(this.donor.medicalDetails.bloodGroup);
+        this.profileForm.controls['hiv'].setValue(this.donor.medicalDetails.disease.hiv);
+        this.profileForm.controls['fits'].setValue(this.donor.medicalDetails.disease.fits);
+        this.profileForm.controls['hepatitis'].setValue(this.donor.medicalDetails.disease.hepatitis);
+        this.profileForm.controls['heartAttack'].setValue(this.donor.medicalDetails.disease.heartAttack);
+        this.profileForm.controls['rabies'].setValue(this.donor.medicalDetails.disease.rabies);
+        this.profileForm.controls['tuberculosis'].setValue(this.donor.medicalDetails.disease.tuberculosis);
+        this.profileForm.controls['hyperTension'].setValue(this.donor.medicalDetails.disease.hyperTension);
+        this.profileForm.controls['diabetes'].setValue(this.donor.medicalDetails.disease.diabetes);
+        this.profileForm.controls['cancer'].setValue(this.donor.medicalDetails.disease.cancer);
+        this.profileForm.controls['kidneyDisease'].setValue(this.donor.medicalDetails.disease.kidneyDisease);
+        this.profileForm.controls['liverDisease'].setValue(this.donor.medicalDetails.disease.liverDisease);
       });
     });
   }
@@ -81,7 +122,7 @@ export class ProfileComponent implements OnInit {
       state: new FormControl(Validators.required),
       pinCode: new FormControl({ disabled: true }, Validators.required),
       dateOfBirth: new FormControl({ value: '', disabled: true }, Validators.required),
-      bloodGroup: new FormControl({ value: '', disabled: true }, Validators.required),
+      bloodGroup: new FormControl({ value: '' }, Validators.required),
       hiv: new FormControl(Validators.required),
       fits: new FormControl(Validators.required),
       hepatitis: new FormControl(Validators.required),
@@ -129,17 +170,17 @@ export class ProfileComponent implements OnInit {
     this.donor.address.state = this.profileForm.get('state').value;
     this.donor.address.pinCode = this.profileForm.get('pinCode').value;
     this.donor.dob = this.profileForm.get('dateOfBirth').value;
-    this.donor.medicalInfo.bloodGroup = this.profileForm.get('bloodGroup').value;
-    this.donor.medicalInfo.disease.hiv = this.profileForm.get('hiv').value;
-    this.donor.medicalInfo.disease.fits = this.profileForm.get('fits').value;
-    this.donor.medicalInfo.disease.hepatitis = this.profileForm.get('hepatitis').value;
-    this.donor.medicalInfo.disease.rabies = this.profileForm.get('rabies').value;
-    this.donor.medicalInfo.disease.tuberculosis = this.profileForm.get('tuberculosis').value;
-    this.donor.medicalInfo.disease.hyperTension = this.profileForm.get('hyperTension').value;
-    this.donor.medicalInfo.disease.diabetes = this.profileForm.get('diabetes').value;
-    this.donor.medicalInfo.disease.cancer = this.profileForm.get('cancer').value;
-    this.donor.medicalInfo.disease.kidneyDisease = this.profileForm.get('kidneyDisease').value;
-    this.donor.medicalInfo.disease.liverDisease = this.profileForm.get('liverDisease').value;
+    this.donor.medicalDetails.bloodGroup = this.profileForm.get('bloodGroup').value;
+    this.donor.medicalDetails.disease.hiv = this.profileForm.get('hiv').value;
+    this.donor.medicalDetails.disease.fits = this.profileForm.get('fits').value;
+    this.donor.medicalDetails.disease.hepatitis = this.profileForm.get('hepatitis').value;
+    this.donor.medicalDetails.disease.rabies = this.profileForm.get('rabies').value;
+    this.donor.medicalDetails.disease.tuberculosis = this.profileForm.get('tuberculosis').value;
+    this.donor.medicalDetails.disease.hyperTension = this.profileForm.get('hyperTension').value;
+    this.donor.medicalDetails.disease.diabetes = this.profileForm.get('diabetes').value;
+    this.donor.medicalDetails.disease.cancer = this.profileForm.get('cancer').value;
+    this.donor.medicalDetails.disease.kidneyDisease = this.profileForm.get('kidneyDisease').value;
+    this.donor.medicalDetails.disease.liverDisease = this.profileForm.get('liverDisease').value;
     this.donorProfileService.updateDonor(this.donor, this.donorId).subscribe();
     this._snackBar.openFromComponent(SnackBarComponent, {
       duration: this.durationInSeconds * 1000,

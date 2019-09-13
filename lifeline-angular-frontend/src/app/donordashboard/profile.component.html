@@ -12,6 +12,9 @@
                     </mat-list-item>
                     <mat-list-item>
                         <h4 class="h4-tag"><b>DonorId: </b> </h4>
+
+                        
+                        <h4 class="h4-tag">Diseases you have:</h4>
                     </mat-list-item>
                     <mat-list-item>
                         <h4 class="h4-tag"><b>Date of Birth: </b>{{donor.dob}}</h4>
@@ -35,6 +38,106 @@
 
 
         <mat-tab label="Profile" class="tab">
+                <mat-list-item>
+                    <h4 class="h4-tag">
+                        Address: {{donor.address.addressLine1}} {{donor.address.addressLine2}},
+                        {{donor.address.city}},{{donor.address.state}},pincode-{{donor.address.pinCode}}
+                    </h4>
+                </mat-list-item>
+                <br>
+                <mat-list-item>
+                    <h4 class="h4-tag">Guardian details:
+                        <br>
+                        <div *ngFor="let guardian of donor.guardianList">
+                            Email- {{guardian.email}}<br>
+                            Phone no- {{guardian.phoneNumber}}<br>
+                            Relation- {{guardian.relation}}<br>
+                            Address- {{guardian.address.addressLine1}} {{guardian.address.addressLine2}},
+                            {{guardian.address.city}},{{guardian.address.state}},pincode-{{guardian.address.pinCode}}<br>
+                        </div>
+                    </h4>
+                </mat-list-item>
+            </mat-list>
+         </mat-card>
+       <!-- <mat-card>
+                <mat-list>
+                    <h3 mat-subheader>Medical Details:</h3>
+                    <mat-list-item>
+                            <h4 class="h4-tag">Blood group: {{donor.medicalDetails.bloodGroup}} </h4>
+                        </mat-list-item>
+                        <mat-list-item>
+                                <h4 class="h4-tag">BMI: {{donor.medicalDetails.bodyMassIndex}} </h4>
+                         </mat-list-item>
+                         <mat-list-item>
+                                <h4 class="h4-tag">HLA-Type: {{donor.medicalDetails.hlaType}} </h4>
+                         </mat-list-item>
+                         <mat-list-item>
+                                <h4 class="h4-tag">Liver Attenuation Index: {{donor.medicalDetails.liverAttenuationIndex}} </h4>
+                         </mat-list-item>
+                         <mat-list-item>
+                                <h4 class="h4-tag">Lung size: {{donor.medicalDetails.lungSize}} </h4>
+                         </mat-list-item>
+                         <mat-list-item>
+                                <h4 class="h4-tag">Platelet Count: {{donor.medicalDetails.plateletCount}} </h4>
+                         </mat-list-item>
+                         <mat-list-item>
+                                <h4 class="h4-tag">rh Factor: {{donor.medicalDetails.rhFactor}} </h4>
+                         </mat-list-item>
+                         <div class="diseases">
+                         <mat-list-item>
+                          <h4 class="h4-tag">Diseases you have:</h4>
+                                <br>
+                             <mat-checkbox [disabled]="donor.medicalDetails.disease.hiv" [checked]="donor.medicalDetails.disease.hiv"> HIV</mat-checkbox>    
+                                 <mat-checkbox [disabled]="donor.medicalDetails.disease.fits" [checked]="donor.medicalDetails.disease.fits">Fits</mat-checkbox>
+                                <mat-checkbox [disabled]="donor.medicalDetails.disease.hepatitis"
+                                    [checked]="donor.medicalDetails.disease.hepatitis">Hepatitis</mat-checkbox>
+                                <mat-checkbox [disabled]="donor.medicalDetails.disease.heartAttack"
+                                    [checked]="donor.medicalDetails.disease.heartAttack">Heartattack</mat-checkbox>
+                                <mat-checkbox [disabled]="donor.medicalDetails.disease.rabies"
+                                    [checked]="donor.medicalDetails.disease.rabies">Rabies</mat-checkbox>
+                                <mat-checkbox [disabled]="donor.medicalDetails.disease.tuberculosis"
+                                    [checked]="donor.medicalDetails.disease.tuberculosis">Tuberculosis</mat-checkbox>
+                                <mat-checkbox [disabled]="donor.medicalDetails.disease.hyperTension"
+                                    [checked]="donor.medicalDetails.disease.hyperTension">Hypertension</mat-checkbox>
+                                <mat-checkbox [disabled]="donor.medicalDetails.disease.diabetes"
+                                    [checked]="donor.medicalDetails.disease.diabetes">Diabetes</mat-checkbox>
+                                <mat-checkbox [disabled]="donor.medicalDetails.disease.cancer"
+                                    [checked]="donor.medicalDetails.disease.cancer">Cancer</mat-checkbox>
+                                <mat-checkbox [disabled]="donor.medicalDetails.disease.kidneyDisease"
+                                    [checked]="donor.medicalDetails.disease.kidneyDisease">KidneyDisease</mat-checkbox>
+                                <mat-checkbox [disabled]="donor.medicalDetails.disease.liverDisease"
+                                    [checked]="donor.medicalDetails.disease.liverDisease">LiverDisease</mat-checkbox>
+                              </mat-list-item>
+                            </div> 
+                        <mat-list-item>
+                                <h4 class="h4-tag">Organs you want to donate:</h4>
+                         </mat-list-item>
+                         <mat-checkbox [disabled]="donor.medicalDetails.organList[0].name"
+                   [checked]="donor.medicalDetails.organList[0].donateOrNot">Cornea</mat-checkbox>
+               <mat-checkbox [disabled]="donor.medicalDetails.organList[1].name"
+                   [checked]="donor.medicalDetails.organList[1].donateOrNot">
+                   Blood</mat-checkbox>
+               <mat-checkbox [disabled]="donor.medicalDetails.organList[2].name"
+                   [checked]="donor.medicalDetails.organList[2].donateOrNot">
+                   Liver</mat-checkbox>
+               <mat-checkbox [disabled]="donor.medicalDetails.organList[3].name"
+                   [checked]="donor.medicalDetails.organList[3].donateOrNot">
+                   Heart</mat-checkbox>
+               <mat-checkbox [disabled]="donor.medicalDetails.organList[4].name"
+                   [checked]="donor.medicalDetails.organList[4].donateOrNot">Kidney</mat-checkbox>
+               <mat-checkbox [disabled]="donor.medicalDetails.organList[5].name"
+                   [checked]="donor.medicalDetails.organList[5].donateOrNot">Platelet</mat-checkbox>
+               <mat-checkbox [disabled]="donor.medicalDetails.organList[6].name"
+                   [checked]="donor.medicalDetails.organList[6].donateOrNot">
+                   Lung</mat-checkbox>
+               <mat-checkbox [disabled]="donor.medicalDetails.organList[7].name"
+                   [checked]="donor.medicalDetails.organList[7].donateOrNot">Bonemarrow</mat-checkbox>
+
+
+
+                        
+                        </mat-list>  
+            </mat-card> -->
 
                 <mat-card>
                     <mat-list>

@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser() {
+
     this.user.username = this.loginForm.get('username').value;
     this.user.password = this.loginForm.get('password').value;
     this.user.role = this.data;

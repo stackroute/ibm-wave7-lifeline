@@ -104,11 +104,13 @@ public class RecepientServiceImpl implements RecepientService {
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
             helper.setTo(recepient.getEmail());
             helper.setSubject("SpringBootApplication");
-            helper.setText("http://172.23.238.240:4200/id?id="+id);
+            helper.setText("http://52.66.129.41:4200/id?id="+id+ "&type=recepient");
             javaMailSender.send(message);
             return "successfully sent email";
 
         }
         return "hello";
     }
+
+
 }

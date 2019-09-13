@@ -13,9 +13,9 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthenticateService {
-  private apiUrl = "http://localhost:8082/register";
+  private apiUrl = "http://52.66.129.41:8082/register";
 
-  private apiUrl2 = "http://localhost:8082/authenticate";
+  private apiUrl2 = "http://52.66.129.41:8082/authenticate";
 
   loggedIn = new BehaviorSubject<boolean>(false);
   logged = this.loggedIn.asObservable();
@@ -34,12 +34,12 @@ export class AuthenticateService {
     return this.httpClient.post<any>(this.apiUrl2, data);
   }
 
-  private apiUrl3 = "http://localhost:8082/forgot-password"
+  private apiUrl3 = "http://52.66.129.41:8082/forgot-password"
   forgotpassword(data: User): Observable<any> {
     return this.httpClient.post<any>(this.apiUrl3, data);
   }
 
-  private apiUrl4 = "http://localhost:8082/reset-password";
+  private apiUrl4 = "http://52.66.129.41:8082/reset-password";
   resetpassword(data: User): Observable<any> {
     return this.httpClient.post<any>(this.apiUrl4, data);
   }

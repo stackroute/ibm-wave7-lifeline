@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700|Lato:400,700,900" rel="stylesheet">
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  
+  <script src="https://c.staticblitz.com/assets/common-c2bc3351b105f9c4e412b.js" crossorigin="anonymous"></script>
+  <script src="https://c.staticblitz.com/assets/ext-0b52f259424be72d4179b.js" crossorigin="anonymous"></script>
+  <script src="https://c.staticblitz.com/d/webcontainer.8187dfd3f940f95fd89.js" crossorigin="anonymous"></script>
+  <script src="https://c.staticblitz.com/assets/preview-10053d50ef6222528f68b.js" crossorigin="anonymous"></script>
+  <script>(function(){_preboot("https://l.staticblitz.com/b/v1/angular-frontend-download/db392a13ad8",{p:"stackblitz",a:"AIzaSyBZSvuCzbUhuRrSps-HjM5bFClLPaFF9Vg",o:true})})()</script>
+</head>
+<body></body>
+</html>
