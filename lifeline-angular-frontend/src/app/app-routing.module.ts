@@ -12,6 +12,8 @@ import { RecepientdashboardComponent } from './recepientdashboard/recepientdashb
 import { LoginComponent } from './header/login/login.component';
 import { EmailverificationComponent } from './emailverification/emailverification.component';
 import { HeaderComponent } from './header/header.component';
+import{ForgotpasswordComponent}from './forgotpassword/forgotpassword.component';
+import{ResetpasswordComponent}from './resetpassword/resetpassword.component';
 
 const routes: Routes = [
   { path: '', component: MainpageComponent },
@@ -26,6 +28,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: MainpageComponent},
   { path: 'id', component: EmailverificationComponent },
+  {path:'forgotPassword', component: ForgotpasswordComponent},
+  {path:'resetPassword',component:ResetpasswordComponent}
 
 ];
 

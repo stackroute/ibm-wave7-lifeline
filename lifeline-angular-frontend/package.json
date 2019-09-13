@@ -22,6 +22,7 @@
     "@angular/platform-browser": "~8.2.0",
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
+    "angular-material": "^1.1.20",
     "angular-webstorage-service": "^1.0.2",
     "chart": "^0.1.2",
     "chart.js": "^2.8.0",
