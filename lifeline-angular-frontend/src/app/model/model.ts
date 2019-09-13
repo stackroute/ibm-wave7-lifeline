@@ -5,49 +5,38 @@ export interface Donor {
     dob: string;
     donorId: string;
     email: string;
-    isEmailVerified: string;
     firstName: string;
-    formList?: (FormListEntity)[] | null;
+    formList: FormList[];
     gender: string;
-    guardianList?: (GuardianListEntity)[] | null;
+    guardianList: GuardianList[];
     id: number;
+    isEmailVerified: string;
     lastName: string;
-    medicalInfo: MedicalInfo;
+    medicalDetails: MedicalDetails;
     password: string;
     phoneNumber: string;
     userType: string;
-}
-export interface Address {
-    addressLine1: string;
-    addressLine2: string;
-    city: string;
-    pinCode: string;
-    state: string;
-}
-export interface FormListEntity {
-    data: string;
-    fileName: string;
-    id: number;
-}
-export interface GuardianListEntity {
-    address: Address;
-    email: string;
-    name: string;
-    phoneNumber: string;
-    relation: string;
-}
-export interface MedicalInfo {
+  }
+  
+  interface MedicalDetails {
     bloodGroup: string;
     bodyMassIndex: number;
     disease: Disease;
     hlaType: string;
     liverAttenuationIndex: number;
     lungSize: number;
-    organs?: (OrgansEntity)[] | null;
+    organs: Organ[];
     plateletCount: number;
     rhFactor: number;
-}
-export interface Disease {
+  }
+  
+  interface Organ {
+    donateOrNot: boolean;
+    id: number;
+    name: string;
+  }
+  
+  interface Disease {
     cancer: boolean;
     diabetes: boolean;
     fits: boolean;
@@ -59,13 +48,28 @@ export interface Disease {
     liverDisease: boolean;
     rabies: boolean;
     tuberculosis: boolean;
-}
-export interface OrgansEntity {
-    donateOrNot: boolean;
-    id: number;
+  }
+  
+  interface GuardianList {
+    address: Address;
+    email: string;
     name: string;
-}
-
+    phoneNumber: string;
+    relation: string;
+  }
+  
+  interface FormList {
+    fileName: string;
+    id: number;
+  }
+  
+  interface Address {
+    addressLine1: string;
+    addressLine2: string;
+    city: string;
+    pinCode: string;
+    state: string;
+  }
 
 export interface Recepient {
     aadhar: string;

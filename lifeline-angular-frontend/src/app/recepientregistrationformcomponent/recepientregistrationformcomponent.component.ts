@@ -34,6 +34,7 @@ export class RecepientregistrationformcomponentComponent implements OnInit {
       confirmPassword: ['', [Validators.required, Validators.maxLength(16)]],
       aadhar: ['', [Validators.required, Validators.maxLength(12), Validators.minLength(12), Validators.pattern('^$|[0-9]{12}')]],
       dob: ['', Validators.required],
+      createdDate: [new Date()],
       gender: ['', Validators.required],
       bloodGroup: ['', Validators.required],
       currentDate: [new Date()],

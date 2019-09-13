@@ -49,7 +49,10 @@ import { LandingpagereportsComponent } from './landingpagereports/landingpagerep
 import { DonordashboardreportsComponent } from './donordashboardreports/donordashboardreports.component';
 import { EmailverificationComponent } from './emailverification/emailverification.component';
 import { VerificationAlertComponent } from './recepientregistrationformcomponent/verification-alert/verification-alert.component';
+<<<<<<< HEAD
 import { DonorEmailverificationComponent } from './donor-emailverification/donor-emailverification.component';
+=======
+>>>>>>> 4c56f58274d8c9b0567be0e4f58081e63cc4f322
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
 import { SearchResultsComponent } from './header/search-results/search-results.component';
@@ -66,6 +69,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MainpageComponent,
     RegistercardsComponent,
     FooterComponent,
+    
     VideoComponent,
     CarouselComponent,
     AimsobjectivesComponent,
@@ -88,9 +92,14 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     DonordashboardreportsComponent,
     EmailverificationComponent,
     VerificationAlertComponent,
+<<<<<<< HEAD
     DonorEmailverificationComponent,
     SearchResultsComponent,
     SearchPipe
+=======
+
+
+>>>>>>> 4c56f58274d8c9b0567be0e4f58081e63cc4f322
   ],
   imports: [
     BrowserModule,

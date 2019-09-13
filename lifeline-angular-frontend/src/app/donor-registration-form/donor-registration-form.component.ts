@@ -13,48 +13,49 @@ import { VerificationAlertComponent } from '../recepientregistrationformcomponen
   styleUrls: ['./donor-registration-form.component.css'],
 })
 export class DonorRegistrationFormComponent implements OnInit {
-
+  organState = [false, false, false, false, false, false, false, false];
+  decelarion = [false, false, false];
   public organsValues = [{
     id: 1,
-    name: 'blood',
+    name: 'Blood',
     donateOrNot: false,
   },
   {
     id: 2,
-    name: 'boneMarrow',
+    name: 'Bone Marrow',
     donateOrNot: false,
   },
   {
     id: 3,
-    name: 'cornea',
+    name: 'Cornea',
     donateOrNot: false,
   },
   {
     id: 4,
-    name: 'heart',
+    name: 'Heart',
     donateOrNot: false,
   },
   {
     id: 5,
-    name: 'kidney',
+    name: 'Kidney',
     donateOrNot: false,
   },
   {
     id: 6,
-    name: 'liver',
+    name: 'Liver',
     donateOrNot: false,
   },
   {
     id: 7,
-    name: 'lungs',
+    name: 'Lungs',
     donateOrNot: false,
   },
   {
     id: 8,
-    name: 'platelet',
+    name: 'Platelet',
     donateOrNot: false,
   }];
-  donor: Donor;
+  donor:Donor
   registrationForm: FormGroup;
   errorMsg: string;
   maxDate = new Date();
@@ -180,22 +181,24 @@ export class DonorRegistrationFormComponent implements OnInit {
       });
       this.selectedFiles = undefined;
       console.log(this.registrationForm.value);
-      this.donorProfileService.saveDonor(this.registrationForm.value).subscribe(data => { 
-        this.donor = data 
-        this.donorProfileService.sendMail(this.donor.id)
-        .subscribe(data => {
-          console.log(data);
+      this.donorProfileService.saveDonor(this.registrationForm.value).subscribe(data => {
+        this.donor = data
+        const dialogRef = this.dialog.open(VerificationAlertComponent, {
+          width: '250px',
         });
-      },
-      error => this.errorMsg = error);
-      console.log('api call');
-      const dialogRef = this.dialog.open(VerificationAlertComponent, {
-        width: '250px',
-      });
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-      });
-  }
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+        });
+        this.donorProfileService.sendMail(this.donor.id)
+          .subscribe(data => {
+            console.log(data);
+          });
+        });
+        error => {
+          this.errorMsg = error;
+        }
+      }
+ 
   check() {
     let diseaseGroup = this.disease;
 
@@ -206,12 +209,12 @@ export class DonorRegistrationFormComponent implements OnInit {
       console.log('Blood');
       // this.organList.value.forEach(element => {
       //   console.log(element.name);
-      //   console.log(element.donateOrNot);
+      //   console.log(element);
       // });
-      this.organList.value[0].donateOrNot = true;
+      this.organState[0] = true;
     } else {
       console.log('No Blood');
-      this.organList.value[0].donateOrNot = false;
+      this.organState[0] = false;
     }
   }
   checkcornea() {
@@ -220,12 +223,12 @@ export class DonorRegistrationFormComponent implements OnInit {
       diseaseGroup.get('rabies').value || diseaseGroup.get('heartAttack').value ||
       diseaseGroup.get('cancer').value) {
       console.log('cornea');
-      this.organList.value[2].donateOrNot = true;
-      this.organList.value[7].donateOrNot = true;
+      this.organState[2] = true;
+      this.organState[7] = true;
     } else {
       console.log('No cornea');
-      this.organList.value[2].donateOrNot = false;
-      this.organList.value[7].donateOrNot = false;
+      this.organState[2] = false;
+      this.organState[7] = false;
     }
   }
 
@@ -240,10 +243,10 @@ export class DonorRegistrationFormComponent implements OnInit {
       diseaseGroup.get('kidneyDisease').value ||
       diseaseGroup.get('liverDisease').value) {
       console.log('lungs');
-      this.organList.value[6].donateOrNot = true;
+      this.organState[6] = true;
     } else {
       console.log('No lungs');
-      this.organList.value[6].donateOrNot = false;
+      this.organState[6] = false;
     }
   }
   checkheartliver() {
@@ -255,12 +258,12 @@ export class DonorRegistrationFormComponent implements OnInit {
       diseaseGroup.get('diabetes').value ||
       diseaseGroup.get('cancer').value) {
       console.log('heartliver');
-      this.organList.value[3].donateOrNot = true;
-      this.organList.value[5].donateOrNot = true;
+      this.organState[3] = true;
+      this.organState[5] = true;
     } else {
       console.log('No heart liver');
-      this.organList.value[3].donateOrNot = false;
-      this.organList.value[5].donateOrNot = false;
+      this.organState[3] = false;
+      this.organState[5] = false;
     }
   }
   checkkidney() {
@@ -274,10 +277,10 @@ export class DonorRegistrationFormComponent implements OnInit {
       diseaseGroup.get('kidneyDisease').value ||
       diseaseGroup.get('liverDisease').value) {
       console.log('kidney');
-      this.organList.value[4].donateOrNot = true;
-    }  else {
+      this.organState[4] = true;
+    } else {
       console.log('No kidney');
-      this.organList.value[4].donateOrNot = false;
+      this.organState[4] = false;
 
     }
   }
@@ -290,11 +293,11 @@ export class DonorRegistrationFormComponent implements OnInit {
       diseaseGroup.get('kidneyDisease').value ||
       diseaseGroup.get('liverDisease').value) {
       console.log('boneMarrow')
-      this.organList.value[1].donateOrNot = true;
+      this.organState[1] = true;
 
     } else {
       console.log('No  boneMarrow');
-      this.organList.value[1].donateOrNot = false;
+      this.organState[1] = false;
 
     }
   }

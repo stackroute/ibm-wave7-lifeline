@@ -56,13 +56,15 @@ public class DonorControllerTest {
 	private Donor donor;
 	private Address address;
 	private Guardian guardian;
+	private Form form;
 	private Disease disease;
 	private ArrayList<Organs> organsArrayList;
 	private Organs organs;
+	private List<Form> formList = new ArrayList<>();
 	private MedicalDetails medicalDetails;
 	private List<Donor> donorList;
 	private List<Guardian> guardianList = new ArrayList<>();
-	
+
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
@@ -88,12 +90,21 @@ public class DonorControllerTest {
 		organsArrayList.add(organs);
 		organs = new Organs(8, "liver", true);
 		organsArrayList.add(organs);
+<<<<<<< HEAD
 		medicalDetails = new MedicalDetails("O+",disease,organsArrayList, "HLA-A", "100000000", "1.5", "27", "100", "6" );
 		donor = new Donor(101,"D01","donor","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985, Calendar.JUNE,23),
 				"356478900928","male",address,guardianList,medicalDetails,"true",new ArrayList<>(),new Date());
+=======
+		form = new Form(1,"sample.txt");
+		formList.add(form);
+		medicalDetails = new MedicalDetails("O+",disease,organsArrayList, "HLA-A", 1000, 1.5, 27, 100, 6 );
+		donor = new Donor(101,"D01","donor","Tony","Stark","tonys@gmail.com","9876543210","Password@123",new Date(),
+				"356478900928","male",address,guardianList,medicalDetails,true,formList,new Date());
+>>>>>>> 4c56f58274d8c9b0567be0e4f58081e63cc4f322
 		donorList = new ArrayList<>();
 		donorList.add(donor);
 	}
+
 	
 	@After
 	public void tearDown()  {
@@ -133,6 +144,7 @@ public class DonorControllerTest {
 	@Test
 	public void saveDonorProfile() throws Exception {
 		when(kafkaTemplate.send(any(), any())).thenReturn(any());
+//		donor.fo
 		when(donorService.saveDonorProfile(donor)).thenReturn(donor);
 		mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/donor")
 				.contentType(MediaType.APPLICATION_JSON).content(jsonToString(donor)))

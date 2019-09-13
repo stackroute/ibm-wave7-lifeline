@@ -10,7 +10,7 @@ import { Recepient, Donor } from '../model/model';
 export class RecepientserviceService {
 
   public id;
-  private RecepientUrl = 'http://localhost:8083/api/v1/recepient';
+  private RecepientUrl = 'http://52.66.129.41:8083/api/v1/recepient';
   constructor(private httpClient: HttpClient) { }
 
 
@@ -24,7 +24,7 @@ export class RecepientserviceService {
   
 
   public updateRecepient(recepient:Recepient , id) {
-    let updateUrl = 'http://localhost:8083/api/v1/recepient';
+    let updateUrl = 'http://52.66.129.41:8083/api/v1/recepient';
     updateUrl = updateUrl+ '/'+id;
     return this.httpClient.put<Recepient>(updateUrl, recepient);
   }
@@ -36,13 +36,17 @@ export class RecepientserviceService {
     console.log()
     return this.httpClient.get<Recepient>(this.RecepientUrl+ "/" + id);
   }
-  private emailUrl = "http://localhost:8083/api/v1/verify"
+  private emailUrl = "http://52.66.129.41:8083/api/v1/verify"
   sendMail(id): Observable<any> {
     return this.httpClient.post<any>(this.emailUrl, id);
   }
 
   getDonorRecommendationsForRecepient(bloodGroup: string):Observable<Recepient>{
+<<<<<<< HEAD
     let resultUrl = 'http://172.23.238.228:8084/results'
+=======
+    let resultUrl = 'http://52.66.129.41:8084/results'
+>>>>>>> 4c56f58274d8c9b0567be0e4f58081e63cc4f322
     return this.httpClient.get<Recepient>(resultUrl+ "/" + bloodGroup);
   }
 

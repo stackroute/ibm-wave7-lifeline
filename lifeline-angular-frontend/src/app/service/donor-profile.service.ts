@@ -11,12 +11,13 @@ import { Donor } from '../model/model';
 export class DonorProfileService {
   public data: any = [];
 
-  private donorUrl = 'http://localhost:8081/api/v1/donor';
+  private donorUrl = 'http://52.66.129.41:8081/api/v1/donor';
 
   constructor(private httpClient: HttpClient) { }
 
 
   public getDonorById(id: number): Observable<Donor> {
+    console.log(id);
     return this.httpClient.get<Donor>(this.donorUrl + '/' + id);
   }
 
@@ -36,11 +37,11 @@ export class DonorProfileService {
   }
 
   public updateDonor(donor: Donor, id) {
-    let updateUrl = 'http://localhost:8081/api/v1/donor';
+    let updateUrl = 'http://52.66.129.41:8081/api/v1/donor';
     updateUrl = updateUrl + '/' + id;
     return this.httpClient.put<Donor>(updateUrl, donor);
   }
-  private emailUrl = "http://localhost:8081/api/v1/verify"
+  private emailUrl = "http://52.66.129.41:8081/api/v1/verify"
   sendMail(id): Observable<any> {
     return this.httpClient.post<any>(this.emailUrl, id);
   }
@@ -48,7 +49,7 @@ export class DonorProfileService {
   pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
     const formdata: FormData = new FormData();
     formdata.append('file', file);
-    const req = new HttpRequest('POST','http://localhost:8081/api/v1/forms', formdata, {
+    const req = new HttpRequest('POST','http://52.66.129.41:8081/api/v1/forms', formdata, {
     reportProgress: true,
       responseType: 'text'
     }

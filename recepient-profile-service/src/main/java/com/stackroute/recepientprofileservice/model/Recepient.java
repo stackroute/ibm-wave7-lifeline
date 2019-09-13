@@ -78,7 +78,7 @@ public class Recepient {
     private String bloodGroup;
     
 //    @NotNull(message = "createdDate is mandatory")
-    private Date createdDate;
+    private Date createdDate = new Date();
     private Request request;
 
     private String isEmailVerified="false";

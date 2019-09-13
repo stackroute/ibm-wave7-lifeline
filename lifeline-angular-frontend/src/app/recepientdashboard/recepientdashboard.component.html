@@ -1,6 +1,21 @@
-<div class="recepientDashboard">
-    <mat-tab-group dynamicHeight>
-    
+
+        <div>
+            <mat-tab-group>
+            <mat-tab label="Recommendation">
+                    <div *ngFor="let donor of donors">
+                            <mat-card class="donor-card">
+                            <mat-card-header>
+                                <mat-card-title>{{donor.firstName}} {{donor.lastName}}</mat-card-title>
+                                <mat-card-subtitle>Blood Group: {{donor.medicalInfo.bloodGroup}}</mat-card-subtitle>
+                            </mat-card-header>
+                            </mat-card>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Reports">
+                    <div>
+                        Reports       
+                    </div>
+                </mat-tab>
     <!--Profile Tab-->
     <mat-tab label="Profile" class="tab">
 
@@ -47,12 +62,11 @@
         </mat-card>
 
     </mat-tab>
-    <mat-tab label="Edit">
+    <mat-tab  id="text" label="Edit">
         <div class="profile">
             <form [formGroup]="profileForm">
                     <mat-card>
                 <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
-                   
                     <h3 mat-subheader>Edit Profile</h3>
                     <mat-form-field>
                       <input matInput placeholder="firstName" disabled formControlName="firstName"> 
@@ -133,21 +147,8 @@
             </p>
         </div>
     </mat-tab>
-    <mat-tab label="Recommendation">
-        <div *ngFor="let donor of donors">
-                <mat-card class="donor-card">
-                <mat-card-header>
-                    <mat-card-title>{{donor.firstName}} {{donor.lastName}}</mat-card-title>
-                    <mat-card-subtitle>Blood Group: {{donor.medicalInfo.bloodGroup}}</mat-card-subtitle>
-                </mat-card-header>
-                </mat-card>
-        </div>
-    </mat-tab>
-    <mat-tab label="Reports">
-        <div>
-            Reports       
-        </div>
-    </mat-tab>
+  
 
 </mat-tab-group>
 </div>
+ 
