@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import Stomp from 'stompjs';
 import SockJS from 'sockjs-client';
-import $ from 'jquery';
+// import $ from 'jquery';
 @Component({
   selector: 'app-chatcomponent',
   templateUrl: './chatcomponent.component.html',
@@ -24,7 +24,7 @@ export class ChatcomponentComponent  {
     this.stompClient.connect({}, function(frame) {
       that.stompClient.subscribe("/chat", (message) => {
         if(message.body) {
-          $(".chat").append("<div class='message'>"+message.body+"</div>")
+          // $(".chat").append("<div class='message'>"+message.body+"</div>")
           console.log(message.body);
         }
       });
@@ -33,6 +33,6 @@ export class ChatcomponentComponent  {
 
   sendMessage(message){
     this.stompClient.send("/app/send/message" , {}, message);
-    $('#input').val('');
+    // $('#input').val('');
   }
 }

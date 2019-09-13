@@ -1,6 +1,8 @@
 mat-card{
     width: 100%;
-    margin-top:80px;
+    margin-top:3cm;
+    background-color: beige;
+
 }
 .row-div{
     width: 100%;
@@ -16,9 +18,10 @@ mat-form-field{
 
 .submit-button{
     color: #fff;
-    background-color: #007bff;
+    background-color:#5b305b;
     border-color: #007bff;
     width: 18%;
     height: 40px;
     border-radius: 20px;
+    margin-left: 16cm;
 }

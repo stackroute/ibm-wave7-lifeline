@@ -1,4 +1,38 @@
 <mat-tab-group dynamicHeight>
+        <mat-tab label="DonorCard">
+                <div class="content" #content>
+                    <mat-card>
+                         <mat-list>
+                    <div class="logo">
+                            <img src="assets/images/cardlogo.png" width="100" height="109"  alt="App Logo">
+                            <h3 mat-subheader>Lifeline Donor Card  </h3>
+                        </div>
+                        <mat-list-item>
+                        <h4 class="h4-tag"><b>Name: </b>{{donor.firstName}} {{donor.lastName}} </h4>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag"><b>DonorId: </b> </h4>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag"><b>Date of Birth: </b>{{donor.dob}}</h4>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag"><b>Email:</b> {{donor.email}}</h4>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag"><b>Phone Number:</b> {{donor.phoneNumber}}</h4>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag"><b>Blood group:</b> {{donor.medicalInfo.bloodGroup}} </h4>
+                    </mat-list-item>
+                     </mat-list>
+                     </mat-card>
+                     </div>
+                     <div class="pdf">
+                         <button  style="color:whitesmoke" (click)="makePdf()">Download</button>
+                      </div>
+         </mat-tab>
+
 
         <mat-tab label="Profile" class="tab">
 
@@ -8,38 +42,38 @@
         
                         <mat-list-item>
         
-                            <h4 class="h4-tag">Name: {{donor.firstName}} {{donor.lastName}} </h4>
+                            <h4 class="h4-tag"><b>Name: </b> {{donor.firstName}} {{donor.lastName}} </h4>
         
                         </mat-list-item>
                         <mat-list-item>
-                            <h4 class="h4-tag">Gender: {{donor.gender}}</h4>
+                            <h4 class="h4-tag"><b>Gender: </b>{{donor.gender}}</h4>
         
                         </mat-list-item>
                         <mat-list-item>
-                            <h4 class="h4-tag">Date of Birth: {{donor.dob}}</h4>
+                            <h4 class="h4-tag"><b>Date of Birth: </b>{{donor.dob}}</h4>
         
                         </mat-list-item>
                         <mat-list-item>
-                            <h4 class="h4-tag">Email: {{donor.email}}</h4>
+                            <h4 class="h4-tag"><b>Email: </b>{{donor.email}}</h4>
         
                         </mat-list-item>
                         <mat-list-item>
-                            <h4 class="h4-tag">Phone Number: {{donor.phoneNumber}}</h4>
+                            <h4 class="h4-tag"><b>Phone Number: </b>{{donor.phoneNumber}}</h4>
         
                         </mat-list-item>
                         <mat-list-item>
-                            <h4 class="h4-tag">Aadhar Number: {{donor.aadhar}}</h4>
+                            <h4 class="h4-tag"><b>Aadhar Number:</b> {{donor.aadhar}}</h4>
                         </mat-list-item>
         
                         <mat-list-item>
                             <h4 class="h4-tag">
-                                Address: {{donor.address.addressLine1}} {{donor.address.addressLine2}},
+                                <b>Address: </b>{{donor.address.addressLine1}} {{donor.address.addressLine2}},
                                 {{donor.address.city}},{{donor.address.state}},pincode-{{donor.address.pinCode}}
                             </h4>
                         </mat-list-item>
                         <br>
                         <!-- <mat-list-item>
-                            <h4 class="h4-tag">Guardian details:
+                            <h4 class="h4-tag"><b>Guardian details:</b>
                                 <div *ngFor="let guardian of donor.guardianList">
                                     Email- {{guardian.email}}<br>
                                     Phone no- {{guardian.phoneNumber}}<br>
@@ -52,12 +86,12 @@
                     </mat-list>
                     <mat-divider></mat-divider>
                     <mat-list>
-                        <h3 mat-subheader>Medical Details:</h3>
+                        <h3 mat-subheader><b>Medical Details:</b></h3>
                         <mat-list-item>
-                            <h4 class="h4-tag">Blood group: {{donor.medicalInfo.bloodGroup}} </h4>
+                            <h4 class="h4-tag"><b>Blood group:</b> {{donor.medicalInfo.bloodGroup}} </h4>
                         </mat-list-item>
                         <mat-list-item>
-                            <h4 class="h4-tag">Diseases you have:
+                            <h4 class="h4-tag"><b>Diseases you have:</b>
                             </h4>
                         </mat-list-item>
                         <mat-checkbox [disabled]="donor.medicalInfo.disease.hiv" [checked]="donor.medicalInfo.disease.hiv">HIV
@@ -83,7 +117,7 @@
                         <mat-checkbox [disabled]="donor.medicalInfo.disease.liverDisease"
                             [checked]="donor.medicalInfo.disease.liverDisease">LiverDisease</mat-checkbox> -->
                         <!-- <mat-list-item>
-                            <h4 class="h4-tag">Organs you want to donate:</h4>
+                            <h4 class="h4-tag"><b>Organs you want to donate:</b></h4>
                         </mat-list-item>
                         <mat-checkbox [disabled]="donor.medicalInfo.organs[0].name"
                             [checked]="donor.medicalInfo.organs[0].donateOrNot">Cornea</mat-checkbox>
@@ -191,7 +225,7 @@
                    <mat-checkbox formControlName="cancer">Cancer</mat-checkbox>
                    <mat-checkbox formControlName="kidneyDisease">KidneyDisease</mat-checkbox>
                    <mat-checkbox formControlName="liverDisease">LiverDisease</mat-checkbox>
-                   <button mat-stroked-button type="submit" color="primary" (click)="updateDonor()">Save</button>
+                   <button mat-stroked-button type="submit" style="color:whitesmoke" (click)="updateDonor()">Save</button>
                </div>
             </mat-card>
            </form>
@@ -228,7 +262,7 @@
             </div>
             <br><br>
             <div class="withdraw">
-                <button (click)="deletedonor()">Withdraw</button>
+                <button style="color:whitesmoke" (click)="deletedonor()">Withdraw</button>
             </div>
         </div>
     </mat-tab>
