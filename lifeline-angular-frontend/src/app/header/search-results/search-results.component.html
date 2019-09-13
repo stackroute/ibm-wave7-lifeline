@@ -1,0 +1,41 @@
+<section>
+    <mat-drawer-container class="search-container">
+        <mat-drawer mode="side" class="search-sidenav" opened>
+            <div *ngFor="let factors of factorsCheckbox">
+                <mat-accordion>
+                    <mat-expansion-panel expanded="true">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{factors.title}}
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div *ngFor="let factor of factors.ranges">
+                            <mat-checkbox [name]="factor.name" [(ngModel)]="factor.checked" [value]="factor.name">{{factor.name}}</mat-checkbox>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </mat-drawer>
+        <mat-drawer-content class="search-content">
+            <div *ngFor="let donor of getDonors() | search: factorsCheckbox">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                        <mat-card-title>{{donor.firstName}} {{donor.lastName}}</mat-card-title>
+                        <mat-card-subtitle>
+                            {{donor.email}}
+                            <br>
+                            Blood Group : {{donor.medicalDetails.bloodGroup}}
+                        </mat-card-subtitle>
+                        <mat-card-subtitle>
+                            {{donor.address.addressLine1}},
+                            {{donor.address.addressLine2}},
+                            {{donor.address.city}},
+                            {{donor.address.state}},
+                            {{donor.address.pinCode}}
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                </mat-card>
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>   
+</section>

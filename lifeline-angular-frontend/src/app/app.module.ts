@@ -25,7 +25,7 @@ import { DonationComponent } from './donation/donation.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MythsComponent } from './myths/myths.component';
 import { DonorRegistrationFormComponent } from './donor-registration-form/donor-registration-form.component';
-import { MatFormFieldModule, MatInputModule, MatRadioModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatRadioModule, MatExpansionModule, MatSidenavModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule, MatNativeDateModule, MatCheckboxModule } from '@angular/material';
 import { RecepientregistrationformcomponentComponent } from './recepientregistrationformcomponent/recepientregistrationformcomponent.component';
@@ -49,10 +49,12 @@ import { LandingpagereportsComponent } from './landingpagereports/landingpagerep
 import { DonordashboardreportsComponent } from './donordashboardreports/donordashboardreports.component';
 import { EmailverificationComponent } from './emailverification/emailverification.component';
 import { VerificationAlertComponent } from './recepientregistrationformcomponent/verification-alert/verification-alert.component';
-import { DonorsideVerificationalertComponent } from './donor-registration-form/donorside-verificationalert/donorside-verificationalert.component';
 import { DonorEmailverificationComponent } from './donor-emailverification/donor-emailverification.component';
 import { MatStepperModule } from '@angular/material/stepper';
-
+import { MatSelectModule } from '@angular/material/select';
+import { SearchResultsComponent } from './header/search-results/search-results.component';
+import { SearchPipe } from './pipes/search.pipe';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 //  import { EmbedVideoService } from 'ngx-embed-video';
 @NgModule({
@@ -86,10 +88,9 @@ import { MatStepperModule } from '@angular/material/stepper';
     DonordashboardreportsComponent,
     EmailverificationComponent,
     VerificationAlertComponent,
-    DonorsideVerificationalertComponent,
     DonorEmailverificationComponent,
-
-
+    SearchResultsComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -112,11 +113,15 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatCheckboxModule,
     MatListModule,
     MatButtonModule,
+    MatAutocompleteModule,
     MatSnackBarModule,
     MatBottomSheetModule,
     MatToolbarModule,
     MatDialogModule,
-    MatStepperModule
+    MatStepperModule,
+    MatSelectModule,
+    MatExpansionModule,
+    MatSidenavModule
   ],
   entryComponents: [
     SnackBarComponent,

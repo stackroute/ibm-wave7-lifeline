@@ -8,10 +8,15 @@
   position: fixed;
   z-index: 2;
 }
-.header{
 
-  margin:30px 0px 5px 50px;
+.header{
+  margin:30px 30px 30px 50px;
 }
+
+app-account {
+  margin-left: 30px;
+}
+
 .title{
   margin:30px 20px 5px 10px;
   float: left;

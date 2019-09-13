@@ -36,9 +36,7 @@ public class Donor {
 
 	@Transient
 	private String userType;
-	
-	
-	
+
 	@NotNull(message = "firstname is mandatory")
 	@Pattern(regexp = "[a-zA-Z]{3,30}" )
 	private String firstName;
@@ -77,7 +75,7 @@ public class Donor {
 	@NotNull(message = "guardian list is mandatory")
 	private List<Guardian> guardianList;
 
-	private MedicalDetails medicalInfo;
+	private MedicalDetails medicalDetails;
 	
 	private String isEmailVerified="false";
 	

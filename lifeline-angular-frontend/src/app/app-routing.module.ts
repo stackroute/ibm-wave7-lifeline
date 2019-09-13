@@ -11,20 +11,48 @@ import { ProfileComponent } from './donordashboard/profile.component';
 import { RecepientdashboardComponent } from './recepientdashboard/recepientdashboard.component';
 import { LoginComponent } from './header/login/login.component';
 import { EmailverificationComponent } from './emailverification/emailverification.component';
-
+import { SearchResultsComponent } from './header/search-results/search-results.component';
 const routes: Routes = [
-  { path: '', component: MainpageComponent },
-  { path: 'aimsandobjectives', component: AimsobjectivesComponent },
-  { path: 'termsandconditions', component: TermsandconditionsComponent },
-  { path: 'whatcanyoudonate', component: DonationComponent },
-  { path: 'myths', component: MythsComponent },
-  { path: 'donor-registration', component: DonorRegistrationFormComponent },
-  { path: 'recepient-registration', component: RecepientregistrationformcomponentComponent },
-  { path: 'donor', component: ProfileComponent },
-  { path: 'recepient', component: RecepientdashboardComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LoginComponent },
-  { path: 'id', component: EmailverificationComponent }
+  { 
+    path: '', 
+    component: MainpageComponent },
+  { 
+    path: 'aimsandobjectives', 
+    component: AimsobjectivesComponent },
+  { 
+    path: 'termsandconditions', 
+    component: TermsandconditionsComponent },
+  { 
+    path: 'whatcanyoudonate', 
+    component: DonationComponent },
+  { 
+    path: 'myths', 
+    component: MythsComponent },
+  { 
+    path: 'donor-registration', 
+    component: DonorRegistrationFormComponent },
+  { 
+    path: 'recepient-registration', 
+    component: RecepientregistrationformcomponentComponent },
+  { 
+    path: 'donor', 
+    component: ProfileComponent },
+  { 
+    path: 'recepient', 
+    component: RecepientdashboardComponent },
+  { 
+    path: 'login', 
+    component: LoginComponent },
+  { 
+    path: 'logout', 
+    component: LoginComponent },
+  { 
+    path: 'id', 
+    component: EmailverificationComponent },
+  {
+    path: 'search/:name', 
+    component: SearchResultsComponent
+  }
 ];
 
 @NgModule({

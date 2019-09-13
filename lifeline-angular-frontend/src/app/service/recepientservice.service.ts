@@ -42,7 +42,7 @@ export class RecepientserviceService {
   }
 
   getDonorRecommendationsForRecepient(bloodGroup: string):Observable<Recepient>{
-    let resultUrl = 'http://localhost:8084/results'
+    let resultUrl = 'http://172.23.238.228:8084/results'
     return this.httpClient.get<Recepient>(resultUrl+ "/" + bloodGroup);
   }
 

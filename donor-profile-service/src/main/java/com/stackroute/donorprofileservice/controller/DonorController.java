@@ -41,7 +41,6 @@ public class DonorController {
 	public ResponseEntity<?> getDonorList() {
 		ResponseEntity responseEntity;
 		List<Donor> donorList;
-		
 		try {
 			donorList = donorService.getDonorList();
 			responseEntity = new ResponseEntity<List<Donor>>(donorList, HttpStatus.OK);
@@ -85,7 +84,6 @@ public class DonorController {
 			e.printStackTrace();
 			responseEntity = new ResponseEntity<String>("exception", HttpStatus.CONFLICT);
 			logger.error("save track api call throws an exception");
-			
 		}
 		return responseEntity;
 	}

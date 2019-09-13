@@ -301,30 +301,54 @@
                         </mat-form-field>
                         <mat-form-field class="three-col-div" appearance="legacy">
                             <mat-label>BMI</mat-label>
-                            <input matInput formControlName="bodyMassIndex">
+                            <select matNativeControl formControlName="bodyMassIndex">
+                                <option value="<18.5"><18.5</option>
+                                <option value="18.5-24.9">18.5-24.9</option>
+                                <option value="25-29.9">25-29.9</option>
+                                <option value="30-39.9">30-39.9</option>
+                            </select>
                         </mat-form-field>
                         <mat-form-field class="three-col-div" appearance="legacy">
                             <mat-label>HLA Type</mat-label>
-                            <input matInput formControlName="hlaType">
+                            <select matNativeControl formControlName="hlaType">
+                                <option value="HLA-A">HLA-A</option>
+                                <option value="HLA-B">HLA-B</option>
+                                <option value="HLA-DR">HLA-DR</option>
+                            </select>
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>Liver Attenuation Index</mat-label>
-                            <input matInput formControlName="liverAttenuationIndex">
+                            <select matNativeControl formControlName="liverAttenuationIndex">
+                                <option value=">5">>5</option>
+                                <option value="<5"><5</option>
+                            </select>
                         </mat-form-field>
                     </div>
                     <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px"
                         fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
                         <mat-form-field class="three-col-div" appearance="legacy">
                             <mat-label>Lung Size</mat-label>
-                            <input matInput formControlName="lungSize">
+                            <select matNativeControl formControlName="lungSize">
+                                <option value=">285">>285</option>
+                                <option value=">400">>400</option>
+                                <option value=">500">>500</option>
+                                <option value=">700">>700</option>
+                                <option value=">750">>750</option>
+                            </select>
                         </mat-form-field>
                         <mat-form-field class="three-col-div" appearance="legacy">
                             <mat-label>Platelet Count</mat-label>
-                            <input matInput formControlName="plateletCount">
+                            <select matNativeControl formControlName="plateletCount">
+                                <option value=">100,000">>100,000</option>
+                                <option value="<500,000"><500,000</option>
+                            </select>
                         </mat-form-field>
                         <mat-form-field class="three-col-div" appearance="legacy">
                             <mat-label>RH Factor</mat-label>
-                            <input matInput formControlName="rhFactor">
+                            <select matNativeControl formControlName="rhFactor">
+                                <option value="Positive">Positive</option>
+                                <option value="Negative">Negative</option>
+                            </select>
                         </mat-form-field>
                         <div id="field-div"></div>
                     </div>

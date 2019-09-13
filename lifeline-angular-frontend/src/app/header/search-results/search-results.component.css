@@ -1,0 +1,16 @@
+section {
+    margin-top: 100px;
+}
+
+.search-container {
+    height: 100vh;
+}
+
+.search-sidenav {
+    width: 300px;
+    background: white;
+}
+
+.search-content {
+    background: white;
+}

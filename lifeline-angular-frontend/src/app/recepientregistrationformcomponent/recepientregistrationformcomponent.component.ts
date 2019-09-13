@@ -55,18 +55,17 @@ export class RecepientregistrationformcomponentComponent implements OnInit {
   register() {
     console.log(this.registrationForm);
     this.recepientprofileservice.saveRecepient(this.registrationForm.value).subscribe(data => {
-      this.recepient = data
+      this.recepient = data,
+      this.recepientprofileservice.sendMail(this.recepient.id)
+        .subscribe(data => {
+          console.log(data);
+        });
       const dialogRef = this.dialog.open(VerificationAlertComponent, {
         width: '250px',
       });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
       });
-
-      this.recepientprofileservice.sendMail(this.recepient.id)
-        .subscribe(data => {
-          console.log(data);
-        });
     },
 
 

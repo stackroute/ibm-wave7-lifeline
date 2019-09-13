@@ -7,23 +7,20 @@
           <div class="title">Lifeline</div>
           <div class="spacer"></div>
           <div class="header" *ngIf="!loggedIn">
-              <a style="color: white" routerLink=''>Home</a>
-              <a [matMenuTriggerFor]="menu">About Us</a>  
-              <mat-menu #menu="matMenu">
-                <button mat-menu-item [routerLink]="['/aimsandobjectives']" > Aims and Objectives</button>
-                <button mat-menu-item [routerLink]="['/termsandconditions']">Terms and Conditions</button>
-              </mat-menu>
-              <a [matMenuTriggerFor]="menu1">Learn</a> 
-              <mat-menu #menu1="matMenu">
-                  <button mat-menu-item [routerLink]="['/whatcanyoudonate']">What can you donate</button>
-                  <button mat-menu-item [routerLink]="['/myths']">Myths</button>
-              </mat-menu>
-            </div>
-          
-          
+            <a style="color: white" routerLink=''>Home</a>
+            <a [matMenuTriggerFor]="menu">About Us</a>  
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item [routerLink]="['/aimsandobjectives']" > Aims and Objectives</button>
+              <button mat-menu-item [routerLink]="['/termsandconditions']">Terms and Conditions</button>
+            </mat-menu>
+            <a [matMenuTriggerFor]="menu1">Learn</a> 
+            <mat-menu #menu1="matMenu">
+                <button mat-menu-item [routerLink]="['/whatcanyoudonate']">What can you donate</button>
+                <button mat-menu-item [routerLink]="['/myths']">Myths</button>
+            </mat-menu>
+          </div>
           <app-search *ngIf="!loggedIn"></app-search>
           <app-account></app-account>
-        
       </mat-toolbar-row>
   </mat-toolbar>
 </header>

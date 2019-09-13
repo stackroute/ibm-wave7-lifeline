@@ -16,10 +16,10 @@ export class DonorEmailverificationComponent implements OnInit {
   
 
   ngOnInit() {
-    this.verifyRecepient();
+    this.verifyDonor();
   }
 
-  verifyRecepient() {
+  verifyDonor() {
     this.route.queryParams.subscribe(params => {
       let id = params["id"];
       this.donorProfileservice.getDonorById(id).subscribe(data => {

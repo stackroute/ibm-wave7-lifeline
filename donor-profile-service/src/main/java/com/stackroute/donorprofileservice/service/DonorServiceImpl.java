@@ -118,10 +118,10 @@ public class DonorServiceImpl implements DonorService {
 			MimeMessageHelper helper = new MimeMessageHelper(message, true);
 			helper.setTo(donor.getEmail());
 			helper.setSubject("SpringBootApplication");
-			helper.setText("http://172.23.238.185:4200/id?id=" + id);
+			helper.setText("http://172.23.238.228:4200/id?id=" + id);
 			javaMailSender.send(message);
+			System.out.println("Sent Email");
 			return "successfully sent email";
-
 		}
 		return "hello";
 	}

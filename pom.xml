@@ -34,6 +34,7 @@
 		<module>recepient-profile-service</module>
 		<module>recommendation-service</module>
 		<module>reportservice</module>
+		<module>search-service</module>
 	</modules>
 
 	<dependencies>

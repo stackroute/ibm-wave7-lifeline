@@ -5,7 +5,7 @@ import { HttpResponse } from '@angular/common/http';
 import { Donor } from '../model/model';
 import { Route, ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { DonorsideVerificationalertComponent } from './donorside-verificationalert/donorside-verificationalert.component';
+import { VerificationAlertComponent } from '../recepientregistrationformcomponent/verification-alert/verification-alert.component';
 
 @Component({
   selector: 'app-donor-registration-form',
@@ -180,21 +180,21 @@ export class DonorRegistrationFormComponent implements OnInit {
       });
       this.selectedFiles = undefined;
       console.log(this.registrationForm.value);
-      this.donorProfileService.saveDonor(this.registrationForm.value).subscribe(data => this.donor = data, error => this.errorMsg = error);
+      this.donorProfileService.saveDonor(this.registrationForm.value).subscribe(data => { 
+        this.donor = data 
+        this.donorProfileService.sendMail(this.donor.id)
+        .subscribe(data => {
+          console.log(data);
+        });
+      },
+      error => this.errorMsg = error);
       console.log('api call');
-      const dialogRef = this.dialog.open(DonorsideVerificationalertComponent, {
+      const dialogRef = this.dialog.open(VerificationAlertComponent, {
         width: '250px',
       });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
       });
-
-      this.donorProfileService.sendMail(this.donor.id)
-        .subscribe(data => {
-          console.log(data);
-        });
-      // this.router.navigate(['']);
-    // }
   }
   check() {
     let diseaseGroup = this.disease;

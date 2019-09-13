@@ -1,10 +1,10 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div class="search">
-<form class="form-inline my-2 my-lg-3 hello" >
-    <input class="form-control mr-sm-2" type="text" placeholder="Search Organ" aria-label="Search">
-    <button mat-icon-button >
-        <mat-icon>search</mat-icon>
-      </button>
-</form>
+<mat-form-field appearance="standard">
+    <input matInput type="text" matInput [formControl]="searchControl" [matAutocomplete]="auto" placeholder="Search Organ">
+    <mat-icon matSuffix>
+        <i class="material-icons">search</i>
+    </mat-icon>
+</mat-form-field>
 
-
+<mat-autocomplete class="optionsAutoComplete" #auto="matAutocomplete">
+    <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+</mat-autocomplete>
