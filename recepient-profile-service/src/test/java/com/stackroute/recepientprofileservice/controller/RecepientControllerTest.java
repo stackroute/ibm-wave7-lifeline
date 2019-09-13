@@ -1,6 +1,7 @@
 package com.stackroute.recepientprofileservice.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.stackroute.recepientprofileservice.exception.RecepientProfileAlreadyExistsException;
 import com.stackroute.recepientprofileservice.exception.RecepientProfileNotFoundException;
 import com.stackroute.recepientprofileservice.model.Address;
 import com.stackroute.recepientprofileservice.model.Recepient;
