@@ -2,10 +2,10 @@ mat-card{
     width: 94%;
     margin: 3%;
     margin-top: 9%;
-    background-color: beige;
+    background-color: white;
 }
 mat-horizontal-stepper{
-    background-color: beige;
+    background-color: white;
 
 }
 .row-div{
@@ -27,4 +27,7 @@ mat-form-field, #field-div{
     border-color: #5b305b;
     align-self: center;
 
+}
+.form-div{
+    background-color: #faf7fa;
 }

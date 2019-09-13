@@ -1,3 +1,4 @@
+<div class="form-div">
 <mat-card>
     <form [formGroup]="registrationForm">
         <mat-horizontal-stepper linear="false" #stepper>
@@ -151,7 +152,7 @@
                 </div>
 
                 <div formArrayName="formList">
-
+                    <p>Upload Aadhar</p>
                     <div *ngFor="let form of formList.controls; let i = index" [formGroupName]="i">
                         <div>
                             <label>
@@ -366,29 +367,33 @@
                     <h6>Organs:</h6>
                     <div formGroupName="organList">
                         <div *ngFor="let organ of organList.controls; let i = index" [formGroupName]="i">
-                            <mat-checkbox [disabled]="this.organList.value[i].donateOrNot"
+                            <mat-checkbox [disabled]="organState[i]"
                                 formControlName="donateOrNot">
                                 {{this.organList.value[i].name}}
                             </mat-checkbox>
                         </div>
                     </div>
                 </div>
-                <mat-checkbox>
+
+                <h6>Declaration:</h6>
+                <mat-checkbox >
                     I hereby declare that I am a citizen of India and above 18 years of age
                 </mat-checkbox>
 
                 <mat-checkbox>
+
                     I hereby unequivocally authorize the removal of my organ / organs, mentioned above from my body
                     after my
                     death for therapeutic purposes.
                 </mat-checkbox>
 
                 <mat-checkbox>
+
                     I hereby confirm that all the above information is right and I choose to pledge my organs being in
                     the
                     sane state of mind.
                 </mat-checkbox>
-                <div class="row-div" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="50px">
+                <div class="row-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center" fxLayoutGap="50px">
                     <button class="button" mat-button matStepperPrevious>Back</button>
                     <button class="button" mat-button type="submit" (click)="register()">Register</button>
                 </div>
@@ -400,3 +405,4 @@
 
     </form>
 </mat-card>
+</div>
