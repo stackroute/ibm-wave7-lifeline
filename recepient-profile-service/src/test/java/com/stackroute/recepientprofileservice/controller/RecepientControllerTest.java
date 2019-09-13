@@ -25,14 +25,14 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -58,15 +58,15 @@ public class RecepientControllerTest {
     private List<Recepient> recepientList;
 
 
+
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(recepientController).build();
         address = new Address("11b","main road","bengaluru","karnataka","678490");
 
-
-        recepient = new Recepient(103L,"recepient","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985,5,23),
-                "356478900928","male",address,"A+", new Date(), new Request(),null);
+        recepient = new Recepient(101L,"recepient","Tony","Stark","tony@gmail.com","9876543210","Password@123",new Date(1985,5,23),
+                "356478900928","male",address,"A+", new Date(), new Request(), "true");
         recepientList = new ArrayList<>();
         recepientList.add(recepient);
     }
@@ -77,40 +77,53 @@ public class RecepientControllerTest {
         recepientList = null;
     }
 
-    //	Testcase for getrecepientList()
+    	//Testcase for getrecepientList()
     @Test
     public void getRecepientList() throws Exception{
         when(recepientService.getRecepientList()).thenReturn(recepientList);
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/recepient")
+        mockMvc.perform(MockMvcRequestBuilders.get("api/v1/recepient")
                 .contentType(MediaType.APPLICATION_JSON).content(jsonToString(recepient)))
                 .andExpect(status().isOk())
                 .andDo(MockMvcResultHandlers.print());
     }
 
-    //	Testcase for getrecepientById()
+
+
+    //	Negative Testcase for getrecepientById()
     @Test
-    public void getRecepientById() throws Exception, RecepientProfileNotFoundException {
-        when(recepientService.getRecepientById(recepient.getId())).thenReturn(recepient);
+    public void getRecepientById1() throws Exception, RecepientProfileNotFoundException {
+        when(recepientService.getRecepientById(recepient.getId())).thenThrow(Exception.class,RecepientProfileNotFoundException.class);
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/recepient/"+recepient.getId())
                 .contentType(MediaType.APPLICATION_JSON).content(jsonToString(recepient)))
-                .andExpect(status().isOk())
+                .andExpect(status().isConflict())
                 .andDo(MockMvcResultHandlers.print());
     }
 
     //Testcase for saving recepientProfile()
-//    @Test
-//    public void saveRecepientProfile() throws Exception, RecepientProfileAlreadyExistsException {
-//        when(kafkaTemplate.send(any(), any())).thenReturn(any());
-//        when(recepientService.saveRecepientProfile(recepient)).thenReturn(recepient);
-//        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/recepient")
-//                .contentType(MediaType.APPLICATION_JSON).content(jsonToString(recepient)))
-//                .andExpect(status().isCreated())
-//                .andDo(MockMvcResultHandlers.print());
-//    }
-
-    //	Testcase to updaterecepientProfile()
     @Test
-    public void updateDonorProfile() throws Exception, RecepientProfileNotFoundException {
+    public void saveRecepientProfile() throws RecepientProfileAlreadyExistsException, Exception {
+
+        when(recepientService.saveRecepientProfile(recepient)).thenReturn(recepient);
+        mockMvc.perform(MockMvcRequestBuilders.post("api/v1/recepient")
+                .contentType(MediaType.APPLICATION_JSON).content(jsonToString(recepient)))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print());
+    }
+
+    //Negative Testcase for saving recepientProfile()
+    @Test
+    public void saveRecepientProfile1() throws Exception, RecepientProfileAlreadyExistsException {
+        when(recepientService.saveRecepientProfile(recepient)).thenThrow(Exception.class,RecepientProfileAlreadyExistsException.class);
+        mockMvc.perform(MockMvcRequestBuilders.post("api/v1/recepient")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(jsonToString(recepient)))
+                .andExpect(MockMvcResultMatchers.status().isConflict())
+                .andDo(MockMvcResultHandlers.print());
+    }
+
+    //	Testcase to update recepient Profile()
+    @Test
+    public void updateRecepientProfile() throws Exception, RecepientProfileNotFoundException {
         when(recepientService.updateRecepientProfile(anyInt(),any())).thenReturn(recepient);
         mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/recepient/"+recepient.getId())
                 .contentType(MediaType.APPLICATION_JSON).content(jsonToString(recepient)))
@@ -118,13 +131,33 @@ public class RecepientControllerTest {
                 .andDo(MockMvcResultHandlers.print());
     }
 
-    //	Testcase for deleterecepientProfile()
+    //Negative Testcase to update recepient Profile()
     @Test
-    public void deleteDonorProfile() throws Exception, RecepientProfileNotFoundException {
+    public void updateRecepientById2() throws Exception, RecepientProfileNotFoundException {
+        when(recepientService.updateRecepientProfile(anyLong(),any())).thenThrow(RecepientProfileNotFoundException.class);
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/recepient/"+recepient.getId())
+                .contentType(MediaType.APPLICATION_JSON).content(jsonToString(recepient)))
+                .andExpect(MockMvcResultMatchers.status().isConflict())
+                .andDo(MockMvcResultHandlers.print());
+    }
+
+    //	Testcase to delete recepientProfile()
+    @Test
+    public void deleterecepientProfile() throws Exception, RecepientProfileNotFoundException {
         when(recepientService.deleteRecepientProfile(anyInt())).thenReturn(recepient);
         mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/recepient/"+recepient.getId())
                 .contentType(MediaType.APPLICATION_JSON).content(jsonToString(recepient)))
                 .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print());
+    }
+
+    //	Negative Testcase to delete recepientProfile()
+    @Test
+    public void deleteRecepientById1() throws Exception, RecepientProfileNotFoundException {
+        when(recepientService.deleteRecepientProfile(anyLong())).thenThrow(RecepientProfileNotFoundException.class);
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/recepient/"+recepient.getId()))
+
+                .andExpect(MockMvcResultMatchers.status().isConflict())
                 .andDo(MockMvcResultHandlers.print());
     }
 

@@ -13,7 +13,6 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class Form {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String fileName;
 }

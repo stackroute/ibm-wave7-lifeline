@@ -54,8 +54,8 @@ public class DonorRepositoryTest {
 		organs = new Organs(8,"liver", true);
 		organsArrayList.add(organs);
 		medicalDetails = new MedicalDetails("O+",disease,organsArrayList, "HLA-A", 100000000, 1.5, 27, 100, 6 );
-		donor = new Donor(101,"D01","donor","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985, Calendar.JUNE,23),
-				"356478900928","male",address,guardianList,medicalDetails,"true",new ArrayList<>(),new Date());
+		donor = new Donor(101,"D01","donor","Tony","Stark","tony@gmail.com","9876543210","Password@123",new Date(1985, Calendar.JUNE,23),
+				"356478900928","male",address,guardianList,medicalDetails,true,new ArrayList<>(),new Date());
 		donorList = new ArrayList<>();
 	}
 	
