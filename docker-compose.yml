@@ -33,7 +33,7 @@ services:
     hostname: localhost
     image: zuul-api
     ports:
-      - 8099:8099
+      - 8090:8090
     healthcheck:
       test: "exit 0"
 
@@ -42,7 +42,6 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
-    image: zookeeper
     ports:
       - 8098:8098
     healthcheck:

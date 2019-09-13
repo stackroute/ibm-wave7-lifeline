@@ -7,20 +7,26 @@
   /* box-shadow: 10px 10px 10px 10px grey; */
   /* -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5); */
   margin: 30px 100px 30px 100px;
-  background-color: antiquewhite;
+  background-color: #eaecc1;
+  border-radius: 2cm;
+border: 3px solid #5d6119;
 }
 .mat-subheader{
+  align-items: center;
   font-size: 30px;
-  color:navy;
+  color:#5b305b;
+  font-style:normal;
+  text-shadow: 2px 2px #e7d6ef;
 }
 .h4-tag{
   font-size: 16px;
-  font-weight: 400;
   font-family: Arial, Helvetica, sans-serif;
+  padding-top: 1.5cm;
   
 }
 .mat-list{
   padding: 20px 0 20px 20px;
+  
  
 }
 .mat-checkbox{
@@ -32,7 +38,7 @@
 /* withdraw css */
 textarea{
   margin-top: 10px;
-  background-color: antiquewhite;
+  background-color: #eaecc1;
   margin-left: 300px;
     
 }
@@ -48,12 +54,7 @@ margin-bottom: 10px;
   text-align: center;
   margin-top: 5px;
 }
-.example-container{
-  text-align:center;
-  border:solid 2px black;
-  width: 50%;
-  margin-left: 350px;
-}
+
 .example-section {
   display: flex;
   align-content: center;
@@ -86,3 +87,40 @@ table{
 {
   height: 5cm;
 }
+.mat-form-field{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+button{
+  width:3cm;
+  margin-left:15cm;
+ background-color: #5b305b;
+}
+.content{
+  height: 14cm;
+  width: 25cm;
+  margin:auto;
+
+  }
+  .content h3{
+   float:right;
+   margin-right:7cm;
+   padding-top: 60px;
+   margin-top:0.3cm;
+   font-size: 0.8cm;
+  }
+  .pdf
+  {
+  display: flex;
+  justify-content: center;
+  margin-top:0cm;
+  padding-top:0.1cm;
+  margin-right:15cm;
+  }
+  img{
+    margin-left: 0.2cm;
+    width:3cm;
+    height: 3cm;
+    border-radius: 15px;
+  }
+  

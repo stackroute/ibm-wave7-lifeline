@@ -11,6 +11,9 @@ import { ProfileComponent } from './donordashboard/profile.component';
 import { RecepientdashboardComponent } from './recepientdashboard/recepientdashboard.component';
 import { LoginComponent } from './header/login/login.component';
 import { EmailverificationComponent } from './emailverification/emailverification.component';
+import { HeaderComponent } from './header/header.component';
+import{ForgotpasswordComponent}from './forgotpassword/forgotpassword.component';
+import{ResetpasswordComponent}from './resetpassword/resetpassword.component';
 
 const routes: Routes = [
   { path: '', component: MainpageComponent },
@@ -23,8 +26,11 @@ const routes: Routes = [
   { path: 'donor', component: ProfileComponent },
   { path: 'recepient', component: RecepientdashboardComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LoginComponent },
-  { path: 'id', component: EmailverificationComponent }
+  { path: 'logout', component: MainpageComponent},
+  { path: 'id', component: EmailverificationComponent },
+  {path:'forgotPassword', component: ForgotpasswordComponent},
+  {path:'resetPassword',component:ResetpasswordComponent}
+
 ];
 
 @NgModule({

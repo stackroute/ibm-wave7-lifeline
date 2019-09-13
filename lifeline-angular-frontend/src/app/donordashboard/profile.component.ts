@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
 import { DonorProfileService } from '../service/donor-profile.service';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material';
 import { Chart } from 'chart.js';
 import { ReportgenerationserviceService } from '../service/reportgenerationservice.service';
 import { Donor } from '../model/model';
+import * as jspdf from 'jspdf';
 
 export interface Section {
   name: string;
@@ -71,7 +72,7 @@ export class ProfileComponent implements OnInit {
       firstName: new FormControl({ value: '', disabled: true }, Validators.required),
       lastName: new FormControl({ value: '', disabled: true }, Validators.required),
       email: new FormControl({ value: '', disabled: true }, Validators.required),
-      phoneNumber: new FormControl({ value: '', disabled: true }, Validators.required),
+      phoneNumber: new FormControl({ value: '' }, Validators.required),
       aadhar: new FormControl({ value: '', disabled: true }, Validators.required),
       gender: new FormControl({ value: '', disabled: true }, Validators.required),
       addressLine1: new FormControl(Validators.required),
@@ -253,4 +254,11 @@ export class ProfileComponent implements OnInit {
 
 
   }
+  @ViewChild('content',{static:false}) content: ElementRef;
+ makePdf() {
+   let doc = new jspdf();
+   doc.addHTML(this.content.nativeElement, function() {
+      doc.save("Donorcard.pdf");
+   });
+ }
 }

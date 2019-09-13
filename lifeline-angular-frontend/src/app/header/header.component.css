@@ -37,5 +37,10 @@ a {
   padding-left: 20px;
 }
 .mat-menu{
-  padding-top: 2cm;
+  margin-top: 2cm;
+}
+a{
+  font-size: 20px;
+  font-weight: 700;
+  padding-left: 20px;
 }
