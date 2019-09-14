@@ -11,6 +11,7 @@ import { ProfileComponent } from './donordashboard/profile.component';
 import { RecepientdashboardComponent } from './recepientdashboard/recepientdashboard.component';
 import { LoginComponent } from './header/login/login.component';
 import { EmailverificationComponent } from './emailverification/emailverification.component';
+<<<<<<< HEAD
 import { SearchResultsComponent } from './header/search-results/search-results.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
@@ -62,6 +63,32 @@ const routes: Routes = [
   {
     path:'resetPassword',
     component: ResetpasswordComponent}
+=======
+import { HeaderComponent } from './header/header.component';
+import{ForgotpasswordComponent}from './forgotpassword/forgotpassword.component';
+import{ResetpasswordComponent}from './resetpassword/resetpassword.component';
+import { SearchResultsComponent } from './header/search-results/search-results.component';
+
+const routes: Routes = [
+  { path: '', component: MainpageComponent },
+  { path: 'aimsandobjectives', component: AimsobjectivesComponent },
+  { path: 'termsandconditions', component: TermsandconditionsComponent },
+  { path: 'whatcanyoudonate', component: DonationComponent },
+  { path: 'myths', component: MythsComponent },
+  { path: 'donor-registration', component: DonorRegistrationFormComponent },
+  { path: 'recepient-registration', component: RecepientregistrationformcomponentComponent },
+  { path: 'donor', component: ProfileComponent },
+  { path: 'recepient', component: RecepientdashboardComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'logout', component: MainpageComponent},
+  { path: 'id', component: EmailverificationComponent },
+  {path:'forgotPassword', component: ForgotpasswordComponent},
+  {path:'resetPassword',component:ResetpasswordComponent},
+  {
+    path: 'search/:name', 
+    component: SearchResultsComponent
+  }
+>>>>>>> 7e7014b39a5876738478d6fb2da8f10bb2a92317
 ];
 
 @NgModule({

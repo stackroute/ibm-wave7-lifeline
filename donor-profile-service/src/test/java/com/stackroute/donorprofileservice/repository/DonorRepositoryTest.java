@@ -56,6 +56,10 @@ public class DonorRepositoryTest {
 		medicalDetails = new MedicalDetails("O+",disease,organsArrayList, "HLA-A", "100000000", "1.5", "27", "100", "6" );
 		donor = new Donor(101,"D01","donor","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985, Calendar.JUNE,23),
 				"356478900928","male",address,guardianList,medicalDetails,"true",new ArrayList<>(),new Date());
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7e7014b39a5876738478d6fb2da8f10bb2a92317
 		donorList = new ArrayList<>();
 	}
 	

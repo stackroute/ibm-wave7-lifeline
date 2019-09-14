@@ -118,6 +118,14 @@
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
+<<<<<<< HEAD
+=======
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+
+>>>>>>> 7e7014b39a5876738478d6fb2da8f10bb2a92317
 
 
     </dependencies>
