@@ -1,7 +1,7 @@
 package com.stackroute.login.listener;
 
-import com.stackroute.login.dao.UserDao;
-import com.stackroute.login.model.DAOUser;
+import com.stackroute.login.repository.UserRepository;
+import com.stackroute.login.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,7 +14,7 @@ public class Consumer {
     private final Logger logger = LoggerFactory.getLogger(Consumer.class.getName());
 
     @Autowired
-    UserDao userDao;
+    UserRepository userRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -24,27 +24,27 @@ public class Consumer {
 //    }
 
     @KafkaListener(topics="RecepientRegistration",groupId = "group_id")
-    public void consume(DAOUser daoUser) throws IOException {
+    public void consume(User user) throws IOException {
         logger.info("Inside Recipient");
-        logger.info(""+daoUser);
-        daoUser.setPassword(passwordEncoder.encode(daoUser.getPassword()));
-        logger.info(daoUser.getEmailVerified());
-        userDao.save(daoUser);
+        logger.info(""+ user);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        logger.info(user.getEmailVerified());
+        userRepository.save(user);
     }
 
     @KafkaListener(topics="DonorRegistration",groupId = "group_id")
-    public void consumedonor(DAOUser daoUser) throws IOException {
+    public void consumedonor(User user) throws IOException {
         logger.info("Inside Donor");
-        logger.info(""+daoUser);
-        logger.info(passwordEncoder.encode(daoUser.getPassword()));
-        daoUser.setPassword(passwordEncoder.encode(daoUser.getPassword()));
-        System.out.println(daoUser.getEmailVerified());
-        DAOUser presentDaoUser = userDao.findByUsername(daoUser.getUsername());
-        if (presentDaoUser != null) {
-            presentDaoUser.setEmailVerified((daoUser.getEmailVerified()));
-            userDao.save(presentDaoUser);
+        logger.info(""+ user);
+        logger.info(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        System.out.println(user.getEmailVerified());
+        User presentUser = userRepository.findByUsername(user.getUsername());
+        if (presentUser != null) {
+            presentUser.setEmailVerified((user.getEmailVerified()));
+            userRepository.save(presentUser);
         } else {
-            userDao.save(daoUser);
+            userRepository.save(user);
 
         }
     }

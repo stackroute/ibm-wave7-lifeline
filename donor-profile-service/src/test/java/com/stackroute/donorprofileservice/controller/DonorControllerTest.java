@@ -58,7 +58,7 @@ public class DonorControllerTest {
 	private Guardian guardian;
 	private Form form;
 	private Disease disease;
-	private ArrayList<Organs> organsArrayList;
+	private ArrayList<Organs> organList;
 	private Organs organs;
 	private List<Form> formList = new ArrayList<>();
 	private MedicalDetails medicalDetails;
@@ -68,33 +68,33 @@ public class DonorControllerTest {
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
-		organsArrayList = new ArrayList<>();
+		organList = new ArrayList<>();
 		mockMvc = MockMvcBuilders.standaloneSetup(donorController).build();
-		address = new Address("11b","main road","bengaluru","karnataka","678490");
-		guardian = new Guardian("Peter","peter@gmail.com","7890987654","son",address);
+		address = new Address("11b ","main road","bengaluru","karnataka","344449");
+		guardian = new Guardian("Peter","peter@mailinator.com","9876543210","son",address);
 		guardianList.add(guardian);
 		disease = new Disease(false,false,false,false,false,false,false,false,false,true,false);
 		organs = new Organs(1, "cornea", true);
-		organsArrayList.add(organs);
+		organList.add(organs);
 		organs = new Organs(2, "kidney", true);
-		organsArrayList.add(organs);
+		organList.add(organs);
 		organs = new Organs(3, "platelet", true);
-		organsArrayList.add(organs);
+		organList.add(organs);
 		organs = new Organs(4, "boneMarrow", true);
-		organsArrayList.add(organs);
+		organList.add(organs);
 		organs = new Organs(5, "blood", true);
-		organsArrayList.add(organs);
+		organList.add(organs);
 		organs = new Organs(6, "heart", true);
-		organsArrayList.add(organs);
+		organList.add(organs);
 		organs = new Organs(7, "lungs", true);
-		organsArrayList.add(organs);
+		organList.add(organs);
 		organs = new Organs(8, "liver", true);
-		organsArrayList.add(organs);
-		medicalDetails = new MedicalDetails("O+",disease,organsArrayList, "HLA-A", "100000000", "1.5", "27", "100", "6" );
-		donor = new Donor(101,"D01","donor","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985, Calendar.JUNE,23),
-				"356478900928","male",address,guardianList,medicalDetails,"true",new ArrayList<>(),new Date());
+		organList.add(organs);
 		form = new Form(1,"sample.txt");
 		formList.add(form);
+		medicalDetails = new MedicalDetails("O+",disease, organList, "HLA-A", "100000000", "1.5", "27", "100", "6" );
+		donor = new Donor(101,"D01","donor","Tony","Stark","tony1@mailinator.com","9876543210","PaSsword@123",new Date(1985, Calendar.JUNE,23),
+				"987654321098","male",address,guardianList,medicalDetails,"true",formList,new Date());
 		donorList = new ArrayList<>();
 		donorList.add(donor);
 	}

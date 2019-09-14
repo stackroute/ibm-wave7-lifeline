@@ -26,5 +26,5 @@ public interface DonorService {
 
 	void store(MultipartFile file) throws Exception;
 
-	String findById(long id) throws MessagingException, javax.mail.MessagingException;
+	void sendMail(long id) throws MessagingException, javax.mail.MessagingException;
 }

@@ -9,7 +9,6 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @SpringBootApplication
 @Slf4j          // abstraction framework for logging
 @EnableEurekaClient
-//@EnableDiscoveryClient
 public class DonorProfileServiceApplication {
 
 	public static void main(String[] args) {

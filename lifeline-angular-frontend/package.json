@@ -11,24 +11,19 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^8.2.5",
-    "@angular/cdk": "^8.1.4",
+    "@angular/animations": "^8.2.6",
+    "@angular/cdk": "^8.2.0",
     "@angular/common": "~8.2.0",
     "@angular/compiler": "~8.2.0",
     "@angular/core": "~8.2.0",
     "@angular/flex-layout": "^8.0.0-beta.27",
     "@angular/forms": "~8.2.0",
-    "@angular/material": "^8.1.4",
+    "@angular/material": "^8.2.0",
     "@angular/platform-browser": "~8.2.0",
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
-<<<<<<< HEAD
     "@types/html2canvas": "0.0.35",
     "angular-material": "^1.1.20",
-=======
-    "angular-material": "^1.1.20",
-    "@types/html2canvas": "0.0.35",
->>>>>>> 7e7014b39a5876738478d6fb2da8f10bb2a92317
     "angular-webstorage-service": "^1.0.2",
     "chart": "^0.1.2",
     "chart.js": "^2.8.0",

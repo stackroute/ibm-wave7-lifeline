@@ -62,7 +62,7 @@ public class DonorServiceImpl implements DonorService {
 	public Donor saveDonorProfile(Donor donor) throws DonorProfileAlreadyExistsException {
 		if(donorRepository.existsById(donor.getId()) == false) {
 			donor.setId(getNextSequenceId("donors_sequence"));
-			donor.getDob().toLocaleString();
+			donor.setDonorId("LFLD150"+donor.getId());
 			return donorRepository.save(donor);
 		} else {
 			throw new DonorProfileAlreadyExistsException();
@@ -110,7 +110,7 @@ public class DonorServiceImpl implements DonorService {
 	}
 
 	@Override
-	public String findById(long id) throws MessagingException {
+	public void sendMail(long id) throws MessagingException {
 		Donor donor = donorRepository.findById(id).get();
 		String email = donor.getEmail();
 		if (email != null && donorRepository.findById(id).isPresent()) {
@@ -121,23 +121,7 @@ public class DonorServiceImpl implements DonorService {
 			helper.setText("http://52.66.129.41:4200/id?id=" + id+ "&type=donor");
 			javaMailSender.send(message);
 			System.out.println("Sent Email");
-			return "successfully sent email";
 		}
-		return "hello";
 	}
-//	@Override
-//	public String findById(long id) throws MessagingException {
-//		Recepient recepient = recepientRepository.findById(id).get();
-//		String email =  recepient.getEmail();
-//		if (email!=null && recepientRepository.findById(id).isPresent()) {
-//			MimeMessage message = javaMailSender.createMimeMessage();
-//			MimeMessageHelper helper = new MimeMessageHelper(message, true);
-//			helper.setTo(recepient.getEmail());
-//			helper.setSubject("SpringBootApplication");
-//			helper.setText("http://172.23.238.185:4200/id?id="+id+ "&type=recepient");
-//			javaMailSender.send(message);
-//			return "successfully sent email";
-//
-//		}
-//		return "hello";
+
 }

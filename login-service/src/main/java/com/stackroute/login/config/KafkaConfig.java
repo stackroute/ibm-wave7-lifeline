@@ -1,6 +1,6 @@
 package com.stackroute.login.config;
 
-import com.stackroute.login.model.DAOUser;
+import com.stackroute.login.model.User;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.context.annotation.Bean;
@@ -14,13 +14,13 @@ import org.springframework.kafka.support.serializer.JsonDeserializer;
 import java.util.HashMap;
 import java.util.Map;
 
+//config for kafka client
 @EnableKafka
 @Configuration
-
 public class KafkaConfig {
     @Bean
-    public ConsumerFactory<String, DAOUser> consumerFactory() {
-        JsonDeserializer<DAOUser> deserializer = new JsonDeserializer<>(DAOUser.class);
+    public ConsumerFactory<String, User> consumerFactory() {
+        JsonDeserializer<User> deserializer = new JsonDeserializer<>(User.class);
         Map<String, Object> config = new HashMap<>();
         deserializer.setRemoveTypeHeaders(false);
         deserializer.addTrustedPackages("*");
@@ -34,8 +34,8 @@ public class KafkaConfig {
 
     }
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, DAOUser> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, DAOUser> factory = new ConcurrentKafkaListenerContainerFactory();
+    public ConcurrentKafkaListenerContainerFactory<String, User> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, User> factory = new ConcurrentKafkaListenerContainerFactory();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }
