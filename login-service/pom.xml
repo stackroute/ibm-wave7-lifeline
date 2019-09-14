@@ -85,16 +85,12 @@
             <artifactId>spring-boot-starter-mail</artifactId>
             <version>2.1.7.RELEASE</version>
         </dependency>
-<<<<<<< HEAD
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-netflix-eureka-client</artifactId>
             <version>2.1.2.RELEASE</version>
             <scope>compile</scope>
         </dependency>
-=======
->>>>>>> 7e7014b39a5876738478d6fb2da8f10bb2a92317
-
     </dependencies>
 
     <dependencyManagement>
