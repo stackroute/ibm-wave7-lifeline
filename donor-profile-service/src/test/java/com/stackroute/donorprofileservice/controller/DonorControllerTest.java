@@ -90,20 +90,11 @@ public class DonorControllerTest {
 		organsArrayList.add(organs);
 		organs = new Organs(8, "liver", true);
 		organsArrayList.add(organs);
-<<<<<<< HEAD
 		medicalDetails = new MedicalDetails("O+",disease,organsArrayList, "HLA-A", "100000000", "1.5", "27", "100", "6" );
 		donor = new Donor(101,"D01","donor","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985, Calendar.JUNE,23),
 				"356478900928","male",address,guardianList,medicalDetails,"true",new ArrayList<>(),new Date());
 		form = new Form(1,"sample.txt");
 		formList.add(form);
-=======
-
-		form = new Form(1,"sample.txt");
-		formList.add(form);
-		medicalDetails = new MedicalDetails("O+",disease,organsArrayList, "HLA-A", "1000", "1.5", "27", "100", "6" );
-		donor = new Donor(101,"D01","donor","Tony","Stark","tonys@gmail.com","9876543210","Password@123",new Date(),
-				"356478900928","male",address,guardianList,medicalDetails,"true",formList,new Date());
->>>>>>> 7e7014b39a5876738478d6fb2da8f10bb2a92317
 		donorList = new ArrayList<>();
 		donorList.add(donor);
 	}

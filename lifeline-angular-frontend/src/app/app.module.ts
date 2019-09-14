@@ -88,12 +88,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     DonordashboardreportsComponent,
     EmailverificationComponent,
     VerificationAlertComponent,
-<<<<<<< HEAD
-    SearchResultsComponent
-=======
     SearchResultsComponent,
     SearchPipe
->>>>>>> 7e7014b39a5876738478d6fb2da8f10bb2a92317
   ],
   imports: [
     BrowserModule,

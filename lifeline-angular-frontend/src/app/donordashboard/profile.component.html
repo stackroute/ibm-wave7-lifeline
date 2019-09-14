@@ -49,21 +49,6 @@
         <mat-list-item>
             <h4 class="h4-tag">Guardian details:
                 <br>
-<<<<<<< HEAD
-                <mat-list-item>
-                    <h4 class="h4-tag">Guardian details:
-                        <br>
-                        <div *ngFor="let guardian of donor.guardianList">
-                            Email- {{guardian.email}}<br>
-                            Phone no- {{guardian.phoneNumber}}<br>
-                            Relation- {{guardian.relation}}<br>
-                            Address- {{guardian.address.addressLine1}} {{guardian.address.addressLine2}},
-                            {{guardian.address.city}},{{guardian.address.state}},pincode-{{guardian.address.pinCode}}<br>
-                        </div>
-                    </h4>
-                </mat-list-item>
-            <mat-divider></mat-divider>
-=======
                 <div *ngFor="let guardian of donor.guardianList">
                     Email- {{guardian.email}}<br>
                     Phone no- {{guardian.phoneNumber}}<br>
@@ -132,7 +117,6 @@
         </mat-list>
 
         <mat-card>
->>>>>>> 7e7014b39a5876738478d6fb2da8f10bb2a92317
             <mat-list>
                 <h3 mat-subheader>Personal Details:</h3>
 
@@ -146,7 +130,6 @@
 
                 </mat-list-item>
                 <mat-list-item>
-<<<<<<< HEAD
                     <h4 class="h4-tag">Organs you want to donate:</h4>
                 </mat-list-item>
                 <mat-checkbox [disabled]="donor.medicalDetails.organList[0].name"
@@ -207,31 +190,6 @@
                         </mat-list-item>
                         <br>
                         <!-- <mat-list-item>
-=======
-                    <h4 class="h4-tag"><b>Date of Birth: </b>{{donor.dob}}</h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag"><b>Email: </b>{{donor.email}}</h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag"><b>Phone Number: </b>{{donor.phoneNumber}}</h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag"><b>Aadhar Number:</b> {{donor.aadhar}}</h4>
-                </mat-list-item>
-
-                <mat-list-item>
-                    <h4 class="h4-tag">
-                        <b>Address: </b>{{donor.address.addressLine1}} {{donor.address.addressLine2}},
-                        {{donor.address.city}},{{donor.address.state}},pincode-{{donor.address.pinCode}}
-                    </h4>
-                </mat-list-item>
-                <br>
-                <!-- <mat-list-item>
->>>>>>> 7e7014b39a5876738478d6fb2da8f10bb2a92317
                             <h4 class="h4-tag"><b>Guardian details:</b>
                                 <div *ngFor="let guardian of donor.guardianList">
                                     Email- {{guardian.email}}<br>
