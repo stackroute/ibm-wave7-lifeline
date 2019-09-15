@@ -1,4 +1,4 @@
-package com.stackroute.donorprofileservice.config;
+package com.stackroute.login.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

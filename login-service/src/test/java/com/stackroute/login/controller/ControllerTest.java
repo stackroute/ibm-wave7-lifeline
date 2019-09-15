@@ -4,7 +4,7 @@ package com.stackroute.login.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stackroute.login.LoginApplication;
 import com.stackroute.login.config.JwtTokenUtil;
-import com.stackroute.login.model.DAOUser;
+import com.stackroute.login.model.User;
 import com.stackroute.login.model.UserDTO;
 import com.stackroute.login.service.JwtUserDetailsService;
 import org.junit.Before;
@@ -17,7 +17,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -41,7 +40,7 @@ public class ControllerTest {
     @Autowired
     private MockMvc mockMvc;
 //    @Autowired
-    private DAOUser daouser;
+    private User daouser;
 //    @Autowired
     @Mock
     private AuthenticationManager authenticationManager;
@@ -56,7 +55,7 @@ public class ControllerTest {
     @Mock
     private JwtTokenUtil jwtTokenUtil;
 
-    private List<DAOUser> list = null;
+    private List<User> list = null;
     private UserDTO userDTO;
 
     @Before
@@ -64,7 +63,7 @@ public class ControllerTest {
 
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(jwtAuthenticationController).build();
-        daouser = new DAOUser();
+        daouser = new User();
         daouser.setUsername("ascv");
         daouser.setPassword("Jonny");
 
@@ -90,8 +89,8 @@ public class ControllerTest {
 
     @Test
     public void saveUser() throws Exception {
-        when(jwtUserDetailsService.loadUserByUsername(userDTO.getUsername())).thenReturn(new User(daouser.getUsername(), daouser.getPassword(), new ArrayList<>()));
-        when(jwtTokenUtil.generateToken(new User(daouser.getUsername(), daouser.getPassword(), new ArrayList<>()))).thenReturn("Hello");
+        when(jwtUserDetailsService.loadUserByUsername(userDTO.getUsername())).thenReturn(new org.springframework.security.core.userdetails.User(daouser.getUsername(), daouser.getPassword(), new ArrayList<>()));
+        when(jwtTokenUtil.generateToken(new org.springframework.security.core.userdetails.User(daouser.getUsername(), daouser.getPassword(), new ArrayList<>()))).thenReturn("Hello");
         mockMvc.perform(post("/authenticate")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(userDTO)))

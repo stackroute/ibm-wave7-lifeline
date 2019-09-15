@@ -1,8 +1,7 @@
 package com.stackroute.login.repository;
 
 
-import com.stackroute.login.dao.UserDao;
-import com.stackroute.login.model.DAOUser;
+import com.stackroute.login.model.User;
 import com.stackroute.login.model.UserDTO;
 import org.junit.After;
 import org.junit.Assert;
@@ -23,17 +22,17 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 public class RepositoryTest {
 
     @Mock
-    UserDao userDao;
+    UserRepository userRepository;
 
-    DAOUser daoUser;
+    User user;
 
     UserDTO userDTO;
 
     @Before
     public void setUp() {
-        daoUser = new DAOUser();
-        daoUser.setPassword("dwyg");
-        daoUser.setUsername("John");
+        user = new User();
+        user.setPassword("dwyg");
+        user.setUsername("John");
         userDTO = new UserDTO();
         userDTO.setPassword("dwyg");
         userDTO.setUsername("John");
@@ -41,22 +40,13 @@ public class RepositoryTest {
 
     @After
     public void tearDown() {
-        userDao.deleteAll();
+        userRepository.deleteAll();
     }
-
-
-//    @Test
-//    public void findByUsername() {
-////        userDao.findByUsername(userDTO.getUsername());
-//        UserDTO fetchUser = (UserDTO) userDao.findByUsername(userDTO.getUsername());
-//        Assert.assertEquals("John",fetchUser);
-//
-//    }
-
+    
     @Test
     public void findByUsername() {
-        when(userDao.findByUsername(daoUser.getUsername())).thenReturn(daoUser);
-        Assert.assertEquals(daoUser,userDao.findByUsername(userDTO.getUsername()));
+        when(userRepository.findByUsername(user.getUsername())).thenReturn(user);
+        Assert.assertEquals(user, userRepository.findByUsername(userDTO.getUsername()));
     }
 
 

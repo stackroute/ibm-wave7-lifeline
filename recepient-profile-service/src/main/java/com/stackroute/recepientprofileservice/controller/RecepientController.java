@@ -23,7 +23,6 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1")   //  class level request mapping
 @CrossOrigin(origins = "*")
-//@CrossOrigin(origins="*", allowCredentials = "true", allowedHeaders = "*")            //  enables cross origin support
 @Api(value = "Recepient Profile Service CRUD Operations")
 public class RecepientController {
 
@@ -48,10 +47,11 @@ public class RecepientController {
         try {
             recepientList = recepientService.getRecepientList();
             responseEntity = new ResponseEntity<List<Recepient>>(recepientList, HttpStatus.OK);
-            logger.info("get all tracks api call success");
+            logger.info("get all recepient api call success");
         } catch (Exception e) {
+            e.printStackTrace();
             responseEntity = new ResponseEntity<String>("Exception", HttpStatus.CONFLICT);
-            logger.error("get all tracks api call throws an exception");
+            logger.error("get all recepient api call throws an exception");
         }
 //		returns response entity
         return responseEntity;
@@ -67,10 +67,11 @@ public class RecepientController {
             recepient = recepientService.getRecepientById(id);
             responseEntity = new ResponseEntity<Recepient>(recepient, HttpStatus.OK);
             this.kafkaTemplate.send(TOPIC,recepient);
-            logger.info("get all tracks api call success");
-        } catch (Exception | RecepientProfileNotFoundException e) {
+            logger.info("get recepient by id api call success");
+        } catch (Exception e) {
+            e.printStackTrace();
             responseEntity = new ResponseEntity<String>("Exception", HttpStatus.CONFLICT);
-            logger.error("get all tracks api call throws an exception");
+            logger.error("get recepient by id api call throws an exception");
         }
 //		returns response entity
         return responseEntity;
@@ -85,13 +86,12 @@ public class RecepientController {
             responseEntity = new ResponseEntity<Recepient>(recepientService.saveRecepientProfile(recepient), HttpStatus.CREATED);
             logger.info("save track api call success");
             this.kafkaTemplate.send(TOPIC,recepient);
-            return responseEntity;
-        } catch (Exception | RecepientProfileAlreadyExistsException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
             responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
             logger.error("save track api call throws an exception");
-            return responseEntity;
         }
-
+        return responseEntity;
     }
 
     //	maps the http put method url with corresponding service method
@@ -103,7 +103,8 @@ public class RecepientController {
             responseEntity = new ResponseEntity<Recepient>(recepientService.updateRecepientProfile(id,recepient), HttpStatus.OK);
             this.kafkaTemplate.send(TOPIC,recepient);
             logger.info("update track api call success");
-        } catch (Exception | RecepientProfileNotFoundException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
             responseEntity = new ResponseEntity<String>("Exception", HttpStatus.CONFLICT);
             logger.error("update track api call throws an exception");
         }
@@ -121,7 +122,7 @@ public class RecepientController {
             recepient.setId(id);
             this.kafkaTemplate.send(TOPIC,recepient);
             logger.info("delete track api call success");
-        } catch (Exception | RecepientProfileNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             responseEntity = new ResponseEntity<String>("Exception", HttpStatus.CONFLICT);
             logger.error("delete track api call throws an exception");
@@ -130,10 +131,6 @@ public class RecepientController {
     }
     @PostMapping(value = "/verify")
     public ResponseEntity<?> verifyEmail(@RequestBody long id) throws Exception {
-        System.out.println(id);
-//        JSONObject jsonObject = new JSONObject(email);
-//        email = jsonObject.getString("email");
-        System.out.println(id);
         final String user = recepientService.findById(id);
         return ResponseEntity.ok(user);
     }

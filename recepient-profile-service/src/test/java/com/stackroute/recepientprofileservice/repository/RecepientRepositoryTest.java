@@ -37,8 +37,8 @@ public class RecepientRepositoryTest {
        address = new Address("11b","main road","bengaluru","karnataka","678490");
 
     request = new Request();
-    recepient = new Recepient(101L,"recepient","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985,5,23),
-                "356478900928","male",address,"A+",new Date(),request,null);
+    recepient = new Recepient(101,"recepient","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985,5,23),
+                "356478900928","male",address,"A+",new Date(),request,"false");
         recepientList = new ArrayList<>();
    }
 
@@ -53,13 +53,13 @@ public class RecepientRepositoryTest {
     //	method to check findAll() method of repository
     @Test
     public void testFindAll(){
-        Recepient recepient1 = new Recepient(102L,"recepient","Harry","Potter","harry@gmail.com","978645312","password123",new Date(1970,7,14),
-                "356478900928","male",address,"A+",new Date(),request,null
+        Recepient recepient1 = new Recepient(102,"recepient","Harry","Potter","harry@gmail.com","978645312","password123",new Date(1970,7,14),
+                "356478900928","male",address,"A+",new Date(),request,"true"
         );
         recepientRepository.save(recepient);
-       recepientRepository.save(recepient1);
-     recepientList.add(recepient);
-       recepientList.add(recepient1);
+        recepientRepository.save(recepient1);
+        recepientList.add(recepient);
+        recepientList.add(recepient1);
         Assert.assertEquals(recepientList, recepientRepository.findAll());
    }
 

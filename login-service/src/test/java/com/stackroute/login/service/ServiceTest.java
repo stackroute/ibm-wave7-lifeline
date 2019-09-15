@@ -1,8 +1,8 @@
 package com.stackroute.login.service;
 
 
-import com.stackroute.login.dao.UserDao;
-import com.stackroute.login.model.DAOUser;
+import com.stackroute.login.repository.UserRepository;
+import com.stackroute.login.model.User;
 
 import com.stackroute.login.model.UserDTO;
 import org.junit.Assert;
@@ -31,9 +31,9 @@ public class ServiceTest {
     List<UserDTO> list = null;
 
     @Mock
-    UserDao userDao;
+    UserRepository userRepository;
 
-    DAOUser daoUser;
+    User user;
 
     UserDTO userDTO;
 
@@ -45,9 +45,9 @@ public class ServiceTest {
         userDTO.setUsername("John");
         userDTO.setPassword("uhds");
 
-        daoUser = new DAOUser();
-        daoUser.setUsername("John");
-        daoUser.setPassword("uhds");
+        user = new User();
+        user.setUsername("John");
+        user.setPassword("uhds");
 
         list = new ArrayList<>();
         list.add(userDTO);
@@ -55,8 +55,8 @@ public class ServiceTest {
 
     @Test
     public void saveUserTestSuccess() {
-        when(jwtUserDetailsService.save(userDTO)).thenReturn(daoUser);
-        Assert.assertEquals(daoUser, jwtUserDetailsService.save(userDTO));
+        when(jwtUserDetailsService.save(userDTO)).thenReturn(user);
+        Assert.assertEquals(user, jwtUserDetailsService.save(userDTO));
         //verify here verifies that userRepository save method is only called once
 //        verify(userDao,times(1)).save(daoUser);
     }

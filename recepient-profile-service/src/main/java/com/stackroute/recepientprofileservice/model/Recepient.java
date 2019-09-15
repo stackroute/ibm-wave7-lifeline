@@ -33,7 +33,7 @@ public class Recepient {
     public static final String SEQUENCE_NAME = "recepient_sequence";
 
     @Id
-    private Long id;
+    private long id;
 
     @NotNull(message = "usertype is mandatory")
     @Transient

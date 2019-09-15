@@ -13,6 +13,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -44,10 +45,11 @@ public class DonorController {
 		try {
 			donorList = donorService.getDonorList();
 			responseEntity = new ResponseEntity<List<Donor>>(donorList, HttpStatus.OK);
-			logger.info("get all tracks api call success");
+			logger.info("get all donors api call success");
 		} catch (Exception e) {
-			responseEntity = new ResponseEntity<String>("Exception", HttpStatus.CONFLICT);
-			logger.error("get all tracks api call throws an exception");
+			e.printStackTrace();
+			responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
+			logger.error("get all donors api call throws an exception");
 		}
 //		returns response entity
 		return responseEntity;
@@ -62,11 +64,11 @@ public class DonorController {
 		try {
 			donor = donorService.getDonorById(id);
 			responseEntity = new ResponseEntity<Donor>(donor, HttpStatus.OK);
-			logger.info("get all tracks api call success");
+			logger.info("get donor by id api call success");
 		} catch (Exception e) {
 			e.printStackTrace();
-			responseEntity = new ResponseEntity<String>("Exception", HttpStatus.CONFLICT);
-			logger.error("get all tracks api call throws an exception");
+			responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
+			logger.error("get donor by id api call throws an exception");
 		}
 //		returns response entity
 		return responseEntity;
@@ -79,12 +81,12 @@ public class DonorController {
 		ResponseEntity responseEntity;
 		try {
 			responseEntity = new ResponseEntity<Donor>(donorService.saveDonorProfile(donor), HttpStatus.CREATED);
-			logger.info("save track api call success");
+			logger.info("save donor api call success");
 			this.kafkaTemplate.send(TOPIC,donor);
 		} catch (Exception e) {
 			e.printStackTrace();
-			responseEntity = new ResponseEntity<String>("exception", HttpStatus.CONFLICT);
-			logger.error("save track api call throws an exception");
+			responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
+			logger.error("save donor api call throws an exception");
 		}
 		return responseEntity;
 	}
@@ -97,10 +99,11 @@ public class DonorController {
 		try {
 			responseEntity = new ResponseEntity<Donor>(donorService.updateDonorProfile(id,donor), HttpStatus.OK);
 			this.kafkaTemplate.send(TOPIC,donor);
-			logger.info("update track api call success");
+			logger.info("update donor api call success");
 		} catch (Exception e) {
-			responseEntity = new ResponseEntity<String>("Exception", HttpStatus.CONFLICT);
-			logger.error("update track api call throws an exception");
+			e.printStackTrace();
+			responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
+			logger.error("update donor api call throws an exception");
 		}
 		return responseEntity;
 	}
@@ -115,11 +118,11 @@ public class DonorController {
 			Donor donor = new Donor();
 			donor.setId(id);
 			this.kafkaTemplate.send(TOPIC,donor);
-			logger.info("delete track api call success");
+			logger.info("delete donor api call success");
 		} catch (Exception e) {
 			e.printStackTrace();
-			responseEntity = new ResponseEntity<String>("Exception", HttpStatus.CONFLICT);
-			logger.error("delete track api call throws an exception");
+			responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
+			logger.error("delete donor api call throws an exception");
 		}
 		return responseEntity;
 	}
@@ -127,25 +130,28 @@ public class DonorController {
 	@PostMapping(value="/forms")
 	public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
 		String message = "";
-
 		try {
 			donorService.store(file);
 			message = "You successfully uploaded " + file.getOriginalFilename() + "!";
+			logger.info("file uploaded api call success");
 			return ResponseEntity.status(HttpStatus.OK).body(message);
 		} catch (Exception e) {
 			e.printStackTrace();
 			message = "Fail to upload Profile Picture" + file.getOriginalFilename() + "!";
+			logger.error("file uploaded api call throws an exception");
 			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
 		}
 	}
-
+	
 	@PostMapping(value = "/verify")
-	public ResponseEntity<?> verifyEmail(@RequestBody long id) throws Exception {
-		System.out.println(id);
-//        JSONObject jsonObject = new JSONObject(email);
-//        email = jsonObject.getString("email");
-		System.out.println(id);
-		final String user = donorService.findById(id);
-		return ResponseEntity.ok(user);
+	public ResponseEntity<?> verifyEmail(@RequestBody long id) {
+		logger.info("id:"+id);
+		try {
+			donorService.sendMail(id);
+			return ResponseEntity.ok("mail sent successfully");
+		} catch (MessagingException e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("mail sent exception");
+		}
 	}
 }

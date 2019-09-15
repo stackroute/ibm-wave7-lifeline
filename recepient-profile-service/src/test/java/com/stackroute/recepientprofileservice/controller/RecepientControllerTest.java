@@ -35,7 +35,6 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
 @RunWith(SpringRunner.class)
 @WebMvcTest
 @ContextConfiguration(classes = RecepientControllerTest.class)
@@ -64,7 +63,7 @@ public class RecepientControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(recepientController).build();
         address = new Address("11b","main road","bengaluru","karnataka","678490");
 
-        recepient = new Recepient(101L,"recepient","Tony","Stark","tony@gmail.com","9876543210","Password@123",new Date(1985,5,23),
+        recepient = new Recepient(101,"recepient","Tony","Stark","tony@gmail.com","9876543210","Password@123",new Date(1985,5,23),
                 "356478900928","male",address,"A+", new Date(), new Request(), "true");
         recepientList = new ArrayList<>();
         recepientList.add(recepient);
@@ -76,11 +75,11 @@ public class RecepientControllerTest {
         recepientList = null;
     }
 
-    	//Testcase for getrecepientList()
+    //Testcase for getrecepientList()
     @Test
     public void getRecepientList() throws Exception{
         when(recepientService.getRecepientList()).thenReturn(recepientList);
-        mockMvc.perform(MockMvcRequestBuilders.get("api/v1/recepient")
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/recepient")
                 .contentType(MediaType.APPLICATION_JSON).content(jsonToString(recepient)))
                 .andExpect(status().isOk())
                 .andDo(MockMvcResultHandlers.print());
@@ -90,8 +89,8 @@ public class RecepientControllerTest {
 
     //	Negative Testcase for getrecepientById()
     @Test
-    public void getRecepientById1() throws Exception, RecepientProfileNotFoundException {
-        when(recepientService.getRecepientById(recepient.getId())).thenThrow(Exception.class,RecepientProfileNotFoundException.class);
+    public void getRecepientByIdFailure() throws Exception {
+        when(recepientService.getRecepientById(recepient.getId())).thenThrow(RecepientProfileNotFoundException.class);
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/recepient/"+recepient.getId())
                 .contentType(MediaType.APPLICATION_JSON).content(jsonToString(recepient)))
                 .andExpect(status().isConflict())
@@ -100,20 +99,20 @@ public class RecepientControllerTest {
 
     //Testcase for saving recepientProfile()
     @Test
-    public void saveRecepientProfile() throws RecepientProfileAlreadyExistsException, Exception {
+    public void saveRecepientProfile() throws Exception {
 
         when(recepientService.saveRecepientProfile(recepient)).thenReturn(recepient);
-        mockMvc.perform(MockMvcRequestBuilders.post("api/v1/recepient")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/recepient")
                 .contentType(MediaType.APPLICATION_JSON).content(jsonToString(recepient)))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andDo(MockMvcResultHandlers.print());
     }
 
     //Negative Testcase for saving recepientProfile()
     @Test
-    public void saveRecepientProfile1() throws Exception, RecepientProfileAlreadyExistsException {
-        when(recepientService.saveRecepientProfile(recepient)).thenThrow(Exception.class,RecepientProfileAlreadyExistsException.class);
-        mockMvc.perform(MockMvcRequestBuilders.post("api/v1/recepient")
+    public void saveRecepientProfileFailure() throws Exception {
+        when(recepientService.saveRecepientProfile(recepient)).thenThrow(RecepientProfileAlreadyExistsException.class);
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/recepient")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonToString(recepient)))
                 .andExpect(MockMvcResultMatchers.status().isConflict())
@@ -132,7 +131,7 @@ public class RecepientControllerTest {
 
     //Negative Testcase to update recepient Profile()
     @Test
-    public void updateRecepientById2() throws Exception, RecepientProfileNotFoundException {
+    public void updateRecepientByIdFailure() throws Exception, RecepientProfileNotFoundException {
         when(recepientService.updateRecepientProfile(anyLong(),any())).thenThrow(RecepientProfileNotFoundException.class);
         mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/recepient/"+recepient.getId())
                 .contentType(MediaType.APPLICATION_JSON).content(jsonToString(recepient)))
@@ -152,7 +151,7 @@ public class RecepientControllerTest {
 
     //	Negative Testcase to delete recepientProfile()
     @Test
-    public void deleteRecepientById1() throws Exception, RecepientProfileNotFoundException {
+    public void deleteRecepientByIdFailure() throws Exception, RecepientProfileNotFoundException {
         when(recepientService.deleteRecepientProfile(anyLong())).thenThrow(RecepientProfileNotFoundException.class);
         mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/recepient/"+recepient.getId()))
 
