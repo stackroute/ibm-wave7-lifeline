@@ -1,10 +1,9 @@
 <div class="log" >
-<a class= "login" *ngIf="!loggedIn" [matMenuTriggerFor]="menu1" >Login</a>
-
-<mat-menu #menu1="matMenu">
-    <a  mat-menu-item *ngIf="!loggedIn" (click)="openDialog('donor')"><h6>Donor</h6></a>
-    <a  mat-menu-item *ngIf="!loggedIn" (click)="openDialog('recepient')"><h6>Recepient</h6></a>
-</mat-menu>
+    <button mat-button class= "login" *ngIf="!loggedIn" [matMenuTriggerFor]="menu1" >Login</button>
+    <mat-menu #menu1="matMenu">
+        <button  mat-menu-item *ngIf="!loggedIn" (click)="openDialog('donor')"><h6>Donor</h6></button>
+        <button  mat-menu-item *ngIf="!loggedIn" (click)="openDialog('recepient')"><h6>Recepient</h6></button>
+    </mat-menu>
 </div>
 <a class="nav-link" *ngIf="loggedIn" [matMenuTriggerFor]="menu" ><mat-icon [ngStyle]="{'color':'white'}">account_circle</mat-icon></a>  
 <mat-menu #menu="matMenu">

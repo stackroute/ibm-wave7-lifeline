@@ -1,27 +1,27 @@
-  <div class="containerstyle" fxLayout="row" fxLayoutAlign="space-between">
-      <div class="card1" fxFlex="50">
+  <div class="container" 
+      fxLayout.xs="column" 
+      fxLayout.sm="column" 
+      fxLayout.md="column" 
+      fxLayout.lg="row" 
+      fxLayout.xl="row" 
+      fxLayoutAlign="space-between">
+      <div class="donorRegistration" fxFlex.xs="50" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
         <mat-card>
-          <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-          </mat-card-header>
-          <img mat-card-image src="assets/images/Donor (2).jpg" alt="Donor"/>
+          <img mat-card-image src="../../../assets/images/donate.png" alt="Donor"/>
           <mat-card-actions>
             <div class="registerbutton">
-              <button mat-button [routerLink]="['/donor-registration']">Register</button>
+              <button mat-stroked-button [routerLink]="['/donor-registration']">Register</button>
             </div>
           </mat-card-actions>
         </mat-card>
       </div>
 
-      <div class="card2" fxFlex="50">
+      <div class="receiverRegistration" fxFlex.xs="50" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
         <mat-card>
-          <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-          </mat-card-header>
-          <img mat-card-image src="assets/images/Receiver.jpg" alt="Register"/>
+          <img mat-card-image src="../../../assets/images/receive.png" alt="Register"/>
           <mat-card-actions>
             <div class="registerbutton">
-              <button mat-button [routerLink]="['/recepient-registration']">Register</button>
+              <button mat-stroked-button [routerLink]="['/recepient-registration']">Register</button>
             </div>
           </mat-card-actions>
         </mat-card>

@@ -138,6 +138,7 @@ public class DonorController {
 			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
 		}
 	}
+
 	@PostMapping(value = "/verify")
 	public ResponseEntity<?> verifyEmail(@RequestBody long id) throws Exception {
 		System.out.println(id);

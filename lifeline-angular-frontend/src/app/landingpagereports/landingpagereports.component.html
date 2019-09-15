@@ -1,23 +1,9 @@
 <html>
 <body>
-  <div class="graphs">
-        
-           <table>
-  <tr>
-     
-      <td> <canvas id="barChart" width="400" height="400" ></canvas></td>  
-      <td> <canvas id="barChart1" width="400" height="400" ></canvas></td>
-      <td> <canvas id="lineChart" width="400" height="400" ></canvas></td>
-   
-
-    
-  </tr>
-  
-
-</table>  
-</div> 
-
-
-
+  <div class="graphs" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column" fxLayout.lg="row" fxLayout.xl="row">
+    <canvas id="barChart" width="400" height="400" fxFlex="33"></canvas>
+    <canvas id="barChart1" width="400" height="400" fxFlex="33"></canvas>
+    <canvas id="lineChart" width="400" height="400" fxFlex="33"></canvas>
+  </div>
 </body>
 </html>

@@ -1,26 +1,20 @@
-.card1
+.donorRegistration
 {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.card2
+.receiverRegistration
 {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.containerstyle
-{
-  padding-top: 1cm; 
-  margin-top: 0.2cm;
-  max-width: 100%;
-}
-
-.mat-card {
-    width: 10cm;
+.container {
+  margin-top: 4%;
+  margin-bottom: 4%;
 }
 
 .registerbutton{

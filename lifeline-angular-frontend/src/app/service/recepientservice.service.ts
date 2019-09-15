@@ -10,7 +10,7 @@ import { Recepient, Donor } from '../model/model';
 export class RecepientserviceService {
 
   public id;
-  private RecepientUrl = 'http://52.66.129.41:8083/api/v1/recepient';
+  private RecepientUrl = 'http://localhost:8083/api/v1/recepient';
   constructor(private httpClient: HttpClient) { }
 
 

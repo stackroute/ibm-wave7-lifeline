@@ -40,24 +40,24 @@
     <mat-tab label="Profile" class="tab">
         <mat-list>
             <mat-list-item>
-            <h4 class="h4-tag">
-                Address: {{donor.address.addressLine1}} {{donor.address.addressLine2}},
-                {{donor.address.city}},{{donor.address.state}},pincode-{{donor.address.pinCode}}
-            </h4>
-        </mat-list-item>
-        <br>
-        <mat-list-item>
-            <h4 class="h4-tag">Guardian details:
-                <br>
-                <div *ngFor="let guardian of donor.guardianList">
-                    Email- {{guardian.email}}<br>
-                    Phone no- {{guardian.phoneNumber}}<br>
-                    Relation- {{guardian.relation}}<br>
-                    Address- {{guardian.address.addressLine1}} {{guardian.address.addressLine2}},
-                    {{guardian.address.city}},{{guardian.address.state}},pincode-{{guardian.address.pinCode}}<br>
-                </div>
-            </h4>
-        </mat-list-item>
+                <h4 class="h4-tag">
+                    Address: {{donor.address.addressLine1}} {{donor.address.addressLine2}},
+                    {{donor.address.city}},{{donor.address.state}},pincode-{{donor.address.pinCode}}
+                </h4>
+            </mat-list-item>
+            <br>
+            <mat-list-item>
+                <h4 class="h4-tag">Guardian details:
+                    <br>
+                    <div *ngFor="let guardian of donor.guardianList">
+                        Email- {{guardian.email}}<br>
+                        Phone no- {{guardian.phoneNumber}}<br>
+                        Relation- {{guardian.relation}}<br>
+                        Address- {{guardian.address.addressLine1}} {{guardian.address.addressLine2}},
+                        {{guardian.address.city}},{{guardian.address.state}},pincode-{{guardian.address.pinCode}}<br>
+                    </div>
+                </h4>
+            </mat-list-item>
         </mat-list>
         <mat-divider></mat-divider>
         <mat-list>
@@ -90,7 +90,7 @@
             <mat-checkbox [disabled]="donor.medicalDetails.disease.kidneyDisease"
                 [checked]="donor.medicalDetails.disease.kidneyDisease">KidneyDisease</mat-checkbox>
             <mat-checkbox [disabled]="donor.medicalDetails.disease.liverDisease"
-                [checked]="donor.medicalDetails.disease.liverDisease">LiverDisease</mat-checkbox> 
+                [checked]="donor.medicalDetails.disease.liverDisease">LiverDisease</mat-checkbox>
             <mat-list-item>
                 <h4 class="h4-tag">Organs you want to donate:</h4>
             </mat-list-item>
@@ -153,43 +153,43 @@
                 <mat-checkbox [disabled]="donor.medicalDetails.organList[7].name"
                     [checked]="donor.medicalDetails.organList[7].donateOrNot">Bonemarrow</mat-checkbox>
             </mat-list>
-                <mat-card>
-                    <mat-list>
-                        <h3 mat-subheader>Personal Details:</h3>
-        
-                        <mat-list-item>
-        
-                            <h4 class="h4-tag"><b>Name: </b> {{donor.firstName}} {{donor.lastName}} </h4>
-        
-                        </mat-list-item>
-                        <mat-list-item>
-                            <h4 class="h4-tag"><b>Gender: </b>{{donor.gender}}</h4>
-        
-                        </mat-list-item>
-                        <mat-list-item>
-                            <h4 class="h4-tag"><b>Date of Birth: </b>{{donor.dob}}</h4>
-        
-                        </mat-list-item>
-                        <mat-list-item>
-                            <h4 class="h4-tag"><b>Email: </b>{{donor.email}}</h4>
-        
-                        </mat-list-item>
-                        <mat-list-item>
-                            <h4 class="h4-tag"><b>Phone Number: </b>{{donor.phoneNumber}}</h4>
-        
-                        </mat-list-item>
-                        <mat-list-item>
-                            <h4 class="h4-tag"><b>Aadhar Number:</b> {{donor.aadhar}}</h4>
-                        </mat-list-item>
-        
-                        <mat-list-item>
-                            <h4 class="h4-tag">
-                                <b>Address: </b>{{donor.address.addressLine1}} {{donor.address.addressLine2}},
-                                {{donor.address.city}},{{donor.address.state}},pincode-{{donor.address.pinCode}}
-                            </h4>
-                        </mat-list-item>
-                        <br>
-                        <!-- <mat-list-item>
+            <mat-card>
+                <mat-list>
+                    <h3 mat-subheader>Personal Details:</h3>
+
+                    <mat-list-item>
+
+                        <h4 class="h4-tag"><b>Name: </b> {{donor.firstName}} {{donor.lastName}} </h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag"><b>Gender: </b>{{donor.gender}}</h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag"><b>Date of Birth: </b>{{donor.dob}}</h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag"><b>Email: </b>{{donor.email}}</h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag"><b>Phone Number: </b>{{donor.phoneNumber}}</h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag"><b>Aadhar Number:</b> {{donor.aadhar}}</h4>
+                    </mat-list-item>
+
+                    <mat-list-item>
+                        <h4 class="h4-tag">
+                            <b>Address: </b>{{donor.address.addressLine1}} {{donor.address.addressLine2}},
+                            {{donor.address.city}},{{donor.address.state}},pincode-{{donor.address.pinCode}}
+                        </h4>
+                    </mat-list-item>
+                    <br>
+                    <!-- <mat-list-item>
                             <h4 class="h4-tag"><b>Guardian details:</b>
                                 <div *ngFor="let guardian of donor.guardianList">
                                     Email- {{guardian.email}}<br>
@@ -233,7 +233,7 @@
                             [checked]="donor.medicalInfo.disease.kidneyDisease">KidneyDisease</mat-checkbox>
                         <mat-checkbox [disabled]="donor.medicalInfo.disease.liverDisease"
                             [checked]="donor.medicalInfo.disease.liverDisease">LiverDisease</mat-checkbox> -->
-                <!-- <mat-list-item>
+                    <!-- <mat-list-item>
                             <h4 class="h4-tag"><b>Organs you want to donate:</b></h4>
                         </mat-list-item>
                         <mat-checkbox [disabled]="donor.medicalInfo.organs[0].name"
@@ -256,9 +256,9 @@
                             Lung</mat-checkbox>
                         <mat-checkbox [disabled]="donor.medicalInfo.organs[7].name"
                             [checked]="donor.medicalInfo.organs[7].donateOrNot">Bonemarrow</mat-checkbox> -->
-                </mat-list> 
+                </mat-list>
+            </mat-card>
         </mat-card>
-
     </mat-tab>
 
     <mat-tab label="Edit">

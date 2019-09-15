@@ -1,14 +1,34 @@
-img
-{
-  margin-top:75px;  
-  width: 100%;
-  height: 16cm;
-    
+.landing {
+  margin-top:64px;
 }
 
-.gif {
-  background: #EFE7F8;  /* fallback for old browsers */
-  height: 500px;
-  /* opacity: 0.2; */
-  margin-top: 10px;
+.heart {
+  width: 100vw;
+  height: 700px;
+}
+
+.image {
+  position: relative;
+}
+
+.preloader img {
+  width: 350px;
+  height: 350px;
+  margin-top:64px;
+}
+
+.preloader {
+  animation: spin 3s infinite;
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotateY(360deg);
+  }
+  100% {
+    -webkit-transform: rotateY(0deg);
+  }
 }

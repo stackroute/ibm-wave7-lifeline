@@ -13,9 +13,9 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthenticateService {
-  private apiUrl = "http://52.66.129.41:8082/register";
+  private apiUrl = "http://localhost:8082/register";
 
-  private apiUrl2 = "http://52.66.129.41:8082/authenticate";
+  private apiUrl2 = "http://localhost:8082/authenticate";
 
   loggedIn = new BehaviorSubject<boolean>(false);
   logged = this.loggedIn.asObservable();

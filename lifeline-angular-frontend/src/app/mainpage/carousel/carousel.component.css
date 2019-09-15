@@ -1,35 +1,18 @@
-#demo
-{
-  margin-top:0.2cm;
-  /* margin: 50px 0px 50px 0px; */
-
-   /* background-color:lightblue; */
-    background: #EFE7F1;  /* fallback for old browsers */
-height: 12cm;
+#demo {
+   background: #EFE7F1;
+   min-height: 465px;
 }
-.carousel-inner img {
-    border-radius: 50%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
- }
- .carousel-inner h2,h4,p{
-    /* font-family: 'Zhi Mang Xing', cursive; */
-    font-family: 'Bitter', serif;
-    text-align: center;
-    font-size: 20px;
-    margin-top:10px;
- }
- .carousel-slide
- {
-    margin-bottom: 200px;
- }
- .mb-3{
-    margin-top: 30px;
- }
- .carousel-inner{
-    margin-top:5px;
-    height: 450px;
-    padding: 0.7cm;
- }
 
+.carousel-inner img {
+   border-radius: 50%;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.carousel-inner h2, h4, p {
+   font-family: 'Bitter', serif;
+   text-align: center;
+   font-size: 20px;
+   margin-top: 10px;
+}

@@ -2,9 +2,11 @@
     margin-top: 20px;
     align:center;
 }
+
 ::ng-deep .currency {
     text-align: center;
 }
+
 .graphs
 {
     padding-left:170px;

@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-
 .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, 
 .mat-step-header .mat-step-icon-state-edit {
     background-color: #5b305b !important;
@@ -30,4 +29,5 @@
 
 body{
     background-color:#faf7fa;
+    margin: 0;
 }

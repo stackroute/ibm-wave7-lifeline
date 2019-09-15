@@ -1,10 +1,20 @@
-<mat-form-field appearance="standard">
-    <input matInput type="text" matInput [formControl]="searchControl" [matAutocomplete]="auto" placeholder="Search Organ">
-    <mat-icon matSuffix>
-        <i class="material-icons">search</i>
-    </mat-icon>
-</mat-form-field>
+<mat-toolbar>
+    <mat-form-field [@visibilityChanged]="isVisible" appearance="standard">
+        <input matInput type="text" matInput [formControl]="searchControl" [matAutocomplete]="auto" placeholder="Search Organ">
+    </mat-form-field>
 
-<mat-autocomplete class="optionsAutoComplete" #auto="matAutocomplete">
-    <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
-</mat-autocomplete>
+    <mat-autocomplete class="optionsAutoComplete" #auto="matAutocomplete">
+        <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+    </mat-autocomplete>
+
+    <button mat-mini-fab *ngIf="!isVisible" (click)="show()">
+        <mat-icon matSuffix>
+            <i class="material-icons">search</i>
+        </mat-icon>
+    </button>
+    <button mat-mini-fab *ngIf="isVisible" (click)="hidden()">
+        <mat-icon matSuffix>
+            <i class="material-icons">close</i>
+        </mat-icon>
+    </button>
+</mat-toolbar>

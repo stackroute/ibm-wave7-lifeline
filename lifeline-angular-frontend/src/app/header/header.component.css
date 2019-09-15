@@ -2,50 +2,37 @@
 {
   font-family: 'Roboto', sans-serif;
   background:#5b305b;  /* fallback for old browsers */
-  /* background: -webkit-linear-gradient(to top, #8e44ad, #c0392b);  /* Chrome 10-25, Safari 5.1-6 
-  background: linear-gradient(to top, #8e44ad, #c0392b); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  height: 2.3cm;
   position: fixed;
+  width: 100vw;
   z-index: 2;
-}
-
-.header{
-  margin:30px 30px 30px 50px;
-}
-
-app-account {
-  margin-left: 30px;
-}
-
-.title{
-  margin:30px 20px 5px 10px;
-  float: left;
+  height: 64px;
 }
 
 .landingPageHeader {
   /* background-image: url('../../assets/images/heart.jpg'); */
-  /* max-width: 100%; */
+  max-width: 100%; 
   height: 1px;
   /* background-size: 100% 100%; */
+} 
+
+.logo img {
+  width: 64px;
+  height: 64px;
+}
+
+.item {
+  padding: 0 14px;
 }
 
 .spacer {
   flex: 1 1 auto;
 }
 
-.title {
-  font-size: 36px;
+button {
+  font-size: 16px;
+  height: 64px;
 }
 
-a {
-  font-size: 16px;
-  padding-left: 20px;
-}
-.mat-menu{
-  margin-top: 2cm;
-}
-a{
-  font-size: 20px;
-  font-weight: 700;
-  padding-left: 20px;
+button:focus { 
+  outline: none; 
 }

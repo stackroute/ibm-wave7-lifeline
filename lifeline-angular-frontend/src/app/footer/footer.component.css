@@ -1,58 +1,21 @@
+mat-icon {
+    width: 20px;
+    height: 20px;
+    margin: 8px;
+}
 
-.spacer {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 auto;
-    flex:1 1 auto;
-    height: 1cm;
-   }
+.footer {
+    margin: 16px;
+}
 
+.helpline {
+    padding: 16px;
+}
 
+.address {
+    padding: 16px;
+}
 
-/* .footer
-{
-    margin-top:auto;
-    margin-bottom: 0cm;
-    background-color:black;
-    height: 2cm;
-    align-self: flex-end;
-} */
-.footer
-{
-bottom: 0;
-background-color:black;
-height:2.5cm;
-position:relative;
-width:100%;
-}
-.mat-icon
-{
-   /* padding-left: 10px;  */
-   width:1cm;
-   font-size: 30px;
-   float: left;
-   margin-top: -20px;
-   color: aliceblue;
-   /* margin-top: 0.3cm; */
-}
-p{
-    margin-top: 0.5cm;
-    color: aliceblue;
-    /* margin-left: -3px; */
-    font-family: 'Zhi Mang Xing', cursive;
-}
-h3{
-    color: aliceblue;
-    text-align: center;
-    margin-top: -15px;
-    font-family: 'Zhi Mang Xing', cursive;
-}
-.copyright
-{
-    float:right;
-    margin-right: 1cm;
-    margin-top: -40px;
-}
-.social{
-    margin-top: 0.2cm;
-    margin-left: 0.5cm;
+.social {
+    padding: 16px;
 }
