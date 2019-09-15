@@ -8,6 +8,16 @@ mat-horizontal-stepper{
     background-color: white;
 
 }
+h6{
+    padding-top: 5px;
+    padding-bottom : 5px;
+
+}
+
+button:disabled{
+    color:black;
+    background-color: #b2b2b2;
+}
 .row-div{
     width: 100%;
 }
@@ -20,7 +30,9 @@ mat-form-field, #field-div{
     padding-left: 3%;
 }
 
-
+.button-div{
+    margin-top: 3.5%;
+}
 .button{
     color: #fff;
     background-color: #5b305b;

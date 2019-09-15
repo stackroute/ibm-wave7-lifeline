@@ -1,432 +1,438 @@
 <div class="form-div">
-<mat-card>
-    <form [formGroup]="registrationForm">
-        <mat-horizontal-stepper linear="false" #stepper>
-            <mat-step [stepControl]="personalInformations">
-                <ng-template matStepLabel>Personal Informations</ng-template>
-                <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px" fxLayoutGap.gt-md="50px"
-                    fxLayoutAlign="space-around center">
-                    <mat-form-field appearance="legacy">
-                        <mat-label>First Name</mat-label>
-                        <input matInput formControlName="firstName" maxlength="40">
-                        <mat-error *ngIf="this.registrationForm.controls['firstName'].invalid">First name is required
-                        </mat-error>
-                    </mat-form-field>
-                    <mat-form-field appearance="legacy">
-                        <mat-label>Last Name</mat-label>
-                        <input matInput formControlName="lastName" maxlength="40">
-                        <mat-error *ngIf="this.registrationForm.controls['lastName'].invalid">Last name is required
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-
-                <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px" fxLayoutGap.gt-md="50px"
-                    fxLayoutAlign="space-around center">
-                    <mat-form-field appearance="legacy">
-                        <mat-label>Email</mat-label>
-                        <input matInput formControlName="email" maxlength="40">
-                        <mat-error *ngIf="this.registrationForm.controls['email'].hasError('required')">Email is
-                            required
-                        </mat-error>
-                        <mat-error *ngIf="this.registrationForm.controls['email'].hasError('pattern')">Please enter
-                            valid
-                            email</mat-error>
-
-                    </mat-form-field>
-                    <mat-form-field appearance="legacy">
-                        <mat-label>Phone Number</mat-label>
-                        <input matInput formControlName="phoneNumber" maxlength="10">
-                        <mat-error *ngIf="this.registrationForm.controls['phoneNumber'].hasError('required')">Phone
-                            number
-                            is required</mat-error>
-                        <mat-error *ngIf="this.registrationForm.controls['phoneNumber'].hasError('pattern')">Please
-                            enter
-                            valid phone number</mat-error>
-                    </mat-form-field>
-                </div>
-
-                <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px" fxLayoutGap.gt-md="50px"
-                    fxLayoutAlign="space-around center">
-                    <mat-form-field appearance="legacy">
-                        <mat-label>Password</mat-label>
-                        <input type="password" matInput formControlName="password" maxlength="40">
-                        <mat-error *ngIf="this.registrationForm.controls['password'].hasError('required')">Password is
-                            required</mat-error>
-                        <mat-error *ngIf="this.registrationForm.controls['password'].hasError('pattern')">Password
-                            should
-                            contain atleast a uppercase, a lowercase, a digit and a symbol. It should between 8-16
-                            characters</mat-error>
-                    </mat-form-field>
-                    <mat-form-field appearance="legacy">
-                        <mat-label>Confirm Password</mat-label>
-                        <input type="password" matInput formControlName="confirmPassword" maxlength="40">
-                        <mat-error *ngIf="this.registrationForm.hasError('notSame')">Confirm password should match with
-                            password</mat-error>
-                    </mat-form-field>
-                </div>
-
-                <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px" fxLayoutGap.gt-md="50px"
-                    fxLayoutAlign="space-around center">
-                    <mat-form-field appearance="legacy">
-                        <mat-label>Aadhar</mat-label>
-                        <input matInput formControlName="aadhar" maxlength="12">
-                        <mat-error *ngIf="this.registrationForm.controls['aadhar'].hasError('required')">Aadhar is
-                            required
-                        </mat-error>
-                        <mat-error *ngIf="this.registrationForm.controls['aadhar'].hasError('pattern')">Please enter
-                            valid
-                            Aadhar number</mat-error>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput [matDatepicker]="picker" [max]="maxDate" placeholder="Date of Birth"
-                            formControlName="dob" readonly>
-                        <mat-error *ngIf="this.registrationForm.controls['dob'].hasError('required')">DOB is required
-                        </mat-error>
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
-                </div>
-
-                <div class="gender-div"></div>
-                <mat-label>Gender</mat-label>
-                <mat-radio-group formControlName="gender">
-                    <mat-radio-button value="male" checked>Male</mat-radio-button>
-                    <mat-radio-button value="female">Female</mat-radio-button>
-                    <mat-radio-button value="other">Other</mat-radio-button>
-                </mat-radio-group>
-
-
-                <div formGroupName="address">
+    <mat-card>
+        <form [formGroup]="registrationForm">
+            <mat-horizontal-stepper linear="false" #stepper>
+                <mat-step [stepControl]="personalInformations">
+                    <ng-template matStepLabel>Personal Informations</ng-template>
                     <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px"
                         fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
                         <mat-form-field appearance="legacy">
-                            <mat-label>Address Line 1</mat-label>
-                            <input matInput formControlName="addressLine1" maxlength="40">
-                            <mat-error
-                                *ngIf="this.registrationForm.controls.address['controls'].addressLine1.hasError('required')">
-                                Address
-                                Line1 is
-                                required</mat-error>
+                            <mat-label>First Name</mat-label>
+                            <input matInput formControlName="firstName" maxlength="40">
+                            <mat-error *ngIf="this.registrationForm.controls['firstName'].invalid">First name is
+                                required
+                            </mat-error>
                         </mat-form-field>
                         <mat-form-field appearance="legacy">
-                            <mat-label>Address Line 2</mat-label>
-                            <input matInput formControlName="addressLine2" maxlength="40">
-                            <mat-error
-                                *ngIf="this.registrationForm.controls.address['controls'].addressLine2.hasError('required')">
-                                Address
-                                Line2 is
-                                required</mat-error>
+                            <mat-label>Last Name</mat-label>
+                            <input matInput formControlName="lastName" maxlength="40">
+                            <mat-error *ngIf="this.registrationForm.controls['lastName'].invalid">Last name is required
+                            </mat-error>
                         </mat-form-field>
                     </div>
 
                     <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px"
                         fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
-                        <mat-form-field class="three-col-div" appearance="legacy">
-                            <mat-label>City</mat-label>
-                            <input matInput formControlName="city" maxlength="40">
-                            <mat-error
-                                *ngIf="this.registrationForm.controls.address['controls'].city.hasError('required')">
-                                City is
-                                required</mat-error>
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email" maxlength="40">
+                            <mat-error *ngIf="this.registrationForm.controls['email'].hasError('required')">Email is
+                                required
+                            </mat-error>
+                            <mat-error *ngIf="this.registrationForm.controls['email'].hasError('pattern')">Please enter
+                                valid
+                                email</mat-error>
+
+
                         </mat-form-field>
-                        <mat-form-field class="three-col-div" appearance="legacy">
-                            <mat-label>State</mat-label>
-                            <input matInput formControlName="state" maxlength="40">
-                            <mat-error
-                                *ngIf="this.registrationForm.controls.address['controls'].state.hasError('required')">
-                                State is
-                                required</mat-error>
-                        </mat-form-field>
-                        <mat-form-field class="three-col-div" appearance="legacy">
-                            <mat-label>pinCode</mat-label>
-                            <input matInput formControlName="pinCode" maxlength="6">
-                            <mat-error
-                                *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['pinCode'].hasError('required')">
-                                pinCode is
-                                required</mat-error>
-                            <mat-error
-                                *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['pinCode'].hasError('pattern')">
-                                Please enter valid pinCode</mat-error>
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Phone Number</mat-label>
+                            <input matInput formControlName="phoneNumber" maxlength="10">
+                            <mat-error *ngIf="this.registrationForm.controls['phoneNumber'].hasError('required')">Phone
+                                number
+                                is required</mat-error>
+                            <mat-error *ngIf="this.registrationForm.controls['phoneNumber'].hasError('pattern')">Please
+                                enter
+                                valid phone number</mat-error>
                         </mat-form-field>
                     </div>
-                </div>
 
-                <div formArrayName="formList">
-                    <p>Upload Aadhar</p>
-                    <div *ngFor="let form of formList.controls; let i = index" [formGroupName]="i">
-                        <div>
-                            <label>
-                                <input type="file" formControlName="fileName" (change)="FileSelected($event)">
-                            </label>
-                        </div>
+                    <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px"
+                        fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Password</mat-label>
+                            <input type="password" matInput formControlName="password" maxlength="40">
+                            <mat-error *ngIf="this.registrationForm.controls['password'].hasError('required')">Password
+                                is
+                                required</mat-error>
+                            <mat-error *ngIf="this.registrationForm.controls['password'].hasError('pattern')">Password
+                                should
+                                contain atleast a uppercase, a lowercase, a digit and a symbol. It should between 8-16
+                                characters</mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Confirm Password</mat-label>
+                            <input type="password" matInput formControlName="confirmPassword" maxlength="40">
+                            <mat-error *ngIf="this.registrationForm.hasError('notSame')">Confirm password should match
+                                with
+                                password</mat-error>
+                        </mat-form-field>
                     </div>
-                </div>
-                <div class="row-div" fxLayout="row" fxLayoutAlign="center center">
-                    <button class="button" mat-button matStepperNext>Next</button>
-                </div>
-                <!-- </form> -->
-            </mat-step>
-            <mat-step [stepControl]="witnessInformations">
-                <!-- <form [formGroup]="secondFormGroup"> -->
-                <ng-template matStepLabel>Witness Informations</ng-template>
-                <div formArrayName="guardianList">
-                    <div *ngFor="let guardian of guardianList.controls; let i = index" [formGroupName]="i">
-                        <h6>Guardian {{i+1}}</h6>
 
+                    <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px"
+                        fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Aadhar</mat-label>
+                            <input matInput formControlName="aadhar" maxlength="12">
+                            <mat-error *ngIf="this.registrationForm.controls['aadhar'].hasError('required')">Aadhar is
+                                required
+                            </mat-error>
+                            <mat-error *ngIf="this.registrationForm.controls['aadhar'].hasError('pattern')">Please enter
+                                valid
+                                Aadhar number</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput [matDatepicker]="picker" [max]="maxDate" placeholder="Date of Birth"
+                                formControlName="dob" readonly>
+                            <mat-error *ngIf="this.registrationForm.controls['dob'].hasError('required')">DOB is
+                                required
+                            </mat-error>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="gender-div"></div>
+                    <mat-label>Gender</mat-label>
+                    <mat-radio-group formControlName="gender">
+                        <mat-radio-button value="male" checked>Male</mat-radio-button>
+                        <mat-radio-button value="female">Female</mat-radio-button>
+                        <mat-radio-button value="other">Other</mat-radio-button>
+                    </mat-radio-group>
+
+
+                    <div formGroupName="address">
                         <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px"
                             fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
                             <mat-form-field appearance="legacy">
-                                <mat-label>Name</mat-label>
-                                <input matInput formControlName="name" maxlength="40">
+                                <mat-label>Address Line 1</mat-label>
+                                <input matInput formControlName="addressLine1" maxlength="40">
                                 <mat-error
-                                    *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.name.hasError('required')">
-                                    Guardian name is required
-                                </mat-error>
+                                    *ngIf="this.registrationForm.controls.address['controls'].addressLine1.hasError('required')">
+                                    Address
+                                    Line1 is
+                                    required</mat-error>
                             </mat-form-field>
                             <mat-form-field appearance="legacy">
-                                <mat-label>Relation</mat-label>
-                                <input matInput formControlName="relation" maxlength="40">
+                                <mat-label>Address Line 2</mat-label>
+                                <input matInput formControlName="addressLine2" maxlength="40">
                                 <mat-error
-                                    *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.relation.hasError('required')">
-                                    Relation is required </mat-error>
+                                    *ngIf="this.registrationForm.controls.address['controls'].addressLine2.hasError('required')">
+                                    Address
+                                    Line2 is
+                                    required</mat-error>
                             </mat-form-field>
                         </div>
 
                         <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px"
                             fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
-                            <mat-form-field appearance="legacy">
-                                <mat-label>Email</mat-label>
-                                <input matInput formControlName="email" maxlength="40">
+                            <mat-form-field class="three-col-div" appearance="legacy">
+                                <mat-label>City</mat-label>
+                                <input matInput formControlName="city" maxlength="40">
                                 <mat-error
-                                    *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.email.hasError('required')">
-                                    Email is required
-                                </mat-error>
-                                <mat-error
-                                    *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.email.hasError('pattern')">
-                                    Please enter valid email </mat-error>
+                                    *ngIf="this.registrationForm.controls.address['controls'].city.hasError('required')">
+                                    City is
+                                    required</mat-error>
                             </mat-form-field>
-                            <mat-form-field appearance="legacy">
-                                <mat-label>Phone Number</mat-label>
-                                <input matInput formControlName="phoneNumber" maxlength="10">
+                            <mat-form-field class="three-col-div" appearance="legacy">
+                                <mat-label>State</mat-label>
+                                <input matInput formControlName="state" maxlength="40">
                                 <mat-error
-                                    *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.phoneNumber.hasError('required')">
-                                    Phone number
-                                    is required
-                                </mat-error>
+                                    *ngIf="this.registrationForm.controls.address['controls'].state.hasError('required')">
+                                    State is
+                                    required</mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="three-col-div" appearance="legacy">
+                                <mat-label>pinCode</mat-label>
+                                <input matInput formControlName="pinCode" maxlength="6">
                                 <mat-error
-                                    *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.phoneNumber.hasError('pattern')">
-                                    Please enter
-                                    valid phone number
-                                </mat-error>
+                                    *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['pinCode'].hasError('required')">
+                                    pinCode is
+                                    required</mat-error>
+                                <mat-error
+                                    *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['pinCode'].hasError('pattern')">
+                                    Please enter valid pinCode</mat-error>
                             </mat-form-field>
                         </div>
+                    </div>
 
-                        <div formGroupName="address">
+                    <div formArrayName="formList">
+                        <h6><b>Upload Aadhar PDF</b></h6>
+                        <div *ngFor="let form of formList.controls; let i = index" [formGroupName]="i">
+                            <div>
+                                <label>
+                                    <input type="file" formControlName="fileName" (change)="FileSelected($event)">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-div" fxLayout="row" fxLayoutAlign="center center">
+                        <button class="button" mat-button matStepperNext>Next</button>
+                    </div>
+
+                </mat-step>
+                <mat-step [stepControl]="witnessInformations">
+                    <ng-template matStepLabel>Witness Informations</ng-template>
+                    <div formArrayName="guardianList">
+                        <div *ngFor="let guardian of guardianList.controls; let i = index" [formGroupName]="i">
+                            <h6><b>Witness</b></h6>
+
                             <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px"
                                 fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
                                 <mat-form-field appearance="legacy">
-                                    <mat-label>Address Line 1</mat-label>
-                                    <input matInput formControlName="addressLine1" maxlength="40">
+                                    <mat-label>Name</mat-label>
+                                    <input matInput formControlName="name" maxlength="40">
                                     <mat-error
-                                        *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['addressLine1'].hasError('required')">
-                                        Address Line1 is required
+                                        *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.name.hasError('required')">
+                                        Guardian name is required
                                     </mat-error>
                                 </mat-form-field>
                                 <mat-form-field appearance="legacy">
-                                    <mat-label>Address Line 2</mat-label>
-                                    <input matInput formControlName="addressLine2" maxlength="40">
+                                    <mat-label>Relation</mat-label>
+                                    <input matInput formControlName="relation" maxlength="40">
                                     <mat-error
-                                        *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['addressLine2'].hasError('required')">
-                                        Address Line2 is required
-                                    </mat-error>
+                                        *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.relation.hasError('required')">
+                                        Relation is required </mat-error>
                                 </mat-form-field>
                             </div>
 
                             <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px"
                                 fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
-                                <mat-form-field class="three-col-div" appearance="legacy">
-                                    <mat-label>City</mat-label>
-                                    <input matInput formControlName="city" maxlength="40">
+                                <mat-form-field appearance="legacy">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput formControlName="email" maxlength="40">
                                     <mat-error
-                                        *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['city'].hasError('required')">
-                                        City is required
+                                        *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.email.hasError('required')">
+                                        Email is required
+                                    </mat-error>
+                                    <mat-error
+                                        *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.email.hasError('pattern')">
+                                        Please enter valid email </mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="legacy">
+                                    <mat-label>Phone Number</mat-label>
+                                    <input matInput formControlName="phoneNumber" maxlength="10">
+                                    <mat-error
+                                        *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.phoneNumber.hasError('required')">
+                                        Phone number
+                                        is required
+                                    </mat-error>
+                                    <mat-error
+                                        *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.phoneNumber.hasError('pattern')">
+                                        Please enter
+                                        valid phone number
                                     </mat-error>
                                 </mat-form-field>
-                                <mat-form-field class="three-col-div" appearance="legacy">
-                                    <mat-label>State</mat-label>
-                                    <input matInput formControlName="state" maxlength="40">
-                                    <mat-error
-                                        *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['state'].hasError('required')">
-                                        State is required
-                                    </mat-error>
-                                </mat-form-field>
-                                <mat-form-field class="three-col-div" appearance="legacy">
-                                    <mat-label>Pin</mat-label>
-                                    <input matInput formControlName="pinCode" maxlength="6">
-                                    <mat-error
-                                        *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['pinCode'].hasError('required')">
-                                        Pin is
-                                        required</mat-error>
-                                    <mat-error
-                                        *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['pinCode'].hasError('pattern')">
-                                        Please enter valid pin</mat-error>
-                                </mat-form-field>
+                            </div>
+
+                            <div formGroupName="address">
+                                <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px"
+                                    fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
+                                    <mat-form-field appearance="legacy">
+                                        <mat-label>Address Line 1</mat-label>
+                                        <input matInput formControlName="addressLine1" maxlength="40">
+                                        <mat-error
+                                            *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['addressLine1'].hasError('required')">
+                                            Address Line1 is required
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field appearance="legacy">
+                                        <mat-label>Address Line 2</mat-label>
+                                        <input matInput formControlName="addressLine2" maxlength="40">
+                                        <mat-error
+                                            *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['addressLine2'].hasError('required')">
+                                            Address Line2 is required
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px"
+                                    fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
+                                    <mat-form-field class="three-col-div" appearance="legacy">
+                                        <mat-label>City</mat-label>
+                                        <input matInput formControlName="city" maxlength="40">
+                                        <mat-error
+                                            *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['city'].hasError('required')">
+                                            City is required
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field class="three-col-div" appearance="legacy">
+                                        <mat-label>State</mat-label>
+                                        <input matInput formControlName="state" maxlength="40">
+                                        <mat-error
+                                            *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['state'].hasError('required')">
+                                            State is required
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field class="three-col-div" appearance="legacy">
+                                        <mat-label>Pin</mat-label>
+                                        <input matInput formControlName="pinCode" maxlength="6">
+                                        <mat-error
+                                            *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['pinCode'].hasError('required')">
+                                            Pin is
+                                            required</mat-error>
+                                        <mat-error
+                                            *ngIf="this.registrationForm.controls.guardianList.controls[0].controls.address.controls['pinCode'].hasError('pattern')">
+                                            Please enter valid pin</mat-error>
+                                    </mat-form-field>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center"
-                    fxLayoutGap="50px">
-                    <button class="button" mat-button matStepperPrevious>Back</button>
-                    <button class="button" mat-button matStepperNext>Next</button>
-                </div>
-                <!-- </form> -->
-            </mat-step>
-            <mat-step [stepControl]="medicalInformations">
-                <ng-template matStepLabel>Medical Informations</ng-template>
-                <div formGroupName="medicalDetails">
-                    <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px"
-                        fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
-                        <mat-form-field>
-                            <mat-label>Blood Group</mat-label>
-                            <select matNativeControl formControlName="bloodGroup">
-                                <option value="A+">A+</option>
-                                <option value="A-">A-</option>
-                                <option value="B+">B+</option>
-                                <option value="B-">B-</option>
-                                <option value="AB+">AB+</option>
-                                <option value="AB-">AB-</option>
-                                <option value="O+">O+</option>
-                                <option value="O-">O-</option>
-                            </select>
-                        </mat-form-field>
-                        <mat-form-field class="three-col-div" appearance="legacy">
-                            <mat-label>BMI</mat-label>
-                            <select matNativeControl formControlName="bodyMassIndex">
-                                <option value="<18.5"><18.5</option>
-                                <option value="18.5-24.9">18.5-24.9</option>
-                                <option value="25-29.9">25-29.9</option>
-                                <option value="30-39.9">30-39.9</option>
-                            </select>
-                        </mat-form-field>
-                        <mat-form-field class="three-col-div" appearance="legacy">
-                            <mat-label>HLA Type</mat-label>
-                            <select matNativeControl formControlName="hlaType">
-                                <option value="HLA-A">HLA-A</option>
-                                <option value="HLA-B">HLA-B</option>
-                                <option value="HLA-DR">HLA-DR</option>
-                            </select>
-                        </mat-form-field>
-                        <mat-form-field>
-                            <mat-label>Liver Attenuation Index</mat-label>
-                            <select matNativeControl formControlName="liverAttenuationIndex">
-                                <option value=">5">>5</option>
-                                <option value="<5"><5</option>
-                            </select>
-                        </mat-form-field>
+                    <div class="button-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center"
+                        fxLayoutGap="50px">
+                        <button class="button" mat-button matStepperPrevious>Back</button>
+                        <button class="button" mat-button matStepperNext>Next</button>
                     </div>
-                    <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px"
-                        fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
-                        <mat-form-field class="three-col-div" appearance="legacy">
-                            <mat-label>Lung Size</mat-label>
-                            <select matNativeControl formControlName="lungSize">
-                                <option value=">285">>285</option>
-                                <option value=">400">>400</option>
-                                <option value=">500">>500</option>
-                                <option value=">700">>700</option>
-                                <option value=">750">>750</option>
-                            </select>
-                        </mat-form-field>
-                        <mat-form-field class="three-col-div" appearance="legacy">
-                            <mat-label>Platelet Count</mat-label>
-                            <select matNativeControl formControlName="plateletCount">
-                                <option value=">100,000">>100,000</option>
-                                <option value="<500,000"><500,000</option>
-                            </select>
-                        </mat-form-field>
-                        <mat-form-field class="three-col-div" appearance="legacy">
-                            <mat-label>RH Factor</mat-label>
-                            <select matNativeControl formControlName="rhFactor">
-                                <option value="Positive">Positive</option>
-                                <option value="Negative">Negative</option>
-                            </select>
-                        </mat-form-field>
-                        <div id="field-div"></div>
+                    <!-- </form> -->
+                </mat-step>
+                <mat-step [stepControl]="medicalInformations">
+                    <ng-template matStepLabel>Medical Informations</ng-template>
+                    <div formGroupName="medicalDetails">
+                        <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px"
+                            fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
+                            <mat-form-field>
+                                <mat-label>Blood Group</mat-label>
+                                <select matNativeControl formControlName="bloodGroup">
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                            </mat-form-field>
+                            <mat-form-field class="three-col-div" appearance="legacy">
+                                <mat-label>BMI</mat-label>
+                                <select matNativeControl formControlName="bodyMassIndex">
+                                    <option value="<18.5">
+                                        <18.5</option> <option value="18.5-24.9">18.5-24.9
+                                    </option>
+                                    <option value="25-29.9">25-29.9</option>
+                                    <option value="30-39.9">30-39.9</option>
+                                </select>
+                            </mat-form-field>
+                            <mat-form-field class="three-col-div" appearance="legacy">
+                                <mat-label>HLA Type</mat-label>
+                                <select matNativeControl formControlName="hlaType">
+                                    <option value="HLA-A">HLA-A</option>
+                                    <option value="HLA-B">HLA-B</option>
+                                    <option value="HLA-DR">HLA-DR</option>
+                                </select>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>Liver Attenuation Index</mat-label>
+                                <select matNativeControl formControlName="liverAttenuationIndex">
+                                    <option value=">5">>5</option>
+                                    <option value="<5">
+                                        <5</option> </select> </mat-form-field> </div> <div class="row-div"
+                                            fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px"
+                                            fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
+                                            <mat-form-field class="three-col-div" appearance="legacy">
+                                                <mat-label>Lung Size</mat-label>
+                                                <select matNativeControl formControlName="lungSize">
+                                                    <option value=">285">>285</option>
+                                                    <option value=">400">>400</option>
+                                                    <option value=">500">>500</option>
+                                                    <option value=">700">>700</option>
+                                                    <option value=">750">>750</option>
+                                                </select>
+                                            </mat-form-field>
+                                            <mat-form-field class="three-col-div" appearance="legacy">
+                                                <mat-label>Platelet Count</mat-label>
+                                                <select matNativeControl formControlName="plateletCount">
+                                                    <option value=">100,000">>100,000</option>
+                                                    <option value="<500,000">
+                                                        <500,000</option> </select> </mat-form-field> <mat-form-field
+                                                            class="three-col-div" appearance="legacy">
+                                                            <mat-label>RH Factor</mat-label>
+                                                            <select matNativeControl formControlName="rhFactor">
+                                                                <option value="Positive">Positive</option>
+                                                                <option value="Negative">
+                                                                    Nethis.registrationForm.controlsgative</option>
+                                                            </select>
+                                            </mat-form-field>
+                                            <div id="field-div"></div>
+                        </div>
+                        <h6><b>Disease: </b><i>(Select the diseases which you have)</i></h6>
+                        <div formGroupName="disease">
+                                <div fxLayout fxLayoutGap="50px" fxLayoutAlign="start center">
+                                <mat-checkbox fxFlex formControlName="hiv" (change)="checkBoneMarrow()" (change)="check()"
+                                    (change)="checkkidney()" (change)="checkheartliver()" (change)="checkcornea()"
+                                    (change)="checkLungs()">HIV</mat-checkbox>
+                                <mat-checkbox fxFlex formControlName="fits" (change)="check()">Fits</mat-checkbox>
+                                <mat-checkbox fxFlex formControlName="hepatitis" (change)="check()"
+                                    (change)="checkBoneMarrow()" (change)="checkkidney()" (change)="checkheartliver()"
+                                    (change)="checkcornea()" (change)="checkLungs()">Hepatitis</mat-checkbox>
+                                <mat-checkbox fxFlex formControlName="heartAttack" (change)="checkcornea()"
+                                    (change)="checkkidney()" (change)="checkheartliver()" (change)="checkLungs()"
+                                    (change)="checkBoneMarrow()">Heart Attack
+                                </mat-checkbox>
+                            </div>
+                            <div fxLayout fxLayoutGap="50px" fxLayoutAlign="start center">
+                                <mat-checkbox fxFlex formControlName="rabies" (change)="check()" (change)="checkBoneMarrow()"
+                                    (change)="checkkidney()" (change)="checkcornea()" (change)="checkheartliver()"
+                                    (change)="checkLungs()">Rabies</mat-checkbox>
+                                <mat-checkbox fxFlex formControlName="tuberculosis" (change)="check()">Tuberculosis
+                                </mat-checkbox>
+                                <mat-checkbox fxFlex formControlName="hyperTension" (change)="check()">Hypertension
+                                </mat-checkbox>
+                                <mat-checkbox fxFlex formControlName="diabetes" (change)="check()" (change)="checkheartliver()"
+                                    (change)="checkkidney()">Diabetes</mat-checkbox>
+                            </div>
+                            <div fxLayout fxLayoutGap="50px" fxLayoutAlign="space-around center">
+                                <mat-checkbox fxFlex formControlName="cancer" (change)="checkcornea()" (change)="checkkidney()"
+                                    (change)="checkLungs()" (change)="checkheartliver()">Cancer</mat-checkbox>
+                                <mat-checkbox fxFlex formControlName="kidneyDisease" (change)="checkLungs()"
+                                    (change)="checkkidney()">
+                                    Kidney Disease</mat-checkbox>
+                                <mat-checkbox fxFlex formControlName="liverDisease" (change)="checkLungs()"
+                                    (change)="checkkidney()">Liver
+                                    Disease</mat-checkbox>
+                                    <div fxFlex></div>
+                            </div>
+                        </div>
+                        <h6><b>Organs: </b><i>(Select the organs which you wish to donate)</i></h6>
+                        <div formArrayName="organList" fxLayout fxLayoutGap="50px" fxLayoutAlign="space-around center">
+                            <div *ngFor="let organ of organList.controls; let i = index" [formGroupName]="i" fxFlex >
+                                <mat-checkbox  [disabled]="organState[i]" formControlName="donateOrNot">
+                                    {{this.organList.value[i].name}}
+                                </mat-checkbox>
+                            </div>
+                        </div>
                     </div>
-                    <h6>Disease:</h6>
-                    <div formGroupName="disease">
-                        <div>
-                            <mat-checkbox formControlName="hiv" (change)="checkBoneMarrow()" (change)="check()"
-                                (change)="checkkidney()" (change)="checkheartliver()" (change)="checkcornea()"
-                                (change)="checkLungs()">HIV</mat-checkbox>
-                            <mat-checkbox formControlName="fits" (change)="check()">Fits</mat-checkbox>
-                            <mat-checkbox formControlName="hepatitis" (change)="check()" (change)="checkBoneMarrow()"
-                                (change)="checkkidney()" (change)="checkheartliver()" (change)="checkcornea()"
-                                (change)="checkLungs()">Hepatitis</mat-checkbox>
-                            <mat-checkbox formControlName="heartAttack" (change)="checkcornea()"
-                                (change)="checkkidney()" (change)="checkheartliver()" (change)="checkLungs()"
-                                (change)="checkBoneMarrow()">Heart Attack
-                            </mat-checkbox>
-                        </div>
-                        <div>
-                            <mat-checkbox formControlName="rabies" (change)="check()" (change)="checkBoneMarrow()"
-                                (change)="checkkidney()" (change)="checkcornea()" (change)="checkheartliver()"
-                                (change)="checkLungs()">Rabies</mat-checkbox>
-                            <mat-checkbox formControlName="tuberculosis" (change)="check()">Tuberculosis</mat-checkbox>
-                            <mat-checkbox formControlName="hyperTension" (change)="check()">Hypertension</mat-checkbox>
-                            <mat-checkbox formControlName="diabetes" (change)="check()" (change)="checkheartliver()"
-                                (change)="checkkidney()">Diabetes</mat-checkbox>
-                        </div>
-                        <div>
-                            <mat-checkbox formControlName="cancer" (change)="checkcornea()" (change)="checkkidney()"
-                                (change)="checkLungs()" (change)="checkheartliver()">Cancer</mat-checkbox>
-                            <mat-checkbox formControlName="kidneyDisease" (change)="checkLungs()"
-                                (change)="checkkidney()">
-                                Kidney Disease</mat-checkbox>
-                            <mat-checkbox formControlName="liverDisease" (change)="checkLungs()"
-                                (change)="checkkidney()">Liver
-                                Disease</mat-checkbox>
-                        </div>
+
+                    <h6><b>Declaration:</b></h6>
+                    <mat-checkbox formControlName="condition1">
+                        I hereby declare that I am a citizen of India and above 18 years of age
+                    </mat-checkbox>
+                    <mat-checkbox formControlName="condition2">
+                        I hereby unequivocally authorize the removal of my organ / organs, mentioned above from my body
+                        after my
+                        death for therapeutic purposes.
+                    </mat-checkbox>
+
+                    <mat-checkbox formControlName="condition3">
+                        I hereby confirm that all the above information is right and I choose to pledge my organs being
+                        in
+                        the
+                        sane state of mind.
+                    </mat-checkbox>
+                    <div class="button-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center"
+                        fxLayoutGap="50px">
+                        <button class="button" mat-button matStepperPrevious>Back</button>
+                        <button class="button" mat-button type="submit" (click)="register()"
+                            [disabled]="!this.registrationForm.controls['condition1'].value ||
+                    !this.registrationForm.controls['condition2'].value || !this.registrationForm.controls['condition3'].value || this.registrationForm.invalid">Register</button>
                     </div>
-                    <h6>Organs:</h6>
-                    <div formGroupName="organList">
-                        <div *ngFor="let organ of organList.controls; let i = index" [formGroupName]="i">
-                            <mat-checkbox [disabled]="organState[i]"
-                                formControlName="donateOrNot">
-                                {{this.organList.value[i].name}}
-                            </mat-checkbox>
-                        </div>
-                    </div>
-                </div>
 
-                <h6>Declaration:</h6>
-                <mat-checkbox >
-                    I hereby declare that I am a citizen of India and above 18 years of age
-                </mat-checkbox>
-
-                <mat-checkbox>
-
-                    I hereby unequivocally authorize the removal of my organ / organs, mentioned above from my body
-                    after my
-                    death for therapeutic purposes.
-                </mat-checkbox>
-
-                <mat-checkbox>
-
-                    I hereby confirm that all the above information is right and I choose to pledge my organs being in
-                    the
-                    sane state of mind.
-                </mat-checkbox>
-                <div class="row-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center" fxLayoutGap="50px">
-                    <button class="button" mat-button matStepperPrevious>Back</button>
-                    <button class="button" mat-button type="submit" (click)="register()">Register</button>
-                </div>
-
-            </mat-step>
-        </mat-horizontal-stepper>
+                </mat-step>
+            </mat-horizontal-stepper>
 
 
 
-    </form>
-</mat-card>
+        </form>
+    </mat-card>
 </div>
