@@ -72,7 +72,7 @@ export interface Donor {
   }
 
 export interface Recepient {
-  organName: any;
+    organName: any;
     aadhar: string;
     address: Address;
     bloodGroup: string;

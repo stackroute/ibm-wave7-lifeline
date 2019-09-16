@@ -1,20 +1,13 @@
 <div>
     <mat-tab-group>
         <mat-tab label="Recommendation">
-            <div *ngFor="let donor of donors">
-                <mat-card class="donor-card">
-                    <mat-card-header>
-                        <mat-card-title>{{donor.firstName}} {{donor.lastName}}</mat-card-title>
-                        <mat-card-subtitle>Blood Group: {{donor.medicalInfo.bloodGroup}}</mat-card-subtitle>
-                    </mat-card-header>
-                </mat-card>
-            </div>
+            <app-recommendation></app-recommendation>
         </mat-tab>
-        <mat-tab label="Reports">
+        <!-- <mat-tab label="Reports">
             <div>
                 Reports
             </div>
-        </mat-tab>
+        </mat-tab> -->
         <!--Profile Tab-->
         <mat-tab label="Profile" class="tab">
 
@@ -155,12 +148,10 @@
         </mat-tab>
 
         <mat-tab label="Request Organs">
-            <div>
-                <form [formGroup]="requestForm">
-                    <mat-card>
+            <mat-card>
+                <form [formGroup]="requestOrganForm">
                         <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
                             <h2 mat-subheader>Request Organ</h2>
-
                             <mat-form-field>
                                 <mat-label>BloodGroup</mat-label>
                                 <select matNativeControl required formControlName="bloodGroup">
@@ -186,23 +177,21 @@
                                     <option value="Lungs">Lungs</option>
                                     <option value="Platelet">Platelet</option>
                                 </select>
-                                <!-- <mat-error *ngIf="this.registrationForm.controls['lastName'].invalid">LastName is required</mat-error> -->
                             </mat-form-field>
 
 
                             <button class="submit-button" mat-button type="submit" name="request"
                                 (click)="newRequest()">Request</button>
                         </div>
-                    </mat-card>
                 </form>
-            </div>
+            </mat-card>
 
 
 
 
         </mat-tab>
         <mat-tab label="Status">
-            <div>
+            <!-- <div>
 
                 <mat-card>
                     <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
@@ -212,7 +201,8 @@
                         </h3>
                     </div>
                 </mat-card>
-            </div>
+            </div> -->
+            <app-status></app-status>
         </mat-tab>
 
     </mat-tab-group>
