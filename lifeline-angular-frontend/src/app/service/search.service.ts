@@ -8,8 +8,8 @@ import { OrganFactors } from '../model/organFactors';
 })
 export class SearchService {
 
-  private searchUrl = 'http://localhost:8085/api/search/query';
-  private organFactorsUrl = 'http://localhost:8085/api/search/factors';
+  private searchUrl = 'http://52.66.129.41:8085/api/search/query';
+  private organFactorsUrl = 'http://52.66.129.41:8085/api/search/factors';
 
   constructor(private http: HttpClient) {
   }

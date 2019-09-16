@@ -1,0 +1,8 @@
+    <div *ngFor="let donor of donors">
+        <mat-card class="donor-card">
+            <mat-card-header>
+                <mat-card-title>{{donor.firstName}} {{donor.lastName}}</mat-card-title>
+                <mat-card-subtitle>Blood Group: {{donor.medicalInfo.bloodGroup}}</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+    </div>
