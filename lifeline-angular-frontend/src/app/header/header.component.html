@@ -6,6 +6,9 @@
               <img src="../../assets/images/lifeline.png" alt="App Logo">
             </button>
           </div>
+          <span class="spacer"></span>
+          <app-search class = "item" *ngIf="!loggedIn"></app-search>
+          <button mat-button class = "item" routerLink=''>Home</button> 
           <div class="header" *ngIf="!loggedIn">
             <button mat-button class = "item" [matMenuTriggerFor]="menu">About Us</button>  
             <mat-menu #menu="matMenu">
@@ -18,8 +21,6 @@
                 <button mat-menu-item [routerLink]="['/myths']">Myths</button>
             </mat-menu>
           </div>
-          <span class="spacer"></span>
-          <app-search class = "item" *ngIf="!loggedIn"></app-search>
           <app-account class = "item" ></app-account>
       </mat-toolbar-row>
   </mat-toolbar>

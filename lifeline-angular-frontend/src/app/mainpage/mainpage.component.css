@@ -2,6 +2,11 @@
   margin-top:64px;
 }
 
+iframe {
+  position: absolute;
+  right: 0px;
+}
+
 .heart {
   width: 100vw;
   height: 700px;

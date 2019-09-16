@@ -40,9 +40,7 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { ChatcomponentComponent } from './donordashboard/chatcomponent/chatcomponent.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ChatbuttonComponent } from './donordashboard/chatbutton/chatbutton.component';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { LandingpagereportsComponent } from './landingpagereports/landingpagereports.component';
@@ -85,8 +83,6 @@ import { MatTableModule } from '@angular/material';
     ResetpasswordComponent,
     ForgotpasswordComponent,
     SnackBarComponent,
-    ChatcomponentComponent,
-    ChatbuttonComponent,
     LandingpagereportsComponent,
     DonordashboardreportsComponent,
     EmailverificationComponent,
@@ -130,8 +126,6 @@ import { MatTableModule } from '@angular/material';
   ],
   entryComponents: [
     SnackBarComponent,
-    ChatbuttonComponent,
-    ChatcomponentComponent,
     VerificationAlertComponent
   ],
   providers: [MatBottomSheet],
