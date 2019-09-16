@@ -13,7 +13,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthenticateService {
-  private authenticationUrl = 'http://52.66.129.41:8080/login-service/';
+  private authenticationUrl = 'http://52.66.129.41:8082/';
   private apiUrl = this.authenticationUrl + 'register';
   private apiUrl2 = this.authenticationUrl + 'authenticate';
   private apiUrl3 = this.authenticationUrl + 'forgot-password';

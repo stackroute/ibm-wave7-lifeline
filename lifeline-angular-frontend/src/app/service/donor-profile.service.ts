@@ -11,7 +11,7 @@ import { Donor } from '../model/model';
 export class DonorProfileService {
   public data: any = [];
 
-  private donorUrl = 'http://52.66.129.41:8080/donor-profile-service/api/v1/donor';
+  private donorUrl = 'http://52.66.129.41:8081/donor-profile-service/api/v1/donor';
   private emailUrl = 'http://52.66.129.41:8080/donor-profile-service/api/v1/verify';
   private formUrl = 'http://52.66.129.41:8080/donor-profile-service/api/v1/forms';
   constructor(private httpClient: HttpClient) { }

@@ -2,10 +2,14 @@ mat-icon {
     width: 20px;
     height: 20px;
     margin: 8px;
+    animation: spin 3s infinite;
 }
 
 .footer {
-    margin: 16px;
+    
+    background:#5b305b;
+    color: aliceblue;
+    margin-top:40px;
 }
 
 .helpline {
