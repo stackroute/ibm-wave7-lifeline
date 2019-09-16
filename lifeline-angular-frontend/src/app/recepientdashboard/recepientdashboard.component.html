@@ -1,154 +1,156 @@
-
-        <div>
-            <mat-tab-group>
-            <mat-tab label="Recommendation">
-                    <div *ngFor="let donor of donors">
-                            <mat-card class="donor-card">
-                            <mat-card-header>
-                                <mat-card-title>{{donor.firstName}} {{donor.lastName}}</mat-card-title>
-                                <mat-card-subtitle>Blood Group: {{donor.medicalInfo.bloodGroup}}</mat-card-subtitle>
-                            </mat-card-header>
-                            </mat-card>
-                    </div>
-                </mat-tab>
-                <mat-tab label="Reports">
-                    <div>
-                        Reports       
-                    </div>
-                </mat-tab>
-    <!--Profile Tab-->
-    <mat-tab label="Profile" class="tab">
-
-        <mat-card>
-            <mat-list>
-                <h3 mat-subheader>Personal Details:</h3>
-
-                <mat-list-item>
-
-                    <h4 class="h4-tag">Name: {{recepients.firstName}} {{recepients.lastName}} </h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag">Gender: {{recepients.gender}}</h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag">Date of Birth: {{recepients.dob}}</h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag">Email: {{recepients.email}}</h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag">Phone Number: {{recepients.phoneNumber}}</h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag">Aadhar Number: {{recepients.aadhar}}</h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag">Address: {{recepients.address.addressLine1}} {{recepients.address.addressLine2}},
-                        {{recepients.address.city}},{{recepients.address.state}},pincode-{{recepients.address.pinCode}}</h4>
-                </mat-list-item>
-             
-                <mat-list-item>
-                    <h4 class="h4-tag">Blood group: {{recepients.bloodGroup}} </h4>
-
-                </mat-list-item>
-            </mat-list>
-            
-        </mat-card>
-
-    </mat-tab>
-    <mat-tab  id="text" label="Edit">
-        <div class="profile">
-            <form [formGroup]="profileForm">
-                    <mat-card>
-                <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
-                    <h3 mat-subheader>Edit Profile</h3>
-                    <mat-form-field>
-                      <input matInput placeholder="firstName" disabled formControlName="firstName"> 
-                    </mat-form-field>
-                    <br>
-                    <mat-form-field>
-                        <input matInput placeholder="lastName" disabled formControlName="lastName">
-                    </mat-form-field>
-                    <br>
-                    <mat-form-field>
-                        <input matInput placeholder="email" disabled formControlName="email">
-                      </mat-form-field>
-                      <br>
-                    <mat-form-field>
-                        <input matInput placeholder="phoneNo" formControlName="phoneNumber">
-                    </mat-form-field>
-                    <br>
-                    <mat-form-field class="example-full-width">
-                        <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Date Of Birth" formControlName="dateOfBirth" disabled>
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                     
-                    </mat-form-field>
-                    <br>
-                    <mat-form-field>
-                        <input matInput placeholder="AadharNumber" formControlName="aadhar" disabled>
-                     </mat-form-field>
-                    <br>
-                    <mat-label>Address</mat-label>
-                    <mat-form-field>
-                        <input matInput placeholder="AddresLine1" formControlName="addressLine1">
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput placeholder="AddresLine2"  formControlName="addressLine2">
-                      </mat-form-field>
-                      <mat-form-field>
-                        <input matInput placeholder="city" formControlName="city">
-                      </mat-form-field>
-                      <mat-form-field>
-                        <input matInput placeholder="state" formControlName="state">
-                      </mat-form-field>
-                    <mat-form-field>
-                        <input matInput placeholder="pincode" formControlName="pinCode">
-                     </mat-form-field>
-                    <mat-form-field>
-                        <input matInput placeholder="Gender" formControlName="gender" disabled>
-                     </mat-form-field>
-                    <br>
-                    <br>
-                    <mat-form-field>
-                        <mat-label>BloodGroup</mat-label>
-                        <select matNativeControl required disabled formControlName="bloodGroup">
-                          <option value="A+">A+</option>
-                          <option value="A-">A-</option>
-                          <option value="B+">B+</option>
-                          <option value="B-">B-</option>
-                          <option value="AB+">AB+</option>
-                          <option value="AB-">AB-</option>
-                          <option value="O+">O+</option>
-                          <option value="O-">O-</option>
-                        </select>
-                        
-                    </mat-form-field>
-                      <br>
-                
-                <button mat-stroked-button type="submit" color="primary" (click)="updateRecepient()">Save</button>
-                   </div>
-                   
-            </mat-card>
-              </form>
+<div>
+    <mat-tab-group>
+        <mat-tab label="Recommendation">
+            <div *ngFor="let donor of donors">
+                <mat-card class="donor-card">
+                    <mat-card-header>
+                        <mat-card-title>{{donor.firstName}} {{donor.lastName}}</mat-card-title>
+                        <mat-card-subtitle>Blood Group: {{donor.medicalInfo.bloodGroup}}</mat-card-subtitle>
+                    </mat-card-header>
+                </mat-card>
             </div>
-   
-    </mat-tab>
+        </mat-tab>
+        <mat-tab label="Reports">
+            <div>
+                Reports
+            </div>
+        </mat-tab>
+        <!--Profile Tab-->
+        <mat-tab label="Profile" class="tab">
 
-    <mat-tab label="PastHistory">
-        <div>
-            <p> First name: {{recepients.firstName}}
-            </p>
-        </div>
-    </mat-tab>
-  
+            <mat-card>
+                <mat-list>
+                    <h3 mat-subheader>Personal Details:</h3>
 
-</mat-tab-group>
+                    <mat-list-item>
+
+                        <h4 class="h4-tag">Name: {{recepients.firstName}} {{recepients.lastName}} </h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag">Gender: {{recepients.gender}}</h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag">Date of Birth: {{recepients.dob}}</h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag">Email: {{recepients.email}}</h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag">Phone Number: {{recepients.phoneNumber}}</h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag">Aadhar Number: {{recepients.aadhar}}</h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag">Address: {{recepients.address.addressLine1}}
+                            {{recepients.address.addressLine2}},
+                            {{recepients.address.city}},{{recepients.address.state}},pincode-{{recepients.address.pinCode}}
+                        </h4>
+                    </mat-list-item>
+
+                    <mat-list-item>
+                        <h4 class="h4-tag">Blood group: {{recepients.bloodGroup}} </h4>
+
+                    </mat-list-item>
+                </mat-list>
+
+            </mat-card>
+
+        </mat-tab>
+        <mat-tab id="text" label="Edit">
+            <div class="profile">
+                <form [formGroup]="profileForm">
+                    <mat-card>
+                        <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
+                            <h3 mat-subheader>Edit Profile</h3>
+                            <mat-form-field>
+                                <input matInput placeholder="firstName" disabled formControlName="firstName">
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <input matInput placeholder="lastName" disabled formControlName="lastName">
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <input matInput placeholder="email" disabled formControlName="email">
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <input matInput placeholder="phoneNo" formControlName="phoneNumber">
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field class="example-full-width">
+                                <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker"
+                                    placeholder="Date Of Birth" formControlName="dateOfBirth" disabled>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <input matInput placeholder="AadharNumber" formControlName="aadhar" disabled>
+                            </mat-form-field>
+                            <br>
+                            <mat-label>Address</mat-label>
+                            <mat-form-field>
+                                <input matInput placeholder="AddresLine1" formControlName="addressLine1">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="AddresLine2" formControlName="addressLine2">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="city" formControlName="city">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="state" formControlName="state">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="pincode" formControlName="pinCode">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="Gender" formControlName="gender" disabled>
+                            </mat-form-field>
+                            <br>
+                            <br>
+                            <mat-form-field>
+                                <mat-label>BloodGroup</mat-label>
+                                <select matNativeControl required disabled formControlName="bloodGroup">
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+
+                            </mat-form-field>
+                            <br>
+
+                            <button mat-stroked-button type="submit" color="primary"
+                                (click)="updateRecepient()">Save</button>
+                        </div>
+
+                    </mat-card>
+                </form>
+            </div>
+
+        </mat-tab>
+
+        <mat-tab label="PastHistory">
+            <div>
+                <p> First name: {{recepients.firstName}}
+                </p>
+            </div>
+        </mat-tab>
+
+
+    </mat-tab-group>
 </div>
- 

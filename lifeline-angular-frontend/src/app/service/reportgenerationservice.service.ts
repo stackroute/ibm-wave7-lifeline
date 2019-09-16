@@ -1,27 +1,21 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReportgenerationserviceService {
 
-  constructor(private http:HttpClient) { }
+  private reportUrl = 'http://52.66.129.41:8080/report-service/api/v1/';
+  constructor(private http: HttpClient) { }
 
-  donorreports()
-  {
-    return this.http.get("http://localhost:8080/api/v1/donor/registrations");
-   //  .pipe(map(result => result));
+  donorreports() {
+    return this.http.get(this.reportUrl + 'donor/registrations');
   }
-  recepientreports()
-  {
-    return this.http.get("http://localhost:8080/api/v1/recepient/registrations");
-   //  .pipe(map(result => result));
-  } 
-  organdonationreports()
-  {
-    return this.http.get("http://localhost:8080/api/v1/organs/donations");
-   
-   //  .pipe(map(result => result));
-  } 
+  recepientreports() {
+    return this.http.get(this.reportUrl + 'recepient/registrations');
+  }
+  organdonationreports() {
+    return this.http.get(this.reportUrl + 'organs/donations');
+  }
 }

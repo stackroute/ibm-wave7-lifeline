@@ -8,19 +8,18 @@ import { OrganFactors } from '../model/organFactors';
 })
 export class SearchService {
 
-  private searchUrl = "http://localhost:8085/api/search/query";
+  private searchUrl = 'http://localhost:8085/api/search/query';
+  private organFactorsUrl = 'http://localhost:8085/api/search/factors';
 
-  private organFactorsUrl = "http://localhost:8085/api/search/factors";
-  
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
   }
 
   getSearchResults(searchString: string) {
-    return this.http.get<Array<Donor>>(this.searchUrl + "/" + searchString);
+    return this.http.get<Array<Donor>>(this.searchUrl + '/' + searchString);
   }
 
   getOrganFactors(searchString: string) {
-    return this.http.get<OrganFactors>(this.organFactorsUrl + "/" + searchString);
+    return this.http.get<OrganFactors>(this.organFactorsUrl + '/' + searchString);
   }
 
 }

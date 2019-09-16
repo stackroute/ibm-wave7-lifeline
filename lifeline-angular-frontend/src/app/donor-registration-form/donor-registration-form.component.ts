@@ -14,7 +14,6 @@ import { VerificationAlertComponent } from '../recepientregistrationformcomponen
 })
 export class DonorRegistrationFormComponent implements OnInit {
   organState = [false, false, false, false, false, false, false, false];
-  decelarion = [false, false, false];
   public organsValues = [{
     id: 1,
     name: 'Blood',
@@ -52,10 +51,10 @@ export class DonorRegistrationFormComponent implements OnInit {
   },
   {
     id: 8,
-    name: 'Platelet',
+    name: 'Plateconst',
     donateOrNot: false,
   }];
-  donor:Donor
+  donor: Donor
   registrationForm: FormGroup;
   errorMsg: string;
   maxDate = new Date();
@@ -75,7 +74,7 @@ export class DonorRegistrationFormComponent implements OnInit {
       confirmPassword: ['', [Validators.required, Validators.maxLength(16)]],
       aadhar: ['', [Validators.required, Validators.maxLength(12), Validators.pattern('^[0-9]{12}$')]],
       dob: ['', Validators.required],
-      gender: ['', Validators.required],
+      gender: [''],
       createdDate: [new Date()],
       emailVerified: [false],
       address: this.fb.group({
@@ -134,9 +133,11 @@ export class DonorRegistrationFormComponent implements OnInit {
           id: [''],
           fileName: [''],
           data: [''],
-
         })
-      ])
+      ]),
+      condition1: [false, [Validators.required]],
+      condition2: [false],
+      condition3: [false],
     }, { validator: this.checkPasswords });
 
     for (let i = 1; i < 8; i++) {
@@ -172,45 +173,41 @@ export class DonorRegistrationFormComponent implements OnInit {
   }
 
   register() {
-    // if (this.registrationForm.valid) {
-      this.currentFileUpload = this.selectedFiles.item(0);
-      this.donorProfileService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
-        if (event instanceof HttpResponse) {
-          console.log('File is completely uploaded!');
-        }
-      });
-      this.selectedFiles = undefined;
-      console.log(this.registrationForm.value);
-      this.donorProfileService.saveDonor(this.registrationForm.value).subscribe(data => {
-        this.donor = data
-        const dialogRef = this.dialog.open(VerificationAlertComponent, {
-          width: '250px',
-        });
-        dialogRef.afterClosed().subscribe(result => {
-          console.log('The dialog was closed');
-        });
-        this.donorProfileService.sendMail(this.donor.id)
-          .subscribe(data => {
-            console.log(data);
-          });
-        });
-        error => {
-          this.errorMsg = error;
-        }
+    if (this.registrationForm.valid) {
+    this.currentFileUpload = this.selectedFiles.item(0);
+    this.donorProfileService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+      if (event instanceof HttpResponse) {
+        console.log('File is compconstely uploaded!');
       }
- 
+    });
+    this.selectedFiles = undefined;
+    console.log(this.registrationForm.value);
+    this.donorProfileService.saveDonor(this.registrationForm.value).subscribe(data => {
+      this.donor = data
+      const dialogRef = this.dialog.open(VerificationAlertComponent, {
+        width: '250px',
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+      });
+      this.donorProfileService.sendMail(this.donor.id)
+        .subscribe(data => {
+          console.log(data);
+        });
+    });
+  }
+
+
+  }
+
   check() {
-    let diseaseGroup = this.disease;
+    const diseaseGroup = this.disease;
 
     if (diseaseGroup.get('hiv').value || diseaseGroup.get('hepatitis').value ||
       diseaseGroup.get('rabies').value || diseaseGroup.get('tuberculosis').value ||
       diseaseGroup.get('fits').value || diseaseGroup.get('hyperTension').value ||
       diseaseGroup.get('diabetes').value) {
       console.log('Blood');
-      // this.organList.value.forEach(element => {
-      //   console.log(element.name);
-      //   console.log(element);
-      // });
       this.organState[0] = true;
     } else {
       console.log('No Blood');
@@ -218,7 +215,7 @@ export class DonorRegistrationFormComponent implements OnInit {
     }
   }
   checkcornea() {
-    let diseaseGroup = this.disease;
+    const diseaseGroup = this.disease;
     if (diseaseGroup.get('hiv').value || diseaseGroup.get('hepatitis').value ||
       diseaseGroup.get('rabies').value || diseaseGroup.get('heartAttack').value ||
       diseaseGroup.get('cancer').value) {
@@ -234,7 +231,7 @@ export class DonorRegistrationFormComponent implements OnInit {
 
 
   checkLungs() {
-    let diseaseGroup = this.disease;
+    const diseaseGroup = this.disease;
     if (diseaseGroup.get('hiv').value ||
       diseaseGroup.get('hepatitis').value ||
       diseaseGroup.get('rabies').value ||
@@ -250,7 +247,7 @@ export class DonorRegistrationFormComponent implements OnInit {
     }
   }
   checkheartliver() {
-    let diseaseGroup = this.disease;
+    const diseaseGroup = this.disease;
     if (diseaseGroup.get('hiv').value ||
       diseaseGroup.get('hepatitis').value ||
       diseaseGroup.get('rabies').value ||
@@ -267,7 +264,7 @@ export class DonorRegistrationFormComponent implements OnInit {
     }
   }
   checkkidney() {
-    let diseaseGroup = this.disease;
+    const diseaseGroup = this.disease;
     if (diseaseGroup.get('hiv').value ||
       diseaseGroup.get('hepatitis').value ||
       diseaseGroup.get('rabies').value ||
@@ -292,7 +289,7 @@ export class DonorRegistrationFormComponent implements OnInit {
       diseaseGroup.get('heartAttack').value ||
       diseaseGroup.get('kidneyDisease').value ||
       diseaseGroup.get('liverDisease').value) {
-      console.log('boneMarrow')
+      console.log('boneMarrow');
       this.organState[1] = true;
 
     } else {

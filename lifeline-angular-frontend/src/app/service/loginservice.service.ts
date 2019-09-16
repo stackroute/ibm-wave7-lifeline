@@ -7,18 +7,18 @@ import { WebStorageService, LOCAL_STORAGE } from 'angular-webstorage-service';
   providedIn: 'root'
 })
 export class LoginserviceService {
-  public data:any=[]
+  public data = [];
 
-  constructor(private http:HttpClient,@Inject(LOCAL_STORAGE) private storage: WebStorageService) { }
+  constructor(private http: HttpClient, @Inject(LOCAL_STORAGE) private storage: WebStorageService) { }
   saveInLocal(key, val): void {
     console.log('recieved= key:' + key + 'value:' + val);
     this.storage.set(key, val);
-    this.data[key]= this.storage.get(key);
-   }
+    this.data[key] = this.storage.get(key);
+  }
 
-   getFromLocal(key): void {
+  getFromLocal(key): void {
     console.log('recieved= key:' + key);
-    this.data[key]= this.storage.get(key);
+    this.data[key] = this.storage.get(key);
     console.log(this.data);
-   }
+  }
 }
