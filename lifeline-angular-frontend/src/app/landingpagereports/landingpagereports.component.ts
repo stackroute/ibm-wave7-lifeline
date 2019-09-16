@@ -33,7 +33,7 @@ export class LandingpagereportsComponent implements OnInit {
         animationEnabled: true,
         data:
         {
-          labels: ["Number od donors registered"],
+          labels: ["Number of donors registered"],
           datasets:
             [{
               backgroundColor: [
@@ -44,7 +44,7 @@ export class LandingpagereportsComponent implements OnInit {
                 // "hsl(147, 50%, 47%)"
                
               ],
-               label: 'Number of donors registered in each month',
+               label: 'Number of donors registered',
               // data: [9, 7, 3, 5, 10, 15, 16, 62, , 3, 1, 9],
               // data: this.donorreport,
               data:[this.donorreport],
@@ -87,7 +87,7 @@ export class LandingpagereportsComponent implements OnInit {
         animationEnabled: true,
         data:
         {
-          labels: ["Green"],
+          labels: ["Number of recepients registered"],
           datasets:
             [{
               backgroundColor: [
@@ -95,7 +95,7 @@ export class LandingpagereportsComponent implements OnInit {
                 "#e74c3c",
                 
               ],
-              label: 'Number of recepients registered in each month',
+              label: 'Number of recepients registered',
               data: [this.recepientreport],
               fill: false,
               lineTension: 0.2,

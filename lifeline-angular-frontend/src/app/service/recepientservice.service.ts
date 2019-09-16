@@ -12,7 +12,7 @@ export class RecepientserviceService {
   public id;
   private recepientUrl = 'http://52.66.129.41:8080/recepient-service/api/v1/recepient';
   private emailUrl = 'http://52.66.129.41:8080/recepient-service/api/v1/verify';
-  private resultUrl = 'http://52.66.129.41:8080/recommendation-service/results';
+  private resultUrl = 'http://172.23.238.228:8084/recommendation-service/results';
 
   constructor(private httpClient: HttpClient) { }
 

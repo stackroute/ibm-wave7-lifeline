@@ -127,7 +127,7 @@ this.recepients.bloodGroup=this.requestOrganForm.get('bloodGroup').value;
 
 this.recepientProfileService.updateRecepient(this.dataSource, this.recepientId).subscribe();
 
-  if (this.dataSource.organName == 'blood'||'boneMarrow'||'cornea'||'herat'||'kidney'||'liver'||'lungs'||'platelet'&&this.dataSource.bloodGroup=='A+'||'A-'||'B+'||'B-'||'AB+'||'AB-'||'O+'||'O-') {
+  if (this.dataSource.organName == 'blood'||'boneMarrow'||'cornea'||'herat'||'kidney'||'liver'||'lungs'||'platelet' && this.dataSource.bloodGroup=='A+'||'A-'||'B+'||'B-'||'AB+'||'AB-'||'O+'||'O-') {
     // this.router.navigate(["RecepientdashboardComponent"], { queryParams: { id: this.recepientId } });
 //     this.router.navigateByUrl('/RefrshComponent', {skipLocationChange: true}).then(()=>
 this.router.navigate(["../recepient"], {queryParams: {id:this.recepientId}}); 
@@ -136,7 +136,6 @@ this.router.navigate(["../recepient"], {queryParams: {id:this.recepientId}});
     
   }   
   else {
-    
     this.router.navigate(['/status'], { queryParams: { id: this.recepientId } });
     
   }

@@ -1,0 +1,17 @@
+.mat-card {
+    /* box-shadow: 10px 10px 10px 10px grey; */
+    /* -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5); */
+    margin: 30px 100px 30px 100px;
+    background-color: #eaecc1;
+    border-radius: 2cm;
+    border: 3px solid #5d6119;
+  }
+  
+  
+  .mat-subheader {
+    align-items: center;
+    font-size: 30px;
+    color: #5b305b;
+    font-style: normal;
+    text-shadow: 2px 2px #e7d6ef;
+  }
