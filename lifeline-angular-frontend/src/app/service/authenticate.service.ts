@@ -26,9 +26,7 @@ export class AuthenticateService {
 
   constructor(private httpClient: HttpClient) { }
 
-  // public user:User;
   saveUser(user: User): Observable<User> {
-    // user = Guid.create().toString();
     return this.httpClient.post<User>(this.apiUrl, user);
   }
 

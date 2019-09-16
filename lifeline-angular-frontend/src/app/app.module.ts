@@ -54,6 +54,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { SearchResultsComponent } from './header/search-results/search-results.component';
 import { SearchPipe } from './pipes/search.pipe';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ReuestComponent } from './reuest/reuest.component';
+import { MatTableModule } from '@angular/material';
+
 
 //  import { EmbedVideoService } from 'ngx-embed-video';
 @NgModule({
@@ -89,7 +92,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     EmailverificationComponent,
     VerificationAlertComponent,
     SearchResultsComponent,
-    SearchPipe
+    SearchPipe,
+    ReuestComponent,
   ],
   imports: [
     BrowserModule,
@@ -120,7 +124,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatStepperModule,
     MatSelectModule,
     MatExpansionModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatTableModule
+ 
   ],
   entryComponents: [
     SnackBarComponent,

@@ -16,6 +16,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY /package.json /app/package.json
 RUN npm install
 RUN npm install -g @angular/cli@8.2.2
+RUN npm install jspdf --save
 
 # add app
 COPY . /app

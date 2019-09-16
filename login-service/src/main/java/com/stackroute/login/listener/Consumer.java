@@ -29,8 +29,16 @@ public class Consumer {
         logger.info(""+ user);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         logger.info(user.getEmailVerified());
-        userRepository.save(user);
-    }
+        System.out.println(user.getEmailVerified());
+        User presentUser = userRepository.findByUsername(user.getUsername());
+        if (presentUser != null) {
+            presentUser.setEmailVerified((user.getEmailVerified()));
+            userRepository.save(presentUser);
+        } else {
+            userRepository.save(user);
+
+        }
+    }    
 
     @KafkaListener(topics="DonorRegistration",groupId = "group_id")
     public void consumedonor(User user) throws IOException {

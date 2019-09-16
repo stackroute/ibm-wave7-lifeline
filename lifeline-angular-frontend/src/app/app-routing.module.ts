@@ -15,53 +15,66 @@ import { SearchResultsComponent } from './header/search-results/search-results.c
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 const routes: Routes = [
-  { 
-    path: '', 
-    component: MainpageComponent },
-  { 
-    path: 'aimsandobjectives', 
-    component: AimsobjectivesComponent },
-  { 
-    path: 'termsandconditions', 
-    component: TermsandconditionsComponent },
-  { 
-    path: 'whatcanyoudonate', 
-    component: DonationComponent },
-  { 
-    path: 'myths', 
-    component: MythsComponent },
-  { 
-    path: 'donor-registration', 
-    component: DonorRegistrationFormComponent },
-  { 
-    path: 'recepient-registration', 
-    component: RecepientregistrationformcomponentComponent },
-  { 
-    path: 'donor', 
-    component: ProfileComponent },
-  { 
-    path: 'recepient', 
-    component: RecepientdashboardComponent },
-  { 
-    path: 'login', 
-    component: LoginComponent },
-  { 
-    path: 'logout', 
-    component: LoginComponent },
-  { 
-    path: 'id', 
-    component: EmailverificationComponent },
   {
-    path: 'search/:name', 
+    path: '',
+    component: MainpageComponent
+  },
+  {
+    path: 'aimsandobjectives',
+    component: AimsobjectivesComponent
+  },
+  {
+    path: 'termsandconditions',
+    component: TermsandconditionsComponent
+  },
+  {
+    path: 'whatcanyoudonate',
+    component: DonationComponent
+  },
+  {
+    path: 'myths',
+    component: MythsComponent
+  },
+  {
+    path: 'donor-registration',
+    component: DonorRegistrationFormComponent
+  },
+  {
+    path: 'recepient-registration',
+    component: RecepientregistrationformcomponentComponent
+  },
+  {
+    path: 'donor',
+    component: ProfileComponent
+  },
+  {
+    path: 'recepient',
+    component: RecepientdashboardComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'logout',
+    component: LoginComponent
+  },
+  {
+    path: 'id',
+    component: EmailverificationComponent
+  },
+  {
+    path: 'search/:name',
     component: SearchResultsComponent
   },
   {
-    path:'forgotPassword', 
+    path: 'forgotPassword',
     component: ForgotpasswordComponent
   },
   {
-    path:'resetPassword',
-    component: ResetpasswordComponent}
+    path: 'resetPassword',
+    component: ResetpasswordComponent
+  }
 ];
 
 @NgModule({

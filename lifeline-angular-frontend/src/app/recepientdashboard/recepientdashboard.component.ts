@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RecepientserviceService } from '../service/recepientservice.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 import { MatSnackBar } from '@angular/material';
@@ -13,14 +13,40 @@ import { Recepient } from '../model/model';
 })
 export class RecepientdashboardComponent implements OnInit {
 
+  public requestOrganForm: FormGroup;
   public profileForm: FormGroup;
   private recepientId;
   public recepients:Recepient;
   private donors: Object;
   durationInSeconds = 5;
-  constructor(private route:ActivatedRoute,private router:Router,private recepientProfileService:RecepientserviceService,private _snackBar: MatSnackBar) {}
+  formbuilder: any;
+  dataSource: Recepient;
+  constructor(private fb: FormBuilder,private route:ActivatedRoute,private router:Router,private recepientProfileService:RecepientserviceService,private _snackBar: MatSnackBar) {}
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.recepientId = params["id"];
+      console.log(this.recepientId);
+      this.requestForm();
+      this.recepientProfileService.getRecepientById(this.recepientId).subscribe(data => {
+        this.recepients = data;
+        this.dataSource = data;
+        console.log(this.recepients);
+      });
+    });
+    // this.profileForm 	= this.fb.group({
+     
+    //   phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^$|[0-9]{10}')]],        
+    //   address: this.fb.group({
+    //     addressLine1: ['', [Validators.required, Validators.maxLength(40)]],
+    //     addressLine2: ['', [Validators.required, Validators.maxLength(40)]],
+    //     city: ['', [Validators.required, Validators.maxLength(40)]],
+    //     state: ['', [Validators.required, Validators.maxLength(40)]],
+    //     pinCode: ['', [Validators.required, Validators.maxLength(6), Validators.pattern('^$|[0-9]{6}')]],
+
+    //   }),
+    // })
+  
     this.route.queryParams.subscribe(params => {
       let id = params["id"];
       this.recepientId = id;
@@ -48,20 +74,20 @@ export class RecepientdashboardComponent implements OnInit {
        });
     });
   }
-
+ 
   createForm() {
     this.profileForm = new FormGroup({
       firstName : new FormControl({value: '', disabled: true}, Validators.required),
       lastName : new FormControl({value: '', disabled: true}, Validators.required),
-      email: new FormControl({value: '', disabled: true}, Validators.required),
-      phoneNumber: new FormControl(Validators.required),
+      email: new FormControl({value: ''}, [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]),
+      phoneNumber: new FormControl([Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^$|[0-9]{10}')]),
       aadhar: new FormControl({value: '', disabled: true}, Validators.required),
       gender: new FormControl({value: '', disabled: true}, Validators.required),
-      addressLine1: new FormControl(Validators.required),
-      addressLine2: new FormControl(Validators.required),
-      city:new FormControl(Validators.required),
-      state:new FormControl(Validators.required),
-      pinCode:new FormControl(Validators.required),
+      addressLine1: new FormControl([Validators.required, Validators.maxLength(40)]),
+      addressLine2: new FormControl([Validators.required, Validators.maxLength(40)]),
+      city:new FormControl([Validators.required, Validators.maxLength(40)]),
+      state:new FormControl([Validators.required, Validators.maxLength(40)]),
+      pinCode:new FormControl([Validators.required, Validators.maxLength(6),Validators.pattern('^$|[0-9]{6}')]),
       dateOfBirth:new FormControl({value: '', disabled: true}, Validators.required),
       bloodGroup:new FormControl({value: '', disabled: true}, Validators.required),
 
@@ -96,7 +122,39 @@ export class RecepientdashboardComponent implements OnInit {
     duration: this.durationInSeconds * 1000,
   });
 }
-
+requestForm() {
+  this.requestOrganForm = new FormGroup({
+   
+    organName: new FormControl({value: ''}, [Validators.required,Validators.maxLength(40)]),
+   
+    bloodGroup:new FormControl({value: ''}, Validators.required),
+  })
 }
+newRequest()
+{
+// console.log(this.requestOrganForm.get('organName').value);
+// console.log(this.requestOrganForm.get('bloodGroup').value);
+
+this.recepients.organName= this.requestOrganForm.get('organName').value;
+this.recepients.bloodGroup=this.requestOrganForm.get('bloodGroup').value;
+
+this.recepientProfileService.updateRecepient(this.dataSource, this.recepientId).subscribe();
+
+  if (this.dataSource.organName == 'blood'||'boneMarrow'||'cornea'||'herat'||'kidney'||'liver'||'lungs'||'platelet'&&this.dataSource.bloodGroup=='A+'||'A-'||'B+'||'B-'||'AB+'||'AB-'||'O+'||'O-') {
+    
+    this.router.navigate(['/recommendations'], { queryParams: { id: this.recepientId } });
+    
+  }   
+  else {
+    
+    this.router.navigate(['/status'], { queryParams: { id: this.recepientId } });
+    
+  }
+}
+
+
+};
+
+
 
  

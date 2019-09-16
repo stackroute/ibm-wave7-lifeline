@@ -82,7 +82,10 @@
                             </mat-form-field>
                             <br>
                             <mat-form-field>
-                                <input matInput placeholder="phoneNo" formControlName="phoneNumber">
+                                <input matInput placeholder="phoneNo" formControlName="phoneNumber" minlength="10"
+                                    maxlength="10">
+                                <!-- <mat-error *ngIf="this.profileForm.controls['phoneNumber'].hasError('required')">Phone Number is required</mat-error>
+                    <mat-error *ngIf="this.profileForm.controls['phoneNumber'].hasError('pattern')">Please Enter Valid Phone Number</mat-error>  -->
                             </mat-form-field>
                             <br>
                             <mat-form-field class="example-full-width">
@@ -99,19 +102,26 @@
                             <br>
                             <mat-label>Address</mat-label>
                             <mat-form-field>
-                                <input matInput placeholder="AddresLine1" formControlName="addressLine1">
+                                <input matInput formControlName="addressLine1" maxlength="40">
+                                <!-- <mat-error *ngIf="this.registrationForm.controls.address['controls'].addressLine1.invalid">Address line1 is required</mat-error> -->
                             </mat-form-field>
                             <mat-form-field>
                                 <input matInput placeholder="AddresLine2" formControlName="addressLine2">
+                                <!-- <mat-error *ngIf="this.profileForm.controls.address['controls'].addressLine2.invalid">Address line2 is required</mat-error> -->
                             </mat-form-field>
                             <mat-form-field>
                                 <input matInput placeholder="city" formControlName="city">
+                                <!-- <mat-error *ngIf="this.profileForm.controls.address['controls'].city.invalid">City is required</mat-error> -->
                             </mat-form-field>
                             <mat-form-field>
                                 <input matInput placeholder="state" formControlName="state">
+                                <!-- <mat-error *ngIf="this.profileForm.controls.address['controls'].state.invalid">State is required</mat-error> -->
+
                             </mat-form-field>
                             <mat-form-field>
                                 <input matInput placeholder="pincode" formControlName="pinCode">
+                                <!-- <mat-error *ngIf="this.profileForm.controls.address['controls'].pinCode.hasError('required')">Pincode is required</mat-error>
+                        <mat-error *ngIf="this.profileForm.controls.address['controls'].pinCode.hasError('pattern')">Please Enter Valid pincode</mat-error> -->
                             </mat-form-field>
                             <mat-form-field>
                                 <input matInput placeholder="Gender" formControlName="gender" disabled>
@@ -144,13 +154,66 @@
 
         </mat-tab>
 
-        <mat-tab label="PastHistory">
+        <mat-tab label="Request Organs">
             <div>
-                <p> First name: {{recepients.firstName}}
-                </p>
+                <form [formGroup]="requestForm">
+                    <mat-card>
+                        <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
+                            <h2 mat-subheader>Request Organ</h2>
+
+                            <mat-form-field>
+                                <mat-label>BloodGroup</mat-label>
+                                <select matNativeControl required formControlName="bloodGroup">
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                            </mat-form-field>
+                            <mat-form-field appearance="legacy">
+                                <mat-label>Organ Name</mat-label>
+                                <select matNativeControl required formControlName="organName">
+                                    <option value="blood">Blood</option>
+                                    <option value="BoneMarrow">Bonemarrow</option>
+                                    <option value="Cornea">Cornea</option>
+                                    <option value="heart">Heart</option>
+                                    <option value="Kidney">Kidney</option>
+                                    <option value="Liver">Liver</option>
+                                    <option value="Lungs">Lungs</option>
+                                    <option value="Platelet">Platelet</option>
+                                </select>
+                                <!-- <mat-error *ngIf="this.registrationForm.controls['lastName'].invalid">LastName is required</mat-error> -->
+                            </mat-form-field>
+
+
+                            <button class="submit-button" mat-button type="submit" name="request"
+                                (click)="newRequest()">Request</button>
+                        </div>
+                    </mat-card>
+                </form>
+            </div>
+
+
+
+
+        </mat-tab>
+        <mat-tab label="Status">
+            <div>
+
+                <mat-card>
+                    <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
+                        <h3 mat-header>
+                            <p>Sorry! There are no donors currently available for the requested organ.We will be
+                                notifying you as soon as when the donor with with requested criteria registers.</p>
+                        </h3>
+                    </div>
+                </mat-card>
             </div>
         </mat-tab>
-
 
     </mat-tab-group>
 </div>
