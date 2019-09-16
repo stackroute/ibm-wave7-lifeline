@@ -7,54 +7,58 @@
   margin-top: 100px;
 }
 
-.mat-card{
+.mat-card {
   /* box-shadow: 10px 10px 10px 10px grey; */
   /* -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5); */
   margin: 30px 100px 30px 100px;
   background-color: #eaecc1;
   border-radius: 2cm;
-border: 3px solid #5d6119;
+  border: 3px solid #5d6119;
 }
-.mat-subheader{
+
+.mat-subheader {
   align-items: center;
   font-size: 30px;
-  color:#5b305b;
-  font-style:normal;
+  color: #5b305b;
+  font-style: normal;
   text-shadow: 2px 2px #e7d6ef;
 }
-.h4-tag{
+
+.h4-tag {
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
   padding-top: 1.5cm;
-  
 }
-.mat-list{
+
+.mat-list {
   padding: 20px 0 20px 20px;
-  
- 
 }
-.mat-checkbox{
+
+.mat-checkbox {
   padding: 0 20px;
   line-height: 30px;
-  margin: 0 10px 0 10px;;
- 
+  margin: 0 10px 0 10px;
+  ;
 }
+
 /* withdraw css */
-textarea{
+
+textarea {
   margin-top: 10px;
   background-color: #eaecc1;
   margin-left: 300px;
-    
 }
-.withdraw
-{
-text-align:center;
-margin-bottom: 10px;
+
+.withdraw {
+  text-align: center;
+  margin-bottom: 10px;
 }
-.checkbox{
+
+.checkbox {
   margin-left: 300px;
 }
-.heading{
+
+.heading {
   text-align: center;
   margin-top: 5px;
 }
@@ -72,59 +76,63 @@ margin-bottom: 10px;
 
 ::ng-deep #pivotgrid {
   margin-top: 20px;
-  align:center;
+  align: center;
 }
+
 ::ng-deep .currency {
   text-align: center;
 }
-.graphs
-{
-  padding-left:270px;
+
+.graphs {
+  padding-left: 270px;
   /* background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%); */
   background: linear-gradient(to bottom, #33ccff 0%, #ffcccc 100%);
-
 }
-table{
+
+table {
   height: 9cm;
 }
-#linechart,#barchart,#linechart1
-{
+
+#linechart, #barchart, #linechart1 {
   height: 5cm;
 }
-.mat-form-field{
+
+.mat-form-field {
   padding-left: 20px;
   padding-right: 20px;
 }
-button{
-  width:3cm;
-  margin-left:15cm;
- background-color: #5b305b;
+
+button {
+  width: 3cm;
+  margin-left: 15cm;
+  background-color: #5b305b;
 }
-.content{
+
+.content {
   height: 14cm;
   width: 25cm;
-  margin:auto;
+  margin: auto;
+}
 
-  }
-  .content h3{
-   float:right;
-   margin-right:7cm;
-   padding-top: 60px;
-   margin-top:0.3cm;
-   font-size: 0.8cm;
-  }
-  .pdf
-  {
+.content h3 {
+  float: right;
+  margin-right: 7cm;
+  padding-top: 60px;
+  margin-top: 0.3cm;
+  font-size: 0.8cm;
+}
+
+.pdf {
   display: flex;
   justify-content: center;
-  margin-top:0cm;
-  padding-top:0.1cm;
-  margin-right:15cm;
-  }
-  img{
-    margin-left: 0.2cm;
-    width:3cm;
-    height: 3cm;
-    border-radius: 15px;
-  }
-  
+  margin-top: 0cm;
+  padding-top: 0.1cm;
+  margin-right: 15cm;
+}
+
+img {
+  margin-left: 0.2cm;
+  width: 3cm;
+  height: 3cm;
+  border-radius: 15px;
+}

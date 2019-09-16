@@ -31,3 +31,9 @@ body{
     background-color:#faf7fa;
     margin: 0;
 }
+.mat-fab.mat-accent, .mat-flat-button.mat-accent, .mat-mini-fab.mat-accent, .mat-raised-button.mat-accent {
+    background-color: #5b305b;
+  }
+  .mat-fab:not([class*=mat-elevation-z]), .mat-mini-fab:not([class*=mat-elevation-z]) {
+    box-shadow: 0 0 0 0 rgba(0,0,0,0), 0 0px 0px 0 rgba(0,0,0,0), 0 0 0 0 rgba(0,0,0,0);
+}
