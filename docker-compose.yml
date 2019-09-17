@@ -82,9 +82,11 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
+    environment: 
+      - NEO4J_AUTH=neo4j/lifeline
     ports:
       - 7474:7474
-      - 8096:7687
+      - 7687:7687
     volumes:
       - /DB/neo4j/data:/data
       - /DB/neo4j/import:/import

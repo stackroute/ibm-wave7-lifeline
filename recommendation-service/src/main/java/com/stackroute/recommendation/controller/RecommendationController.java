@@ -31,7 +31,8 @@ public class RecommendationController {
             responseEntity = new ResponseEntity<List<Donor>>(recommendationService.retrieveDonors(name), HttpStatus.OK);
         } catch (Exception e) {
             responseEntity = new ResponseEntity<String>("Exception", HttpStatus.CONFLICT);
-        }
+            e.printStackTrace();
+	}
         return responseEntity;
     }
 }
