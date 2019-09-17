@@ -74,7 +74,7 @@ public class JwtUserDetailsService implements UserDetailsService {
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
             helper.setTo(username);
             helper.setSubject("Link for Reset your Password");
-            helper.setText("http://172.23.238.202:4200/resetPassword");
+            helper.setText("http://52.66.129.41:4200/resetPassword");
             javaMailSender.send(message);
             System.out.println("hello");
             status = "Sent";

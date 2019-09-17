@@ -39,6 +39,6 @@ export class AuthenticateService {
   }
 
   resetpassword(data: User): Observable<any> {
-    return this.httpClient.post<any>(this.apiUrl4, data);
+    return this.httpClient.put<any>(this.apiUrl4, data);
   }
 }
