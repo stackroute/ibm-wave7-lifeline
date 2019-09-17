@@ -19,9 +19,9 @@ public class MedicalDetails {
 	@JsonProperty("organList")
 	private List<Organs> organs;
 	private String hlaType;
-	private long plateletCount;
-	private double rhFactor;
-	private int bodyMassIndex;
-	private int lungSize;
-	private int liverAttenuationIndex;
+	private String plateletCount;
+	private String rhFactor;
+	private String bodyMassIndex;
+	private String lungSize;
+	private String liverAttenuationIndex;
 }
