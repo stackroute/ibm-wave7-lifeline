@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Organs {
 	@NotNull
+	@JsonProperty("id")
 	private long id;
 	
 	@NotNull

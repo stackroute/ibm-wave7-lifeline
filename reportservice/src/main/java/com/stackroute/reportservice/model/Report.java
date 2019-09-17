@@ -38,7 +38,7 @@ public class Report {
     @JsonProperty("userType")
     private String userType;
 
-    @JsonProperty("medicalInfo")
+    @JsonProperty("medicalDetails")
    private MedicalDetails medicalDetails;
 //@JsonProperty("request")
 // private Request request;
