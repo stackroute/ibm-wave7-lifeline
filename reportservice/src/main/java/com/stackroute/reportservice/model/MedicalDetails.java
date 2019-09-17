@@ -16,7 +16,7 @@ import java.util.List;
 public class MedicalDetails {
 	@NotNull
 	private String bloodGroup;
-	@JsonProperty("organs")
+	@JsonProperty("organList")
 	private List<Organs> organs;
 	private String hlaType;
 	private long plateletCount;
