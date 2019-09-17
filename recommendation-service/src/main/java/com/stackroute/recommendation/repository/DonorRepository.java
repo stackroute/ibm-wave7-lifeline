@@ -11,7 +11,7 @@ public interface DonorRepository extends Neo4jRepository<Donor, Long> {
 
     //Filter results based on the organ
     @Query("WITH {tokens} as filters\n" +
-            "MATCH p1=(a:Donor)-[:HAS_MEDICAL_INFO]-(m:MedicalDetails)-[:ORGANS]-(o:Organs)\n" +
+            "MATCH p1=(a:Donor)-[:HAS_MEDICAL_INFO]-(m:MedicalDetails)-[:ORGAN_LIST]-(o:Organs)\n" +
             "MATCH p2=(m:MedicalDetails)-[:DISEASE]-(d:Disease)\n" +
             "WHERE m.bloodGroup in filters\n" +
             "MATCH p3=(a:Donor)-[:HAS_ADDRESS]-()\n" +

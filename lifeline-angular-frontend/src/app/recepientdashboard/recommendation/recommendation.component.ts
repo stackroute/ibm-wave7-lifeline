@@ -15,6 +15,7 @@ export class RecommendationComponent implements OnInit {
   constructor(private recepientProfileService: RecepientserviceService) { }
 
   ngOnInit() {
+    console.log(this.recepients.bloodGroup)
     this.recepientProfileService.getDonorRecommendationsForRecepient(this.recepients.bloodGroup).subscribe(data => {
       this.donors = data;
     });
