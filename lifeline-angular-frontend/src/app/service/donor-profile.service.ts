@@ -29,7 +29,7 @@ export class DonorProfileService {
     return this.httpClient.get<Donor>(this.donorUrl + '/' + id);
   }
   deleteDonor(id): Observable<any> {
-
+console.log(id)
     return this.httpClient.delete<any>(this.donorUrl + '/' + id);
   }
 

@@ -13,3 +13,7 @@
     align-items: center;
     background-color: beige;
 }
+.close-button
+{
+    float:right;
+}
