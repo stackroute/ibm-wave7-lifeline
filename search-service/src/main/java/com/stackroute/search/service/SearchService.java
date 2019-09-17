@@ -11,4 +11,6 @@ public interface SearchService {
     public List<Donor> retrieveDonors(String name);
 
     public OrganFactors getOrganFactors(String organ);
+
+    OrganFactors setOrganFactors(OrganFactors organ);
 }

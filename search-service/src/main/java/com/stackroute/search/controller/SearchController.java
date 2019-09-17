@@ -28,12 +28,21 @@ public class SearchController {
     @ApiOperation("Execute Search Query")
     @GetMapping("query/{name}")
     public ResponseEntity<List<Donor>> retrieveDonors(@PathVariable("name") String name) throws IOException {
+        System.out.println("api call");
         return new ResponseEntity<List<Donor>>(searchService.retrieveDonors(name), HttpStatus.OK);
     }
 
     @ApiOperation("Get Organ Factors")
     @GetMapping("factors/{organ}")
     public ResponseEntity<OrganFactors> getOrganFactors(@PathVariable("organ") String organ) {
+        System.out.println("api call");
         return new ResponseEntity<OrganFactors>(searchService.getOrganFactors(organ), HttpStatus.OK);
+    }
+
+    @ApiOperation("Get Organ Factors")
+    @PostMapping("factors")
+    public ResponseEntity<OrganFactors> setOrganFactors(@PathVariable("organ") OrganFactors organ) {
+        System.out.println("api call");
+        return new ResponseEntity<OrganFactors>(searchService.setOrganFactors(organ), HttpStatus.OK);
     }
 }

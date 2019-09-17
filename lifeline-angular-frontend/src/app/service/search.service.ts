@@ -8,8 +8,8 @@ import { Donor } from '../model/donor';
 })
 export class SearchService {
 
-  private searchUrl = 'http://172.23.238.228:8085/api/search/query';
-  private organFactorsUrl = 'http://172.23.238.228:8085/api/search/factors';
+  private searchUrl = 'http://52.66.129.41:8085/api/search/query';
+  private organFactorsUrl = 'http://52.66.129.41:8085/api/search/factors';
 
   constructor(private http: HttpClient) {
   }

@@ -98,9 +98,12 @@ public class DonorServiceImpl implements DonorService {
 		update.inc("seq", 1);
 		FindAndModifyOptions options = new FindAndModifyOptions();
 		options.returnNew(true);
+		System.out.println(query);
+		System.out.println(update);
+		System.out.println(options);
 		DatabaseSequence seqId = mongoOperations.findAndModify(query, update, options, DatabaseSequence.class);
+		System.out.println(seqId);
 		return seqId.getSeq();
-		
 	}
 
 	@Override
