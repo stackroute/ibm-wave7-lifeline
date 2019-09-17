@@ -83,7 +83,7 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 8095:7474
+      - 7474:7474
       - 8096:7687
     volumes:
       - /DB/neo4j/data:/data
