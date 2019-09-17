@@ -39,9 +39,9 @@ public class SearchController {
         return new ResponseEntity<OrganFactors>(searchService.getOrganFactors(organ), HttpStatus.OK);
     }
 
-    @ApiOperation("Get Organ Factors")
+    @ApiOperation("Set Organ Factors")
     @PostMapping("factors")
-    public ResponseEntity<OrganFactors> setOrganFactors(@PathVariable("organ") OrganFactors organ) {
+    public ResponseEntity<OrganFactors> setOrganFactors(@RequestBody OrganFactors organ) {
         System.out.println("api call");
         return new ResponseEntity<OrganFactors>(searchService.setOrganFactors(organ), HttpStatus.OK);
     }
