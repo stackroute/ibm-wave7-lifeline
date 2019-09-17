@@ -2,7 +2,7 @@ mat-icon {
     width: 20px;
     height: 20px;
     margin: 8px;
-    animation: spin 3s infinite;
+    animation: spin 1s infinite;
 }
 
 .footer {
@@ -10,6 +10,7 @@ mat-icon {
     background:#5b305b;
     color: aliceblue;
     margin-top:40px;
+    
 }
 
 .helpline {

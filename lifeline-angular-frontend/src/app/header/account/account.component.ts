@@ -3,7 +3,10 @@ import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticateService } from 'src/app/service/authenticate.service';
 import { LoginComponent } from '../login/login.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DonorProfileService } from '../../service/donor-profile.service';
+import { ProfileComponent } from '../../donordashboard/profile.component';
+import { DeletealertComponent } from '../deletealert/deletealert.component';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -13,8 +16,8 @@ export class AccountComponent implements OnInit {
 
   isLoggedIn$: Observable<boolean>;
   loggedIn: boolean;
-
-  constructor(private router: Router, private route: ActivatedRoute, private authenticateService: AuthenticateService, public dialog: MatDialog) { }
+  donorId: Number;
+  constructor( private donorProfileService: DonorProfileService, private router: Router, private route: ActivatedRoute, private authenticateService: AuthenticateService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.isLoggedIn$ = this.authenticateService.logged;
@@ -26,10 +29,19 @@ export class AccountComponent implements OnInit {
   openDialog(userType): void {
     const dialogRef = this.dialog.open(LoginComponent, {
       width: '500px',
-      data: userType 
+      data: userType
     });
-
-
   }
+  deleteaccount():void {
+   
+        const dialogRef = this.dialog.open(DeletealertComponent, {
+          width: '250px',
+     
+       
+      });
 
+     }
 }
+
+
+

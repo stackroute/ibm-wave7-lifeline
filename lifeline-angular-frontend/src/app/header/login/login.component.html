@@ -2,8 +2,17 @@
   <div class="loginContainer" fxLayout="column">
     <br>
     <mat-card>
-      <h3>Login</h3>
-      <form [formGroup]="loginForm">    
+      <!-- <button class="button1" (Click)="close()">*</button> -->
+
+      <h3>Login
+        <button mat-icon-button class="close-button" disableRipple="true" (click)="close()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </h3>
+
+      <form [formGroup]="loginForm">
+
+
         <div>
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Username" formControlName="username" name="username" required>
@@ -18,15 +27,15 @@
       <div>
         <button mat-raised-button (click)="loginUser()" color="primary" data-dismiss="loginContainer">Login</button>
       </div>
-      <br/>
+      <br />
       <div>
         <p>Forgot password?</p>
       </div>
       <div>
         <button mat-raised-button [routerLink]="['/forgotPassword']" target="_self">Click Here</button>
       </div>
-     
+
     </mat-card>
-    <br/>
+    <br />
   </div>
 </div>
