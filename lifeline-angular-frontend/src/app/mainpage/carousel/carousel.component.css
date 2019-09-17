@@ -1,6 +1,7 @@
 #demo {
    background: #EFE7F1;
    min-height: 465px;
+   margin-top: 20px;
 }
 
 .carousel-inner img {

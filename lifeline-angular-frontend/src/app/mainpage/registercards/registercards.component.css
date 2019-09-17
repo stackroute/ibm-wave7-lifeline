@@ -3,18 +3,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 500px;
+  margin: 40px;
+  /* height: 10px; */
 }
 
 .receiverRegistration
 {
+  margin: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 500px;
+  
 }
 
 .container {
   margin-top: 4%;
   margin-bottom: 4%;
+  
+  
 }
 
 .registerbutton{

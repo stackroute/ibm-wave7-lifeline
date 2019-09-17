@@ -32,8 +32,6 @@
             <button mat-button style="color:whitesmoke" (click)="makePdf()">Download</button>
         </div>
     </mat-tab>
-
-
     <mat-tab label="Profile" class="tab">
         <mat-card>
             <mat-list>
@@ -70,7 +68,7 @@
                 </mat-list-item>
                 <br>
                 <mat-list-item>
-                    <h5 mat-subheader>Guardian details:</h5>
+                    <h3 mat-subheader>Guardian Details:</h3>
                 </mat-list-item>
                 <mat-list-item>
                     <div class="h4-tag" *ngFor="let guardian of donor.guardianList">
@@ -82,7 +80,9 @@
                     </div>
                 </mat-list-item>
             </mat-list>
-            <mat-divider></mat-divider>
+            <br>
+            <br>
+            <!-- <mat-divider></mat-divider> -->
             <mat-list>
                 <h3 mat-subheader>Medical Details:</h3>
                 <mat-list-item>
@@ -241,26 +241,12 @@
 
     </mat-tab>
 
-    <mat-tab label="Reports">
+    
 
-
-
-        <div class="graphs">
-
-            <table>
-                <tr>
-                    <td> <canvas id="barChart" width="400" height="400"></canvas></td>
-                    <td> <canvas id="barChart1" width="400" height="400"></canvas></td>
-                </tr>
-            </table>
-        </div>
-
-    </mat-tab>
-
-    <mat-tab label="Withdraw">
+    <mat-tab label="delete account">
         <div>
             <div class="heading">
-                <h3> Why do you want to withdraw ?</h3>
+                <h3> Why do you want to withdraw your registration ?</h3>
             </div>
             <textarea rows="6" cols="100"> </textarea>
             <br>
@@ -270,7 +256,7 @@
             </div>
             <br><br>
             <div class="withdraw">
-                <button style="color:whitesmoke" (click)="deletedonor()">Withdraw</button>
+                <button style="color:whitesmoke"[routerLink]="['/']" (click)="deletedonor()">delete</button>
             </div>
         </div>
     </mat-tab>

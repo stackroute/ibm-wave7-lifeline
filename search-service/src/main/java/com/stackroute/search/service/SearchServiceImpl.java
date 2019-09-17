@@ -33,4 +33,9 @@ public class SearchServiceImpl implements SearchService{
     public OrganFactors getOrganFactors(String organ) {
         return factorsRepository.findByOrgan(organ);
     }
+
+    @Override
+    public OrganFactors setOrganFactors(OrganFactors organ) {
+        return factorsRepository.save(organ);
+    }
 }

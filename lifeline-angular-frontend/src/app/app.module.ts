@@ -54,6 +54,9 @@ import { SearchPipe } from './pipes/search.pipe';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReuestComponent } from './reuest/reuest.component';
 import { MatTableModule } from '@angular/material';
+import { RecommendationComponent } from './recepientdashboard/recommendation/recommendation.component';
+import { StatusComponent } from './recepientdashboard/status/status.component';
+import { OrganRequestStatusComponent } from './organ-request-status/organ-request-status.component';
 
 
 //  import { EmbedVideoService } from 'ngx-embed-video';
@@ -90,6 +93,9 @@ import { MatTableModule } from '@angular/material';
     SearchResultsComponent,
     SearchPipe,
     ReuestComponent,
+    RecommendationComponent,
+    StatusComponent,
+    OrganRequestStatusComponent,
   ],
   imports: [
     BrowserModule,

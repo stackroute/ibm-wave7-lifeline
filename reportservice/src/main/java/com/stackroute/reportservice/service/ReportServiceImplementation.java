@@ -34,7 +34,7 @@ public class ReportServiceImplementation implements ReportService {
         List list = new ArrayList();
         List<Report> reports = reportRepository.findAll();
         for (Report report : reports) {
-            if (report.getUserType().equals("donor")) {
+            if (!report.getUserType().equals(null) && report.getUserType().equals("donor")) {
                 donorCount++;
             }
 
@@ -45,6 +45,7 @@ public class ReportServiceImplementation implements ReportService {
         return list;
     }
 
+
     @Override
     public List countRecepientRegistrations() {
         int recepientCount = 0;
@@ -53,7 +54,7 @@ public class ReportServiceImplementation implements ReportService {
         System.out.println(reports);
         for (Report report : reports) {
             System.out.println(report);
-            if (report.getUserType().equals("recepient")) {
+            if (!report.getUserType().equals(null) && report.getUserType().equals("recepient")){
                 recepientCount++;
             }
 

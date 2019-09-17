@@ -6,13 +6,17 @@
 ::ng-deep .currency {
     text-align: center;
 }
+h3{
+    text-align: center;
+}
 
 .graphs
 {
-    padding-left:170px;
+    padding-left:80px;
     /* background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%); */
     /* background: linear-gradient(to bottom, #33ccff 0%, #ffcccc 100%); */
-    background-color:beige;
+    /* background-color:linear-gradient(to bottom, #ccffff 0%, #99ffcc 100%);;
+    opacity: 5; */
 
 }
 table{

@@ -1,4 +1,5 @@
 import { MedicalDetails } from '../model/medicalDetails';
+
 export class Donor {
     firstName: string;
     lastName: string;
@@ -6,4 +7,5 @@ export class Donor {
     phoneNumber: string;
     dob: string;
     medicalDetails: MedicalDetails;
+
 }

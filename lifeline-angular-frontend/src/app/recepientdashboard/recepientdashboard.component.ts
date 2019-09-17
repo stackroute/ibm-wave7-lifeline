@@ -34,18 +34,7 @@ export class RecepientdashboardComponent implements OnInit {
         console.log(this.recepients);
       });
     });
-    // this.profileForm 	= this.fb.group({
-     
-    //   phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^$|[0-9]{10}')]],        
-    //   address: this.fb.group({
-    //     addressLine1: ['', [Validators.required, Validators.maxLength(40)]],
-    //     addressLine2: ['', [Validators.required, Validators.maxLength(40)]],
-    //     city: ['', [Validators.required, Validators.maxLength(40)]],
-    //     state: ['', [Validators.required, Validators.maxLength(40)]],
-    //     pinCode: ['', [Validators.required, Validators.maxLength(6), Validators.pattern('^$|[0-9]{6}')]],
-
-    //   }),
-    // })
+   
   
     this.route.queryParams.subscribe(params => {
       let id = params["id"];
@@ -68,9 +57,7 @@ export class RecepientdashboardComponent implements OnInit {
         let currentDate = new Date(this.recepients.dob);
         this.profileForm.controls['dateOfBirth'].setValue(currentDate);
         this.profileForm.controls['bloodGroup'].setValue(this.recepients.bloodGroup);
-        this.recepientProfileService.getDonorRecommendationsForRecepient(this.recepients.bloodGroup).subscribe(data => {
-          this.donors = data
-        });
+        
        });
     });
   }
@@ -140,13 +127,15 @@ this.recepients.bloodGroup=this.requestOrganForm.get('bloodGroup').value;
 
 this.recepientProfileService.updateRecepient(this.dataSource, this.recepientId).subscribe();
 
-  if (this.dataSource.organName == 'blood'||'boneMarrow'||'cornea'||'herat'||'kidney'||'liver'||'lungs'||'platelet'&&this.dataSource.bloodGroup=='A+'||'A-'||'B+'||'B-'||'AB+'||'AB-'||'O+'||'O-') {
-    
-    this.router.navigate(['/recommendations'], { queryParams: { id: this.recepientId } });
+  if (this.dataSource.organName == 'blood'||'boneMarrow'||'cornea'||'herat'||'kidney'||'liver'||'lungs'||'platelet' && this.dataSource.bloodGroup=='A+'||'A-'||'B+'||'B-'||'AB+'||'AB-'||'O+'||'O-') {
+    // this.router.navigate(["RecepientdashboardComponent"], { queryParams: { id: this.recepientId } });
+//     this.router.navigateByUrl('/RefrshComponent', {skipLocationChange: true}).then(()=>
+this.router.navigate(["../recepient"], {queryParams: {id:this.recepientId}}); 
+ location.reload();
+
     
   }   
   else {
-    
     this.router.navigate(['/status'], { queryParams: { id: this.recepientId } });
     
   }

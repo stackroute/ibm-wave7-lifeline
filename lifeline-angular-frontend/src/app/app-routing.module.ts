@@ -14,6 +14,8 @@ import { EmailverificationComponent } from './emailverification/emailverificatio
 import { SearchResultsComponent } from './header/search-results/search-results.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { StatusComponent } from './recepientdashboard/status/status.component';
+import { RecommendationComponent } from './recepientdashboard/recommendation/recommendation.component';
 const routes: Routes = [
   {
     path: '',
@@ -74,6 +76,14 @@ const routes: Routes = [
   {
     path: 'resetPassword',
     component: ResetpasswordComponent
+  },
+  {
+    path: 'status',
+    component:StatusComponent
+  },
+  {
+    path:'recommendations',
+    component:RecommendationComponent
   }
 ];
 
