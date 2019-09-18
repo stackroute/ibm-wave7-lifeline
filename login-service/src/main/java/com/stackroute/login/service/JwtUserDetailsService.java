@@ -2,7 +2,10 @@ package com.stackroute.login.service;
 
 import java.util.ArrayList;
 
+import com.stackroute.login.controller.JwtAuthenticationController;
 import com.stackroute.login.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -28,7 +31,10 @@ public class JwtUserDetailsService implements UserDetailsService {
     private JavaMailSender javaMailSender;
 
     private UserDTO userDTO;
-    
+
+    private final Logger logger = LoggerFactory.getLogger(JwtAuthenticationController.class.getName());
+
+
     @Autowired
     public JwtUserDetailsService(UserRepository userRepository) {this.userRepository = userRepository;}
 
@@ -62,30 +68,22 @@ public class JwtUserDetailsService implements UserDetailsService {
         System.out.println(updateUser);
         return userRepository.save(updateUser);
     }
-    public String forgotPassword(String username) throws MessagingException {
-        String status = "Failed";
-        System.out.println(username);
-        System.out.println(userRepository.findByUsername(username));
-        System.out.println("abcd");
-        if (userRepository.findByUsername(username) != null) {
-            System.out.println(username);
-            System.out.println("efgh");
+    public void forgotPassword(String username) throws MessagingException {
+        User user = userRepository.findByUsername(username);
+        if (user != null) {
+            logger.info(username+"found from db");
             MimeMessage message=javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
             helper.setTo(username);
             helper.setSubject("Link for Reset your Password");
-            helper.setText("http://52.66.129.41:4200/resetPassword");
+            helper.setText("http://52.66.129.41:4200/resetPassword/id?id=" + user.getId()+ "&role?role=" +user.getRole());
             javaMailSender.send(message);
-            System.out.println("hello");
-            status = "Sent";
         }
         else {
-
+            logger.error("user not found");
         }
-        return status;
     }
 
-    //    @Override
     public User updatePassword(UserDTO userDTO) throws Exception {
         User user = userRepository.findByUsername(userDTO.getUsername());
         if (user != null) {
