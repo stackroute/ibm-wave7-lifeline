@@ -8,5 +8,5 @@
 <a class="nav-link" *ngIf="loggedIn" [matMenuTriggerFor]="menu" ><mat-icon [ngStyle]="{'color':'white'}">account_circle</mat-icon></a>  
 <mat-menu #menu="matMenu">
 <a  mat-menu-item *ngIf="loggedIn"(click)="deleteaccount()">Delete Account</a>
-    <a  mat-menu-item *ngIf="loggedIn">Logout</a>
+    <a  mat-menu-item *ngIf="loggedIn"[routerLink]="['/']">Logout</a>
 </mat-menu>

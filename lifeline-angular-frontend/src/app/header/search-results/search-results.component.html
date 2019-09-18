@@ -8,6 +8,7 @@
                             <mat-panel-title>
                                 {{factors.title}}
                             </mat-panel-title>
+                            
                         </mat-expansion-panel-header>
                         <div *ngFor="let factor of factors.ranges">
                             <mat-checkbox [name]="factor.name" [(ngModel)]="factor.checked" [value]="factor.name">{{factor.name}}</mat-checkbox>
@@ -20,11 +21,11 @@
             <div *ngFor="let donor of getDonors() | search: factorsCheckbox">
                 <mat-card class="example-card">
                     <mat-card-header>
-                        <mat-card-title>{{donor.firstName}} {{donor.lastName}}</mat-card-title>
+                        <mat-card-title><h2>{{donor.firstName}} {{donor.lastName}}</h2></mat-card-title>
                         <mat-card-subtitle>
-                            {{donor.email}}
-                            <br>
-                            Blood Group : {{donor.medicalDetails.bloodGroup}}
+                            <h6>{{donor.email}}
+            
+                           Blood Group : {{donor.medicalDetails.bloodGroup}}</h6>
                         </mat-card-subtitle>
                         <mat-card-subtitle>
                             {{donor.address.addressLine1}},
@@ -32,7 +33,7 @@
                             {{donor.address.city}},
                             {{donor.address.state}},
                             {{donor.address.pinCode}}
-                        </mat-card-subtitle>
+                        </mat-card-subtitle>   
                     </mat-card-header>
                 </mat-card>
             </div>
