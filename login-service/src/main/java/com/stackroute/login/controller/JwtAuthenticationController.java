@@ -87,8 +87,8 @@ public class JwtAuthenticationController {
     @RequestMapping(value = "/forgot-password", method = RequestMethod.POST)
     public ResponseEntity<?> getEmail(@RequestBody String username) throws Exception {
         logger.info("username"+username);
-        final String userDetails = userDetailsService.forgotPassword(username);
-        return ResponseEntity.ok(userDetails);
+        userDetailsService.forgotPassword(username);
+        return ResponseEntity.ok("success");
     }
     
     @ApiOperation(value = "reset password")

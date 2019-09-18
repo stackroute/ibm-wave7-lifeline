@@ -11,8 +11,10 @@
    background-color: #f1f1f1;
    width: 30%;
    height: 300px; */
-
-
+.container
+{
+  height: 100%;
+}
 .mat-tab-group {
   margin-bottom: 16px;
   margin-top: 100px;
@@ -24,6 +26,7 @@
   background-color: #eaecc1;
   border-radius: 2cm;
   border: 3px solid #5d6119;
+  /* width: 50vh; */
 }
 
 
@@ -87,4 +90,6 @@ border-bottom: none;
 }
 
   */
+ 
+ 
 

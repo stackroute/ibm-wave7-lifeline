@@ -33,7 +33,7 @@ import { ProfileComponent } from './donordashboard/profile.component';
 import { MatListModule } from '@angular/material/list';
 import { RecepientdashboardComponent } from './recepientdashboard/recepientdashboard.component';
 import { ReportgenerationComponent } from './reportgeneration/reportgeneration.component';
-import { DashboardreportsComponent } from './dashboardreports/dashboardreports.component';
+// import { DashboardreportsComponent } from './dashboardreports/dashboardreports.component';
 import { LoginComponent } from './header/login/login.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
@@ -82,7 +82,6 @@ import { DeletealertComponent } from './header/deletealert/deletealert.component
     ProfileComponent,
     RecepientdashboardComponent,
     ReportgenerationComponent,
-    DashboardreportsComponent,
     LoginComponent,
     ResetpasswordComponent,
     ForgotpasswordComponent,
