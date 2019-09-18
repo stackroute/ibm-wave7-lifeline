@@ -28,6 +28,7 @@ public class RecommendationController {
     public ResponseEntity<List<Donor>> retrieveDonors(@PathVariable("name") String name) throws IOException {
         ResponseEntity responseEntity;
         try {
+		System.out.println(name);
             responseEntity = new ResponseEntity<List<Donor>>(recommendationService.retrieveDonors(name), HttpStatus.OK);
         } catch (Exception e) {
             responseEntity = new ResponseEntity<String>("Exception", HttpStatus.CONFLICT);
