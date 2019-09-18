@@ -23,7 +23,6 @@ export class SearchResultsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(data => {
       this.searchString = data['name']
-      console.log(this.searchString)
       this.factorsCheckbox = []
       this._searchService.getSearchResults(this.searchString).subscribe(donors => {
         this.donors = donors;
@@ -35,7 +34,6 @@ export class SearchResultsComponent implements OnInit {
             element.ranges.forEach(range => {
               array.push({ 'name': range, 'checked': false })
             })
-            console.log(array)
             this.factorsCheckbox.push({ 'title': element.title, 'ranges': array })
           });
         })
