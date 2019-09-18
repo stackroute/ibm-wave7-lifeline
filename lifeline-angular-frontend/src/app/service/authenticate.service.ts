@@ -39,6 +39,7 @@ export class AuthenticateService {
   }
 
   resetpassword(data: User): Observable<any> {
+    console.log("data service"+data)
     return this.httpClient.put<any>(this.apiUrl4, data);
   }
 }

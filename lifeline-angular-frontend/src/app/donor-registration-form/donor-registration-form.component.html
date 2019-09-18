@@ -395,8 +395,8 @@
                             </div>
                         </div>
                         <h6><b>Organs: </b><i>(Select the organs which you wish to donate)</i></h6>
-                        <div formArrayName="organList" fxLayout fxLayoutGap="50px" fxLayoutAlign="space-around center">
-                            <div *ngFor="let organ of organList.controls; let i = index" [formGroupName]="i" fxFlex >
+                        <div formArrayName="organList" fxLayout fxLayout.lt-md="column" fxLayoutGap="50px" fxLayoutAlign="space-around center">
+                            <div *ngFor="let organ of organList.controls; let i = index" [formGroupName]="i" >
                                 <mat-checkbox  [disabled]="organState[i]" formControlName="donateOrNot">
                                     {{this.organList.value[i].name}}
                                 </mat-checkbox>

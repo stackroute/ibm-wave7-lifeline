@@ -9,7 +9,7 @@ import { AuthenticateService } from '../service/authenticate.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  opened: false;
   isLoggedIn$: Observable<boolean>;
   loggedIn: boolean;
 

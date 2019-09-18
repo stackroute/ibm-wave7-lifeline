@@ -33,9 +33,10 @@ export class RecepientserviceService {
   public getRecepientById(id: number): Observable<Recepient> {
     return this.httpClient.get<Recepient>(this.recepientUrl + '/' + id);
   }
-  deleteReceiver(id): Observable<any> {
-
-    return this.httpClient.delete<any>(this.recepientUrl + '/' + id);
+  deleteRecepient(id): Observable<Recepient> {
+    console.log(id)
+    console.log(this.recepientUrl + '/' + id);
+    return this.httpClient.delete<Recepient>(this.recepientUrl + '/' + id);
   }
 
   public getRecepientPastHistoryById(id: number): Observable<Recepient> {

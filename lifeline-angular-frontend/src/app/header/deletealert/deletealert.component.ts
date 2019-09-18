@@ -13,38 +13,32 @@ import{RecepientserviceService}from'../../service/recepientservice.service';
 export class DeletealertComponent implements OnInit {
 donorId:number;
 public donor: Donor;
-  constructor(private route: ActivatedRoute,private receipientservice:RecepientserviceService,private donorservice:DonorProfileService, public dialogRef: MatDialogRef<DeletealertComponent>) { }
+  constructor(private route: ActivatedRoute,private recepientProfileService:RecepientserviceService,private donorProfileService:DonorProfileService, public dialogRef: MatDialogRef<DeletealertComponent>) { }
 
   ngOnInit() {
   }
- 
-delete() {
-  var succes = 'false';
-  this.route.queryParams.subscribe(params => {
-    let id = params["id"];
-    if(params["usertype"]=='donor')
-    {
-    this.donorId = id;
-  this.donorservice.deleteDonor(this.donorId).subscribe((data) => {
-    succes = 'true';
-    console.log("success");
-  });
-}
-else{
-  this.receipientservice.deleteReceiver(id).subscribe((data) => {
-    succes = 'true';
-    console.log("success");
-  });
-}
-  // this.donorservice.getDonorById(this.donorId).subscribe((data) => {
-  //   this.donor = data;
-  //   console.log(this.donor);
-  // });
-})
-}
-close()
-{
-  this.dialogRef.close();
-}
-}
+  delete() {
+    this.route.queryParams.subscribe(params => {
+      let id = params["id"];
+      console.log(params)
+      this.route.children[0].url.subscribe(data => {
+        console.log(data[0].path);
+        if (data[0].path == 'donor') {
+          this.donorProfileService.deleteDonor(id).subscribe(data => {
+            console.log(data);
+          });
+        }
+        else {
+          this.recepientProfileService.deleteRecepient(id).subscribe(data => {
+            console.log(data);
+          });
+        }
+      });
+    });
+    this.dialogRef.close();
+  }
+  close() {
+    this.dialogRef.close();
+  }
+ }
 

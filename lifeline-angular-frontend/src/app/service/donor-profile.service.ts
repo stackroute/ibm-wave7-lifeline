@@ -28,10 +28,12 @@ export class DonorProfileService {
   getDonorDetails(id): Observable<Donor> {
     return this.httpClient.get<Donor>(this.donorUrl + '/' + id);
   }
-  deleteDonor(id): Observable<any> {
-console.log(id)
-    return this.httpClient.delete<any>(this.donorUrl + '/' + id);
-  }
+
+  deleteDonor(id): Observable<Donor> {
+   console.log(id)
+   console.log(this.donorUrl + '/' + id);
+   return this.httpClient.delete<Donor>(this.donorUrl + '/' + id);
+ }
 
   errorHandler(error: HttpErrorResponse) {
     return throwError(error.message || 'server error');

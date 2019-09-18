@@ -9,7 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { AccountComponent } from './header/account/account.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
-import { RegistercardsComponent } from './mainpage/registercards/registercards.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -59,7 +58,6 @@ import { StatusComponent } from './recepientdashboard/status/status.component';
 import { OrganRequestStatusComponent } from './organ-request-status/organ-request-status.component';
 import { DeletealertComponent } from './header/deletealert/deletealert.component';
 
-
 //  import { EmbedVideoService } from 'ngx-embed-video';
 @NgModule({
   declarations: [
@@ -68,7 +66,6 @@ import { DeletealertComponent } from './header/deletealert/deletealert.component
     SearchComponent,
     AccountComponent,
     MainpageComponent,
-    RegistercardsComponent,
     FooterComponent,
     SearchPipe,
     VideoComponent,
