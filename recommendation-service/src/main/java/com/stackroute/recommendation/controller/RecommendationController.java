@@ -1,6 +1,6 @@
 package com.stackroute.recommendation.controller;
 
-import com.stackroute.recommendation.model.Donor;
+import com.stackroute.recommendation.models.Donor;
 import com.stackroute.recommendation.service.RecommendationService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;

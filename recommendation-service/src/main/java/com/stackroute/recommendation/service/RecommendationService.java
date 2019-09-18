@@ -1,7 +1,7 @@
 package com.stackroute.recommendation.service;
 
 import com.stackroute.recommendation.exception.DonorsNotFoundException;
-import com.stackroute.recommendation.model.Donor;
+import com.stackroute.recommendation.models.Donor;
 
 import java.util.List;
 

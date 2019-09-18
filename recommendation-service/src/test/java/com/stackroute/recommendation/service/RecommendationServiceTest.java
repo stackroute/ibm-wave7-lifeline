@@ -1,7 +1,7 @@
 package com.stackroute.recommendation.service;
 
 import com.stackroute.recommendation.exception.DonorsNotFoundException;
-import com.stackroute.recommendation.model.*;
+import com.stackroute.recommendation.models.*;
 import com.stackroute.recommendation.repository.DonorRepository;
 import org.junit.After;
 import org.junit.Assert;
@@ -64,9 +64,9 @@ public class RecommendationServiceTest {
         organsArrayList.add(organs);
         organs = new Organs(8L,"liver", true);
         organsArrayList.add(organs);
-        medicalDetails = new MedicalDetails(1L, "O+",1.0, 1.0, disease, organsArrayList, "HLA-A", 1000000, -6, 27, 1, 1);
-        donor = new Donor("donor","Tony","Stark","tony@gmail.com","9876543210","password123",new Date(1985, Calendar.JUNE,23), 22,
-                "356478900928","male",address, guardianList, medicalDetails);
+        medicalDetails = new MedicalDetails("O+", 1.0, 1.0, disease, organsArrayList, "HLA-A", "1000000", "-6", "27", "1", "1");
+        donor = new Donor(1, "donor","Tony","Stark","tony@gmail.com","9876543210","Password@123",new Date(1985, Calendar.JUNE,23), 22,
+                "356478900928","male",address, guardianList, medicalDetails, "true");
         donorList = new ArrayList<>();
         donorList.add(donor);
     }
