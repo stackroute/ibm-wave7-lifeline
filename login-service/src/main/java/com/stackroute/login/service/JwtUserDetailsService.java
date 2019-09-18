@@ -1,8 +1,8 @@
 package com.stackroute.login.service;
 
-import java.util.ArrayList;
-
 import com.stackroute.login.controller.JwtAuthenticationController;
+import com.stackroute.login.model.User;
+import com.stackroute.login.model.UserDTO;
 import com.stackroute.login.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,11 +15,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.stackroute.login.model.User;
-import com.stackroute.login.model.UserDTO;
-
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.util.ArrayList;
 
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
@@ -76,7 +74,7 @@ public class JwtUserDetailsService implements UserDetailsService {
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
             helper.setTo(username);
             helper.setSubject("Link for Reset your Password");
-            helper.setText("http://52.66.129.41:4200/resetPassword/id?id=" + user.getId()+ "&role?role=" +user.getRole());
+            helper.setText("http://52.66.129.41:4200/resetPassword?id=" + user.getId()+ "&role=" +user.getRole());
             javaMailSender.send(message);
         }
         else {

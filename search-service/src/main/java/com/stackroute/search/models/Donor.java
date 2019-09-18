@@ -10,7 +10,6 @@ import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
-import javax.persistence.Column;
 import java.util.Date;
 import java.util.List;
 
@@ -25,6 +24,8 @@ import static org.neo4j.ogm.annotation.Relationship.OUTGOING;
 @ApiModel(description = "Donor Profile Model")
 public class Donor {
 
+	@JsonProperty("id")
+	private long id;
 	private String userType;
 	private String firstName;
 	private String lastName;
@@ -42,10 +43,7 @@ public class Donor {
 	private List<Guardian> guardianList;
 	@Relationship(type = "HAS_MEDICAL_INFO")
 	private MedicalDetails medicalDetails;
-
-	@Column
-	@JsonProperty("isEmailVerified")
-	private String emailVerified;
+	private String isEmailVerified;
 
 }
 

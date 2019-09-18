@@ -20,17 +20,12 @@ public class DonorConsumer {
     @KafkaListener(topics="DonorRegistration", groupId = "search_group_id")
     public void consume(String donorString) throws IOException {
         System.out.println("Donor Consumer");
+        System.out.println(donorString);
         Donor donor = new ObjectMapper().readValue(donorString, Donor.class);
+        System.out.println(donor);
         donor.getMedicalDetails().getOrganList().forEach( organs -> {
             organs.setName(organs.getName().substring(0, 1).toUpperCase() + organs.getName().substring(1));
         });
-        Donor saveDonor = donationRepository.findByEmail(donor.getEmail());
-        if (saveDonor != null) {
-            saveDonor.setEmailVerified((saveDonor.getEmailVerified()));
-            System.out.println(donationRepository.save(saveDonor));
-        } else {
-            System.out.println(donationRepository.save(saveDonor));
-
-        }
+        System.out.println(donationRepository.save(donor));
     }
 }
