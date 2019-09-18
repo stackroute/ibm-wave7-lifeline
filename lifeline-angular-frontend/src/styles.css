@@ -31,7 +31,10 @@
 body{
     background-color:#faf7fa;
     margin: 0;
+    margin-bottom:0;
+
 }
+
 .mat-fab.mat-accent, .mat-flat-button.mat-accent, .mat-mini-fab.mat-accent, .mat-raised-button.mat-accent {
     background-color: #5b305b;
   }

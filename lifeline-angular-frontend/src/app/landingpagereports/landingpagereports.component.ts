@@ -13,94 +13,46 @@ export class LandingpagereportsComponent implements OnInit {
   recepientreport;
   organdonationreport;
   heartcount;
- 
+
   BarChart = [];
-  BarChart1=[];
+  BarChart1 = [];
   LineChart = [];
-  constructor(private _reports:ReportgenerationserviceService)
-  {
+  constructor(private _reports: ReportgenerationserviceService) {
 
   }
 
   ngOnInit() {
-    this._reports.donorreports()
-    .subscribe(res => {this.donorreport=res
- 
+
+    this._reports.donorreports().subscribe(res => {
+      this.donorreport = res;
       console.log(this.donorreport);
+    
+    this._reports.recepientreports().subscribe(res => {
+      this.recepientreport = res;
+      console.log(this.recepientreport);
+   
+
     this.BarChart = new Chart('barChart',
       {
         type: 'bar',
         animationEnabled: true,
         data:
         {
-          labels: ["Number of donors registered"],
+          labels: ["Number of users registered"],
           datasets:
             [{
               backgroundColor: [
-               
-                // "#9b59b6",
-                // "#6a5acd",
-                "#3cb371",
-                // "hsl(147, 50%, 47%)"
-               
+                "#cddc39",
               ],
-               label: 'Number of donors registered',
-              // data: [9, 7, 3, 5, 10, 15, 16, 62, , 3, 1, 9],
-              // data: this.donorreport,
-              data:[this.donorreport],
-              // fill: false,
-              // lineTension: 0.7,
-              borderColor: "blue",
-              borderWidth: 2
-            }]
-        },
-        options:
-        {
-          title: {
-            text: "",
-            display: true,
-            responsive: true
-          },
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true,
-                min: 0,
-                max: 50,
-                stepSize: 5,
-              }
-            }]
-
-          }
-
-
-        }
-      }
-    );
-    });
-    this._reports.recepientreports()
-    .subscribe(res => {this.recepientreport=res
-      console.log(this.recepientreport);
-    this.BarChart = new Chart('barChart1',
-      {
-        type: 'bar',
-        animationEnabled: true,
-        data:
-        {
-          labels: ["Number of recepients registered"],
-          datasets:
-            [{
+              label: 'Number of donors registered',
+              data: [this.donorreport],
+            },
+            {
               backgroundColor: [
-               
-                "#e74c3c",
-                
+                "#80d9eb",
               ],
-              label: 'Number of recepients registered',
+              label: 'Number of recepient registered',
               data: [this.recepientreport],
-              fill: false,
-              lineTension: 0.2,
-              borderColor: "blue",
-              borderWidth: 2
             }]
         },
         options:
@@ -126,73 +78,123 @@ export class LandingpagereportsComponent implements OnInit {
         }
       }
     );
-  });
+  }) })
+    //   this._reports.recepientreports()
+    // .subscribe(res => {
+    //   this.recepientreport = res
+    //   console.log(this.recepientreport);
+    // this.BarChart = new Chart('barChart1',
+    //   {
+    //     type: 'bar',
+    //     animationEnabled: true,
+    //     data:
+    //     {
+    //       labels: ["Number of recepients registered"],
+    //       datasets:
+    //         [{
+    //           backgroundColor: [
+
+    //             "#e74c3c",
+
+    //           ],
+    //           label: 'Number of recepients registered',
+    //           data: [this.recepientreport],
+    //           fill: false,
+    //           lineTension: 0.2,
+    //           borderColor: "blue",
+    //           borderWidth: 2
+    //         }]
+    //     },
+    //     options:
+    //     {
+    //       title: {
+    //         text: "",
+    //         display: true,
+    //         responsive: true
+    //       },
+    //       scales: {
+    //         yAxes: [{
+    //           ticks: {
+    //             beginAtZero: true,
+    //             min: 0,
+    //             max: 50,
+    //             stepSize: 5,
+    //           }
+    //         }]
+
+    //       }
+
+
+    //     }
+    //   }
+    // );
+    // });
 
     this._reports.organdonationreports()
-  .subscribe(res => {
-    this.organdonationreport=res
-    console.log(this.organdonationreport);
-    this.LineChart = new Chart('lineChart',
-    {
-      type: 'pie',
-      showInLegend: true,
-			toolTipContent: "<b>{name}</b>: ${y} (#percent%)",
-			indexLabel: "{name} - #percent%",
-      animationEnabled: true,
-      data:
-      {
-        labels: [ "Blood","BoneMarrow","Cornea","Heart","Kidney","Liver","Lungs","Platelet"],
-        datasets:
-          [{
-            backgroundColor: [
-                "#72b3b1",
-                "#feb56d	",
-                "#c55a83",
-                "#795f91",
-                "hsl(0, 60%, 50%)",
-                "DodgerBlue",
-                "h#cd6d71",
-                "hsl(0, 0%, 71%)",
-                // "#34495e"
-              ],
-            
-           label: 'Number of donations so far',
-            
-            data: [this.organdonationreport[0],this.organdonationreport[1],this.organdonationreport[2],this.organdonationreport[3],this.organdonationreport[4],this.organdonationreport[5],this.organdonationreport[6],this.organdonationreport[7]],
-            fill: false,
-            lineTension: 0.2,
-            borderColor: "blue",
-            borderWidth: 2
-          }]
-      },
-      options:
-      {
-        title: {
-          text: "",
-          display: true,
-          responsive: true
-        },
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true,
-              min: 0,
-              max: 50,
-              stepSize: 5,
-              // suggestedMin: 0,
-              // suggestedMax: 100
+      .subscribe(res => {
+        this.organdonationreport = res
+        console.log(this.organdonationreport);
+        this.LineChart = new Chart('lineChart',
+          {
+            type: 'pie',
+            showInLegend: true,
+            toolTipContent: "<b>{name}</b>: ${y} (#percent%)",
+            indexLabel: "{name} - #percent%",
+            animationEnabled: true,
+            data:
+            {
+              labels: ["Blood", "BoneMarrow", "Cornea", "Heart", "Kidney", "Liver", "Lungs", "Platelet"],
+              datasets:
+                [{
+                  backgroundColor: [
+                    "#87eccf",
+                    "#d1dc4e",
+                    "#f6c343",
+                    "#52bada",
+                    "#3e85f2",
+                    "#37f63d2",
+                    "#e68280",
+                    "#3b50b1",
+                    // "#34495e"
+                  ],
+
+                  label: 'Number of donations so far',
+
+                  data: [this.organdonationreport[0], this.organdonationreport[1], this.organdonationreport[2], this.organdonationreport[3], this.organdonationreport[4], this.organdonationreport[5], this.organdonationreport[6], this.organdonationreport[7]],
+                  fill: false,
+                  lineTension: 0.2,
+                  // borderColor: "blue",
+                  // borderWidth: 2
+                }]
+            },
+            options:
+            {
+              title: {
+                text: "",
+                display: true,
+                responsive: true
+              },
+              // scales: {
+              //   yAxes: [{
+              //     ticks: {
+              //       beginAtZero: true,
+              //       min: 0,
+              //       max: 50,
+              //       stepSize: 5,
+              //       // suggestedMin: 0,
+              //       // suggestedMax: 100
+              //     }
+              //   }]
+
+              // }
+
+
+
             }
-          }]
+          }
+        );
+      });
 
-        }
-       
-
-
-      }
-    }
-  );
-});
-
-}
+  }
 
 }

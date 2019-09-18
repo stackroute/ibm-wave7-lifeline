@@ -42,4 +42,5 @@ mat-form-field, #field-div{
 }
 .form-div{
     background-color: #faf7fa;
+    height: 100%;
 }

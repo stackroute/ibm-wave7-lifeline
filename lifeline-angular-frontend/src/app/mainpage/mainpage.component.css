@@ -1,6 +1,7 @@
-.landing {
+/* .landing {
   margin-top:64px;
-}
+  height: 100%;
+} */
 
 iframe {
   position: absolute;
@@ -8,10 +9,20 @@ iframe {
 }
 
 .heart {
-  width: 100vw;
+  /* min-height: 35vh; */
   height: 700px;
+  opacity: 1;
+  width: 99vw;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(../../assets/images/heart.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-
+h1{
+padding-top: 200px;
+animation-play-state: running;
+animation: spin infinite;
+}
 .image {
   position: relative;
 }
