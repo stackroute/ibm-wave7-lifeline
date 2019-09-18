@@ -59,7 +59,6 @@ import { StatusComponent } from './recepientdashboard/status/status.component';
 import { OrganRequestStatusComponent } from './organ-request-status/organ-request-status.component';
 import { DeletealertComponent } from './header/deletealert/deletealert.component';
 
-
 //  import { EmbedVideoService } from 'ngx-embed-video';
 @NgModule({
   declarations: [

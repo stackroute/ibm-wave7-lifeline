@@ -3,6 +3,7 @@ mat-card{
     margin: 3%;
     margin-top: 9%;
     background-color: white;
+    height: 100vh;
 }
 mat-horizontal-stepper{
     background-color: white;
