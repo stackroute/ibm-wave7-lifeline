@@ -24,6 +24,13 @@ public class DonorConsumer {
         donor.getMedicalDetails().getOrganList().forEach( organs -> {
             organs.setName(organs.getName().substring(0, 1).toUpperCase() + organs.getName().substring(1));
         });
-        System.out.println(donationRepository.save(donor));
+        Donor saveDonor = donationRepository.findByEmail(donor.getEmail());
+        if (saveDonor != null) {
+            saveDonor.setEmailVerified((saveDonor.getEmailVerified()));
+            System.out.println(donationRepository.save(saveDonor));
+        } else {
+            System.out.println(donationRepository.save(saveDonor));
+
+        }
     }
 }

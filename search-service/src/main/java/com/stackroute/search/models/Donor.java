@@ -1,6 +1,7 @@
 package com.stackroute.search.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +10,7 @@ import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
+import javax.persistence.Column;
 import java.util.Date;
 import java.util.List;
 
@@ -40,6 +42,10 @@ public class Donor {
 	private List<Guardian> guardianList;
 	@Relationship(type = "HAS_MEDICAL_INFO")
 	private MedicalDetails medicalDetails;
+
+	@Column
+	@JsonProperty("isEmailVerified")
+	private String emailVerified;
 
 }
 

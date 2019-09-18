@@ -11,7 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MedicalDetails {
-	private Long id;
 	private String bloodGroup;
 	private double height;
 	private double weight;

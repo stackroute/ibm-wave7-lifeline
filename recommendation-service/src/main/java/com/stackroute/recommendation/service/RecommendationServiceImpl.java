@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class RecommendationServiceImpl implements RecommendationService {
 
-    DonorRepository donorRepository;
+    private DonorRepository donorRepository;
 
     public RecommendationServiceImpl(DonorRepository donorRepository) {
         this.donorRepository = donorRepository;
@@ -18,12 +18,15 @@ public class RecommendationServiceImpl implements RecommendationService {
 
     @Override
     public List<Donor> retrieveDonors(String name) throws DonorsNotFoundException {
-        try {
+//        try {
             System.out.println(donorRepository);
+            System.out.println(name);
+            System.out.println(donorRepository.findAll());
+            System.out.println(donorRepository.retrieveDonors(name));
             return donorRepository.retrieveDonors(name);
-        }
-        catch(Exception e) {
-            throw new DonorsNotFoundException();
-        }
+//        }
+//        catch(Exception e) {
+//            throw new DonorsNotFoundException();
+//        }
     }
 }
