@@ -18,5 +18,6 @@ public interface DonationRepository extends Neo4jRepository<Donor, Long> {
             "RETURN p1, p2, p3")
     List<Donor> retrieveDonors(String tokens);
 
+    @Query("MATCH (a:Donor) RETURN a")
     Donor findByEmail(String email);
 }
