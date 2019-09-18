@@ -57,6 +57,7 @@ import { MatTableModule } from '@angular/material';
 import { RecommendationComponent } from './recepientdashboard/recommendation/recommendation.component';
 import { StatusComponent } from './recepientdashboard/status/status.component';
 import { OrganRequestStatusComponent } from './organ-request-status/organ-request-status.component';
+import { DeletealertComponent } from './header/deletealert/deletealert.component';
 
 
 //  import { EmbedVideoService } from 'ngx-embed-video';
@@ -96,6 +97,7 @@ import { OrganRequestStatusComponent } from './organ-request-status/organ-reques
     RecommendationComponent,
     StatusComponent,
     OrganRequestStatusComponent,
+    DeletealertComponent,
   ],
   imports: [
     BrowserModule,
@@ -132,9 +134,10 @@ import { OrganRequestStatusComponent } from './organ-request-status/organ-reques
   ],
   entryComponents: [
     SnackBarComponent,
-    VerificationAlertComponent
+    VerificationAlertComponent,
+    DeletealertComponent
   ],
-  providers: [MatBottomSheet],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

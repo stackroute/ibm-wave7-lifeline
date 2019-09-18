@@ -19,6 +19,7 @@ public class RecommendationServiceImpl implements RecommendationService {
     @Override
     public List<Donor> retrieveDonors(String name) throws DonorsNotFoundException {
         try {
+            System.out.println(donorRepository);
             return donorRepository.retrieveDonors(name);
         }
         catch(Exception e) {

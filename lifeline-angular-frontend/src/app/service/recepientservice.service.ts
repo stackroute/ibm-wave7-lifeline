@@ -12,7 +12,7 @@ export class RecepientserviceService {
   public id;
   private recepientUrl = 'http://52.66.129.41:8080/recepient-service/api/v1/recepient';
   private emailUrl = 'http://52.66.129.41:8080/recepient-service/api/v1/verify';
-  private resultUrl = 'http://52.66.129.41:8084/recommendation-service/results';
+  private resultUrl = 'http://52.66.129.41:8084/results';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -33,6 +33,10 @@ export class RecepientserviceService {
   public getRecepientById(id: number): Observable<Recepient> {
     return this.httpClient.get<Recepient>(this.recepientUrl + '/' + id);
   }
+  deleteReceiver(id): Observable<any> {
+
+    return this.httpClient.delete<any>(this.recepientUrl + '/' + id);
+  }
 
   public getRecepientPastHistoryById(id: number): Observable<Recepient> {
     return this.httpClient.get<Recepient>(this.recepientUrl + '/' + id);
@@ -42,6 +46,7 @@ export class RecepientserviceService {
   }
 
   getDonorRecommendationsForRecepient(bloodGroup: string): Observable<Recepient> {
+    console.log(bloodGroup)
     return this.httpClient.get<Recepient>(this.resultUrl + '/' + bloodGroup);
   }
 

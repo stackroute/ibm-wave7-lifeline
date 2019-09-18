@@ -3,7 +3,6 @@ package com.stackroute.search.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 
 import java.util.List;
@@ -12,13 +11,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MedicalDetails {
-	@Id
-	@GeneratedValue
 	private Long id;
 	private String bloodGroup;
 	private double height;
 	private double weight;
 	private Disease disease;
+	@Id
 	private List<Organs> organList;
 	private String hlaType;
 	private String plateletCount;

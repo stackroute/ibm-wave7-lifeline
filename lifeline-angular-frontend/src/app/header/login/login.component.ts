@@ -31,7 +31,10 @@ export class LoginComponent implements OnInit {
       password: [''],
     });
   }
-
+  close()
+  {
+    this.dialogRef.close();
+  }
   loginUser() {
 
     this.user.username = this.loginForm.get('username').value;

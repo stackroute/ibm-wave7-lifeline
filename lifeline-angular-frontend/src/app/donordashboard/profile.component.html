@@ -11,7 +11,7 @@
                         <h4 class="h4-tag"><b>Name: </b>{{donor.firstName}} {{donor.lastName}} </h4>
                     </mat-list-item>
                     <mat-list-item>
-                        <h4 class="h4-tag"><b>DonorId: </b>{{donor.DonorId}} </h4>
+                        <h4 class="h4-tag"><b>DonorId: </b>{{donor.donorId}} </h4>
                     </mat-list-item>
                     <mat-list-item>
                         <h4 class="h4-tag"><b>Date of Birth: </b>{{donor.dob}}</h4>
@@ -241,23 +241,5 @@
 
     </mat-tab>
 
-    
-
-    <mat-tab label="delete account">
-        <div>
-            <div class="heading">
-                <h3> Why do you want to withdraw your registration ?</h3>
-            </div>
-            <textarea rows="6" cols="100"> </textarea>
-            <br>
-            <div class="checkbox">
-                <input type="checkbox" name="confirmation" value="confirmation" checked> Are you sure you want to
-                withdraw ?
-            </div>
-            <br><br>
-            <div class="withdraw">
-                <button style="color:whitesmoke"[routerLink]="['/']" (click)="deletedonor()">delete</button>
-            </div>
-        </div>
-    </mat-tab>
+ 
 </mat-tab-group>
