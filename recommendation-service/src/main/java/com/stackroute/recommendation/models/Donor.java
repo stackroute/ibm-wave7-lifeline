@@ -1,6 +1,7 @@
-package com.stackroute.recommendation.model;
+package com.stackroute.recommendation.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,6 +24,8 @@ import static org.neo4j.ogm.annotation.Relationship.OUTGOING;
 @ApiModel(description = "Donor Profile Model")
 public class Donor {
 
+	@JsonProperty("id")
+	private long id;
 	private String userType;
 	private String firstName;
 	private String lastName;
@@ -39,7 +42,8 @@ public class Donor {
 	@Relationship(type = "HAS_GUARDIANS")
 	private List<Guardian> guardianList;
 	@Relationship(type = "HAS_MEDICAL_INFO")
-	private MedicalDetails medicalInfo;
+	private MedicalDetails medicalDetails;
+	private String isEmailVerified;
 
 }
 
