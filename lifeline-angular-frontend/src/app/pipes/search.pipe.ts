@@ -9,6 +9,7 @@ export class SearchPipe implements PipeTransform {
 
   filteredDonors: Array<Donor> = [];
   transform(donors: Array<Donor>, factors: any[]): any {
+    console.log(donors);
     this.filteredDonors = [];
     factors.forEach(element => {
       if(element.title == 'Blood Group') {

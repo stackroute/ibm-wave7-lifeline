@@ -35,6 +35,7 @@ export class SearchResultsComponent implements OnInit {
             element.ranges.forEach(range => {
               array.push({ 'name': range, 'checked': false })
             })
+            console.log(array)
             this.factorsCheckbox.push({ 'title': element.title, 'ranges': array })
           });
         })

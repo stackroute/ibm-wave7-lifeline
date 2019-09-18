@@ -26,7 +26,7 @@ export class SearchComponent implements OnInit {
   donor: Object;
   searchString: string;
   searchControl = new FormControl();
-  options: string[] = ['Blood', 'Kidney', 'Platelet', 'Heart', 'Liver', 'Lungs', 'BoneMarrow', 'Cornea']
+  options: string[] = ['Blood', 'Kidney', 'Platelet', 'Heart', 'Liver', 'Lungs', 'Bone Marrow', 'Cornea']
   constructor(private route: ActivatedRoute, private router: Router, private _searchService: SearchService) { }
 
   ngOnInit() {
