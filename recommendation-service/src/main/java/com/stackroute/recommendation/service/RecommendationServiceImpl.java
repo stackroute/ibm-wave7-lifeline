@@ -18,15 +18,13 @@ public class RecommendationServiceImpl implements RecommendationService {
 
     @Override
     public List<Donor> retrieveDonors(String name) throws DonorsNotFoundException {
-//        try {
-            System.out.println(donorRepository);
-            System.out.println(name);
-            System.out.println(donorRepository.findAll());
-            System.out.println(donorRepository.retrieveDonors(name));
-            return donorRepository.retrieveDonors(name);
-//        }
-//        catch(Exception e) {
-//            throw new DonorsNotFoundException();
-//        }
+        try {
+            List<Donor> donorList = donorRepository.retrieveDonors(name);
+            System.out.println(donorList);
+            return donorList;
+        }
+        catch(Exception e) {
+            throw new DonorsNotFoundException();
+        }
     }
 }

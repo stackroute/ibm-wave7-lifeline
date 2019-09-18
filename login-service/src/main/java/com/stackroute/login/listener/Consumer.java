@@ -31,12 +31,15 @@ public class Consumer {
         logger.info(user.getEmailVerified());
         System.out.println(user.getEmailVerified());
         User presentUser = userRepository.findByUsername(user.getUsername());
-        if (presentUser != null) {
+        if(user.getUsername().equals(null)) {
+            userRepository.delete(presentUser);
+        }
+        else if (presentUser != null) {
             presentUser.setEmailVerified((user.getEmailVerified()));
             userRepository.save(presentUser);
-        } else {
+        }
+        else {
             userRepository.save(user);
-
         }
     }    
 
@@ -48,12 +51,15 @@ public class Consumer {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         System.out.println(user.getEmailVerified());
         User presentUser = userRepository.findByUsername(user.getUsername());
-        if (presentUser != null) {
+        if(user.getUsername().equals(null)) {
+            userRepository.delete(presentUser);
+        }
+        else if (presentUser != null) {
             presentUser.setEmailVerified((user.getEmailVerified()));
             userRepository.save(presentUser);
-        } else {
+        }
+        else {
             userRepository.save(user);
-
         }
     }
 }
