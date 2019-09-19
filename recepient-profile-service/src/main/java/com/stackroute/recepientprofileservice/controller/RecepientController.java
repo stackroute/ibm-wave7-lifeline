@@ -1,7 +1,5 @@
 package com.stackroute.recepientprofileservice.controller;
 
-import com.stackroute.recepientprofileservice.exception.RecepientProfileAlreadyExistsException;
-import com.stackroute.recepientprofileservice.exception.RecepientProfileNotFoundException;
 import com.stackroute.recepientprofileservice.model.Recepient;
 import com.stackroute.recepientprofileservice.service.RecepientService;
 import io.swagger.annotations.Api;
@@ -12,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.web.bind.annotation.*;
-
 
 import javax.validation.Valid;
 import java.util.List;
@@ -117,10 +112,12 @@ public class RecepientController {
     public ResponseEntity<?> deleteRecepientProfile(@PathVariable("id") long id) {
         ResponseEntity responseEntity;
         try {
-            responseEntity = new ResponseEntity<Recepient>(recepientService.deleteRecepientProfile(id), HttpStatus.OK);
-            Recepient recepient = new Recepient();
+            Recepient recepient = recepientService.getRecepientById(id);
             recepient.setId(id);
+            recepient.setUserType(" ");
+            System.out.println(recepient);
             this.kafkaTemplate.send(TOPIC,recepient);
+            responseEntity = new ResponseEntity<Recepient>(recepientService.deleteRecepientProfile(id), HttpStatus.OK);
             logger.info("delete track api call success");
         } catch (Exception e) {
             e.printStackTrace();

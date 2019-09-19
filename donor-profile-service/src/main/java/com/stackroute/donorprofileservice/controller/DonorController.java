@@ -116,10 +116,12 @@ public class DonorController {
 	public ResponseEntity<?> deleteDonorProfile(@PathVariable("id") long id) {
 		ResponseEntity responseEntity;
 		try {
-			responseEntity = new ResponseEntity<Donor>(donorService.deleteDonorProfile(id), HttpStatus.OK);
-			Donor donor = new Donor();
+			Donor donor = donorService.getDonorById(id);
 			donor.setId(id);
+			donor.setUserType(" ");
+			System.out.println(donor);
 			this.kafkaTemplate.send(TOPIC,donor);
+			responseEntity = new ResponseEntity<Donor>(donorService.deleteDonorProfile(id), HttpStatus.OK);
 			logger.info("delete donor api call success");
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -27,11 +27,11 @@ public class Consumer {
     public void consume(User user) throws IOException {
         logger.info("Inside Recipient");
         logger.info(""+ user);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
         logger.info(user.getEmailVerified());
         System.out.println(user.getEmailVerified());
         User presentUser = userRepository.findByUsername(user.getUsername());
-        if(user.getUsername().equals(null)) {
+        System.out.println(presentUser);
+        if(user.getRole().equals(" ")) {
             userRepository.delete(presentUser);
         }
         else if (presentUser != null) {
@@ -39,6 +39,7 @@ public class Consumer {
             userRepository.save(presentUser);
         }
         else {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             userRepository.save(user);
         }
     }    
@@ -51,7 +52,7 @@ public class Consumer {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         System.out.println(user.getEmailVerified());
         User presentUser = userRepository.findByUsername(user.getUsername());
-        if(user.getUsername().equals(null)) {
+        if(user.getRole().equals(" ")) {
             userRepository.delete(presentUser);
         }
         else if (presentUser != null) {
