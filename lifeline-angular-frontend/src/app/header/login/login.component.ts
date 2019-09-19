@@ -86,4 +86,9 @@ export class LoginComponent implements OnInit {
       this.dialogRef.close();
     }
   }
+  forgotPassword()
+  {
+    this.router.navigate(['/forgotPassword']);
+    this.dialogRef.close();
+  }
 }

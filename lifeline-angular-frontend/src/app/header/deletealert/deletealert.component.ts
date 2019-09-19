@@ -36,6 +36,7 @@ public donor: Donor;
       });
     });
     this.dialogRef.close();
+    window.location.href="";
   }
   close() {
     this.dialogRef.close();

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticateService } from '../service/authenticate.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { VerificationAlertComponent } from '../recepientregistrationformcomponent/verification-alert/verification-alert.component';
+import { MatDialogRef, MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-forgotpassword',
@@ -11,7 +13,7 @@ import { Router } from '@angular/router';
 export class ForgotpasswordComponent implements OnInit {
   private emailid;
 
-  constructor(private authenticateService: AuthenticateService, private formBuilder: FormBuilder,private router:Router) { }
+  constructor(private dialog:MatDialog,private authenticateService: AuthenticateService, private formBuilder: FormBuilder,private router:Router) { }
   
   ngOnInit() {
   }
@@ -22,6 +24,14 @@ export class ForgotpasswordComponent implements OnInit {
     .subscribe(data => {
       console.log(data);
     });
+    const dialogRef = this.dialog.open(VerificationAlertComponent, {
+      width: '250px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+    window.location.href="";
+    
   }
 // forgotpassword(){
 //   this.router.navigate(['/forgotPassword']);
