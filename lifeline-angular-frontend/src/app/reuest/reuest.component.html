@@ -37,12 +37,18 @@
   </mat-card>
 </div>
 
-<div *ngFor="let donor of donors" fxLayout="column">
-  <mat-card class="donor-card">
-    <mat-card-header>
-      <mat-card-title>{{donor.firstName}} {{donor.lastName}}</mat-card-title>
-      <mat-card-subtitle>Blood Group: {{donor.medicalDetails.bloodGroup}}</mat-card-subtitle>
-    </mat-card-header>
-    <chat-button [value]="donor.id"></chat-button>
-  </mat-card>
+<!-- <div class="noDonors" *ngIf="donors?.length == 0">
+   <h2>No Donors</h2>
+</div> -->
+
+<div class="donors">
+  <div *ngFor="let donor of donors" fxLayout="column">
+    <mat-card class="donor-card">
+      <mat-card-header>
+        <mat-card-title>{{donor.firstName}} {{donor.lastName}}</mat-card-title>
+        <mat-card-subtitle>Blood Group: {{donor.medicalDetails.bloodGroup}}</mat-card-subtitle>
+      </mat-card-header>
+      <chat-button [value]="donor.id"></chat-button>
+    </mat-card>
+  </div>
 </div>

@@ -23,6 +23,7 @@ export class ReuestComponent implements OnInit {
   public donors: Array<Donor> = [];
 
   ngOnInit() {
+    console.log(this.donors.length)
     this.route.queryParams.subscribe(params => {
       this.recepientId = params["id"];
       this.requestForm();
@@ -37,7 +38,7 @@ export class ReuestComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.recepients);
+    console.log(this.donors.length);
     let bloodGroup = this.requestOrganForm.get('bloodGroup').value;
     let organName = this.requestOrganForm.get('organName').value;
     this.recepientProfileService.getDonorRecommendationsBasedOnOrganAndBloodForRecepient(bloodGroup, organName).subscribe(data => {

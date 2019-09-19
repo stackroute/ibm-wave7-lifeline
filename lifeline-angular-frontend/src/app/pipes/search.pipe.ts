@@ -9,13 +9,17 @@ export class SearchPipe implements PipeTransform {
 
   filteredDonors: Array<Donor> = [];
   transform(donors: Array<Donor>, factors: any[]): any {
+    console.log(donors);
     this.filteredDonors = [];
     factors.forEach(element => {
+      console.log(element)
       if(element.title == 'Blood Group') {
         element.ranges.forEach(range => {
           if (range.checked == true) {
+            console.log(range)
               donors.forEach(donor => {
-                if (donor.medicalDetails.bloodGroup.includes(range.name)) {
+                console.log(donor.medicalDetails.bloodGroup)
+                if (donor.medicalDetails.bloodGroup == range.name) {
                   this.filteredDonors.push(donor);
                 }
               });
