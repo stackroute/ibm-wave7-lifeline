@@ -48,3 +48,11 @@ html,body{
     box-sizing: border-box;
 
 }
+* {
+    font-size: 100%;
+    font-family: 'Roboto';
+ }
+ p,li{
+    font-size: 1.5rem;
+ }
+ 

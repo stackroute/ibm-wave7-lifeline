@@ -41,6 +41,13 @@ export class AccountComponent implements OnInit {
       });
 
      }
+     logout()
+     {
+      //  this.router.navigate(['']);
+      window.location.href="";
+       
+    
+    }
 }
 
 
