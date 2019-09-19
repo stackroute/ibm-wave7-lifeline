@@ -39,8 +39,6 @@ export class LoginComponent implements OnInit {
       .subscribe(data => {
         let id = data.id;
         if (this.user.role === 'donor') {
-          console.log(data);
-          console.log(data.user);
           this.router.navigate(['/donor'], { queryParams: { id: id } });
           this.dialogRef.close();
 

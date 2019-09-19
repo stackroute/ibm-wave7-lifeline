@@ -79,8 +79,6 @@ export class ProfileComponent implements OnInit {
       city: new FormControl(Validators.required),
       state: new FormControl(Validators.required),
       pinCode: new FormControl({ disabled: true }, Validators.required),
-      height: new FormControl(Validators.required),
-      weight: new FormControl(Validators.required),
       dateOfBirth: new FormControl({ value: '', disabled: true }, Validators.required),
       bloodGroup: new FormControl({ value: '', disabled: true }, Validators.required),
       hiv: new FormControl(Validators.required),

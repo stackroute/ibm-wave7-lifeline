@@ -23,7 +23,7 @@ export class DonorRegistrationFormComponent implements OnInit {
   ngOnInit() {
     this.registrationForm = this.fb.group({
       donorId: [''],
-      userTypr: ['donor'],
+      userType: ['donor'],
       firstName: ['', [Validators.required, Validators.maxLength(40)]],
       lastName: ['', [Validators.required, Validators.maxLength(40)]],
       phoneNumber: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10), Validators.pattern('^[0-9]{10}$')]],
@@ -128,15 +128,23 @@ export class DonorRegistrationFormComponent implements OnInit {
   register() {
     console.log("hello");
     if (this.registrationForm.valid) {
-      this.currentFileUpload = this.selectedFiles.item(0);
-      this.donorProfileService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
-        if (event instanceof HttpResponse) {
-          console.log('File is completely uploaded!');
-        }
-      });
-      this.selectedFiles = undefined;
-      this.donorProfileService.saveDonor(this.registrationForm.value).subscribe(data => this.donor = data, error => this.errorMsg = error);
+      // this.currentFileUpload = this.selectedFiles.item(0);
+      // this.donorProfileService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+      //   if (event instanceof HttpResponse) {
+      //     console.log('File is completely uploaded!');
+      //   }
+      // });
+      // this.selectedFiles = undefined;
+      this.donorProfileService.saveDonor(this.registrationForm.value).subscribe(data => {
+        this.donor = data
+        this.router.navigate(['']);
+      }
+        , error => {
+          this.errorMsg = error,
+          console.log(this.errorMsg)
+        });
       console.log('api call success');
+
     }
   }
 

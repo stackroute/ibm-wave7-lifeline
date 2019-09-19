@@ -17,7 +17,7 @@ public class RecepientConsumer {
         this.recepientRepository = recepientRepository;
     }
 
-    @KafkaListener(topics="RecepientRegistration",groupId = "group_id")
+    @KafkaListener(topics="RecepientRegistration",groupId = "recommendation_group_id")
     public void consume(String recepientString) throws IOException {
         System.out.println("Recepient Consumer");
         Recepient recepient = new ObjectMapper().readValue(recepientString, Recepient.class);

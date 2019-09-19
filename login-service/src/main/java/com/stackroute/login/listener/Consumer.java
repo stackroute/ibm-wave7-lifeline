@@ -1,6 +1,5 @@
 package com.stackroute.login.listener;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stackroute.login.dao.UserDao;
 import com.stackroute.login.model.DAOUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,18 +25,17 @@ public class Consumer {
     public void consume(DAOUser daoUser) throws IOException {
         System.out.println("Inside Recipient");
         System.out.println(daoUser);
-        DAOUser obj=new DAOUser();
         daoUser.setPassword(passwordEncoder.encode(daoUser.getPassword()));
         System.out.println(daoUser.getEmailVerified());
         userDao.save(daoUser);
     }
 
     @KafkaListener(topics="DonorRegistration",groupId = "group_id")
-    public void consumedonor(String daoUser) throws IOException {
+    public void consumedonor(DAOUser daoUser) throws IOException {
         System.out.println("Inside Donor");
-        DAOUser obj=new ObjectMapper().readValue(daoUser,DAOUser.class);
-        System.out.println(passwordEncoder.encode(obj.getPassword()));
-        obj.setPassword(passwordEncoder.encode(obj.getPassword()));
-        userDao.save(obj);
+        System.out.println(daoUser);
+        System.out.println(passwordEncoder.encode(daoUser.getPassword()));
+        daoUser.setPassword(passwordEncoder.encode(daoUser.getPassword()));
+        userDao.save(daoUser);
     }
 }
