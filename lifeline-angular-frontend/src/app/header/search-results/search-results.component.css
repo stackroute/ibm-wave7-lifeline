@@ -1,0 +1,32 @@
+section {
+    margin-top: 100px;
+  
+   
+}
+
+.search-container {
+    height: 100vh;
+    /* background-image:url(../../../assets/images/RECOMMENDATION.png); */
+}
+
+.search-sidenav {
+    width: 300px;
+   background-color:#fff;
+    box-shadow: 0 9px 9px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+
+}
+
+.search-content {
+    
+    color: #cba5ed;
+    background-image:url(../../../assets/images/RECOMMENDATION.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* border: 1px solid #5d6119; */
+}
+.example-card
+{
+    /* background-color:#DBF3EE; */
+    /* background-color:#C1D0E2; */
+    background-color:transparent;
+}

@@ -1,0 +1,20 @@
+::placeholder {
+    font-size: 16px;
+    color: #f3f3f3
+}
+
+.mat-toolbar
+{
+  background:#5b305b;  /* fallback for old browsers */
+}
+
+button:focus,
+input:focus {
+    outline: none;
+}
+
+mat-form-field {
+    width: 0;
+    color: white;
+    font-size: 16px;
+}

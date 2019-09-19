@@ -1,0 +1,222 @@
+version: '3'
+
+services:
+  eureka-server:
+    build: eureka-server/
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    image: eureka-server
+    ports:
+      - 8761:8761
+    healthcheck:
+      test: "exit 0"
+
+  config-service:
+    build: config-server/
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    image: config-service
+    ports:
+      - 8888:8888
+    healthcheck:
+      test: "exit 0"
+
+  zuul-api:
+    build: zuul-api/
+    depends_on:
+      - eureka-server
+      - config-service
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    image: zuul-api
+    ports:
+      - 8080:8080
+    healthcheck:
+      test: "exit 0"
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8098:2181
+    healthcheck:
+      test: "exit 0"
+
+  kafka:
+    image: wurstmeister/kafka
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: 'localhost:2181'
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_CREATE_TOPICS: "DonorRegistration, RecepientRegistration,"
+      KAFKA_ZOOKEEPER_CONNECTION_TIMEOUT_MS: 50000
+    restart: always
+    ports:
+      - 8099:9092
+    healthcheck:
+      test: "exit 0"
+
+  mongo:
+    image: mongo:latest
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 27017:27017
+    volumes:
+      - /DB/mongo:/data/db
+    healthcheck:
+      test: "exit 0"
+
+  neo4j:
+    image: neo4j:latest
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    environment: 
+      - NEO4J_AUTH=neo4j/lifeline
+    ports:
+      - 7474:7474
+      - 7687:7687
+    volumes:
+      - /DB/neo4j/data:/data
+      - /DB/neo4j/import:/import
+    healthcheck:
+      test: "exit 0"
+
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Root@123
+      MYSQL_DATABASE: logindb
+      MYSQL_PASSWORD: Root@123
+      MYSQL_USER: root
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8097:8097
+    volumes:
+      - /DB/mysql:/var/lib/mysql
+    healthcheck:
+      test: "exit 0"
+
+  donor-profile-service:
+    build: donor-profile-service/
+    depends_on:
+      - mongo
+      - eureka-server
+      - config-service
+      - zuul-api
+    restart: always
+    network_mode: "host"
+    image: donor-profile-service
+    hostname: localhost
+    ports:
+      - 8081:8081
+    healthcheck:
+      test: "exit 0"
+
+  recepient-profile-service:
+    build: recepient-profile-service/
+    depends_on:
+      - mongo
+      - eureka-server
+      - config-service
+      - zuul-api
+    restart: always
+    network_mode: "host"
+    image: recepient-profile-service
+    hostname: localhost
+    ports:
+      - 8083:8083
+    healthcheck:
+      test: "exit 0"
+
+  login-service:
+    build: login-service/
+    depends_on:
+      - mysql
+      - eureka-server
+      - config-service
+      - zuul-api
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    image: login-service
+    ports:
+      - 8082:8082
+    healthcheck:
+      test: "exit 0"
+
+  report-service:
+    build: reportservice/
+    depends_on:
+      - mongo
+      - eureka-server
+      - config-service
+      - zuul-api
+      - donor-profile-service
+      - recepient-profile-service
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    image: report-service
+    ports:
+      - 8016:8016
+    healthcheck:
+      test: "exit 0"
+  
+  recommendation-service:
+    build: recommendation-service/
+    depends_on:
+      - neo4j
+      - eureka-server
+      - config-service
+      - zuul-api
+      - donor-profile-service
+      - recepient-profile-service
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    image: recommendation-service
+    ports:
+      - 8084:8084
+    healthcheck:
+      test: "exit 0"
+
+  search-service:
+    build: search-service/
+    depends_on:
+      - neo4j
+      - eureka-server
+      - config-service
+      - zuul-api
+      - donor-profile-service
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    image: search-service
+    ports:
+      - 8085:8085
+    healthcheck:
+      test: "exit 0"
+
+  lifeline-frontend:
+    build: lifeline-angular-frontend/
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 4200:4200
+    healthcheck:
+      test: "exit 0"

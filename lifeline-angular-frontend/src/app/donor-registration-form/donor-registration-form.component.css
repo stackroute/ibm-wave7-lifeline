@@ -1,0 +1,47 @@
+mat-card{
+    width: 94%;
+    margin: 3%;
+    margin-top: 9%;
+    background-color: white;
+    height: 100vh;
+}
+mat-horizontal-stepper{
+    background-color: white;
+
+}
+h6{
+    padding-top: 5px;
+    padding-bottom : 5px;
+
+}
+
+button:disabled{
+    color:black;
+    background-color: #b2b2b2;
+}
+.row-div{
+    width: 100%;
+}
+
+mat-form-field, #field-div{
+    width: 100%;
+}
+
+.gender-div{
+    padding-left: 3%;
+}
+
+.button-div{
+    margin-top: 3.5%;
+}
+.button{
+    color: #fff;
+    background-color: #5b305b;
+    border-color: #5b305b;
+    align-self: center;
+
+}
+.form-div{
+    background-color: #faf7fa;
+    height: 100%;
+}

@@ -1,0 +1,57 @@
+.mat-toolbar
+{
+  font-family: 'Roboto', sans-serif;
+  background:#5f2c5c; /* fallback for old browsers */
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  height: 10vh;
+  max-height: 80px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+.landingPageHeader {
+  /* background-image: url('../../assets/images/heart.jpg'); */
+  max-width: 100%; 
+  height: 1px;
+  /* background-size: 100% 100%; */
+} 
+
+.logo img {
+  width: 64px;
+  height: 64px;
+}
+
+.item {
+  padding: 0 14px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+button {
+  font-size: 16px;
+  height: 64px;
+}
+
+button:focus { 
+  outline: none; 
+}
+
+.example-container {
+  position: absolute;
+  top: 70px;
+  bottom: 0;
+  left: 0;
+  right: 30px;
+}
+.nav-menu{
+  min-width: 90vw;
+}
+/* .example-events {
+  width: 300px;
+  height: 200px;
+  overflow: auto;
+  border: 1px solid #555;
+} */

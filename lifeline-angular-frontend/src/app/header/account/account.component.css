@@ -1,0 +1,8 @@
+button {
+  font-size: 16px;
+  height: 64px;
+}
+
+button:focus {
+    outline: none;
+}

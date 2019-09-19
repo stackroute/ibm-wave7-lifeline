@@ -1,0 +1,31 @@
+::ng-deep #pivotgrid {
+    margin-top: 20px;
+    align:center;
+}
+
+::ng-deep .currency {
+    text-align: center;
+}
+h3{
+    margin-top: 40px;
+    text-align: center;
+}
+
+.graphs
+{
+    /* padding: 10vh; */
+    /* padding-left: 35vh; */
+    /* background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%); */
+    /* background: linear-gradient(to bottom, #33ccff 0%, #ffcccc 100%); */
+    /* background-color:linear-gradient(to bottom, #ccffff 0%, #99ffcc 100%);;
+    opacity: 5; */
+
+}
+table{
+    /* height: 9cm; */
+}
+#linechart,#barchart,#linechart1
+{
+    /* height: 5cm; */
+    
+}

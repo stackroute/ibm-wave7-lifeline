@@ -1,0 +1,196 @@
+<div class="container">
+    <mat-tab-group>
+        <mat-tab label="Recommendation">
+            <app-recommendation></app-recommendation>
+        </mat-tab>
+        <!-- <mat-tab label="Reports">
+            <div>
+                Reports
+            </div>
+        </mat-tab> -->
+        <!--Profile Tab-->
+        <mat-tab label="Profile" class="tab">
+
+            <mat-card>
+                <mat-list>
+                    <h3 mat-subheader>Personal Details:</h3>
+
+                    <mat-list-item>
+
+                        <h4 class="h4-tag">Name: {{recepients.firstName}} {{recepients.lastName}} </h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag">Gender: {{recepients.gender}}</h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag">Date of Birth: {{recepients.dob}}</h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag">Email: {{recepients.email}}</h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag">Phone Number: {{recepients.phoneNumber}}</h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag">Aadhar Number: {{recepients.aadhar}}</h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag">Address: {{recepients.address.addressLine1}}
+                            {{recepients.address.addressLine2}},
+                            {{recepients.address.city}},{{recepients.address.state}},pincode-{{recepients.address.pinCode}}
+                        </h4>
+                    </mat-list-item>
+
+                    <mat-list-item>
+                        <h4 class="h4-tag">Blood group: {{recepients.bloodGroup}} </h4>
+
+                    </mat-list-item>
+                </mat-list>
+
+            </mat-card>
+
+        </mat-tab>
+        <mat-tab id="text" label="Edit">
+            <div class="profile">
+                <form [formGroup]="profileForm">
+                    <mat-card>
+                        <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
+                            <h3 mat-subheader>Edit Profile</h3>
+                            <mat-form-field>
+                                <input matInput placeholder="firstName" disabled formControlName="firstName">
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <input matInput placeholder="lastName" disabled formControlName="lastName">
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <input matInput placeholder="email" disabled formControlName="email">
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <input matInput placeholder="phoneNo" formControlName="phoneNumber" minlength="10"
+                                    maxlength="10">
+                                <!-- <mat-error *ngIf="this.profileForm.controls['phoneNumber'].hasError('required')">Phone Number is required</mat-error>
+                    <mat-error *ngIf="this.profileForm.controls['phoneNumber'].hasError('pattern')">Please Enter Valid Phone Number</mat-error>  -->
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field class="example-full-width">
+                                <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker"
+                                    placeholder="Date Of Birth" formControlName="dateOfBirth" disabled>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <input matInput placeholder="AadharNumber" formControlName="aadhar" disabled>
+                            </mat-form-field>
+                            <br>
+                            <mat-label>Address</mat-label>
+                            <mat-form-field>
+                                <input matInput formControlName="addressLine1" maxlength="40">
+                                <!-- <mat-error *ngIf="this.registrationForm.controls.address['controls'].addressLine1.invalid">Address line1 is required</mat-error> -->
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="AddresLine2" formControlName="addressLine2">
+                                <!-- <mat-error *ngIf="this.profileForm.controls.address['controls'].addressLine2.invalid">Address line2 is required</mat-error> -->
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="city" formControlName="city">
+                                <!-- <mat-error *ngIf="this.profileForm.controls.address['controls'].city.invalid">City is required</mat-error> -->
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="state" formControlName="state">
+                                <!-- <mat-error *ngIf="this.profileForm.controls.address['controls'].state.invalid">State is required</mat-error> -->
+
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="pincode" formControlName="pinCode">
+                                <!-- <mat-error *ngIf="this.profileForm.controls.address['controls'].pinCode.hasError('required')">Pincode is required</mat-error>
+                        <mat-error *ngIf="this.profileForm.controls.address['controls'].pinCode.hasError('pattern')">Please Enter Valid pincode</mat-error> -->
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="Gender" formControlName="gender" disabled>
+                            </mat-form-field>
+                            <br>
+                            <br>
+                            <mat-form-field>
+                                <mat-label>BloodGroup</mat-label>
+                                <select matNativeControl required disabled formControlName="bloodGroup">
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+
+                            </mat-form-field>
+                            <br>
+
+                            <button mat-stroked-button type="submit" color="primary"
+                                (click)="updateRecepient()">Save</button>
+                        </div>
+
+                    </mat-card>
+                </form>
+            </div>
+
+        </mat-tab>
+
+        <mat-tab label="Request Organs">
+            <div class="request">
+            <mat-card>
+                <form [formGroup]="requestOrganForm">
+                        <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
+                            <h2 mat-subheader>Request Organ</h2>
+                            <mat-form-field>
+                                <mat-label>BloodGroup</mat-label>
+                                <select matNativeControl required formControlName="bloodGroup">
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                            </mat-form-field>
+                            <mat-form-field appearance="legacy">
+                                <mat-label>Organ Name</mat-label>
+                                <select matNativeControl required formControlName="organName">
+                                    <option value="blood">Blood</option>
+                                    <option value="BoneMarrow">Bonemarrow</option>
+                                    <option value="Cornea">Cornea</option>
+                                    <option value="heart">Heart</option>
+                                    <option value="Kidney">Kidney</option>
+                                    <option value="Liver">Liver</option>
+                                    <option value="Lungs">Lungs</option>
+                                    <option value="Platelet">Platelet</option>
+                                </select>
+                            </mat-form-field>
+
+
+                            <button class="submit-button" mat-button type="submit" name="request"
+                                (click)="newRequest()">Request</button>
+                        </div>
+                </form>
+            </mat-card>
+            </div>
+        </mat-tab>
+        <!-- <mat-tab label="Status">
+            <app-status></app-status>
+        </mat-tab> -->
+    
+    </mat-tab-group>
+</div>

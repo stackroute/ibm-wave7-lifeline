@@ -1,0 +1,21 @@
+::ng-deep #pivotgrid {
+    margin-top: 20px;
+    align:center;
+}
+::ng-deep .currency {
+    text-align: center;
+}
+.graphs
+{
+    padding-left:270px;
+    /* background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%); */
+    background: linear-gradient(to bottom, #33ccff 0%, #ffcccc 100%);
+
+}
+table{
+    height: 9cm;
+}
+#linechart,#barchart,#linechart1
+{
+    height: 5cm;
+}

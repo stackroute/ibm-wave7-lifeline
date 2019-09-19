@@ -1,0 +1,27 @@
+mat-card{
+    width: 100%;
+    margin-top:3cm;
+    background-color: beige;
+height: 100%;
+}
+.row-div{
+    width: 100%;
+}
+
+mat-form-field{
+    width: 100%;
+}
+
+.gender-div{
+    padding-left: 3%;
+}
+
+.submit-button{
+    color: #fff;
+    background-color:#5b305b;
+    border-color: #007bff;
+    width: 18%;
+    height: 40px;
+    border-radius: 20px;
+    margin-left: 16cm;
+}

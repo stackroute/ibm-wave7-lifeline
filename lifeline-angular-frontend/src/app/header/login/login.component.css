@@ -1,0 +1,19 @@
+/* .example-card{
+    text-align: center;
+} */
+.mat-card {
+    width:400px;
+    text-align: center;
+    
+}
+
+.loginContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: beige;
+}
+.close-button
+{
+    float:right;
+}

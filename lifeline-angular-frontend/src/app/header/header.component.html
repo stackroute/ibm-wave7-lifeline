@@ -1,0 +1,41 @@
+<header class="landingPageHeader">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+      <div class="logo">
+        <button mat-button routerLink=''>
+          <img src="../../assets/images/lifeline.png" alt="App Logo">
+        </button>
+      </div>
+
+      <div fxShow fxHide.gt-md fxFlexAlign="end">
+        <button mat-icon-button [matMenuTriggerFor]="navMenu">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #navMenu="matMenu">
+          <button mat-menu-item class="item" routerLink=''>Home</button>
+          <button mat-menu-item [routerLink]="['/aimsandobjectives']"> Aims and Objectives</button>
+          <button mat-menu-item [routerLink]="['/termsandconditions']">Terms and Conditions</button>
+          <button mat-menu-item [routerLink]="['/whatcanyoudonate']">What can you donate</button>
+          <button mat-menu-item [routerLink]="['/myths']">Myths</button>
+        </mat-menu>
+      </div>
+
+      <div class="spacer"></div>
+      <app-search class="item" *ngIf="!loggedIn"></app-search>
+      <div class="header" *ngIf="!loggedIn" fxHide fxShow.gt-md>
+        <button mat-button class="item" routerLink=''>Home</button>
+        <button mat-button class="item" [matMenuTriggerFor]="menu">About Us</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item [routerLink]="['/aimsandobjectives']"> Aims and Objectives</button>
+          <button mat-menu-item [routerLink]="['/termsandconditions']">Terms and Conditions</button>
+        </mat-menu>
+        <button mat-button class="item" [matMenuTriggerFor]="menu1">Learn</button>
+        <mat-menu #menu1="matMenu">
+          <button mat-menu-item [routerLink]="['/whatcanyoudonate']">What can you donate</button>
+          <button mat-menu-item [routerLink]="['/myths']">Myths</button>
+        </mat-menu>
+      </div>
+      <app-account class="item"></app-account>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</header>

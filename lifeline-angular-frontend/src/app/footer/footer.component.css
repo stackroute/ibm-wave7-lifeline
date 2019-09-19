@@ -1,0 +1,26 @@
+mat-icon {
+    width: 20px;
+    height: 20px;
+    margin: 8px;
+    animation: spin 1s infinite;
+}
+
+.footer {
+    
+    background:#5b305b;
+    color: aliceblue;
+    margin-top:40px;
+    
+}
+
+.helpline {
+    padding: 16px;
+}
+
+.address {
+    padding: 16px;
+}
+
+.social {
+    padding: 16px;
+}
