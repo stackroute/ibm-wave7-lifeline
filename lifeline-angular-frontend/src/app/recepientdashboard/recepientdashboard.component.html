@@ -148,48 +148,7 @@
         </mat-tab>
 
         <mat-tab label="Request Organs">
-            <div class="request">
-                <mat-card>
-                    <div class="mat-app-background basic-container">
-                        <chat-button>loading</chat-button>
-                    </div>
-                    <form [formGroup]="requestOrganForm">
-                        <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
-                            <h2 mat-subheader>Request Organ</h2>
-                            <mat-form-field>
-                                <mat-label>BloodGroup</mat-label>
-                                <select matNativeControl required formControlName="bloodGroup">
-                                    <option value="A+">A+</option>
-                                    <option value="A-">A-</option>
-                                    <option value="B+">B+</option>
-                                    <option value="B-">B-</option>
-                                    <option value="AB+">AB+</option>
-                                    <option value="AB-">AB-</option>
-                                    <option value="O+">O+</option>
-                                    <option value="O-">O-</option>
-                                </select>
-                            </mat-form-field>
-                            <mat-form-field appearance="legacy">
-                                <mat-label>Organ Name</mat-label>
-                                <select matNativeControl required formControlName="organName">
-                                    <option value="blood">Blood</option>
-                                    <option value="BoneMarrow">Bonemarrow</option>
-                                    <option value="Cornea">Cornea</option>
-                                    <option value="heart">Heart</option>
-                                    <option value="Kidney">Kidney</option>
-                                    <option value="Liver">Liver</option>
-                                    <option value="Lungs">Lungs</option>
-                                    <option value="Platelet">Platelet</option>
-                                </select>
-                            </mat-form-field>
-
-
-                            <button class="submit-button" mat-button type="submit" name="request"
-                                (click)="newRequest()">Request</button>
-                        </div>
-                    </form>
-                </mat-card>
-            </div>
+            <app-reuest></app-reuest>
         </mat-tab>
         <!-- <mat-tab label="Status">
             <app-status></app-status>

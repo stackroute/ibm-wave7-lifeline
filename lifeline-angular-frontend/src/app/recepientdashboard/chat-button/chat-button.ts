@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MatBottomSheet} from '@angular/material/bottom-sheet';
 import {ChatBox} from '../chat-box/chat-box';
 /**
@@ -10,6 +10,9 @@ import {ChatBox} from '../chat-box/chat-box';
   styleUrls: ['chat-button.css'],
 })
 export class ChatButton {
+
+  @Input() private value: string;
+
   constructor(private _bottomSheet: MatBottomSheet) {}
 
   openBottomSheet(): void {

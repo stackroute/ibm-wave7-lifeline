@@ -17,7 +17,7 @@ public class DonorConsumer {
         this.donationRepository = donationRepository;
     }
 
-    @KafkaListener(topics="DonorRegistration", groupId = "search_group_id")
+    @KafkaListener(topics="DonorSearch", groupId = "search_group_id")
     public void consume(String donorString) throws IOException {
         System.out.println("Donor Consumer");
         System.out.println(donorString);

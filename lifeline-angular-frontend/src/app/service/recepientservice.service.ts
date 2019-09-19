@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Recepient, Donor } from '../model/model';
+import { Donor } from '../model/donor';
+import { Recepient } from '../model/model';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +50,10 @@ export class RecepientserviceService {
   getDonorRecommendationsForRecepient(bloodGroup: string): Observable<Recepient> {
     console.log(bloodGroup)
     return this.httpClient.get<Recepient>(this.resultUrl + '/' + bloodGroup);
+  }
+
+  getDonorRecommendationsBasedOnOrganAndBloodForRecepient(bloodGroup: string, organ: string): Observable<Array<Donor>> {
+    return this.httpClient.get<Array<Donor>>(this.resultUrl + '/' + bloodGroup + '/' + organ);
   }
 
   errorHandler(error: HttpErrorResponse) {

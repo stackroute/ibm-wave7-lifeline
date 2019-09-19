@@ -30,6 +30,7 @@ public class DonorController {
 	@Autowired
 	private KafkaTemplate<String,Donor> kafkaTemplate;
 	private static final String TOPIC = "DonorRegistration";
+	private static final String SEARCH_TOPIC = "DonorSearch";
 	
 	@Autowired              // constructor based autowiring
 	public DonorController(DonorService donorService) {
@@ -83,6 +84,7 @@ public class DonorController {
 			responseEntity = new ResponseEntity<Donor>(donorService.saveDonorProfile(donor), HttpStatus.CREATED);
 			logger.info("save donor api call success");
 			this.kafkaTemplate.send(TOPIC,donor);
+			this.kafkaTemplate.send(SEARCH_TOPIC,donor);
 		} catch (Exception e) {
 			e.printStackTrace();
 			responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);

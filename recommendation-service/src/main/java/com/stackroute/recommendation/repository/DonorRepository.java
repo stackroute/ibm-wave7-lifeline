@@ -23,7 +23,7 @@ public interface DonorRepository extends Neo4jRepository<Donor, Long> {
     @Query("WITH {blood} as filters\n" +
             "MATCH p1=(a:Donor)-[:HAS_MEDICAL_INFO]-(m:MedicalDetails)\n" +
             "MATCH p2=(m:MedicalDetails)-[:ORGAN_LIST]-(o:Organs)\n" +
-            "WHERE o.donateOrNot = true AND o.name = {organ}\n" +
+            "WHERE o.name = :organ AND o.donateOrNot = true\n" +
             "MATCH p3=(m:MedicalDetails)-[:DISEASE]-(d:Disease)\n" +
             "WHERE m.bloodGroup in filters\n" +
             "MATCH p4=(a:Donor)-[:HAS_ADDRESS]-()\n" +

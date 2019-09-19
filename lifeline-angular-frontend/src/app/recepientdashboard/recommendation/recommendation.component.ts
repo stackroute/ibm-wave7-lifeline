@@ -11,7 +11,7 @@ import { Donor } from 'src/app/model/donor';
 })
 export class RecommendationComponent implements OnInit {
 
-  public recepients: Recepient;
+  public recepients: Recepient = null;
   public donors;
   private recepientId;
 

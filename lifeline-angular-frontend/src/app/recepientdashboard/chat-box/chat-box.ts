@@ -13,6 +13,10 @@ export class ChatBox {
 
   private serverUrl = 'http://52.66.129.41:8084/websocket';
 
+  private donorId: string;
+
+  private recepientId: string;
+
   private stompClient;
 
 
@@ -26,7 +30,7 @@ export class ChatBox {
     this.stompClient = Stomp.over(ws);
     let that = this;
     this.stompClient.connect({}, function (frame) {
-      that.stompClient.subscribe("/chat" + "/1" + "/1", (message) => {
+      that.stompClient.subscribe("/chat" + "/" + this.donorId + "/" + this.recepientId, (message) => {
         console.log("MESSAGE " + message);
         if (message.body) {
           $(".chat").append("<div class='message'><h3>" + message.body + "</h3></div>")
@@ -36,8 +40,8 @@ export class ChatBox {
     });
   }
 
-  sendMessage(message, donorId, recepientId) {
-    this.stompClient.send("/app/send/message" + "/" + donorId + "/" + recepientId, {}, message);
+  sendMessage(message) {
+    this.stompClient.send("/app/send/message" + "/" + this.donorId + "/" + this.recepientId, {}, message);
     $('#input').val('');
   }
 }

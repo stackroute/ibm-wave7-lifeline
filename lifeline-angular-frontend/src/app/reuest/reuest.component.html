@@ -1,51 +1,48 @@
-<mat-tab label="Request Organs"class="container">
-  <div>
-      <form [formGroup]="requestForm">
-          <mat-card>
-          <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
-              <h2 mat-subheader>Request Organ</h2>
-          
+<div>
+  <mat-card>
+    <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
+      <h2 mat-subheader>Request Organ</h2>
+      <form [formGroup]="requestOrganForm">
+
         <mat-form-field>
           <mat-label>BloodGroup</mat-label>
           <select matNativeControl required formControlName="bloodGroup">
-              <option value="A+">A+</option>
-              <option value="A-">A-</option>
-              <option value="B+">B+</option>
-              <option value="B-">B-</option>
-              <option value="AB+">AB+</option>
-              <option value="AB-">AB-</option>
-              <option value="O+">O+</option>
-              <option value="O-">O-</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
           </select>
         </mat-form-field>
-            <mat-form-field appearance="legacy">
-                <mat-label>Organ Name</mat-label>
-                <select matNativeControl required formControlName="organName">
-                    <option value="blood">Blood</option>
-                    <option value="BoneMarrow">Bonemarrow</option>
-                    <option value="Cornea">Cornea</option>
-                    <option value="heart">Heart</option>
-                    <option value="Kidney">Kidney</option>
-                    <option value="Liver">Liver</option>
-                    <option value="Lungs">Lungs</option>
-                    <option value="Platelet">Platelet</option>
-                  </select>
-                <!-- <mat-error *ngIf="this.registrationForm.controls['lastName'].invalid">LastName is required</mat-error> -->
-            </mat-form-field>
-       
-
-        <button class="submit-button" mat-button type="submit" name="request" (click)="newRequest()">Request</button>
-      </div>
-    </mat-card>
-   </form>
+        <mat-form-field appearance="legacy">
+          <mat-label>Organ Name</mat-label>
+          <select matNativeControl required formControlName="organName">
+            <option value="blood">Blood</option>
+            <option value="Bone Marrow">Bone Marrow</option>
+            <option value="Cornea">Cornea</option>
+            <option value="heart">Heart</option>
+            <option value="Kidney">Kidney</option>
+            <option value="Liver">Liver</option>
+            <option value="Lungs">Lungs</option>
+            <option value="Platelet">Platelet</option>
+          </select>
+          <!-- <mat-error *ngIf="this.registrationForm.controls['lastName'].invalid">LastName is required</mat-error> -->
+        </mat-form-field>
+      </form>
+      <button mat-button (click)="submit()">Request</button>
+    </div>
+  </mat-card>
 </div>
 
- 
-
-
-</mat-tab>
-
-    
-
-
-
+<div *ngFor="let donor of donors" fxLayout="column">
+  <mat-card class="donor-card">
+    <mat-card-header>
+      <mat-card-title>{{donor.firstName}} {{donor.lastName}}</mat-card-title>
+      <mat-card-subtitle>Blood Group: {{donor.medicalDetails.bloodGroup}}</mat-card-subtitle>
+    </mat-card-header>
+    <chat-button [value]="donor.id"></chat-button>
+  </mat-card>
+</div>
