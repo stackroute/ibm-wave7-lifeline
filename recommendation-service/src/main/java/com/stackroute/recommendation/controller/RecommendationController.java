@@ -25,7 +25,7 @@ public class RecommendationController {
 
     @ApiOperation("Get Recommendations")
     @GetMapping("results/{name}")
-    public ResponseEntity<List<Donor>> retrieveDonors(@PathVariable("name") String name) throws IOException {
+    public ResponseEntity<List<Donor>> retrieveDonorsByBlood(@PathVariable("name") String name) throws IOException {
         ResponseEntity responseEntity;
         try {
 		System.out.println(name);
@@ -34,6 +34,20 @@ public class RecommendationController {
             responseEntity = new ResponseEntity<String>("Exception", HttpStatus.CONFLICT);
             e.printStackTrace();
 	}
+        return responseEntity;
+    }
+
+    @ApiOperation("Get Recommendations")
+    @GetMapping("results/{blood}/{organ}")
+    public ResponseEntity<List<Donor>> retrieveDonorsByBloodAndOrgan(@PathVariable("blood") String blood, @PathVariable("organ") String organ) throws IOException {
+        ResponseEntity responseEntity;
+        try {
+            System.out.println(blood);
+            responseEntity = new ResponseEntity<List<Donor>>(recommendationService.retrieveDonors(blood), HttpStatus.OK);
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity<String>("Exception", HttpStatus.CONFLICT);
+            e.printStackTrace();
+        }
         return responseEntity;
     }
 }

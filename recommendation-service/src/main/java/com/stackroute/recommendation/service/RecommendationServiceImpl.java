@@ -27,4 +27,16 @@ public class RecommendationServiceImpl implements RecommendationService {
             throw new DonorsNotFoundException();
         }
     }
+
+    @Override
+    public List<Donor> retrieveDonorsByBloodAndOrgan(String blood, String organ) throws DonorsNotFoundException {
+        try {
+            List<Donor> donorList = donorRepository.retrieveDonorsByBloodAndOrgan(blood, organ);
+            System.out.println(donorList);
+            return donorList;
+        }
+        catch(Exception e) {
+            throw new DonorsNotFoundException();
+        }
+    }
 }

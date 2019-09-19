@@ -8,4 +8,6 @@ import java.util.List;
 public interface RecommendationService {
 
     public List<Donor> retrieveDonors(String name) throws DonorsNotFoundException;
+
+    List<Donor> retrieveDonorsByBloodAndOrgan(String blood, String organ) throws DonorsNotFoundException;
 }

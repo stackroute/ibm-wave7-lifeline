@@ -1,31 +1,29 @@
-.video
-{
-    width: 100%;
-    /* background-color:beige; */
-margin-top: 30px;
+.video {
+    width: 100vw;
+    margin-top: 30px;
+}
 
-}
-.video1
-{
+.video1 {
     display: flex;
     align-items: center;
     justify-content: center;
     padding-top: 3%;
 }
-.video2
-{
+
+.video2 {
     display: flex;
     align-items: center;
     justify-content: center;
     padding-top: 3%;
 }
-.video3
-{
+
+.video3 {
     display: flex;
     align-items: center;
     justify-content: center;
     padding-top: 3%;
 }
-h2{
+
+h2 {
     text-align: center;
 }

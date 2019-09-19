@@ -18,4 +18,16 @@ public interface DonorRepository extends Neo4jRepository<Donor, Long> {
             "MATCH p4=(a:Donor)-[:HAS_GUARDIANS]-()-[:HAS_ADDRESS]-()\n" +
             "RETURN p1, p2, p3, p4")
     List<Donor> retrieveDonors(String tokens);
+
+    //Filter results based on the organ and blood group
+    @Query("WITH {blood} as filters\n" +
+            "MATCH p1=(a:Donor)-[:HAS_MEDICAL_INFO]-(m:MedicalDetails)\n" +
+            "MATCH p2=(m:MedicalDetails)-[:ORGAN_LIST]-(o:Organs)\n" +
+            "WHERE o.donateOrNot = true AND o.name = {organ}\n" +
+            "MATCH p3=(m:MedicalDetails)-[:DISEASE]-(d:Disease)\n" +
+            "WHERE m.bloodGroup in filters\n" +
+            "MATCH p4=(a:Donor)-[:HAS_ADDRESS]-()\n" +
+            "MATCH p5=(a:Donor)-[:HAS_GUARDIANS]-()-[:HAS_ADDRESS]-()\n" +
+            "RETURN p1, p2, p3, p4, p5")
+    List<Donor> retrieveDonorsByBloodAndOrgan(String blood, String organ);
 }

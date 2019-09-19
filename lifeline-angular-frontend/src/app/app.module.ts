@@ -57,6 +57,9 @@ import { RecommendationComponent } from './recepientdashboard/recommendation/rec
 import { StatusComponent } from './recepientdashboard/status/status.component';
 import { OrganRequestStatusComponent } from './organ-request-status/organ-request-status.component';
 import { DeletealertComponent } from './header/deletealert/deletealert.component';
+import { ChatBox } from '../app/recepientdashboard/chat-box/chat-box';
+import { ChatButton } from '../app/recepientdashboard/chat-button/chat-button';
+
 
 //  import { EmbedVideoService } from 'ngx-embed-video';
 @NgModule({
@@ -94,6 +97,8 @@ import { DeletealertComponent } from './header/deletealert/deletealert.component
     StatusComponent,
     OrganRequestStatusComponent,
     DeletealertComponent,
+    ChatBox,
+    ChatButton
   ],
   imports: [
     BrowserModule,
@@ -131,7 +136,9 @@ import { DeletealertComponent } from './header/deletealert/deletealert.component
   entryComponents: [
     SnackBarComponent,
     VerificationAlertComponent,
-    DeletealertComponent
+    DeletealertComponent,
+    ChatBox,
+    ChatButton
   ],
   providers: [],
   bootstrap: [AppComponent]

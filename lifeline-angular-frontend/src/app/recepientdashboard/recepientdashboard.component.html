@@ -149,8 +149,11 @@
 
         <mat-tab label="Request Organs">
             <div class="request">
-            <mat-card>
-                <form [formGroup]="requestOrganForm">
+                <mat-card>
+                    <div class="mat-app-background basic-container">
+                        <chat-button>loading</chat-button>
+                    </div>
+                    <form [formGroup]="requestOrganForm">
                         <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
                             <h2 mat-subheader>Request Organ</h2>
                             <mat-form-field>
@@ -184,13 +187,13 @@
                             <button class="submit-button" mat-button type="submit" name="request"
                                 (click)="newRequest()">Request</button>
                         </div>
-                </form>
-            </mat-card>
+                    </form>
+                </mat-card>
             </div>
         </mat-tab>
         <!-- <mat-tab label="Status">
             <app-status></app-status>
         </mat-tab> -->
-    
+
     </mat-tab-group>
 </div>
