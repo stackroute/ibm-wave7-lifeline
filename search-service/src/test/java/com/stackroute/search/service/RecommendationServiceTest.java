@@ -1,8 +1,9 @@
-package com.stackroute.chat.service;
+package com.stackroute.search.service;
 
 import com.stackroute.search.exception.DonorsNotFoundException;
-import com.stackroute.chat.models.*;
-import com.stackroute.chat.repository.DonorRepository;
+import com.stackroute.search.models.*;
+import com.stackroute.search.repository.DonationRepository;
+import com.stackroute.search.service.LookUpServiceImpl;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -24,11 +25,11 @@ public class RecommendationServiceTest {
 
     ///Mock for Donor Repository
     @Mock
-    DonorRepository donorRepository;
+    DonationRepository donorRepository;
 
     //Inject the mocks as dependencies into RecommendationServiceImpl
     @InjectMocks
-    RecommendationServiceImpl recommendationService;
+    LookUpServiceImpl recommendationService;
 
     Donor donor;
     Address address;

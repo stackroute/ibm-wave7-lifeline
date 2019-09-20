@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ChatServiceImpl implements ChatService {
+public class LookUpServiceImpl implements LookUpService {
 
     private DonationRepository donorRepository;
 
-    public ChatServiceImpl(DonationRepository donorRepository) {
+    public LookUpServiceImpl(DonationRepository donorRepository) {
         this.donorRepository = donorRepository;
     }
 

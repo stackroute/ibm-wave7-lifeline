@@ -5,7 +5,7 @@ import com.stackroute.search.models.Donor;
 
 import java.util.List;
 
-public interface ChatService {
+public interface LookUpService {
 
     public List<Donor> retrieveDonors(String name) throws DonorsNotFoundException;
 
