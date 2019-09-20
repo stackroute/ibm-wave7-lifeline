@@ -20,8 +20,9 @@ mat-form-field{
     color: #fff;
     background-color:#5b305b;
     border-color: #007bff;
-    width: 18%;
+    width: 30%;
     height: 40px;
     border-radius: 20px;
-    margin-left: 16cm;
+    margin-left: 30%;
+    align-self: center;
 }
