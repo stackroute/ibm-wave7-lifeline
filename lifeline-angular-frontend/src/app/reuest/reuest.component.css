@@ -9,4 +9,14 @@
 .request
 {
     height: 90vh;
+    width:50vw;
+}
+.mat-card
+{
+    align-items: center;
+  /* background-color:rgb(231, 149, 26); */
+  margin-top: 50px;
+  margin-left: 100px;
+  width: 50vw;
+
 }
