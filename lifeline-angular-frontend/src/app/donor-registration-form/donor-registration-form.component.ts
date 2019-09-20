@@ -51,7 +51,7 @@ export class DonorRegistrationFormComponent implements OnInit {
   },
   {
     id: 8,
-    name: 'Plateconst',
+    name: 'Platelet',
     donateOrNot: false,
   }];
   donor: Donor
