@@ -1,9 +1,10 @@
-package com.stackroute.chat.controller;
+package com.stackroute.search.controller;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stackroute.search.exception.DonorsNotFoundException;
-import com.stackroute.chat.models.*;
+import com.stackroute.search.models.*;
+import com.stackroute.search.service.LookUpService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,11 +41,11 @@ public class RecommendationControllerTest {
 
     //Mock for RecommendationService
     @MockBean
-    private RecommendationService recommendationService;
+    private LookUpService lookUpService;
 
     //Inject the mocks as dependencies into RecommendationController
     @InjectMocks
-    private RecommendationController recommendationController;
+    private LookUpController recommendationController;
 
     private Donor donor;
     private Address address;
@@ -99,7 +100,7 @@ public class RecommendationControllerTest {
     //	Test for retrieveDonors method
     @Test
     public void givenBloodGroupReturnsDonorList() throws Exception{
-        when(recommendationService.retrieveDonors(any())).thenReturn(donorList);
+        when(lookUpService.retrieveDonors(any())).thenReturn(donorList);
         mockMvc.perform(MockMvcRequestBuilders.get("/results/A+")
                 .contentType(MediaType.APPLICATION_JSON).content(jsonToString(donor)))
                 .andExpect(status().isOk())
@@ -109,7 +110,7 @@ public class RecommendationControllerTest {
     //	Test for retrieveDonors method
     @Test
     public void givenInputReturnDonorsNotFoundException() throws Exception{
-        when(recommendationService.retrieveDonors(any())).thenThrow(DonorsNotFoundException.class);
+        when(lookUpService.retrieveDonors(any())).thenThrow(DonorsNotFoundException.class);
         mockMvc.perform(MockMvcRequestBuilders.get("/results/a")
                 .contentType(MediaType.APPLICATION_JSON).content(jsonToString(donor)))
                 .andExpect(status().isConflict())

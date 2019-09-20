@@ -1,7 +1,7 @@
 package com.stackroute.search.controller;
 
 import com.stackroute.search.models.Donor;
-import com.stackroute.search.service.ChatService;
+import com.stackroute.search.service.LookUpService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +17,9 @@ import java.util.List;
 @CrossOrigin
 public class LookUpController {
 
-    private ChatService chatService;
+    private LookUpService chatService;
 
-    public LookUpController(ChatService chatService) {
+    public LookUpController(LookUpService chatService) {
         this.chatService = chatService;
     }
 

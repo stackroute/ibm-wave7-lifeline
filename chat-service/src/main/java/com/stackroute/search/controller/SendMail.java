@@ -1,4 +1,4 @@
-package com.stackroute.chat.controller;
+package com.stackroute.search.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
