@@ -1,6 +1,6 @@
-.menu-spacer {
+/* .menu-spacer {
   flex: 1 1 auto;
-}
+} */
 .row-div
 {
    align-items: start !important;
@@ -15,6 +15,7 @@
 .profile
 {
   min-width: 300px; 
+  width:50vw;
 }
 .mat-card {
   /* box-shadow: 10px 10px 10px 10px grey; */
@@ -26,14 +27,15 @@
   /* margin: 50px; */
   min-width: 300px;
 }
-/* 
+
 .mat-subheader {
+  /* float: right; */
   align-items: center;
-  font-size: 30px;
+  font-size: 1.5rem;
   color: #5b305b;
   font-style: normal;
   text-shadow: 2px 2px #e7d6ef;
-} */
+}
 
 .h4-tag {
   font-size: 16px;
@@ -110,7 +112,7 @@ table {
 button {
   width: 3cm;
   background-color: #5b305b;
-  margin-top:30vh;
+  margin-top:100px;
  
 }
 
@@ -118,22 +120,20 @@ button {
   padding-top: 100px;
   height:65vh;
   width: 100%;
+  font-size: 30px;
   /* margin-left: 30%; */
-  /* margin-right: 30%; */
+  margin-right: 30%;
 }
 
- .content h3 {
-  /* float: right; */
-  
-  font-size: 1rem;
-} 
+ 
 
 .pdf {
   display: flex;
   justify-content: center;
-  /* margin-top: 0cm;
-  padding-top: 0.1cm;
-  margin-right: 15cm; */
+  /* margin-bottom: 300px; */
+   margin-top: 0cm;
+  padding-top:0.1vh;
+ /* margin-right: 15cm; */
 }
 
 img {

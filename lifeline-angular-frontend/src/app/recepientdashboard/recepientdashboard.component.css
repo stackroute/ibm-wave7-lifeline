@@ -14,6 +14,7 @@
 .container
 {
   height: 100%;
+  background-color: antiquewhite;
 }
 .mat-tab-group {
   margin-bottom: 16px;
@@ -26,13 +27,13 @@
   background-color: #eaecc1;
   border-radius: 2cm;
   border: 3px solid #5d6119;
-  width: 90vw;
+  width: 75vw;
 }
 
 
 .mat-subheader {
   align-items: center;
-  font-size: 30px;
+  font-size: 20px;
   color: #5b305b;
   font-style: normal;
   text-shadow: 2px 2px #e7d6ef;

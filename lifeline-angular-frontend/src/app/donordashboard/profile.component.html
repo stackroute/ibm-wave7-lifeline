@@ -31,115 +31,116 @@
         <div class="pdf">
             <button mat-button style="color:whitesmoke" (click)="makePdf()">Download</button>
         </div>
+
     </mat-tab>
     <mat-tab label="Profile" class="tab">
-        <mat-card class="profile">
-            <mat-list>
-                <h3 mat-subheader>Personal Details:</h3>
-
-                <mat-list-item>
-                    <h4 class="h4-tag"><b>Name: </b> {{donor.firstName}} {{donor.lastName}} </h4>
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag"><b>Gender: </b>{{donor.gender}}</h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag"><b>Date of Birth: </b>{{donor.dob}}</h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag"><b>Email: </b>{{donor.email}}</h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag"><b>Phone Number: </b>{{donor.phoneNumber}}</h4>
-
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag"><b>Aadhar Number:</b> {{donor.aadhar}}</h4>
-                </mat-list-item>
-
-                <mat-list-item>
-                    <h4 class="h4-tag">
-                        <b>Address: </b>{{donor.address.addressLine1}} {{donor.address.addressLine2}},
-                        {{donor.address.city}},{{donor.address.state}},pincode-{{donor.address.pinCode}}
-                    </h4>
-                </mat-list-item>
-                <br>
-                <mat-list-item>
-                    <h3 mat-subheader>Guardian Details:</h3>
-                </mat-list-item>
-                <mat-list-item>
-                    <div class="h4-tag" *ngFor="let guardian of donor.guardianList">
-                        Email- {{guardian.email}}<br>
-                        Phone no- {{guardian.phoneNumber}}<br>
-                        Relation- {{guardian.relation}}<br>
-                        Address- {{guardian.address.addressLine1}} {{guardian.address.addressLine2}},
-                        {{guardian.address.city}},{{guardian.address.state}},pincode-{{guardian.address.pinCode}}<br>
-                    </div>
-                </mat-list-item>
-            </mat-list>
-            <br>
-            <br>
-            <!-- <mat-divider></mat-divider> -->
-            <mat-list>
-                <h3 mat-subheader>Medical Details:</h3>
-                <mat-list-item>
-                    <h4 class="h4-tag"><b>Blood group:</b> {{donor.medicalDetails.bloodGroup}} </h4>
-                </mat-list-item>
-                <mat-list-item>
-                    <h4 class="h4-tag"><b>Diseases you have:</b>
-                    </h4>
-
-                </mat-list-item>
-                <div class="row-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px" fxLayoutGap.gt-md="50px"
-                    fxLayoutAlign="space-around center">
-
-
-                    <mat-checkbox fxFlex [disabled]="donor.medicalDetails.disease.hiv"
-                        [checked]="donor.medicalDetails.disease.hiv">HIV
-                    </mat-checkbox>
-                    <mat-checkbox fxFlex [disabled]="donor.medicalDetails.disease.fits"
-                        [checked]="donor.medicalDetails.disease.fits">
-                        Fits</mat-checkbox>
-                    <mat-checkbox fxFlex [disabled]="donor.medicalDetails.disease.hepatitis"
-                        [checked]="donor.medicalDetails.disease.hepatitis">Hepatitis</mat-checkbox>
-                    <mat-checkbox  fxFlex [disabled]="donor.medicalDetails.disease.heartAttack"
-                        [checked]="donor.medicalDetails.disease.heartAttack">Heartattack</mat-checkbox>
-                </div>
-                <div class="row-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px" fxLayoutGap.gt-md="50px"
-                    fxLayoutAlign="space-around center">
-
-
-                    <mat-checkbox [disabled]="donor.medicalDetails.disease.rabies"
-                        [checked]="donor.medicalDetails.disease.rabies">Rabies</mat-checkbox>
-                    <mat-checkbox [disabled]="donor.medicalDetails.disease.tuberculosis"
-                        [checked]="donor.medicalDetails.disease.tuberculosis">Tuberculosis</mat-checkbox>
-                    <mat-checkbox [disabled]="donor.medicalDetails.disease.hyperTension"
-                        [checked]="donor.medicalDetails.disease.hyperTension">Hypertension</mat-checkbox>
-                    <mat-checkbox [disabled]="donor.medicalDetails.disease.diabetes"
-                        [checked]="donor.medicalDetails.disease.diabetes">Diabetes</mat-checkbox>
-                </div>
-                <div class="row-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px" fxLayoutGap.gt-md="50px"
-                    fxLayoutAlign="space-around center">
-
-
-                    <mat-checkbox [disabled]="donor.medicalDetails.disease.cancer"
-                        [checked]="donor.medicalDetails.disease.cancer">Cancer</mat-checkbox>
-                    <mat-checkbox [disabled]="donor.medicalDetails.disease.kidneyDisease"
-                        [checked]="donor.medicalDetails.disease.kidneyDisease">KidneyDisease</mat-checkbox>
-                    <mat-checkbox [disabled]="donor.medicalDetails.disease.liverDisease"
-                        [checked]="donor.medicalDetails.disease.liverDisease">LiverDisease</mat-checkbox>
-
-                </div>
-                <mat-list-item>
-                    <h4 class="h4-tag"><b>Organs you want to donate:</b></h4>
-                </mat-list-item>
-                <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px" fxLayoutGap.gt-md="50px"
-                    fxLayoutAlign="space-around center">
+        <div fxLayout fxLayoutAlign="center center">
+            <mat-card class="profile">
+                <mat-list>
+                    <h3>Personal Details:</h3>
 
                     <mat-list-item>
+                        <h4 class="h4-tag"><b>Name: </b> {{donor.firstName}} {{donor.lastName}} </h4>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag"><b>Gender: </b>{{donor.gender}}</h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag"><b>Date of Birth: </b>{{donor.dob}}</h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag"><b>Email: </b>{{donor.email}}</h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag"><b>Phone Number: </b>{{donor.phoneNumber}}</h4>
+
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag"><b>Aadhar Number:</b> {{donor.aadhar}}</h4>
+                    </mat-list-item>
+
+                    <mat-list-item>
+                        <h4 class="h4-tag">
+                            <b>Address: </b>{{donor.address.addressLine1}} {{donor.address.addressLine2}},
+                            {{donor.address.city}},{{donor.address.state}},pincode-{{donor.address.pinCode}}
+                        </h4>
+                    </mat-list-item>
+                    <br>
+                    
+                       <br> <h3 >Guardian Details:</h3>
+                   
+                    <mat-list-item>
+                       <br> <div class="h4-tag" *ngFor="let guardian of donor.guardianList">
+                            Email- {{guardian.email}}<br><br>
+                            Phone no- {{guardian.phoneNumber}}<br>
+                            Relation- {{guardian.relation}}<br>
+                            Address- {{guardian.address.addressLine1}} {{guardian.address.addressLine2}},
+                            {{guardian.address.city}},{{guardian.address.state}},pincode-{{guardian.address.pinCode}}<br>
+                        </div>
+                    </mat-list-item>
+                </mat-list>
+                <br>
+                <br>
+                <!-- <mat-divider></mat-divider> -->
+                <mat-list>
+                   <br> <h3 >Medical Details:</h3>
+                    <mat-list-item>
+                        <h4 class="h4-tag"><b>Blood group:</b> {{donor.medicalDetails.bloodGroup}} </h4>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <h4 class="h4-tag"><b>Diseases you have:</b>
+                        </h4>
+
+                    </mat-list-item>
+                    <div class="row-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px"
+                        fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
+
+
+                        <mat-checkbox fxFlex [disabled]="donor.medicalDetails.disease.hiv"
+                            [checked]="donor.medicalDetails.disease.hiv">HIV
+                        </mat-checkbox>
+                        <mat-checkbox fxFlex [disabled]="donor.medicalDetails.disease.fits"
+                            [checked]="donor.medicalDetails.disease.fits">
+                            Fits</mat-checkbox>
+                        <mat-checkbox fxFlex [disabled]="donor.medicalDetails.disease.hepatitis"
+                            [checked]="donor.medicalDetails.disease.hepatitis">Hepatitis</mat-checkbox>
+                        <mat-checkbox fxFlex [disabled]="donor.medicalDetails.disease.heartAttack"
+                            [checked]="donor.medicalDetails.disease.heartAttack">Heartattack</mat-checkbox>
+                    </div>
+                    <div class="row-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px"
+                        fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
+
+
+                        <mat-checkbox fxFlex [disabled]="donor.medicalDetails.disease.rabies"
+                            [checked]="donor.medicalDetails.disease.rabies">Rabies</mat-checkbox>
+                        <mat-checkbox fxFlex [disabled]="donor.medicalDetails.disease.tuberculosis"
+                            [checked]="donor.medicalDetails.disease.tuberculosis">Tuberculosis</mat-checkbox>
+                        <mat-checkbox fxFlex [disabled]="donor.medicalDetails.disease.hyperTension"
+                            [checked]="donor.medicalDetails.disease.hyperTension">Hypertension</mat-checkbox>
+                        <mat-checkbox fxFlex [disabled]="donor.medicalDetails.disease.diabetes"
+                            [checked]="donor.medicalDetails.disease.diabetes">Diabetes</mat-checkbox>
+                    </div>
+                    <div class="row-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px"
+                        fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
+
+
+                        <mat-checkbox fxFlex [disabled]="donor.medicalDetails.disease.cancer"
+                            [checked]="donor.medicalDetails.disease.cancer">Cancer</mat-checkbox>
+                        <mat-checkbox fxFlex [disabled]="donor.medicalDetails.disease.kidneyDisease"
+                            [checked]="donor.medicalDetails.disease.kidneyDisease">KidneyDisease</mat-checkbox>
+                        <mat-checkbox fxFlex [disabled]="donor.medicalDetails.disease.liverDisease"
+                            [checked]="donor.medicalDetails.disease.liverDisease">LiverDisease</mat-checkbox>
+                        <div fxFlex></div>
+                    </div>
+                    <mat-list-item>
+                        <h4 class="h4-tag"><b>Organs you want to donate:</b></h4>
+                    </mat-list-item>
+                    <div class="row-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px"
+                        fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
+
                         <mat-checkbox [disabled]="donor.medicalDetails.organList[0].name"
                             [checked]="donor.medicalDetails.organList[0].donateOrNot">Cornea</mat-checkbox>
                         <mat-checkbox [disabled]="donor.medicalDetails.organList[1].name"
@@ -151,6 +152,10 @@
                         <mat-checkbox [disabled]="donor.medicalDetails.organList[3].name"
                             [checked]="donor.medicalDetails.organList[3].donateOrNot">
                             Heart</mat-checkbox>
+                </div>
+                <div class="row-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px"
+                fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
+
                         <mat-checkbox [disabled]="donor.medicalDetails.organList[4].name"
                             [checked]="donor.medicalDetails.organList[4].donateOrNot">Kidney</mat-checkbox>
                         <mat-checkbox [disabled]="donor.medicalDetails.organList[5].name"
@@ -160,17 +165,20 @@
                             Lung</mat-checkbox>
                         <mat-checkbox [disabled]="donor.medicalDetails.organList[7].name"
                             [checked]="donor.medicalDetails.organList[7].donateOrNot">Bonemarrow</mat-checkbox>
-                    </mat-list-item>
-                </div>
-            </mat-list>
-        </mat-card>
+
+                    </div>
+                </mat-list>
+            </mat-card>
+        </div>
     </mat-tab>
 
     <mat-tab label="Edit">
-        <div>
+            <div fxLayout fxLayoutAlign="center center">
+
             <form [formGroup]="profileForm">
                 <mat-card>
-                    <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
+        <div fxLayout fxLayoutAlign="center center">
+                <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
                         <h2 mat-subheader>Edit Profile</h2>
                         <mat-form-field>
                             <input matInput placeholder="First Name" formControlName="firstName">
@@ -233,28 +241,33 @@
                             </select>
                         </mat-form-field>
                         <br>
-                        <div class="row-div" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px"
+
+                        <mat-list-item>
+                            <h4 class="h4-tag">Diseases you have:</h4>
+                        </mat-list-item>
+                        <div class="row-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px"
                             fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
-                            <mat-list-item>
-                                <h4 class="h4-tag">Diseases you have:</h4>
-                            </mat-list-item>
 
-
-                            <mat-checkbox formControlName="hiv">HIV</mat-checkbox>
-                            <mat-checkbox formControlName="fits">Fits</mat-checkbox>
-                            <mat-checkbox formControlName="hepatitis">Hepatitis</mat-checkbox>
-                            <mat-checkbox formControlName="heartAttack">Heartattack</mat-checkbox>
-                            <mat-checkbox formControlName="rabies">Rabies</mat-checkbox>
-                            <mat-checkbox formControlName="tuberculosis">Tuberculosis</mat-checkbox>
-                            <mat-checkbox formControlName="hyperTension">Hypertension</mat-checkbox>
-                            <mat-checkbox formControlName="diabetes">Diabetes</mat-checkbox>
-                            <mat-checkbox formControlName="cancer">Cancer</mat-checkbox>
-                            <mat-checkbox formControlName="kidneyDisease">KidneyDisease</mat-checkbox>
-                            <mat-checkbox formControlName="liverDisease">LiverDisease</mat-checkbox>
-                            <div fxLayout fxLayoutAlign="center center">
-                                <button mat-stroked-button type="submit" style="color:whitesmoke"
-                                    (click)="updateDonor()">Save</button></div>
+                            <mat-checkbox fxFlex formControlName="hiv">HIV</mat-checkbox>
+                            <mat-checkbox fxFlex formControlName="fits">Fits</mat-checkbox>
+                            <mat-checkbox fxFlex formControlName="hepatitis">Hepatitis</mat-checkbox>
+                            <mat-checkbox fxFlex formControlName="heartAttack">Heartattack</mat-checkbox>
+                            <mat-checkbox fxFlex formControlName="rabies">Rabies</mat-checkbox>
+                            <mat-checkbox fxFlex formControlName="tuberculosis">Tuberculosis</mat-checkbox>
                         </div>
+                        <div class="row-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px"
+                            fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
+                            <mat-checkbox fxFlex formControlName="hyperTension">Hypertension</mat-checkbox>
+                            <mat-checkbox fxFlex formControlName="diabetes">Diabetes</mat-checkbox>
+                            <mat-checkbox fxFlex formControlName="cancer">Cancer</mat-checkbox>
+                            <mat-checkbox fxFlex formControlName="kidneyDisease">Kidney Disease</mat-checkbox>
+                            <mat-checkbox fxFlex formControlName="liverDisease">Liver Disease</mat-checkbox>
+                        </div>
+                        <div fxLayout fxLayoutAlign="center center">
+                            <button mat-stroked-button type="submit" style="color:whitesmoke"
+                                (click)="updateDonor()">Save</button></div>
+
+                    </div>
                     </div>
                 </mat-card>
             </form>

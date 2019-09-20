@@ -17,10 +17,10 @@ import java.util.List;
 @CrossOrigin
 public class LookUpController {
 
-    private LookUpService chatService;
+    private LookUpService lookUpService;
 
     public LookUpController(LookUpService chatService) {
-        this.chatService = chatService;
+        this.lookUpService = chatService;
     }
 
     @ApiOperation("Get Recommendations")
@@ -28,8 +28,7 @@ public class LookUpController {
     public ResponseEntity<List<Donor>> retrieveDonorsByBlood(@PathVariable("name") String name) throws IOException {
         ResponseEntity responseEntity;
         try {
-		System.out.println(name);
-            responseEntity = new ResponseEntity<List<Donor>>(chatService.retrieveDonors(name), HttpStatus.OK);
+            responseEntity = new ResponseEntity<List<Donor>>(lookUpService.retrieveDonors(name), HttpStatus.OK);
         } catch (Exception e) {
             responseEntity = new ResponseEntity<String>("Exception", HttpStatus.CONFLICT);
             e.printStackTrace();
@@ -42,8 +41,7 @@ public class LookUpController {
     public ResponseEntity<List<Donor>> retrieveDonorsByBloodAndOrgan(@PathVariable("blood") String blood, @PathVariable("organ") String organ) throws IOException {
         ResponseEntity responseEntity;
         try {
-            System.out.println(blood);
-            responseEntity = new ResponseEntity<List<Donor>>(chatService.retrieveDonors(blood), HttpStatus.OK);
+            responseEntity = new ResponseEntity<List<Donor>>(lookUpService.retrieveDonorsByBloodAndOrgan(blood, organ), HttpStatus.OK);
         } catch (Exception e) {
             responseEntity = new ResponseEntity<String>("Exception", HttpStatus.CONFLICT);
             e.printStackTrace();

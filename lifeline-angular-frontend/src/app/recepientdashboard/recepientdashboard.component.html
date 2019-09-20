@@ -5,9 +5,10 @@
         </mat-tab>
        
         <!--Profile Tab-->
-        <mat-tab label="Profile" class="tab">
+        
+        <mat-tab label="Profile" class="tab" >
 
-            <mat-card>
+            <mat-card class="profile">
                 <mat-list>
                     <h3 mat-subheader>Personal Details:</h3>
 
@@ -35,11 +36,12 @@
                     <mat-list-item>
                         <h4 class="h4-tag">Aadhar Number: {{recepients.aadhar}}</h4>
 
-                    </mat-list-item>
+                    </mat-list-item><br>
                     <mat-list-item>
                         <h4 class="h4-tag">Address: {{recepients.address.addressLine1}}
                             {{recepients.address.addressLine2}},
-                            {{recepients.address.city}},{{recepients.address.state}},pincode-{{recepients.address.pinCode}}
+                            {{recepients.address.city}},{{recepients.address.state}},
+                            <br>pincode-{{recepients.address.pinCode}}
                         </h4>
                     </mat-list-item>
 
@@ -52,6 +54,7 @@
             </mat-card>
 
         </mat-tab>
+        
         <mat-tab id="text" label="Edit">
             <div class="profile">
                 <form [formGroup]="profileForm">

@@ -19,7 +19,8 @@ public class LookUpServiceImpl implements LookUpService {
     @Override
     public List<Donor> retrieveDonors(String name) throws DonorsNotFoundException {
         try {
-            List<Donor> donorList = donorRepository.retrieveDonors(name);
+            System.out.println(donorRepository.retrieveLookedUpDonors("A+"));
+            List<Donor> donorList = donorRepository.retrieveLookedUpDonors(name);
             System.out.println(donorList);
             return donorList;
         }
