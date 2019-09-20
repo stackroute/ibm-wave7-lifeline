@@ -38,10 +38,12 @@ export class ReuestComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.donors.length);
     let bloodGroup = this.requestOrganForm.get('bloodGroup').value;
     let organName = this.requestOrganForm.get('organName').value;
+    console.log(bloodGroup);
+    console.log(organName)
     this.recepientProfileService.getDonorRecommendationsBasedOnOrganAndBloodForRecepient(bloodGroup, organName).subscribe(data => {
+      console.log(this.donors)
       this.donors = data
     });
   }
