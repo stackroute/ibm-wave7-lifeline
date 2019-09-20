@@ -357,8 +357,8 @@
                                             <div id="field-div"></div>
                         </div>
                         <h6><b>Disease: </b><i>(Select the diseases which you have)</i></h6>
-                        <div formGroupName="disease">
-                                <div fxLayout fxLayoutGap="50px" fxLayoutAlign="start center">
+                        <div class="disease"formGroupName="disease"fxLayout fxLayout.lt-md="column" fxLayoutGap="50px" fxLayoutAlign="space-around center">
+                                
                                 <mat-checkbox fxFlex formControlName="hiv" (change)="checkBoneMarrow()" (change)="check()"
                                     (change)="checkkidney()" (change)="checkheartliver()" (change)="checkcornea()"
                                     (change)="checkLungs()">HIV</mat-checkbox>
@@ -370,8 +370,7 @@
                                     (change)="checkkidney()" (change)="checkheartliver()" (change)="checkLungs()"
                                     (change)="checkBoneMarrow()">Heart Attack
                                 </mat-checkbox>
-                            </div>
-                            <div fxLayout fxLayoutGap="50px" fxLayoutAlign="start center">
+                        </div><div class="disease"formGroupName="disease"fxLayout fxLayout.lt-md="column" fxLayoutGap="50px" fxLayoutAlign="space-around center">
                                 <mat-checkbox fxFlex formControlName="rabies" (change)="check()" (change)="checkBoneMarrow()"
                                     (change)="checkkidney()" (change)="checkcornea()" (change)="checkheartliver()"
                                     (change)="checkLungs()">Rabies</mat-checkbox>
@@ -381,9 +380,8 @@
                                 </mat-checkbox>
                                 <mat-checkbox fxFlex formControlName="diabetes" (change)="check()" (change)="checkheartliver()"
                                     (change)="checkkidney()">Diabetes</mat-checkbox>
-                            </div>
-                            <div fxLayout fxLayoutGap="50px" fxLayoutAlign="space-around center">
-                                <mat-checkbox fxFlex formControlName="cancer" (change)="checkcornea()" (change)="checkkidney()"
+                            </div><div class="disease"formGroupName="disease"fxLayout fxLayout.lt-md="column" fxLayoutGap="50px" fxLayoutAlign="space-around center">
+                              <mat-checkbox fxFlex formControlName="cancer" (change)="checkcornea()" (change)="checkkidney()"
                                     (change)="checkLungs()" (change)="checkheartliver()">Cancer</mat-checkbox>
                                 <mat-checkbox fxFlex formControlName="kidneyDisease" (change)="checkLungs()"
                                     (change)="checkkidney()">
@@ -392,10 +390,10 @@
                                     (change)="checkkidney()">Liver
                                     Disease</mat-checkbox>
                                     <div fxFlex></div>
-                            </div>
+                            
                         </div>
                         <h6><b>Organs: </b><i>(Select the organs which you wish to donate)</i></h6>
-                        <div formArrayName="organList" fxLayout fxLayout.lt-md="column" fxLayoutGap="50px" fxLayoutAlign="space-around center">
+                        <div class="organs"formArrayName="organList" fxLayout fxLayout.lt-md="column" fxLayoutGap="50px" fxLayoutAlign="space-around center">
                             <div *ngFor="let organ of organList.controls; let i = index" [formGroupName]="i" >
                                 <mat-checkbox  [disabled]="organState[i]" formControlName="donateOrNot">
                                     {{this.organList.value[i].name}}
@@ -405,21 +403,23 @@
                     </div>
 
                     <h6><b>Declaration:</b></h6>
-                    <mat-checkbox formControlName="condition1">
-                        I hereby declare that I am a citizen of India and above 18 years of age
-                    </mat-checkbox>
+                    <mat-checkbox  formControlName="condition1">
+                          <span class="conditions">   I hereby declare that I am a citizen of India and above 18 years of age
+                          </span> </mat-checkbox>
                     <mat-checkbox formControlName="condition2">
-                        I hereby unequivocally authorize the removal of my organ / organs, mentioned above from my body
+                            <span class="conditions">    I hereby unequivocally authorize the removal of my organ / organs, mentioned above from my body
                         after my
-                        death for therapeutic purposes.
-                    </mat-checkbox>
+                        death for therapeutic purposes.</span>
+                    </mat-checkbox><span></span>
 
                     <mat-checkbox formControlName="condition3">
-                        I hereby confirm that all the above information is right and I choose to pledge my organs being
+                            <span class="conditions">     I hereby confirm that all the above information is right and I choose to pledge my organs being
                         in
                         the
-                        sane state of mind.
-                    </mat-checkbox>
+                        sane state of mind.</span>
+                    </mat-checkbox><span></span>
+
+
                     <div class="button-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center"
                         fxLayoutGap="50px">
                         <button class="button" mat-button matStepperPrevious>Back</button>

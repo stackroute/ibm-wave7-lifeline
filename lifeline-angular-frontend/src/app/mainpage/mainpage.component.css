@@ -1,8 +1,7 @@
-/* .landing {
-  margin-top:64px;
+.heart {
+  /* margin-top:64px; */
   height: 100%;
-} */
-@import url('https://fonts.googleapis.com/css?family=Roboto:700');
+}
 body {
  margin:0px;
  font-family:'Roboto';
@@ -11,29 +10,26 @@ body {
 #container {
  color:#666;
  text-transform: uppercase;
- font-size:36px;
-
+ font-size:2.2rem;
  font-weight:bold;
- padding-top:250px;
- 
+ padding-top:300px;
  /* position:absolute; */
- 
  bottom:45%;
  display:block;
  margin-left: 100px;
 }
-#flip {
- height:45px;
+ #flip {
+ height:60px;
  overflow:hidden;
 }
 #flip > div > div {
  color:#666;
- padding:4px 12px;
- height:45px;
+ /* padding:4px 12px; */
+ /* height:60px; */
  margin-bottom:45px;
  display:inline-block;
 
-}
+} 
 #flip div:first-child {
  animation: show 5s linear infinite;
 }
@@ -56,29 +52,30 @@ body {
  99.99% {margin-top:0px;}
  100% {margin-top:-270px;}
 }
-p {
+/* p {
  position:fixed;
  width:100%;
  bottom:30px;
  font-size:12px;
  color:#999;
  margin-top:200px;
-}
+} */
 
 iframe {
   position: absolute;
   right: 0px;
 }
 
-.heart {
-  /* min-height: 35vh; */
+ .heart {
+   min-height: 35vh;
   height: 700px;
   opacity: 1;
-  width: 99vw;
+  /* width: 99vw; */
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(../../assets/images/heart.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  
 }
 .button1{
 margin-top: 50px;
@@ -114,9 +111,59 @@ color: #5e2c5c;
   }
 }
 
-@media only screen and(max-width:320px){
-  [class*="button1"] 
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+  div.heart
   {
-  width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(../../assets/images/heart1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  div.heart
+  {
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(../../assets/images/heart1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  div.heart
+  {
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(../../assets/images/heart.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  div.heart
+  {
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(../../assets/images/heart.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  div.heart
+  {
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(../../assets/images/heart.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     }
 }

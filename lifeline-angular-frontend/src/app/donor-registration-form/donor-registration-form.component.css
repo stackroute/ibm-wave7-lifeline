@@ -3,11 +3,15 @@ mat-card{
     margin: 3%;
     margin-top: 9%;
     background-color: white;
-    height: 100vh;
+    height: 100%;
 }
 mat-horizontal-stepper{
     background-color: white;
 
+}
+.conditions
+{
+    white-space: normal;
 }
 h6{
     padding-top: 5px;
@@ -17,7 +21,10 @@ h6{
 form{
     height: 100%;
 }
-
+/* .disease
+{
+    align-items:inherit;
+} */
 button:disabled{
     color:black;
     background-color: #b2b2b2;
@@ -44,7 +51,15 @@ mat-form-field, #field-div{
     align-self: center;
 
 }
-.form-div{
+.disease
+{
+    align-items: start !important;
+}
+.organs
+{
+    align-items: start !important;
+}
+/* .form-div{
     background-color: #faf7fa;
     height: 100%;
-}
+} */

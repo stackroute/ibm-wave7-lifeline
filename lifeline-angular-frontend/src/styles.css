@@ -41,18 +41,20 @@ body{
   .mat-fab:not([class*=mat-elevation-z]), .mat-mini-fab:not([class*=mat-elevation-z]) {
     box-shadow: 0 0 0 0 rgba(0,0,0,0), 0 0px 0px 0 rgba(0,0,0,0), 0 0 0 0 rgba(0,0,0,0);
 }
-html,body{
+/* html,body{
     height: 100%;
     flex-direction: column;
     margin:0;
     box-sizing: border-box;
 
-}
+} */
 * {
-    font-size: 100%;
-    font-family: 'Roboto';
- }
- p,li{
-    font-size: 1.5rem;
- }
- 
+   font-size: 100%;
+   font-family: 'Roboto';
+}
+p,li{
+   font-size: 1rem;
+}
+.mat-checkbox-layout {
+    display: inline-block !important;
+}
