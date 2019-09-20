@@ -40,7 +40,6 @@ import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { LandingpagereportsComponent } from './landingpagereports/landingpagereports.component';
 import { DonordashboardreportsComponent } from './donordashboardreports/donordashboardreports.component';
@@ -59,7 +58,7 @@ import { OrganRequestStatusComponent } from './organ-request-status/organ-reques
 import { DeletealertComponent } from './header/deletealert/deletealert.component';
 import { ChatBox } from '../app/recepientdashboard/chat-box/chat-box';
 import { ChatButton } from '../app/recepientdashboard/chat-button/chat-button';
-
+import { StorageServiceModule } from 'angular-webstorage-service';
 
 //  import { EmbedVideoService } from 'ngx-embed-video';
 @NgModule({
@@ -130,8 +129,8 @@ import { ChatButton } from '../app/recepientdashboard/chat-button/chat-button';
     MatSelectModule,
     MatExpansionModule,
     MatSidenavModule,
-    MatTableModule
- 
+    MatTableModule,
+    StorageServiceModule
   ],
   entryComponents: [
     SnackBarComponent,

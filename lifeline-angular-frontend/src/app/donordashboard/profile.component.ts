@@ -8,6 +8,8 @@ import { Chart } from 'chart.js';
 import { ReportgenerationserviceService } from '../service/reportgenerationservice.service';
 import { Donor } from '../model/model';
 import * as jspdf from 'jspdf';
+import { AuthenticateService } from '../service/authenticate.service';
+import { Observable } from 'rxjs';
 
 export interface Section {
   name: string;
@@ -17,7 +19,8 @@ export interface Section {
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+  providers: []
 })
 export class ProfileComponent implements OnInit {
 
@@ -61,6 +64,8 @@ export class ProfileComponent implements OnInit {
     name: 'platelet',
     donateOrNot: false,
   }];
+  isLoggedIn$: Observable<boolean>;
+  loggedIn: boolean;
   public donor: Donor;
   public profileForm: FormGroup;
   private donorId;
@@ -69,7 +74,11 @@ export class ProfileComponent implements OnInit {
   LineChart = [];
   organdonationreport;
   donorreport;
-  constructor(private _reports: ReportgenerationserviceService, private route: ActivatedRoute, private router: Router, private donorProfileService: DonorProfileService, private _snackBar: MatSnackBar) { }
+  constructor(private _reports: ReportgenerationserviceService, private route: ActivatedRoute, 
+    private router: Router, private donorProfileService: DonorProfileService, 
+    private _snackBar: MatSnackBar, private authenticationService: AuthenticateService) {
+      // this.authenticationService.setLoggedValue(true);
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {

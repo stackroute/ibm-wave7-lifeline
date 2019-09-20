@@ -17,3 +17,9 @@
 {
     float:right;
 }
+
+.mat-card h6 {
+    padding: 2%;
+    font-family: 'Roboto', sans-serif; 
+    color: #f44336;
+}

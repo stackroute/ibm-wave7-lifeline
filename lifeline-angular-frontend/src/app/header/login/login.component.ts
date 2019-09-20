@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormBuilder, FormGroup,Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticateService } from '../../service/authenticate.service';
 import { User } from '../../model/User';
 import { Router } from '@angular/router';
@@ -12,27 +12,26 @@ import { VerificationAlertComponent } from 'src/app/recepientregistrationformcom
 })
 export class LoginComponent implements OnInit {
   public result;
-  
+
   private user = new User();
   loginForm: FormGroup;
+  logged: boolean;
 
   constructor(public dialogRef: MatDialogRef<LoginComponent>, @Inject(MAT_DIALOG_DATA) public data: string,
-    private authenticateService: AuthenticateService, private formBuilder: FormBuilder, private router: Router,private dialog:MatDialog) { }
+    private authenticateService: AuthenticateService, private formBuilder: FormBuilder, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit() {
-    // this.authenticateService.login(this.user)
-    // .subscribe(data=>this.result=data);
+    this.logged = false;
     this.createForm();
   }
 
   createForm() {
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
-      password: ['',[Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
     });
   }
-  close()
-  {
+  close() {
     this.dialogRef.close();
   }
   loginUser() {
@@ -45,19 +44,21 @@ export class LoginComponent implements OnInit {
       .subscribe(data => {
         let id = data.id;
         console.log(data);
-        if(data.token != "Please Verify Your Email") {
+        if (data.token != "Please Verify Your Email") {
+          this.logged = false;
           if (data.role === 'donor') {
-            this.authenticateService.loggedIn.next(true);
             this.router.navigate(['/donor'], { queryParams: { id: id } });
+            this.authenticateService.setLoggedValue(true);
             this.dialogRef.close();
-          }   
+          }
           else if (data.role === 'recepient') {
-            this.authenticateService.loggedIn.next(true);
             this.router.navigate(['/recepient'], { queryParams: { id: id } });
+            this.authenticateService.setLoggedValue(true);
             this.dialogRef.close();
           }
         }
-        else {
+        else if (data != null) {
+          this.logged = false;
           const dialogRef = this.dialog.open(VerificationAlertComponent, {
             width: '250px',
           });
@@ -69,25 +70,25 @@ export class LoginComponent implements OnInit {
         }
       },
         error => {
+          this.logged = true;
           console.log(error);
         });
   }
-  signup()
-  {
+
+  signup() {
     console.log(this.data)
     if (this.data === 'donor') {
-     
       this.router.navigate(['/donor-registration']);
       console.log(this.data)
       this.dialogRef.close();
-    }   
-    else{
+    }
+    else {
       this.router.navigate(['/recepient-registration']);
       this.dialogRef.close();
     }
   }
-  forgotPassword()
-  {
+
+  forgotPassword() {
     this.router.navigate(['/forgotPassword']);
     this.dialogRef.close();
   }

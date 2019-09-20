@@ -3,42 +3,36 @@
     <br>
     <mat-card>
       <!-- <button class="button1" (Click)="close()">*</button> -->
-
       <h3>Login
         <button mat-icon-button class="close-button" disableRipple="true" (click)="close()">
           <mat-icon>close</mat-icon>
         </button>
       </h3>
-
       <form [formGroup]="loginForm">
-
-
         <div>
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Username" formControlName="username" name="username" required>
-            <mat-error *ngIf="this.loginForm .controls['username'].invalid"> valid user name is
-                required
+            <mat-error *ngIf="this.loginForm .controls['username'].invalid"> Valid Email is required
             </mat-error>
           </mat-form-field>
         </div>
         <div>
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Password" formControlName="password" type="password" name="password" required>
-            <mat-error *ngIf="this.loginForm .controls['password'].hasError('required')"> valid Password is required</mat-error>
+            <mat-error *ngIf="this.loginForm .controls['password'].hasError('required')"> Valid Password is required
+            </mat-error>
           </mat-form-field>
         </div>
       </form>
+      <h6 *ngIf="logged">Invalid Credentials</h6>
       <div>
         <button mat-raised-button (click)="loginUser()" color="primary" data-dismiss="loginContainer">Login</button>
       </div>
       <br />
       <div>
-  
-  <button mat-button (click)="forgotPassword()">Forgot password?</button><span></span>
-          <button   mat-button (click)="signup()"color="primary"><span>New User? </span>Sign up</button>
+        <button mat-button (click)="forgotPassword()">Forgot password?</button><span></span>
+        <button mat-button (click)="signup()" color="primary"><span>New User? </span>Sign up</button>
       </div>
-     
-
     </mat-card>
     <br />
   </div>

@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../model/User';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { WebStorageService, LOCAL_STORAGE } from 'angular-webstorage-service';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -24,7 +25,18 @@ export class AuthenticateService {
 
   private user: User;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, @Inject(LOCAL_STORAGE) private storage: WebStorageService) { 
+  }
+
+  setLoggedValue(value: boolean) {
+    console.log(value);
+    this.loggedIn.next(value);
+    this.storage.set("logged", value)
+  }
+
+  getLoggedValue() {
+    return this.storage.get("logged");
+  }
 
   saveUser(user: User): Observable<User> {
     return this.httpClient.post<User>(this.apiUrl, user);
