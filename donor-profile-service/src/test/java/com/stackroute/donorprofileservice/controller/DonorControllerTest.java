@@ -177,6 +177,7 @@ public class DonorControllerTest {
 //	Testcase for deleteDonorProfile()
 	@Test
 	public void deleteDonorProfile() throws Exception {
+		when(donorService.getDonorById(anyInt())).thenReturn(donor);
 		when(donorService.deleteDonorProfile(anyInt())).thenReturn(donor);
 		mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/donor/"+donor.getId())
 				.contentType(MediaType.APPLICATION_JSON).content(jsonToString(donor)))

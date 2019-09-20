@@ -176,8 +176,8 @@ services:
     healthcheck:
       test: "exit 0"
   
-  recommendation-service:
-    build: recommendation-service/
+  chat-service:
+    build: chat-service/
     depends_on:
       - neo4j
       - eureka-server
@@ -188,7 +188,7 @@ services:
     restart: always
     network_mode: "host"
     hostname: localhost
-    image: recommendation-service
+    image: chat-service
     ports:
       - 8084:8084
     healthcheck:

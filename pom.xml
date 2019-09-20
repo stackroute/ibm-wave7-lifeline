@@ -32,7 +32,7 @@
 		<module>donor-profile-service</module>
 		<module>login-service</module>
 		<module>recepient-profile-service</module>
-		<module>recommendation-service</module>
+		<module>chat-service</module>
 		<module>reportservice</module>
 		<module>search-service</module>
 	</modules>
