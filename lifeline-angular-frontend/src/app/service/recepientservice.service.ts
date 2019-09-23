@@ -14,7 +14,7 @@ export class RecepientserviceService {
   private recepientUrl = 'http://52.66.129.41:8080/recepient-service/api/v1/recepient';
   private emailUrl = 'http://52.66.129.41:8080/recepient-service/api/v1/verify';
   private resultUrl = 'http://52.66.129.41:8085/results';
-  private chatUrl = 'http://172.23.238.228:8084/email';
+  private chatUrl = 'http://52.66.129.41:8084/email';
 
   constructor(private httpClient: HttpClient) { }
 

@@ -23,7 +23,7 @@ public class SendMail{
         System.out.println(helper);
         helper.setTo(email);
         helper.setSubject("Request from Recepient ");
-        helper.setText("http://localhost:4200/chat" + "/" + recepientId + "/" + donorId + "/" + email); //link for doner to chat is /chat/{id}
+        helper.setText("http://52.66.129.41:4200/chat" + "/" + recepientId + "/" + donorId + "/" + email); //link for doner to chat is /chat/{id}
         javaMailSender.send(message);
         return "Successfully Sent Email";
     }

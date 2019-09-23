@@ -13,7 +13,7 @@ import { DonorProfileService } from 'src/app/service/donor-profile.service';
 })
 export class ChatBox {
 
-  private serverUrl = 'http://172.23.238.228:8084/websocket';
+  private serverUrl = 'http://52.66.129.41:8084/websocket';
 
   private donorId: any;
 
