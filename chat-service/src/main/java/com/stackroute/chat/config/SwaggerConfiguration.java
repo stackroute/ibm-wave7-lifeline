@@ -18,15 +18,15 @@ public class SwaggerConfiguration {
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
 				.apis(RequestHandlerSelectors
-						.basePackage("com.stackroute.recommendation"))
+						.basePackage("com.stackroute.chat"))
 				.paths(PathSelectors.regex("/.*"))
 				.build().apiInfo(apiEndPointsInfo());
 	}
 	
 //	api endpoint informations
 	private ApiInfo apiEndPointsInfo() {
-		return new ApiInfoBuilder().title("Recommendation REST API")
-				.description("Recommendation Information")
+		return new ApiInfoBuilder().title("Chat REST API")
+				.description("Chat Information")
 				.version("1.0.0")
 				.build();
 	}

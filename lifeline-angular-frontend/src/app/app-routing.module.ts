@@ -16,6 +16,7 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { StatusComponent } from './recepientdashboard/status/status.component';
 import { RecommendationComponent } from './recepientdashboard/recommendation/recommendation.component';
+import { ChatBox } from './recepientdashboard/chat-box/chat-box';
 const routes: Routes = [
   {
     path: '',
@@ -84,6 +85,10 @@ const routes: Routes = [
   {
     path:'recommendations',
     component:RecommendationComponent
+  },
+  {
+    path:'chat',
+    component: ChatBox
   }
 ];
 

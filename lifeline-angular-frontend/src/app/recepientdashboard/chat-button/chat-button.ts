@@ -1,6 +1,8 @@
-import {Component, Input} from '@angular/core';
-import {MatBottomSheet} from '@angular/material/bottom-sheet';
+import {Component, Input, Inject} from '@angular/core';
+import {MatBottomSheet, MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom-sheet';
 import {ChatBox} from '../chat-box/chat-box';
+import { Route } from '@angular/compiler/src/core';
+import { Routes, ActivatedRoute, Router } from '@angular/router';
 /**
  * @title Bottom Sheet Overview
  */
@@ -11,11 +13,18 @@ import {ChatBox} from '../chat-box/chat-box';
 })
 export class ChatButton {
 
-  @Input() private value: string;
+  @Input() private donorId: number;
+  
+  @Input() private recepientId: number;
 
-  constructor(private _bottomSheet: MatBottomSheet) {}
+  constructor(private _bottomSheet: MatBottomSheet, private router: Router) {
+  }
 
   openBottomSheet(): void {
-    this._bottomSheet.open(ChatBox);
+    console.log(this.donorId);
+    console.log(this.recepientId);
+    this._bottomSheet.open(ChatBox, {
+      data: {id: [this.donorId, this.recepientId]}
+    });
   }
 }

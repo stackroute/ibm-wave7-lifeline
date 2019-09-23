@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RecepientserviceService } from '../service/recepientservice.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Recepient } from '../model/model';
-import { SnackBarComponent } from '../snack-bar/snack-bar.component';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Donor } from '../model/donor';
 
 
@@ -18,12 +17,11 @@ export class ReuestComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private recepientProfileService: RecepientserviceService) { }
   public requestOrganForm: FormGroup;
-  private recepientId;
+  public recepientId: number;
   public recepients: Recepient;
   public donors: Array<Donor> = [];
 
   ngOnInit() {
-    console.log(this.donors.length)
     this.route.queryParams.subscribe(params => {
       this.recepientId = params["id"];
       this.requestForm();
@@ -43,7 +41,7 @@ export class ReuestComponent implements OnInit {
     console.log(bloodGroup);
     console.log(organName)
     this.recepientProfileService.getDonorRecommendationsBasedOnOrganAndBloodForRecepient(bloodGroup, organName).subscribe(data => {
-      console.log(this.donors)
+      console.log(data)
       this.donors = data
     });
   }
