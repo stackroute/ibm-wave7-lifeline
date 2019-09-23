@@ -53,7 +53,7 @@ body{
    font-family: 'Roboto';
 }
 p,li{
-   font-size: 1rem;
+   font-size: 1.4rem;
 }
 .mat-checkbox-layout {
     display: inline-block !important;
