@@ -3,10 +3,10 @@
     background: #EFE7F1;  /* fallback for old browsers */
 width: 100%;
 margin-top:2cm;
-height: 100vh;
+height: 73vh;
 max-width: 100%;
 }
 .container h2{
     text-align: center;
-    padding-top: 4cm;
+    padding-top: 10%;
 }
