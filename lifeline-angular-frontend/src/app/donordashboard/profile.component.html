@@ -69,12 +69,12 @@
                         </h4>
                     </mat-list-item>
                     <br>
-                    
-                       <h3 >Guardian Details:</h3>
-                   
+
+                    <h3>Guardian Details:</h3>
+
                     <mat-list-item>
                         <div class="h4-tag" *ngFor="let guardian of donor.guardianList">
-                       <br><br>   <br><br>  Email- {{guardian.email}}<br>
+                            <br><br> <br><br> Email- {{guardian.email}}<br>
                             Phone no- {{guardian.phoneNumber}}<br>
                             Relation- {{guardian.relation}}<br>
                             Address- {{guardian.address.addressLine1}} {{guardian.address.addressLine2}},
@@ -86,7 +86,8 @@
                 <br>
                 <!-- <mat-divider></mat-divider> -->
                 <mat-list>
-                  <br><br> <br> <h3 >Medical Details:</h3>
+                    <br><br> <br>
+                    <h3>Medical Details:</h3>
                     <mat-list-item>
                         <h4 class="h4-tag"><b>Blood group:</b> {{donor.medicalDetails.bloodGroup}} </h4>
                     </mat-list-item>
@@ -152,9 +153,9 @@
                         <mat-checkbox [disabled]="donor.medicalDetails.organList[3].name"
                             [checked]="donor.medicalDetails.organList[3].donateOrNot">
                             Heart</mat-checkbox>
-                </div>
-                <div class="row-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px"
-                fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
+                    </div>
+                    <div class="row-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px"
+                        fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
 
                         <mat-checkbox [disabled]="donor.medicalDetails.organList[4].name"
                             [checked]="donor.medicalDetails.organList[4].donateOrNot">Kidney</mat-checkbox>
@@ -173,101 +174,101 @@
     </mat-tab>
 
     <mat-tab label="Edit">
-            <div fxLayout fxLayoutAlign="center center">
+        <div fxLayout fxLayoutAlign="center center">
 
             <form [formGroup]="profileForm">
                 <mat-card>
-        <div fxLayout fxLayoutAlign="center center">
-                <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
-                        <h2 mat-subheader>Edit Profile</h2>
-                        <mat-form-field>
-                            <input matInput placeholder="First Name" formControlName="firstName">
-                        </mat-form-field>
-                        <mat-form-field>
-                            <input matInput placeholder="Last Name" formControlName="lastName">
-                        </mat-form-field>
-                        <br>
-                        <mat-form-field>
-                            <input matInput placeholder="Email" formControlName="email">
-                        </mat-form-field>
-                        <br>
-                        <mat-form-field>
-                            <input matInput placeholder="Phone Number" formControlName="phoneNumber">
-                        </mat-form-field>
-                        <br>
-                        <mat-form-field class="example-full-width">
-                            <input matInput [matDatepickerFilter]="myFilter" formControlName="dateOfBirth"
-                                [matDatepicker]="picker" placeholder="Date Of Birth">
-                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker #picker></mat-datepicker>
-                        </mat-form-field>
-                        <br>
-                        <mat-form-field>
-                            <input matInput placeholder="Aadhar Number" formControlName="aadhar">
-                        </mat-form-field>
-                        <br>
-                        <mat-label>Address</mat-label>
-                        <mat-form-field>
-                            <input matInput placeholder="Address Line1" formControlName="addressLine1">
-                        </mat-form-field>
-                        <mat-form-field>
-                            <input matInput placeholder="Address Line2" formControlName="addressLine2">
-                        </mat-form-field>
-                        <mat-form-field>
-                            <input matInput placeholder="City" formControlName="city">
-                        </mat-form-field>
-                        <mat-form-field>
-                            <input matInput placeholder="State" formControlName="state">
-                        </mat-form-field>
-                        <mat-form-field>
-                            <input matInput placeholder="Pincode" formControlName="pinCode">
-                        </mat-form-field>
-                        <mat-form-field>
-                            <input matInput placeholder="Gender" formControlName="gender">
-                        </mat-form-field>
-                        <br>
-                        <br>
-                        <mat-form-field>
-                            <mat-label>BloodGroup</mat-label>
-                            <select matNativeControl required disabled formControlName="bloodGroup">
-                                <option value="A+">A+</option>
-                                <option value="A-">A-</option>
-                                <option value="B+">B+</option>
-                                <option value="B-">B-</option>
-                                <option value="AB+">AB+</option>
-                                <option value="AB-">AB-</option>
-                                <option value="O+">O+</option>
-                                <option value="O-">O-</option>
-                            </select>
-                        </mat-form-field>
-                        <br>
+                    <div fxLayout fxLayoutAlign="center center">
+                        <div class="example-container" fxLayout="column" fxLayoutAlign="space-between">
+                            <h2 mat-subheader>Edit Profile</h2>
+                            <mat-form-field>
+                                <input matInput placeholder="First Name" formControlName="firstName">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="Last Name" formControlName="lastName">
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <input matInput placeholder="Email" formControlName="email">
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <input matInput placeholder="Phone Number" formControlName="phoneNumber">
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field class="example-full-width">
+                                <input matInput [matDatepickerFilter]="myFilter" formControlName="dateOfBirth"
+                                    [matDatepicker]="picker" placeholder="Date Of Birth">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <input matInput placeholder="Aadhar Number" formControlName="aadhar">
+                            </mat-form-field>
+                            <br>
+                            <mat-label>Address</mat-label>
+                            <mat-form-field>
+                                <input matInput placeholder="Address Line1" formControlName="addressLine1">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="Address Line2" formControlName="addressLine2">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="City" formControlName="city">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="State" formControlName="state">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="Pincode" formControlName="pinCode">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="Gender" formControlName="gender">
+                            </mat-form-field>
+                            <br>
+                            <br>
+                            <mat-form-field>
+                                <mat-label>BloodGroup</mat-label>
+                                <select matNativeControl required disabled formControlName="bloodGroup">
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                            </mat-form-field>
+                            <br>
 
-                        <mat-list-item>
-                            <h4 class="h4-tag">Diseases you have:</h4>
-                        </mat-list-item>
-                        <div class="row-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px"
-                            fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
+                            <mat-list-item>
+                                <h4 class="h4-tag">Diseases you have:</h4>
+                            </mat-list-item>
+                            <div class="row-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px"
+                                fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
 
-                            <mat-checkbox fxFlex formControlName="hiv">HIV</mat-checkbox>
-                            <mat-checkbox fxFlex formControlName="fits">Fits</mat-checkbox>
-                            <mat-checkbox fxFlex formControlName="hepatitis">Hepatitis</mat-checkbox>
-                            <mat-checkbox fxFlex formControlName="heartAttack">Heartattack</mat-checkbox>
-                            <mat-checkbox fxFlex formControlName="rabies">Rabies</mat-checkbox>
-                            <mat-checkbox fxFlex formControlName="tuberculosis">Tuberculosis</mat-checkbox>
+                                <mat-checkbox fxFlex formControlName="hiv">HIV</mat-checkbox>
+                                <mat-checkbox fxFlex formControlName="fits">Fits</mat-checkbox>
+                                <mat-checkbox fxFlex formControlName="hepatitis">Hepatitis</mat-checkbox>
+                                <mat-checkbox fxFlex formControlName="heartAttack">Heartattack</mat-checkbox>
+                                <mat-checkbox fxFlex formControlName="rabies">Rabies</mat-checkbox>
+                                <mat-checkbox fxFlex formControlName="tuberculosis">Tuberculosis</mat-checkbox>
+                            </div>
+                            <div class="row-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px"
+                                fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
+                                <mat-checkbox fxFlex formControlName="hyperTension">Hypertension</mat-checkbox>
+                                <mat-checkbox fxFlex formControlName="diabetes">Diabetes</mat-checkbox>
+                                <mat-checkbox fxFlex formControlName="cancer">Cancer</mat-checkbox>
+                                <mat-checkbox fxFlex formControlName="kidneyDisease">Kidney Disease</mat-checkbox>
+                                <mat-checkbox fxFlex formControlName="liverDisease">Liver Disease</mat-checkbox>
+                            </div>
+                            <div fxLayout fxLayoutAlign="center center">
+                                <button mat-stroked-button type="submit" style="color:whitesmoke"
+                                    (click)="updateDonor()">Save</button></div>
+
                         </div>
-                        <div class="row-div" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px"
-                            fxLayoutGap.gt-md="50px" fxLayoutAlign="space-around center">
-                            <mat-checkbox fxFlex formControlName="hyperTension">Hypertension</mat-checkbox>
-                            <mat-checkbox fxFlex formControlName="diabetes">Diabetes</mat-checkbox>
-                            <mat-checkbox fxFlex formControlName="cancer">Cancer</mat-checkbox>
-                            <mat-checkbox fxFlex formControlName="kidneyDisease">Kidney Disease</mat-checkbox>
-                            <mat-checkbox fxFlex formControlName="liverDisease">Liver Disease</mat-checkbox>
-                        </div>
-                        <div fxLayout fxLayoutAlign="center center">
-                            <button mat-stroked-button type="submit" style="color:whitesmoke"
-                                (click)="updateDonor()">Save</button></div>
-
-                    </div>
                     </div>
                 </mat-card>
             </form>

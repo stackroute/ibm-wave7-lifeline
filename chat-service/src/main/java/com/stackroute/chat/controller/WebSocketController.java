@@ -22,11 +22,11 @@ public class WebSocketController {
         this.template = template;
     }
 
-    @MessageMapping("/send/message/{recepientId}/{donorId}")
-    public void onReceivedMesage(@DestinationVariable long recepientId, @DestinationVariable long donorId, String message){
+    @MessageMapping("/send/message/{recepientId}/{donorId}/{donorEmail}")
+    public void onReceivedMesage(@DestinationVariable long recepientId, @DestinationVariable long donorId, @DestinationVariable String donorEmail, String message){
         System.out.println(donorId);
         System.out.println(recepientId);
         System.out.println(message);
-        this.template.convertAndSend("/chat/"+recepientId+"/"+donorId, "Client "+ new SimpleDateFormat("HH:mm:ss").format(new Date())+"- "+message);
+        this.template.convertAndSend("/chat/"+recepientId+"/"+donorId+"/"+donorEmail, "Client "+ new SimpleDateFormat("HH:mm:ss").format(new Date())+"- "+message);
     }
 }

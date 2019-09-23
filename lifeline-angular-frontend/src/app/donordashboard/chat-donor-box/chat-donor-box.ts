@@ -4,14 +4,13 @@ import Stomp from 'stompjs';
 import SockJS from 'sockjs-client';
 import 'jquery';
 import { RecepientserviceService } from 'src/app/service/recepientservice.service';
-import { DonorProfileService } from 'src/app/service/donor-profile.service';
 
 @Component({
-  selector: 'chat-box',
-  templateUrl: 'chat-box.html',
-  styleUrls: ['chat-box.css'],
+  selector: 'chat-donor-box',
+  templateUrl: 'chat-donor-box.html',
+  styleUrls: ['chat-donor-box.css'],
 })
-export class ChatBox {
+export class ChatDonorBox {
 
   private serverUrl = 'http://172.23.238.228:8084/websocket';
 
@@ -19,16 +18,14 @@ export class ChatBox {
 
   private recepientId: any;
 
-  private donorEmail : string;
+  private email: string;
 
   private stompClient;
 
-  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: any, private _bottomSheetRef: MatBottomSheetRef, 
-  private recepientService: RecepientserviceService, private donorService: DonorProfileService) {
+  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: any, private _bottomSheetRef: MatBottomSheetRef, private recepientService: RecepientserviceService) {
     this.donorId = data.id[0];
     this.recepientId = data.id[1];
-    this.donorEmail = data.id[2];
-    console.log(data);
+    this.email = data.id[2];
     this.initializeWebSocketConnection();
   }
 
@@ -37,8 +34,7 @@ export class ChatBox {
     let ws = new SockJS(this.serverUrl);
     this.stompClient = Stomp.over(ws);
     let that = this;
-    let chatUrl = "/chat/" + this.recepientId + "/" + this.donorId + "/" + this.donorEmail;
-    let send = this.sendMail();
+    let chatUrl = "/chat/" + this.recepientId + "/" + this.donorId + "/" + this.email;
     this.stompClient.connect({}, function (frame) {
       that.stompClient.subscribe(chatUrl, (message) => {
         console.log("MESSAGE " + message);
@@ -50,13 +46,8 @@ export class ChatBox {
     });
   }
 
-  sendMail() {
-    this.recepientService.sendMailForChat(this.recepientId, this.donorId, this.donorEmail).subscribe();
-  }
-
   sendMessage(message) {
-    this.stompClient.send("/app/send/message" + "/" + this.recepientId + "/" + this.donorId + "/" + this.donorEmail, {}, message);
+    this.stompClient.send("/app/send/message" + "/" + this.recepientId + "/" + this.donorId + "/" + this.email, {}, message);
     $('#input').val('');
-    this.sendMail();
   }
 }

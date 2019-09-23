@@ -56,8 +56,10 @@ import { RecommendationComponent } from './recepientdashboard/recommendation/rec
 import { StatusComponent } from './recepientdashboard/status/status.component';
 import { OrganRequestStatusComponent } from './organ-request-status/organ-request-status.component';
 import { DeletealertComponent } from './header/deletealert/deletealert.component';
-import { ChatBox } from '../app/recepientdashboard/chat-box/chat-box';
-import { ChatButton } from '../app/recepientdashboard/chat-button/chat-button';
+import { ChatDonorBox } from './donordashboard/chat-donor-box/chat-donor-box';
+import { ChatDonorButton } from './donordashboard/chat-donor-button/chat-donor-button';
+import { ChatBox } from './recepientdashboard/chat-box/chat-box';
+import { ChatButton } from './recepientdashboard/chat-button/chat-button';
 import { StorageServiceModule } from 'angular-webstorage-service';
 
 //  import { EmbedVideoService } from 'ngx-embed-video';
@@ -97,7 +99,9 @@ import { StorageServiceModule } from 'angular-webstorage-service';
     OrganRequestStatusComponent,
     DeletealertComponent,
     ChatBox,
-    ChatButton
+    ChatButton,
+    ChatDonorBox,
+    ChatDonorButton
   ],
   imports: [
     BrowserModule,
@@ -137,7 +141,9 @@ import { StorageServiceModule } from 'angular-webstorage-service';
     VerificationAlertComponent,
     DeletealertComponent,
     ChatBox,
-    ChatButton
+    ChatButton,
+    ChatDonorBox,
+    ChatDonorButton
   ],
   providers: [],
   bootstrap: [AppComponent]
