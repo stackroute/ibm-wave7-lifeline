@@ -1,18 +1,18 @@
 .container
 {
        background: #EFE7F1;  /* fallback for old browsers */
-       height: 90vh;
+       height: 90%;
 width: 100%;
 max-width: 100%;
-margin-top: 2cm ;
+margin-top: 10% ;
 }
 .container h2{
     text-align: center;
-    padding-top: 1.5cm;    
+    /* padding-top: 1.5cm;     */
 }
 .container h3{
     text-align: center;
-    padding-top: 1cm;
+    /* padding-top: 1cm; */
     
 }
 .font{
