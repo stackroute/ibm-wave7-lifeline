@@ -10,5 +10,9 @@
 }
 .container h2{
     text-align: center;
-    padding-top: 2.5cm;
+    /* padding-top: 2.5cm; */
+}
+#aims
+{
+    height:80%;
 }

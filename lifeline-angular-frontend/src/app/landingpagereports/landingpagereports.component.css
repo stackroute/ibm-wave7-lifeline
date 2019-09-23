@@ -27,5 +27,7 @@ table{
 #linechart,#barchart,#linechart1
 {
     /* height: 5cm; */
+    margin:auto;
+    justify-content: space-evenly;
     
 }
