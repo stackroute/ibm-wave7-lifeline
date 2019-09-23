@@ -3,7 +3,7 @@
     background: #EFE7F1;  /* fallback for old browsers */
 width: 100%;
 margin-top:2cm;
-height: 100%;
+height: 100vh;
 max-width: 100%;
 }
 .container h2{

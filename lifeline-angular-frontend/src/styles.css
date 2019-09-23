@@ -58,3 +58,8 @@ p,li{
 .mat-checkbox-layout {
     display: inline-block !important;
 }
+
+.mat-tab-body-wrapper {
+
+    margin-top: 5% !important ;
+  }
