@@ -73,8 +73,8 @@
                        <h3 >Guardian Details:</h3>
                    
                     <mat-list-item>
-                       <br> <div class="h4-tag" *ngFor="let guardian of donor.guardianList">
-                            Email- {{guardian.email}}<br><br>
+                        <div class="h4-tag" *ngFor="let guardian of donor.guardianList">
+                       <br><br>   <br><br>  Email- {{guardian.email}}<br>
                             Phone no- {{guardian.phoneNumber}}<br>
                             Relation- {{guardian.relation}}<br>
                             Address- {{guardian.address.addressLine1}} {{guardian.address.addressLine2}},
@@ -86,7 +86,7 @@
                 <br>
                 <!-- <mat-divider></mat-divider> -->
                 <mat-list>
-                   <br> <h3 >Medical Details:</h3>
+                  <br><br> <br> <h3 >Medical Details:</h3>
                     <mat-list-item>
                         <h4 class="h4-tag"><b>Blood group:</b> {{donor.medicalDetails.bloodGroup}} </h4>
                     </mat-list-item>

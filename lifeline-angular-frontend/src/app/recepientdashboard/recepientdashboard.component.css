@@ -13,7 +13,7 @@
    height: 300px; */
 .container
 {
-  height: 100vh;
+  height: 100%;
   background-color: antiquewhite;
   padding-left: 0;
   padding-right: 0;
@@ -34,8 +34,8 @@
 }
 .profile
 {
-  width:50vw;
-  padding-left:40px;
+  width:70vw;
+  /* padding-left:40px; */
   margin-top: 50px;
 }
 .mat-subheader {
