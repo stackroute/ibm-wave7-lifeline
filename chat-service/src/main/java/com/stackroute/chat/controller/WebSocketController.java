@@ -23,10 +23,15 @@ public class WebSocketController {
     }
 
     @MessageMapping("/send/message/{recepientId}/{donorId}/{donorEmail}")
-    public void onReceivedMesage(@DestinationVariable long recepientId, @DestinationVariable long donorId, @DestinationVariable String donorEmail, String message){
+    public void onReceivedMesage(@DestinationVariable long recepientId, @DestinationVariable long donorId, @DestinationVariable String donorEmail, String message, String type){
         System.out.println(donorId);
         System.out.println(recepientId);
         System.out.println(message);
-        this.template.convertAndSend("/chat/"+recepientId+"/"+donorId+"/"+donorEmail, "Client "+ new SimpleDateFormat("HH:mm:ss").format(new Date())+"- "+message);
+        if(type.equals("Donor")) {
+            this.template.convertAndSend("/chat/" + recepientId + "/" + donorId + "/" + donorEmail, "Donor " + new SimpleDateFormat("HH:mm:ss").format(new Date()) + "- " + message);
+        }
+        else {
+            this.template.convertAndSend("/chat/" + recepientId + "/" + donorId + "/" + donorEmail, "Receiver " + new SimpleDateFormat("HH:mm:ss").format(new Date()) + "- " + message);
+        }
     }
 }

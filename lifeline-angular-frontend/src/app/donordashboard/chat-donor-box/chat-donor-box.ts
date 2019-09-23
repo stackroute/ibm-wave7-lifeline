@@ -47,7 +47,7 @@ export class ChatDonorBox {
   }
 
   sendMessage(message) {
-    this.stompClient.send("/app/send/message" + "/" + this.recepientId + "/" + this.donorId + "/" + this.email, {}, message);
+    this.stompClient.send("/app/send/message" + "/" + this.recepientId + "/" + this.donorId + "/" + this.email, {}, message, "Donor");
     $('#input').val('');
   }
 }

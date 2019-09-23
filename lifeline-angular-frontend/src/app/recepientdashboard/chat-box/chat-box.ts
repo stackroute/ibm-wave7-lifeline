@@ -55,7 +55,7 @@ export class ChatBox {
   }
 
   sendMessage(message) {
-    this.stompClient.send("/app/send/message" + "/" + this.recepientId + "/" + this.donorId + "/" + this.donorEmail, {}, message);
+    this.stompClient.send("/app/send/message" + "/" + this.recepientId + "/" + this.donorId + "/" + this.donorEmail, {}, message, "Recepient");
     $('#input').val('');
     this.sendMail();
   }

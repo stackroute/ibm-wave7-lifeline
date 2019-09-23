@@ -2,3 +2,10 @@
 {
     height:80vh;
 }
+
+.mat-card
+{
+   /* border: 3px solid #5d6119; */
+   border-radius: 2cm;
+   margin:10px;
+}
