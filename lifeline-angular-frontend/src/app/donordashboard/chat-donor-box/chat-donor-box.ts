@@ -20,12 +20,15 @@ export class ChatDonorBox {
 
   private email: string;
 
+  private donorName: string;
+
   private stompClient;
 
   constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: any, private _bottomSheetRef: MatBottomSheetRef, private recepientService: RecepientserviceService) {
     this.donorId = data.id[0];
     this.recepientId = data.id[1];
     this.email = data.id[2];
+    this.donorName = data.id[3];
     this.initializeWebSocketConnection();
   }
 
@@ -34,7 +37,8 @@ export class ChatDonorBox {
     let ws = new SockJS(this.serverUrl);
     this.stompClient = Stomp.over(ws);
     let that = this;
-    let chatUrl = "/chat/" + this.recepientId + "/" + this.donorId + "/" + this.email;
+    let name = this.donorName;
+    let chatUrl = "/chat/" + this.recepientId + "/" + this.donorId;
     this.stompClient.connect({}, function (frame) {
       that.stompClient.subscribe(chatUrl, (message) => {
         console.log("MESSAGE " + message);
@@ -47,7 +51,7 @@ export class ChatDonorBox {
   }
 
   sendMessage(message) {
-    this.stompClient.send("/app/send/message" + "/" + this.recepientId + "/" + this.donorId + "/" + this.email, {}, message, "Donor");
+    this.stompClient.send("/app/send/message/donor" + "/" + this.recepientId + "/" + this.donorId + "/" + this.donorName, {}, message);
     $('#input').val('');
   }
 }

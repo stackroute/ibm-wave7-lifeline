@@ -88,7 +88,7 @@ const routes: Routes = [
     component:RecommendationComponent
   },
   {
-    path:'chat/:recepientId/:donorId/:email',
+    path:'chat/:recepientId/:donorId/:email/:donorName',
     component: ChatDonorButton
   }
 ];

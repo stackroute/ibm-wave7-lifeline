@@ -19,6 +19,10 @@ export class ChatButton {
 
   @Input() private recepientId: number;
 
+  @Input() private donorName: string;
+
+  @Input() private receiverName: string;
+
   private donorEmail: string;
 
   constructor(private _bottomSheet: MatBottomSheet, private router: Router, private donorService: DonorProfileService) {
@@ -27,11 +31,13 @@ export class ChatButton {
   openBottomSheet(): void {
     console.log(this.donorId);
     console.log(this.recepientId);
+    console.log(this.donorName);
+    console.log(this.receiverName);
     this.donorService.getDonorById(this.donorId).subscribe(data => {
       console.log(data)
       this.donorEmail = data.email;
       this._bottomSheet.open(ChatBox, {
-        data: { id: [this.donorId, this.recepientId, this.donorEmail] }
+        data: { id: [this.donorId, this.recepientId, this.donorEmail, this.donorName, this.receiverName] }
       });
     });
   }

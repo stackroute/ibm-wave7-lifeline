@@ -18,12 +18,17 @@ export class ReuestComponent implements OnInit {
   constructor(private route: ActivatedRoute, private recepientProfileService: RecepientserviceService) { }
   public requestOrganForm: FormGroup;
   public recepientId: number;
+  public recepientName: string;
   public recepients: Recepient;
   public donors: Array<Donor> = [];
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.recepientId = params["id"];
+      this.recepientProfileService.getRecepientById(this.recepientId).subscribe(data => {
+        this.recepientName = data.firstName;
+        console.log(this.recepientName);
+      })
       this.requestForm();
     });
   }

@@ -19,11 +19,14 @@ export class ChatDonorButton implements AfterViewInit {
 
   private donorEmail: string;
 
+  private donorName: string;
+
   constructor(private _bottomSheet: MatBottomSheet, private router: Router, private route: ActivatedRoute) {
     this.route.params.subscribe(data => {
       this.donorId = data.donorId;
       this.recepientId = data.recepientId;
       this.donorEmail =  data.email
+      this.donorName = data.donorName;
     })
   }
 
@@ -35,7 +38,7 @@ export class ChatDonorButton implements AfterViewInit {
     console.log(this.donorId);
     console.log(this.recepientId);
     this._bottomSheet.open(ChatDonorBox, {
-      data: { id: [this.donorId, this.recepientId, this.donorEmail] }
+      data: { id: [this.donorId, this.recepientId, this.donorEmail, this.donorName] }
     });
   }
 }

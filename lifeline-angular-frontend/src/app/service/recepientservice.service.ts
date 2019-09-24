@@ -61,7 +61,7 @@ export class RecepientserviceService {
     return throwError(error.message || 'server error');
   }
 
-  sendMailForChat(recepientId, donorId, email) {
-    return this.httpClient.get(this.chatUrl + "/" + recepientId + "/" + donorId + "/" + email);
+  sendMailForChat(recepientId, donorId, email, donorName) {
+    return this.httpClient.get(this.chatUrl + "/" + recepientId + "/" + donorId + "/" + email + "/" + donorName);
   }
 }

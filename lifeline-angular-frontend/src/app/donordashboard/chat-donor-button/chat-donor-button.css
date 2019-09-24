@@ -1,8 +1,9 @@
 .bottomright {
     margin-top: 70px;
+    height: 70vh;
 }
 
 img {
-    width: 15%;
-    height: 15%;
+    width: 5vw;
+    height: 10vh;
 }

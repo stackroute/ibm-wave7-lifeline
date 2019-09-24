@@ -50,7 +50,7 @@
           <mat-card-subtitle>Blood Group: {{donor.medicalDetails.bloodGroup}}</mat-card-subtitle>
         </mat-card-header>
         <div *ngIf='donor.id'>
-          <chat-button [donorId]="donor.id" [recepientId]="recepientId"></chat-button>
+          <chat-button [donorId]="donor.id" [recepientId]="recepientId" [donorName]="donor.firstName" [receiverName]="recepientName"></chat-button>
         </div>
       </mat-card>
     </div>
