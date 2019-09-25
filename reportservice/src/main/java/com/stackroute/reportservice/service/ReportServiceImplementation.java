@@ -82,29 +82,29 @@ public class ReportServiceImplementation implements ReportService {
                 for (Organs organ : organs) {
 //
 
-                    if (organ.getName().equals("blood") && organ.isDonateOrNot()) {
+                    if ((organ.getName().equals("blood")  || organ.getName().equals("Blood")) && organ.isDonateOrNot()) {
                         bloodCount++;
                     }
 
-                    if (organ.getName().equals("boneMarrow") && organ.isDonateOrNot()) {
+                    if ((organ.getName().equals("bone marrow") || organ.getName().equals("Bone Marrow")) && organ.isDonateOrNot()) {
                         boneMarrowCount++;
                     }
-                    if (organ.getName().equals("cornea") && organ.isDonateOrNot()) {
+                    if ((organ.getName().equals("cornea") || organ.getName().equals("Cornea")) && organ.isDonateOrNot()) {
                         corneaCount++;
                     }
-                    if (organ.getName().equals("heart") && organ.isDonateOrNot()) {
+                    if ((organ.getName().equals("heart") || organ.getName().equals("Heart"))  && organ.isDonateOrNot()) {
                         heartCount++;
                     }
-                    if (organ.getName().equals("kidney") && organ.isDonateOrNot()) {
+                    if ((organ.getName().equals("kidney") || organ.getName().equals("Kidney"))  && organ.isDonateOrNot()) {
                         kidneyCount++;
                     }
-                    if (organ.getName().equals("liver") && organ.isDonateOrNot()) {
+                    if ((organ.getName().equals("liver") || organ.getName().equals("Liver")) && organ.isDonateOrNot()) {
                         liverCount++;
                     }
-                    if (organ.getName().equals("lungs") && organ.isDonateOrNot()) {
+                    if ((organ.getName().equals("lungs") || organ.getName().equals("Lungs")) && organ.isDonateOrNot()) {
                         lungsCount++;
                     }
-                    if (organ.getName().equals("platelet") && organ.isDonateOrNot()) {
+                    if ((organ.getName().equals("platelet") || organ.getName().equals("Platelet")) && organ.isDonateOrNot()) {
                         plateletCount++;
                     }
 //

@@ -1,6 +1,6 @@
 <mat-toolbar>
     <mat-form-field [@visibilityChanged]="isVisible" appearance="standard">
-        <input matInput type="text" matInput [formControl]="searchControl" [matAutocomplete]="auto" placeholder="Search Organ">
+        <input matInput type="text" matInput [formControl]="searchControl" [matAutocomplete]="auto" placeholder="Search">
     </mat-form-field>
 
     <mat-autocomplete class="optionsAutoComplete" #auto="matAutocomplete">
